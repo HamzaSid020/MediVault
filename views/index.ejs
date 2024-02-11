@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>MediVault Data</title>
+</head>
+<body>
+  <h1>MediVault Data</h1>
+  <div class="mb-4">
+    <h2>Create Hospital</h2>
+    <form action="api/createHospital" method="post">
+      <div class="form-group">
+        <label for="hospitalName">Name:</label>
+        <input type="text" class="form-control" id="hospitalName" name="hospitalName" required>
+      </div>
+      <div class="form-group">
+        <label for="hospitalDescription">Description:</label>
+        <input type="text" class="form-control" id="hospitalDescription" name="hospitalDescription" required>
+      </div>
+      <div class="form-group">
+        <label for="hospitalPicture">Picture:</label>
+        <input type="text" class="form-control" id="hospitalPicture" name="hospitalPicture" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Hospital</button>
+    </form>
+  </div>
+
+  <!-- Hospitals Table -->
+  <div class="mb-4">
+    <h2>Hospitals</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Picture</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% hospitals.forEach(hospital => { %>
+          <tr>
+            <td><%- hospital._id %></td>
+            <td><%- hospital.Name %></td>
+            <td><%- hospital.Description %></td>
+            <td><%- hospital.Picture %></td>
+            <td>
+              <!-- Update Hospital Form -->
+              <form action="api/updateHospital/<%= hospital._id %>" method="post" class="d-inline">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="updateHospitalName" placeholder="New Name" required>
+                  <input type="text" class="form-control" name="updateHospitalDescription" placeholder="New Description" required>
+                  <input type="text" class="form-control" name="updateHospitalPicture" placeholder="New Picture" required>
+                </div>
+                <button type="submit" class="btn btn-warning">Update</button>
+              </form>
+
+              <!-- Delete Hospital Form -->
+              <form action="api/Hospital/<%= hospital._id %>" method="delete" class="d-inline">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Patients</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone No</th>
+        <th>Email</th>
+        <th>Picture</th>
+        <th>Hospital IDs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% patients.forEach(patient => { %>
+        <tr>
+          <td><%- patient._id %></td>
+          <td><%- patient.Name %></td>
+          <td><%- patient.Phone_No %></td>
+          <td><%- patient.Email %></td>
+          <td><%- patient.Picture %></td>
+          <td><%- patient.Hospital_Ids.join(', ') %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <h2>Reports</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Category</th>
+        <th>Name</th>
+        <th>Patient ID</th>
+        <th>Hospital ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% reports.forEach(report => { %>
+        <tr>
+          <td><%- report._id %></td>
+          <td><%- report.Category %></td>
+          <td><%- report.Name %></td>
+          <td><%- report.Patient_Id %></td>
+          <td><%- report.Hospital_Id %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <h2>Bills</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Category</th>
+      <th>Name</th>
+      <th>File</th>
+      <th>Hospital ID</th>
+      <th>Patient ID</th>
+      <th>Report IDs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% bills.forEach(bill => { %>
+      <tr>
+        <td><%- bill._id %></td>
+        <td><%- bill.Category %></td>
+        <td><%- bill.Name %></td>
+        <td><%- bill.File %></td>
+        <td><%- bill.Hospital_Id %></td>
+        <td><%- bill.Patient_Id %></td>
+        <td><%- bill.Report_Ids.join(', ') %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<h2>Prescriptions</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>File</th>
+      <th>Hospital ID</th>
+      <th>Patient ID</th>
+      <th>Report IDs</th>
+      <th>Bills IDs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% prescriptions.forEach(prescription => { %>
+      <tr>
+        <td><%- prescription._id %></td>
+        <td><%- prescription.Name %></td>
+        <td><%- prescription.File %></td>
+        <td><%- prescription.Hospital_Id %></td>
+        <td><%- prescription.Patient_Id %></td>
+        <td><%- prescription.Report_Ids.join(', ') %></td>
+        <td><%- prescription.Bills_Ids.join(', ') %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+<h2>Patient Login</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Patient ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% patientLogins.forEach(patientLogin => { %>
+      <tr>
+        <td><%- patientLogin._id %></td>
+        <td><%- patientLogin.Username %></td>
+        <td><%- patientLogin.Password %></td>
+        <td><%- patientLogin.Patient_Id %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<h2>Hospital Login</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Hospital ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% hospitalLogins.forEach(hospitalLogin => { %>
+      <tr>
+        <td><%- hospitalLogin._id %></td>
+        <td><%- hospitalLogin.Username %></td>
+        <td><%- hospitalLogin.Password %></td>
+        <td><%- hospitalLogin.Hospital_Id %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<h2>Hospital Codes</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Code</th>
+      <th>Patient ID</th>
+      <th>Hospital ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% hospitalCodes.forEach(hospitalCode => { %>
+      <tr>
+        <td><%- hospitalCode._id %></td>
+        <td><%- hospitalCode.Code %></td>
+        <td><%- hospitalCode.Patient_Id %></td>
+        <td><%- hospitalCode.Hospital_Id %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+</body>
+</html>

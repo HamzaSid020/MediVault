@@ -46,6 +46,7 @@ router.get('/hospitals/:id', async (req, res) => {
 
 router.put('/hospitals/:id', async (req, res) => {
     try {
+        const { hospitalName, hospitalDescription, hospitalPicture } = req.body;
         const hospital = await HospitalInfo.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!hospital) {
             return res.status(404).json({ error: 'Hospital not found' });
@@ -67,6 +68,20 @@ router.delete('/hospitals/:id', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+router.post('/createHospital', async (req, res) => {
+    try {
+      const { hospitalName, hospitalDescription, hospitalPicture } = req.body;
+      const newHospital = new HospitalInfo({ Name: hospitalName, Description: hospitalDescription, Picture: hospitalPicture });
+      await newHospital.save();
+      res.redirect('/');
+    } catch (error) {
+      console.error('Error creating hospital:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
+
 
 // Patient_Info
 router.post('/patients', async (req, res) => {

@@ -14,14 +14,34 @@ const {
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const apiFunctions = require('./database/apiFunctions');
-
+const ejs = require('ejs');
 const port = process.env.PORT || 3000;
 
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api', apiFunctions);
+
+app.get('/', async (req, res) => {
+  try {
+    const hospitals = await HospitalInfo.find();
+    const patients = await PatientInfo.find();
+    const reports = await Report.find();
+    const bills = await Bills.find();
+    const prescriptions = await Prescription.find();
+    const patientLogins = await PatientLogin.find();
+    const hospitalLogins = await HospitalLogin.find();
+    const hospitalCodes = await HospitalCodes.find();
+
+    res.render('index', { hospitals, patients, reports, bills, prescriptions, patientLogins, hospitalLogins, hospitalCodes });
+  } catch (error) {
+    console.error('Error rendering HTML:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 // Connect to the database and create models
 connectToDatabase()
