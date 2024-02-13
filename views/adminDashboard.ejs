@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin Dashboard Page – 1</title>
+	<style id="applicationStylesheet" type="text/css">
+		.mediaViewInfo {
+			--web-view-name: Admin Dashboard Page – 1;
+			--web-view-id: Admin_Dashboard;
+			--web-scale-on-resize: true;
+			--web-enable-deep-linking: true;
+		}
+
+		:root {
+			--web-view-ids: Admin_Dashboard;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			border: none;
+		}
+
+		#Admin_Dashboard {
+			position: absolute;
+			width: 1920px;
+			height: 2876px;
+			background-color: rgba(255, 255, 255, 1);
+			overflow: hidden;
+			--web-view-name: Admin Dashboard Page – 1;
+			--web-view-id: Admin_Dashboard;
+			--web-scale-on-resize: true;
+			--web-enable-deep-linking: true;
+		}
+
+		#Component_1__1 {
+			position: absolute;
+			width: 1970.519px;
+			height: 2882.284px;
+			left: -25.26px;
+			top: -4px;
+			overflow: visible;
+		}
+
+		#Group_1 {
+			position: absolute;
+			width: 1970.519px;
+			height: 2882.284px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Path_4 {
+			fill: rgba(189, 192, 225, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_4 {
+			overflow: visible;
+			position: absolute;
+			width: 1941.601px;
+			height: 88px;
+			left: 16.459px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_5 {
+			fill: rgba(189, 192, 225, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_5 {
+			overflow: visible;
+			position: absolute;
+			width: 1970.52px;
+			height: 170.515px;
+			left: 0px;
+			top: 2711.768px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Image_1 {
+			position: absolute;
+			width: 106px;
+			height: 68px;
+			left: 36.26px;
+			top: 10px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_1 {
+			position: absolute;
+			width: 781px;
+			height: 23px;
+			left: 526.26px;
+			top: 32.5px;
+			overflow: hidden;
+		}
+
+		#Group {
+			position: absolute;
+			width: 67px;
+			height: 33px;
+			left: 1px;
+			top: -9px;
+			overflow: visible;
+		}
+
+		#Home {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 68px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_q {
+			position: absolute;
+			width: 103px;
+			height: 33px;
+			left: 234px;
+			top: -9px;
+			overflow: visible;
+		}
+
+		#About_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 104px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_s {
+			position: absolute;
+			width: 120px;
+			height: 33px;
+			left: 467px;
+			top: -9px;
+			overflow: visible;
+		}
+
+		#Contact_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 121px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_u {
+			position: absolute;
+			width: 61px;
+			height: 33px;
+			left: 700px;
+			top: -9px;
+			overflow: visible;
+		}
+
+		#Login {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 62px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Sign_Up {
+			left: 1801.76px;
+			top: 25px;
+			position: absolute;
+			overflow: visible;
+			width: 102px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 29px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Repeat_Grid_2 {
+			position: absolute;
+			width: 1270px;
+			height: 90px;
+			left: 415.76px;
+			top: 2744.268px;
+			overflow: hidden;
+		}
+
+		#Group_y {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_3 {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: hidden;
+		}
+
+		#Group_ {
+			position: absolute;
+			width: 101px;
+			height: 66px;
+			left: 1px;
+			top: 1px;
+			overflow: visible;
+		}
+
+		#How_It_Works_FAQ_Contact_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 102px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_ba {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 498px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_3_ {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: hidden;
+		}
+
+		#Group_bb {
+			position: absolute;
+			width: 123px;
+			height: 66px;
+			left: 1px;
+			top: 1px;
+			overflow: visible;
+		}
+
+		#Contact_Support_Help_Center_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 124px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_bc {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 996px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_3_ba {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: hidden;
+		}
+
+		#Group_bd {
+			position: absolute;
+			width: 162px;
+			height: 88px;
+			left: 1px;
+			top: 1px;
+			overflow: visible;
+		}
+
+		#Terms_and_Conditions_Privacy_P {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 163px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Copyright_-_Group_9_ {
+			left: 911.76px;
+			top: 2834.784px;
+			position: absolute;
+			overflow: visible;
+			width: 148px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 16px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Path_62 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_62 {
+			overflow: visible;
+			position: absolute;
+			width: 51.956px;
+			height: 51.956px;
+			left: 849.304px;
+			top: 2754.044px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_27 {
+			position: absolute;
+			width: 36.368px;
+			height: 51.956px;
+			left: 1361.26px;
+			top: 2754.044px;
+			overflow: visible;
+		}
+
+		#Path_63 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_63 {
+			overflow: visible;
+			position: absolute;
+			width: 36.368px;
+			height: 51.956px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_64 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_64 {
+			overflow: visible;
+			position: absolute;
+			width: 5.195px;
+			height: 10.391px;
+			left: 15.586px;
+			top: 25.977px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_26 {
+			position: absolute;
+			width: 24px;
+			height: 24px;
+			left: 859px;
+			top: 2830px;
+			overflow: visible;
+		}
+
+		#Path_60 {
+			fill: transparent;
+		}
+
+		.Path_60 {
+			overflow: visible;
+			position: absolute;
+			width: 24px;
+			height: 24px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_61 {
+			fill: rgba(253, 253, 255, 1);
+		}
+
+		.Path_61 {
+			overflow: visible;
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			left: 2px;
+			top: 2px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#ADMIN_DASHBOARD {
+			left: 774px;
+			top: 107px;
+			position: absolute;
+			overflow: visible;
+			width: 374px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Cambria;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 40px;
+			color: rgba(0, 0, 0, 1);
+		}
+
+		#Hospital_Data {
+        left: 140px;
+        top: 236px;
+        position: absolute;
+        overflow: auto;
+        width: 704px;
+        height: 440px;
+        text-align: left;
+        font-family: Cambria;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 1);
+    }
+
+    #Hospital_Data HospitalTable {
+        width: 100%;
+        top: 277px; /* Adjust the top value as needed */
+        position: absolute;
+        overflow: auto; /* Adjust overflow as needed */
+        width: 704px; /* Set to 704 as per your requirement */
+        height: 440px; /* Set to 440 as per your requirement */
+    }
+
+    #Hospital_Data th, #Hospital_Data td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        font-size: 14px; /* Adjust the font size as needed */
+    }
+
+    #Hospital_Data th {
+        background-color: #f2f2f2;
+    }
+	#Reports {
+        left: 149px;
+        top: 799px;
+        position: absolute;
+        overflow: visible;
+        width: 283px;
+        height: 36px;
+        text-align: left;
+        font-family: Cambria;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 1);
+    }
+
+    #ReportsTableContainer {
+        left: 149px;
+        top: 840px;
+        position: absolute;
+        overflow: auto;
+        width: 704px;
+        height: 440px;
+    }
+
+    #ReportsTable {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #ReportsTable th, #ReportsTable td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        font-size: 14px; /* Adjust the font size as needed */
+    }
+
+    #ReportsTable th {
+        background-color: #f2f2f2;
+    }
+
+	#Prescriptions {
+        left: 149px;
+        top: 1362px;
+        position: absolute;
+        overflow: visible;
+        width: 283px;
+        height: 36px;
+        text-align: left;
+        font-family: Cambria;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 1);
+    }
+
+    #PrescriptionsTableContainer {
+        left: 149px;
+        top: 1403px;
+        position: absolute;
+        overflow: auto;
+        width: 704px;
+        height: 440px;
+    }
+
+    #PrescriptionsTable {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #PrescriptionsTable th, #PrescriptionsTable td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        font-size: 14px; /* Adjust the font size as needed */
+    }
+
+    #PrescriptionsTable th {
+        background-color: #f2f2f2;
+    }
+	#Patient_Login {
+        left: 149px;
+        top: 1925px;
+        position: absolute;
+        overflow: visible;
+        width: 283px;
+        height: 36px;
+        text-align: left;
+        font-family: Cambria;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 1);
+    }
+
+    #PatientLoginTableContainer {
+        left: 149px;
+        top: 1966px;
+        position: absolute;
+        overflow: auto;
+        width: 704px;
+        height: 440px;
+    }
+
+    #PatientLoginTable {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #PatientLoginTable th, #PatientLoginTable td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        font-size: 14px; /* Adjust the font size as needed */
+    }
+
+    #PatientLoginTable th {
+        background-color: #f2f2f2;
+    }
+		#Patients {
+        left: 1059px;
+        top: 236px; /* Adjust the top value if needed */
+        position: absolute;
+        overflow: visible; /* Adjust overflow as needed */
+        width: 283px; /* Keep the existing width */
+        height: 36px; /* Keep the existing height */
+        text-align: left;
+        font-family: Cambria;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 1);
+    }
+
+    #PatientsTableContainer {
+        left: 1059px;
+        top: 277px; /* Adjust the top value as needed */
+        position: absolute;
+        overflow: auto; /* Adjust overflow as needed */
+        width: 704px; /* Set to 704 as per your requirement */
+        height: 440px; /* Set to 440 as per your requirement */
+    }
+
+    #PatientsTable {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #PatientsTable th, #PatientsTable td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        font-size: 14px; /* Adjust the font size as needed */
+    }
+
+    #PatientsTable th {
+        background-color: #f2f2f2;
+    }
+	#Bills {
+        left: 1068px;
+        top: 799px;
+        position: absolute;
+        overflow: visible;
+        width: 283px;
+        height: 36px;
+        text-align: left;
+        font-family: Cambria;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 1);
+    }
+
+    #BillsTableContainer {
+        left: 1068px;
+        top: 840px;
+        position: absolute;
+        overflow: auto;
+        width: 704px;
+        height: 440px;
+    }
+
+    #BillsTable {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #BillsTable th, #BillsTable td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        font-size: 14px; /* Adjust the font size as needed */
+    }
+
+    #BillsTable th {
+        background-color: #f2f2f2;
+    }
+
+	#Hospital_Code {
+        left: 1068px;
+        top: 1362px;
+        position: absolute;
+        overflow: visible;
+        width: 283px;
+        height: 36px;
+        text-align: left;
+        font-family: Cambria;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 1);
+    }
+
+    #HospitalCodeTableContainer {
+        left: 1068px;
+        top: 1403px;
+        position: absolute;
+        overflow: auto;
+        width: 704px;
+        height: 440px;
+    }
+
+    #HospitalCodeTable {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #HospitalCodeTable th, #HospitalCodeTable td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        font-size: 14px; /* Adjust the font size as needed */
+    }
+
+    #HospitalCodeTable th {
+        background-color: #f2f2f2;
+    }
+
+	#Hospital_Login {
+        left: 1068px;
+        top: 1925px;
+        position: absolute;
+        overflow: visible;
+        width: 283px;
+        height: 36px;
+        text-align: left;
+        font-family: Cambria;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 1);
+    }
+
+    #HospitalLoginTableContainer {
+        left: 1068px;
+        top: 1966px;
+        position: absolute;
+        overflow: auto;
+        width: 704px;
+        height: 440px;
+    }
+
+    #HospitalLoginTable {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #HospitalLoginTable th, #HospitalLoginTable td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        font-size: 14px; /* Adjust the font size as needed */
+    }
+
+    #HospitalLoginTable th {
+        background-color: #f2f2f2;
+    }
+		#Icon_material-add-home {
+			position: absolute;
+			width: 28.5px;
+			height: 28px;
+			left: 797.5px;
+			top: 244px;
+			overflow: visible;
+		}
+
+		#Path_65 {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Path_65 {
+			overflow: visible;
+			position: absolute;
+			width: 24px;
+			height: 25px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_66 {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Path_66 {
+			overflow: visible;
+			position: absolute;
+			width: 15px;
+			height: 15px;
+			left: 13.5px;
+			top: 13px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		.hospital-search-bar {
+			position: absolute;
+			overflow: visible;
+			width: 241px;
+			height: 28px;
+			left: 545px;
+			top: 244px;
+		}
+
+		.hospital-search-input {
+			width: 100%;
+			height: 100%;
+			padding: 0 10px;
+			border: 2px solid rgba(12, 12, 12, 1);
+			border-radius: 14px;
+			box-sizing: border-box;
+			font-size: 14px;
+			outline: none;
+			/* Remove the default focus outline if not needed */
+		}
+
+		/* If you want to style the placeholder text */
+		.hospital-search-input::placeholder {
+			color: #999;
+			/* Add other styling properties as needed */
+		}
+
+		.reports-search-bar {
+  position: absolute;
+  overflow: visible;
+  width: 241px;
+  height: 28px;
+  left: 554px;
+  top: 807px;
+}
+
+.reports-search-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  border: 2px solid rgba(12, 12, 12, 1);
+  border-radius: 14px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none; /* Remove the default focus outline if not needed */
+}
+
+/* If you want to style the placeholder text */
+.reports-search-input::placeholder {
+  color: #999;
+  /* Add other styling properties as needed */
+}
+
+.prescription-search-bar {
+  position: absolute;
+  overflow: visible;
+  width: 241px;
+  height: 28px;
+  left: 554px;
+  top: 1370px;
+}
+
+.prescription-search-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  border: 2px solid rgba(12, 12, 12, 1);
+  border-radius: 14px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none; /* Remove the default focus outline if not needed */
+}
+
+/* If you want to style the placeholder text */
+.prescription-search-input::placeholder {
+  color: #999;
+  /* Add other styling properties as needed */
+}
+
+.patient-login-bar {
+  position: absolute;
+  overflow: visible;
+  width: 241px;
+  height: 28px;
+  left: 554px;
+  top: 1933px;
+}
+
+.patient-login-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  border: 2px solid rgba(12, 12, 12, 1);
+  border-radius: 14px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none; /* Remove the default focus outline if not needed */
+}
+
+/* If you want to style the placeholder text */
+.patient-login-input::placeholder {
+  color: #999;
+  /* Add other styling properties as needed */
+}
+.patient-bar {
+  position: absolute;
+  overflow: visible;
+  width: 241px;
+  height: 28px;
+  left: 1467px;
+  top: 246px;
+}
+
+.patient-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  border: 2px solid rgba(12, 12, 12, 1);
+  border-radius: 14px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none; /* Remove the default focus outline if not needed */
+}
+
+/* If you want to style the placeholder text */
+.patient-input::placeholder {
+  color: #999;
+  /* Add other styling properties as needed */
+}
+.bills-bar {
+  position: absolute;
+  overflow: visible;
+  width: 241px;
+  height: 28px;
+  left: 1476px;
+  top: 809px;
+}
+
+.bills-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  border: 2px solid rgba(12, 12, 12, 1);
+  border-radius: 14px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none; /* Remove the default focus outline if not needed */
+}
+
+/* If you want to style the placeholder text */
+.bills-input::placeholder {
+  color: #999;
+  /* Add other styling properties as needed */
+}
+.hospital-code-bar {
+  position: absolute;
+  overflow: visible;
+  width: 241px;
+  height: 28px;
+  left: 1476px;
+  top: 1372px;
+}
+
+.hospital-code-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  border: 2px solid rgba(12, 12, 12, 1);
+  border-radius: 14px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none; /* Remove the default focus outline if not needed */
+}
+
+/* If you want to style the placeholder text */
+.hospital-code-input::placeholder {
+  color: #999;
+  /* Add other styling properties as needed */
+}
+
+.hospital-login-bar {
+  position: absolute;
+  overflow: visible;
+  width: 241px;
+  height: 28px;
+  left: 1476px;
+  top: 1935px;
+}
+
+.hospital-login-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  border: 2px solid rgba(12, 12, 12, 1);
+  border-radius: 14px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none; /* Remove the default focus outline if not needed */
+}
+
+/* If you want to style the placeholder text */
+.hospital-login-input::placeholder {
+  color: #999;
+  /* Add other styling properties as needed */
+}
+		#Icon_ion-search {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_ion-search {
+			overflow: visible;
+			position: absolute;
+			width: 15.423px;
+			height: 14.279px;
+			transform: matrix(1, 0, 0, 1, 763.5378, 250.8606) rotate(4deg);
+			transform-origin: center;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Icon_ion-search_b {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_ion-search_b {
+			overflow: visible;
+			position: absolute;
+			width: 15.423px;
+			height: 14.279px;
+			transform: matrix(1, 0, 0, 1, 772.5378, 813.8606) rotate(4deg);
+			transform-origin: center;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Icon_ion-search_ca {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_ion-search_ca {
+			overflow: visible;
+			position: absolute;
+			width: 15.423px;
+			height: 14.279px;
+			transform: matrix(1, 0, 0, 1, 772.5378, 1376.8606) rotate(4deg);
+			transform-origin: center;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Icon_ion-search_cb {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_ion-search_cb {
+			overflow: visible;
+			position: absolute;
+			width: 15.423px;
+			height: 14.279px;
+			transform: matrix(1, 0, 0, 1, 772.5378, 1939.8606) rotate(4deg);
+			transform-origin: center;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Icon_ion-search_cc {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_ion-search_cc {
+			overflow: visible;
+			position: absolute;
+			width: 15.423px;
+			height: 14.279px;
+			transform: matrix(1, 0, 0, 1, 1683.5379, 252.8606) rotate(4deg);
+			transform-origin: center;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Icon_ion-search_cd {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_ion-search_cd {
+			overflow: visible;
+			position: absolute;
+			width: 15.423px;
+			height: 14.279px;
+			transform: matrix(1, 0, 0, 1, 1692.5379, 815.8606) rotate(4deg);
+			transform-origin: center;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Icon_ion-search_ce {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_ion-search_ce {
+			overflow: visible;
+			position: absolute;
+			width: 15.423px;
+			height: 14.279px;
+			transform: matrix(1, 0, 0, 1, 1692.5379, 1378.8606) rotate(4deg);
+			transform-origin: center;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Icon_ion-search_cf {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_ion-search_cf {
+			overflow: visible;
+			position: absolute;
+			width: 15.423px;
+			height: 14.279px;
+			transform: matrix(1, 0, 0, 1, 1692.5379, 1941.8606) rotate(4deg);
+			transform-origin: center;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Icon_akar-person-add {
+			position: absolute;
+			width: 18.473px;
+			height: 20.833px;
+			left: 1722px;
+			top: 249.583px;
+			overflow: visible;
+		}
+
+		#Path_69 {
+			fill: transparent;
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 2.0833332538604736px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_69 {
+			overflow: visible;
+			position: absolute;
+			width: 12.5px;
+			height: 12.5px;
+			left: 3.89px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_70 {
+			fill: transparent;
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 2.0833332538604736px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_70 {
+			overflow: visible;
+			position: absolute;
+			width: 20.56px;
+			height: 10.417px;
+			left: 0px;
+			top: 12.5px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Icon_akar-person-add_cd {
+			position: absolute;
+			width: 18.473px;
+			height: 20.833px;
+			left: 1731px;
+			top: 1938.583px;
+			overflow: visible;
+		}
+
+		#Path_69_ce {
+			fill: transparent;
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 2.0833332538604736px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_69_ce {
+			overflow: visible;
+			position: absolute;
+			width: 12.5px;
+			height: 12.5px;
+			left: 3.89px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_70_cf {
+			fill: transparent;
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 2.0833332538604736px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_70_cf {
+			overflow: visible;
+			position: absolute;
+			width: 20.56px;
+			height: 10.417px;
+			left: 0px;
+			top: 12.5px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Icon_akar-folder-add {
+			position: absolute;
+			width: 25.795px;
+			height: 21.332px;
+			left: 806px;
+			top: 810.334px;
+			overflow: visible;
+		}
+
+		#Path_71 {
+			fill: transparent;
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 2.0833332538604736px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_71 {
+			overflow: visible;
+			position: absolute;
+			width: 27.878px;
+			height: 23.415px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_72 {
+			fill: transparent;
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 2.0833332538604736px;
+			stroke-linejoin: miter;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_72 {
+			overflow: visible;
+			position: absolute;
+			width: 8.333px;
+			height: 8.333px;
+			left: 9.772px;
+			top: 10.054px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Icon_material-add-chart {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_material-add-chart {
+			overflow: visible;
+			position: absolute;
+			width: 27.806px;
+			height: 23.375px;
+			left: 1728.035px;
+			top: 811.313px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Icon_material-outline-group-ad {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_material-outline-group-ad {
+			overflow: visible;
+			position: absolute;
+			width: 33.214px;
+			height: 22.333px;
+			left: 806.5px;
+			top: 1935.833px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Icon_material-add-chart_cl {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_material-add-chart_cl {
+			overflow: visible;
+			position: absolute;
+			width: 26.25px;
+			height: 22.5px;
+			left: 806px;
+			top: 1372.75px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Icon_material-outline-add-to-p {
+			fill: rgba(0, 0, 0, 1);
+		}
+
+		.Icon_material-outline-add-to-p {
+			overflow: visible;
+			position: absolute;
+			width: 25px;
+			height: 25px;
+			left: 1782.375px;
+			top: 1375.583px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+	</style>
+</head>
+
+<body>
+	<div id="Admin_Dashboard">
+		<div id="Component_1__1" class="Component_1___1">
+			<div id="Group_1">
+				<svg class="Path_4" viewBox="-10.8 0 1941.601 88">
+					<path id="Path_4"
+						d="M 0 0 L 1920 0 C 1944.300537109375 0 1920 19.69947052001953 1920 44 C 1920 68.30052947998047 1900.300537109375 88 1876 88 L 44 88 C 19.69947052001953 88 0 68.30052947998047 0 44 C 0 19.69947052001953 -24.30052947998047 0 0 0 Z">
+					</path>
+				</svg>
+				<svg class="Path_5" viewBox="-19.76 0 1970.519 170.515">
+					<path id="Path_5"
+						d="M 80.5 0 L 1850.5 0 C 1894.958984375 0 1931 38.17116928100586 1931 85.2576904296875 C 1931 132.3442230224609 1975.458984375 170.515380859375 1931 170.515380859375 L 0 170.515380859375 C -44.45892333984375 170.515380859375 0 132.3442230224609 0 85.2576904296875 C 0 38.17116928100586 36.04107666015625 0 80.5 0 Z">
+					</path>
+				</svg>
+				<img id="Image_1" src="images/logo.png" srcset="images/logo.png 1x, images/logo1.png 2x">
+
+				<div id="Repeat_Grid_1">
+					<div id="Group" class="">
+						<div id="Home">
+							<span>Home</span>
+						</div>
+					</div>
+					<div id="Group_q" class="">
+						<div id="About_Us">
+							<span>About Us</span>
+						</div>
+					</div>
+					<div id="Group_s" class="">
+						<div id="Contact_Us">
+							<span>Contact Us</span>
+						</div>
+					</div>
+					<div id="Group_u" class="">
+						<div id="Login">
+							<span>Login</span>
+						</div>
+					</div>
+				</div>
+				<div id="Sign_Up">
+					<span>Sign Up</span>
+				</div>
+				<div id="Repeat_Grid_2">
+					<div id="Group_y" class="">
+						<div id="Repeat_Grid_3">
+							<div id="Group_" class="">
+								<div id="How_It_Works_FAQ_Contact_Us">
+									<span>How It WorksFAQContact Us</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="Group_ba" class="">
+						<div id="Repeat_Grid_3_">
+							<div id="Group_bb" class="">
+								<div id="Contact_Support_Help_Center_Us">
+									<span>Contact SupportHelp CenterUser Guides</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="Group_bc" class="">
+						<div id="Repeat_Grid_3_ba">
+							<div id="Group_bd" class="">
+								<div id="Terms_and_Conditions_Privacy_P">
+									<span>Terms and ConditionsPrivacy PolicyData Protection</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="Copyright_-_Group_9_">
+					<span>Copyright - Group 9 </span>
+				</div>
+				<svg class="Path_62" viewBox="2 2 51.956 51.956">
+					<path id="Path_62"
+						d="M 26.13358497619629 36.52479553222656 C 26.0218677520752 36.64824295043945 25.91776084899902 36.77837371826172 25.82184982299805 36.91446685791016 C 25.72353172302246 37.05927658081055 25.64490699768066 37.21652603149414 25.58804512023926 37.3820686340332 C 25.51314544677734 37.52932739257812 25.46061325073242 37.68692779541016 25.43218231201172 37.84967422485352 C 25.41943168640137 38.02262496948242 25.41943168640137 38.19628143310547 25.43218040466309 38.36923599243164 C 25.42339706420898 38.71000671386719 25.49457550048828 39.04808807373047 25.64000129699707 39.35639572143555 C 25.87620162963867 40.0090446472168 26.39016914367676 40.52301406860352 27.04281806945801 40.75922012329102 C 27.67159080505371 41.03711700439453 28.38837623596191 41.03711700439453 29.01714706420898 40.75920867919922 C 29.66979217529297 40.52301025390625 30.18375396728516 40.0090446472168 30.41996002197266 39.35640335083008 C 30.53531646728516 39.0405387878418 30.58825302124023 38.70527648925781 30.57582855224609 38.36923599243164 C 30.57981872558594 37.67873382568359 30.30873870849609 37.01505279541016 29.82246398925781 36.52479934692383 C 29.33468246459961 36.03300094604492 28.67069816589355 35.75637435913086 27.97802543640137 35.75637435913086 C 27.28535461425781 35.75637435913086 26.62136650085449 36.03300094604492 26.13358879089355 36.52479934692383 Z M 27.97802543640137 1.999999761581421 C 13.63075733184814 1.999999761581421 1.999999761581421 13.63075923919678 1.999999761581421 27.97802543640137 C 1.999999761581421 42.32529449462891 13.63075923919678 53.95605087280273 27.97802543640137 53.95605087280273 C 42.32529449462891 53.95605087280273 53.95605087280273 42.32529067993164 53.95605087280273 27.97802543640137 C 53.95605087280273 13.63075733184814 42.32529067993164 1.999999761581421 27.97802543640137 1.999999761581421 Z M 27.97802543640137 48.76044845581055 C 16.50020980834961 48.76044845581055 7.195605278015137 39.45583724975586 7.195605278015137 27.97802543640137 C 7.195605278015137 16.50020980834961 16.50021171569824 7.195605278015137 27.97802543640137 7.195605278015137 C 39.45583724975586 7.195605278015137 48.76044845581055 16.50021171569824 48.76044845581055 27.97802543640137 C 48.76044845581055 39.45583724975586 39.45583724975586 48.76044845581055 27.97802543640137 48.76044845581055 Z M 27.97802543640137 14.98901271820068 C 25.19192123413086 14.98722743988037 22.61678695678711 16.47288131713867 21.2237377166748 18.88571548461914 C 20.71181106567383 19.69100570678711 20.68258666992188 20.71213531494141 21.14761734008789 21.54538536071777 C 21.61264801025391 22.37863731384277 22.49707412719727 22.88986206054688 23.45121955871582 22.8769474029541 C 24.40536499023438 22.86403274536133 25.27562713623047 22.32905197143555 25.71793174743652 21.48351860046387 C 26.1838264465332 20.67655181884766 27.04623222351074 20.18091583251953 27.97802543640137 20.18461799621582 C 29.41275405883789 20.18461799621582 30.57582855224609 21.34769439697266 30.57582855224609 22.78242111206055 C 30.57582855224609 24.21714782714844 29.41275024414062 25.38022232055664 27.97802543640137 25.38022232055664 C 26.54329681396484 25.38022232055664 25.38022232055664 26.54330062866211 25.38022232055664 27.97802543640137 L 25.38022232055664 30.57582855224609 C 25.38022232055664 32.01055526733398 26.54330062866211 33.17362976074219 27.97802543640137 33.17362976074219 C 29.41275405883789 33.17362976074219 30.57582855224609 32.01055526733398 30.57582855224609 30.57582855224609 L 30.57582855224609 30.10822296142578 C 34.12174987792969 28.82158279418945 36.2371940612793 25.18010902404785 35.59841918945312 21.46245002746582 C 34.95964431762695 17.74479293823242 31.75004577636719 15.01827716827393 27.97802352905273 14.98901462554932 Z">
+					</path>
+				</svg>
+				<div id="Group_27">
+					<svg class="Path_63" viewBox="5 2 36.368 51.956">
+						<path id="Path_63"
+							d="M 38.7702522277832 17.58625602722168 L 36.17254257202148 17.58625602722168 L 36.17254257202148 14.98854732513428 C 36.17254257202148 7.815170764923096 30.35737037658691 2 23.18399620056152 2 C 16.01061630249023 2 10.19544696807861 7.81517219543457 10.19544696807861 14.98854732513428 L 10.19544696807861 17.58625602722168 L 7.597738265991211 17.58625602722168 C 6.163063049316406 17.58625602722168 5.000029563903809 18.74929428100586 5.000029563903809 20.18396759033203 L 5.000029563903809 40.35258483886719 C 4.989954948425293 43.30746841430664 6.660164833068848 46.01123046875 9.30703067779541 47.32483291625977 L 22.02281951904297 53.68143081665039 C 22.75455284118652 54.04759216308594 23.61603736877441 54.04759216308594 24.34777069091797 53.68143081665039 L 37.06355667114258 47.32483291625977 C 39.70941162109375 46.010498046875 41.37852096557617 43.30688095092773 41.36796188354492 40.35257720947266 L 41.36796188354492 20.18396759033203 C 41.36796188354492 18.74929046630859 40.20492553710938 17.58625602722168 38.7702522277832 17.58625602722168 Z M 15.39086723327637 14.98854732513428 C 15.39086723327637 10.68452262878418 18.87996673583984 7.195420742034912 23.18399620056152 7.195420742034912 C 27.48802375793457 7.195420742034912 30.97712326049805 10.68452262878418 30.97712326049805 14.98854827880859 L 30.97712326049805 17.58625602722168 L 15.39086723327637 17.58625602722168 L 15.39086723327637 14.98854732513428 Z M 36.17254257202148 40.35258483886719 C 36.17668914794922 41.33822631835938 35.61935043334961 42.24024963378906 34.73600769042969 42.67753601074219 L 23.18399620056152 48.45224380493164 L 11.63198089599609 42.6749382019043 C 10.74948596954346 42.23805618286133 10.19229602813721 41.33728790283203 10.1954460144043 40.35258483886719 L 10.19544696807861 22.78167533874512 L 36.17254257202148 22.78167533874512 L 36.17254257202148 40.35258483886719 Z">
+						</path>
+					</svg>
+					<svg class="Path_64" viewBox="11 12 5.195 10.391">
+						<path id="Path_64"
+							d="M 13.59771060943604 12 C 12.16303443908691 12 11 13.16303634643555 11 14.59770965576172 L 11 19.79312896728516 C 11 21.22780418395996 12.16303730010986 22.39083862304688 13.59771060943604 22.39083862304688 C 15.03238677978516 22.39083862304688 16.19541931152344 21.22780227661133 16.19541931152344 19.79312896728516 L 16.19541931152344 14.59770965576172 C 16.19541931152344 13.1630334854126 15.03238391876221 12 13.59771060943604 12 Z">
+						</path>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div id="Group_26">
+			<svg class="Path_60" viewBox="0 0 24 24">
+				<path id="Path_60" d="M 0 0 L 24 0 L 24 24 L 0 24 L 0 0 Z">
+				</path>
+			</svg>
+			<svg class="Path_61" viewBox="2 2 20 20">
+				<path id="Path_61"
+					d="M 10.07999992370605 10.85999965667725 C 10.13000011444092 10.52999973297119 10.23999977111816 10.23999977111816 10.38000011444092 9.989999771118164 C 10.52000045776367 9.739999771118164 10.72000026702881 9.529999732971191 10.97000026702881 9.369999885559082 C 11.21000003814697 9.220000267028809 11.51000022888184 9.149999618530273 11.88000011444092 9.140000343322754 C 12.10999965667725 9.15000057220459 12.31999969482422 9.190000534057617 12.51000022888184 9.270000457763672 C 12.71000003814697 9.360000610351562 12.89000034332275 9.480000495910645 13.03000068664551 9.630000114440918 C 13.17000102996826 9.779999732971191 13.28000068664551 9.960000038146973 13.3700008392334 10.15999984741211 C 13.46000099182129 10.35999965667725 13.50000095367432 10.57999992370605 13.51000118255615 10.80000019073486 L 15.30000114440918 10.80000019073486 C 15.28000068664551 10.32999992370605 15.19000148773193 9.90000057220459 15.02000141143799 9.510000228881836 C 14.85000133514404 9.119999885559082 14.62000179290771 8.780000686645508 14.32000160217285 8.5 C 14.02000141143799 8.219999313354492 13.66000175476074 8 13.2400016784668 7.840000152587891 C 12.82000160217285 7.680000305175781 12.36000156402588 7.610000133514404 11.85000133514404 7.610000133514404 C 11.20000171661377 7.610000133514404 10.63000106811523 7.720000267028809 10.15000152587891 7.950000286102295 C 9.670001983642578 8.180000305175781 9.270001411437988 8.480000495910645 8.95000171661377 8.869999885559082 C 8.630002021789551 9.25999927520752 8.39000129699707 9.710000038146973 8.240001678466797 10.22999954223633 C 8.090002059936523 10.74999904632568 8 11.28999996185303 8 11.86999988555908 L 8 12.14000034332275 C 8 12.72000026702881 8.079999923706055 13.26000022888184 8.229999542236328 13.78000068664551 C 8.379999160766602 14.30000114440918 8.619999885559082 14.75000095367432 8.939999580383301 15.13000106811523 C 9.25999927520752 15.51000118255615 9.659999847412109 15.82000064849854 10.13999938964844 16.04000091552734 C 10.61999893188477 16.26000022888184 11.1899995803833 16.38000106811523 11.83999919891357 16.38000106811523 C 12.30999946594238 16.38000106811523 12.74999904632568 16.30000114440918 13.15999889373779 16.15000152587891 C 13.5699987411499 16.00000190734863 13.92999839782715 15.79000186920166 14.23999881744385 15.52000141143799 C 14.54999923706055 15.25000095367432 14.79999923706055 14.94000148773193 14.97999858856201 14.58000183105469 C 15.15999794006348 14.22000217437744 15.26999855041504 13.84000205993652 15.27999877929688 13.43000221252441 L 13.48999881744385 13.43000221252441 C 13.47999858856201 13.64000225067139 13.42999839782715 13.83000183105469 13.33999919891357 14.01000213623047 C 13.25 14.19000244140625 13.1299991607666 14.34000205993652 12.97999954223633 14.47000217437744 C 12.82999992370605 14.60000228881836 12.65999984741211 14.70000171661377 12.45999908447266 14.7700023651123 C 12.26999950408936 14.84000205993652 12.0699987411499 14.8600025177002 11.85999870300293 14.87000274658203 C 11.49999904632568 14.8600025177002 11.19999885559082 14.79000282287598 10.96999835968018 14.6400032043457 C 10.71999835968018 14.48000335693359 10.51999855041504 14.27000331878662 10.37999820709229 14.02000331878662 C 10.23999786376953 13.77000331878662 10.12999820709229 13.47000312805176 10.07999801635742 13.1400032043457 C 10.02999782562256 12.81000328063965 9.999998092651367 12.47000312805176 9.999998092651367 12.1400032043457 L 9.999998092651367 11.87000274658203 C 9.999998092651367 11.5200023651123 10.02999782562256 11.19000244140625 10.07999801635742 10.8600025177002 Z M 12 2 C 6.480000019073486 2 2 6.480000019073486 2 12 C 2 17.52000045776367 6.480000019073486 22 12 22 C 17.52000045776367 22 22 17.52000045776367 22 12 C 22 6.479999542236328 17.52000045776367 2 12 2 Z M 12 20 C 7.590000152587891 20 4 16.40999984741211 4 12 C 4 7.590000152587891 7.590000152587891 4 12 4 C 16.40999984741211 4 20 7.590000152587891 20 12 C 20 16.40999984741211 16.40999984741211 20 12 20 Z">
+				</path>
+			</svg>
+		</div>
+		<div id="ADMIN_DASHBOARD">
+			<span>ADMIN DASHBOARD</span>
+		</div>
+		<div id="Hospital_Data">
+			<span>Hospital Data</span>
+			<br>
+			<br>
+			<table class="HospitalTable">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Picture</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% hospitals.forEach(hospital => { %>
+					<tr>
+						<td><%- hospital._id %></td>
+						<td><%- hospital.Name %></td>
+						<td><%- hospital.Description %></td>
+						<td><%- hospital.Picture %></td>
+						<td>
+							<!-- Update Hospital Form -->
+							<form action="api/updateHospital/<%= hospital._id %>" method="post" class="d-inline">
+							</form>
+		
+							<!-- Delete Hospital Form -->
+							<form action="api/Hospital/<%= hospital._id %>" method="delete" class="d-inline">
+								<button type="submit" class="btn btn-danger">Delete</button>
+							</form>
+						</td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</div>
+		<div id="Reports">
+			<span>Reports</span>
+		</div>
+		
+		<div id="ReportsTableContainer">
+			<br>	
+			<table id="ReportsTable">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Category</th>
+						<th>Name</th>
+						<th>Patient Id</th>
+						<th>Hospital Id</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% reports.forEach(report => { %>
+					<tr>
+						<td><%- report._id %></td>
+						<td><%- report.Category %></td>
+						<td><%- report.Name %></td>
+						<td><%- report.Patient_Id %></td>
+						<td><%- report.Hospital_Id %></td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</div>
+		<div id="Prescriptions">
+			<span>Prescriptions</span>
+		</div>
+		
+		<div id="PrescriptionsTableContainer">
+			<br>
+			<table id="PrescriptionsTable">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>File</th>
+						<th>Hospital Id</th>
+						<th>Patient Id</th>
+						<th>Report Ids</th>
+						<th>Bills Ids</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% prescriptions.forEach(prescription => { %>
+					<tr>
+						<td><%- prescription._id %></td>
+						<td><%- prescription.Name %></td>
+						<td><%- prescription.File %></td>
+						<td><%- prescription.Hospital_Id %></td>
+						<td><%- prescription.Patient_Id %></td>
+						<td><%- prescription.Report_Ids.join(', ') %></td>
+						<td><%- prescription.Bills_Ids.join(', ') %></td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</div>
+		
+		<div id="Patients">
+			<span>Patients</span>
+		</div>
+		
+		<div id="PatientsTableContainer">
+			<br>	
+			<table id="PatientsTable">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Phone No</th>
+						<th>Email</th>
+						<th>Picture</th>
+						<th>Hospital Ids</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% patients.forEach(patient => { %>
+					  <tr>
+						<td><%- patient._id %></td>
+						<td><%- patient.Name %></td>
+						<td><%- patient.Phone_No %></td>
+						<td><%- patient.Email %></td>
+						<td><%- patient.Picture %></td>
+						<td><%- patient.Hospital_Ids.join(', ') %></td>
+					  </tr>
+					<% }); %>
+				  </tbody>
+			</table>
+		</div>
+
+		<div id="Bills">
+			<span>Bills</span>
+		</div>
+		
+		<div id="BillsTableContainer">
+			<br>
+			<table id="BillsTable">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Category</th>
+						<th>Name</th>
+						<th>File</th>
+						<th>Hospital Id</th>
+						<th>Patient Id</th>
+						<th>Report Ids</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% bills.forEach(bill => { %>
+					<tr>
+						<td><%- bill._id %></td>
+						<td><%- bill.Category %></td>
+						<td><%- bill.Name %></td>
+						<td><%- bill.File %></td>
+						<td><%- bill.Hospital_Id %></td>
+						<td><%- bill.Patient_Id %></td>
+						<td><%- bill.Report_Ids.join(', ') %></td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</div>	
+		<div id="Hospital_Code">
+			<span>Hospital Code</span>
+		</div>
+		
+		<div id="HospitalCodeTableContainer">
+			<br>
+			<table id="HospitalCodeTable">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Code</th>
+						<th>Patient Id</th>
+						<th>Hospital Id</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% hospitalCodes.forEach(hospitalCode => { %>
+					<tr>
+						<td><%- hospitalCode._id %></td>
+						<td><%- hospitalCode.Code %></td>
+						<td><%- hospitalCode.Patient_Id %></td>
+						<td><%- hospitalCode.Hospital_Id %></td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</div>
+		<div id="Patient_Login">
+			<span>Patient Login</span>
+		</div>
+		
+		<div id="PatientLoginTableContainer">
+			<br>
+			<table id="PatientLoginTable">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Username</th>
+						<th>Password</th>
+						<th>Patient Id</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% patientLogins.forEach(patientLogin => { %>
+					<tr>
+						<td><%- patientLogin._id %></td>
+						<td><%- patientLogin.Username %></td>
+						<td><%- patientLogin.Password %></td>
+						<td><%- patientLogin.Patient_Id %></td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</div>
+		<div id="Hospital_Login">
+			<span>Hospital Login</span>
+		</div>
+		
+		<div id="HospitalLoginTableContainer">
+			<br>
+			<table id="HospitalLoginTable">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Username</th>
+						<th>Password</th>
+						<th>Hospital ID</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% hospitalLogins.forEach(hospitalLogin => { %>
+					<tr>
+						<td><%- hospitalLogin._id %></td>
+						<td><%- hospitalLogin.Username %></td>
+						<td><%- hospitalLogin.Password %></td>
+						<td><%- hospitalLogin.Hospital_Id %></td>
+					</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</div>
+		<div id="Icon_material-add-home">
+			<svg class="Path_65" viewBox="6 4.5 24 25">
+				<path id="Path_65"
+					d="M 27 15.61111068725586 C 28.04999923706055 15.61111068725586 29.05500030517578 15.74999904632568 30 16.01388740539551 L 30 12.83333301544189 L 18 4.5 L 6 12.83333301544189 L 6 29.5 L 17.52000045776367 29.5 C 15.97313022613525 26.48927116394043 16.20165252685547 22.95439720153809 18.12535858154297 20.13602447509766 C 20.04906845092773 17.31765174865723 23.39921951293945 15.6095085144043 27 15.61110687255859 Z">
+				</path>
+			</svg>
+			<svg class="Path_66" viewBox="19.5 19.5 15 15">
+				<path id="Path_66"
+					d="M 27 19.5 C 22.86000061035156 19.5 19.5 22.86000061035156 19.5 27 C 19.5 31.13999938964844 22.86000061035156 34.5 27 34.5 C 31.13999938964844 34.5 34.5 31.13999938964844 34.5 27 C 34.5 22.86000061035156 31.13999938964844 19.5 27 19.5 Z M 31.5 27.75 L 27.75 27.75 L 27.75 31.5 L 26.25 31.5 L 26.25 27.75 L 22.5 27.75 L 22.5 26.25 L 26.25 26.25 L 26.25 22.5 L 27.75 22.5 L 27.75 26.25 L 31.5 26.25 L 31.5 27.75 Z">
+				</path>
+			</svg>
+		</div>
+		<div class="hospital-search-bar">
+			<input type="text" class="hospital-search-input" placeholder="Search Hospital Data">
+		</div>
+		<div class="reports-search-bar">
+			<input type="text" class="reports-search-input" placeholder="Search Reports">
+		  </div>
+		  <div class="prescription-search-bar">
+			<input type="text" class="prescription-search-input" placeholder="Search Prescription">
+		  </div>
+		  <div class="patient-login-bar">
+			<input type="text" class="patient-login-input" placeholder="Search Patient Login">
+		  </div>
+		  <div class="patient-bar">
+			<input type="text" class="patient-input" placeholder="Search Patient">
+		  </div>
+		  <div class="bills-bar">
+			<input type="text" class="bills-input" placeholder="Search Bills">
+		  </div>
+		  <div class="hospital-code-bar">
+			<input type="text" class="hospital-code-input" placeholder="Search Hospital Codes">
+		  </div>
+		  <div class="hospital-login-bar">
+			<input type="text" class="hospital-login-input" placeholder="Search Hospital Login">
+		  </div>
+		<svg class="Icon_ion-search" viewBox="3.375 3.375 15.423 14.279">
+			<path id="Icon_ion-search"
+				d="M 18.56113624572754 16.22052574157715 L 15.06493377685547 12.98360061645508 C 15.90666198730469 11.94614505767822 16.36105155944824 10.68334293365479 16.35951995849609 9.38579273223877 C 16.35951995849609 6.071463584899902 13.44706916809082 3.375 9.867259979248047 3.375 C 6.287450313568115 3.375 3.375 6.071463584899902 3.375 9.385793685913086 C 3.375 12.7001256942749 6.287450313568115 15.3965892791748 9.867259979248047 15.3965892791748 C 11.26874446868896 15.39800548553467 12.63269519805908 14.97731399536133 13.75325393676758 14.19800662994385 L 17.24945640563965 17.43493270874023 C 17.61690711975098 17.73904609680176 18.17692565917969 17.72453880310059 18.52543258666992 17.40187454223633 C 18.87394142150879 17.07921409606934 18.88961029052734 16.56072807312012 18.56113624572754 16.22052574157715 Z M 5.229931831359863 9.385793685913086 C 5.229931831359863 7.014601707458496 7.306134700775146 5.092370510101318 9.867260932922363 5.092370510101318 C 12.42838764190674 5.092370510101318 14.50459003448486 7.014601707458496 14.50459003448486 9.385794639587402 C 14.50459003448486 11.75698661804199 12.42838668823242 13.67921924591064 9.867260932922363 13.67921924591064 C 7.307407379150391 13.67637825012207 5.23300313949585 11.75580883026123 5.229931831359863 9.385793685913086 Z">
+			</path>
+		</svg>
+		<svg class="Icon_ion-search_b" viewBox="3.375 3.375 15.423 14.279">
+			<path id="Icon_ion-search_b"
+				d="M 18.56113624572754 16.22052574157715 L 15.06493377685547 12.98360061645508 C 15.90666198730469 11.94614505767822 16.36105155944824 10.68334293365479 16.35951995849609 9.38579273223877 C 16.35951995849609 6.071463584899902 13.44706916809082 3.375 9.867259979248047 3.375 C 6.287450313568115 3.375 3.375 6.071463584899902 3.375 9.385793685913086 C 3.375 12.7001256942749 6.287450313568115 15.3965892791748 9.867259979248047 15.3965892791748 C 11.26874446868896 15.39800548553467 12.63269519805908 14.97731399536133 13.75325393676758 14.19800662994385 L 17.24945640563965 17.43493270874023 C 17.61690711975098 17.73904609680176 18.17692565917969 17.72453880310059 18.52543258666992 17.40187454223633 C 18.87394142150879 17.07921409606934 18.88961029052734 16.56072807312012 18.56113624572754 16.22052574157715 Z M 5.229931831359863 9.385793685913086 C 5.229931831359863 7.014601707458496 7.306134700775146 5.092370510101318 9.867260932922363 5.092370510101318 C 12.42838764190674 5.092370510101318 14.50459003448486 7.014601707458496 14.50459003448486 9.385794639587402 C 14.50459003448486 11.75698661804199 12.42838668823242 13.67921924591064 9.867260932922363 13.67921924591064 C 7.307407379150391 13.67637825012207 5.23300313949585 11.75580883026123 5.229931831359863 9.385793685913086 Z">
+			</path>
+		</svg>
+		<svg class="Icon_ion-search_ca" viewBox="3.375 3.375 15.423 14.279">
+			<path id="Icon_ion-search_ca"
+				d="M 18.56113624572754 16.22052574157715 L 15.06493377685547 12.98360061645508 C 15.90666198730469 11.94614505767822 16.36105155944824 10.68334293365479 16.35951995849609 9.38579273223877 C 16.35951995849609 6.071463584899902 13.44706916809082 3.375 9.867259979248047 3.375 C 6.287450313568115 3.375 3.375 6.071463584899902 3.375 9.385793685913086 C 3.375 12.7001256942749 6.287450313568115 15.3965892791748 9.867259979248047 15.3965892791748 C 11.26874446868896 15.39800548553467 12.63269519805908 14.97731399536133 13.75325393676758 14.19800662994385 L 17.24945640563965 17.43493270874023 C 17.61690711975098 17.73904609680176 18.17692565917969 17.72453880310059 18.52543258666992 17.40187454223633 C 18.87394142150879 17.07921409606934 18.88961029052734 16.56072807312012 18.56113624572754 16.22052574157715 Z M 5.229931831359863 9.385793685913086 C 5.229931831359863 7.014601707458496 7.306134700775146 5.092370510101318 9.867260932922363 5.092370510101318 C 12.42838764190674 5.092370510101318 14.50459003448486 7.014601707458496 14.50459003448486 9.385794639587402 C 14.50459003448486 11.75698661804199 12.42838668823242 13.67921924591064 9.867260932922363 13.67921924591064 C 7.307407379150391 13.67637825012207 5.23300313949585 11.75580883026123 5.229931831359863 9.385793685913086 Z">
+			</path>
+		</svg>
+		<svg class="Icon_ion-search_cb" viewBox="3.375 3.375 15.423 14.279">
+			<path id="Icon_ion-search_cb"
+				d="M 18.56113624572754 16.22052574157715 L 15.06493377685547 12.98360061645508 C 15.90666198730469 11.94614505767822 16.36105155944824 10.68334293365479 16.35951995849609 9.38579273223877 C 16.35951995849609 6.071463584899902 13.44706916809082 3.375 9.867259979248047 3.375 C 6.287450313568115 3.375 3.375 6.071463584899902 3.375 9.385793685913086 C 3.375 12.7001256942749 6.287450313568115 15.3965892791748 9.867259979248047 15.3965892791748 C 11.26874446868896 15.39800548553467 12.63269519805908 14.97731399536133 13.75325393676758 14.19800662994385 L 17.24945640563965 17.43493270874023 C 17.61690711975098 17.73904609680176 18.17692565917969 17.72453880310059 18.52543258666992 17.40187454223633 C 18.87394142150879 17.07921409606934 18.88961029052734 16.56072807312012 18.56113624572754 16.22052574157715 Z M 5.229931831359863 9.385793685913086 C 5.229931831359863 7.014601707458496 7.306134700775146 5.092370510101318 9.867260932922363 5.092370510101318 C 12.42838764190674 5.092370510101318 14.50459003448486 7.014601707458496 14.50459003448486 9.385794639587402 C 14.50459003448486 11.75698661804199 12.42838668823242 13.67921924591064 9.867260932922363 13.67921924591064 C 7.307407379150391 13.67637825012207 5.23300313949585 11.75580883026123 5.229931831359863 9.385793685913086 Z">
+			</path>
+		</svg>
+		<svg class="Icon_ion-search_cc" viewBox="3.375 3.375 15.423 14.279">
+			<path id="Icon_ion-search_cc"
+				d="M 18.56113624572754 16.22052574157715 L 15.06493377685547 12.98360061645508 C 15.90666198730469 11.94614505767822 16.36105155944824 10.68334293365479 16.35951995849609 9.38579273223877 C 16.35951995849609 6.071463584899902 13.44706916809082 3.375 9.867259979248047 3.375 C 6.287450313568115 3.375 3.375 6.071463584899902 3.375 9.385793685913086 C 3.375 12.7001256942749 6.287450313568115 15.3965892791748 9.867259979248047 15.3965892791748 C 11.26874446868896 15.39800548553467 12.63269519805908 14.97731399536133 13.75325393676758 14.19800662994385 L 17.24945640563965 17.43493270874023 C 17.61690711975098 17.73904609680176 18.17692565917969 17.72453880310059 18.52543258666992 17.40187454223633 C 18.87394142150879 17.07921409606934 18.88961029052734 16.56072807312012 18.56113624572754 16.22052574157715 Z M 5.229931831359863 9.385793685913086 C 5.229931831359863 7.014601707458496 7.306134700775146 5.092370510101318 9.867260932922363 5.092370510101318 C 12.42838764190674 5.092370510101318 14.50459003448486 7.014601707458496 14.50459003448486 9.385794639587402 C 14.50459003448486 11.75698661804199 12.42838668823242 13.67921924591064 9.867260932922363 13.67921924591064 C 7.307407379150391 13.67637825012207 5.23300313949585 11.75580883026123 5.229931831359863 9.385793685913086 Z">
+			</path>
+		</svg>
+		<svg class="Icon_ion-search_cd" viewBox="3.375 3.375 15.423 14.279">
+			<path id="Icon_ion-search_cd"
+				d="M 18.56113624572754 16.22052574157715 L 15.06493377685547 12.98360061645508 C 15.90666198730469 11.94614505767822 16.36105155944824 10.68334293365479 16.35951995849609 9.38579273223877 C 16.35951995849609 6.071463584899902 13.44706916809082 3.375 9.867259979248047 3.375 C 6.287450313568115 3.375 3.375 6.071463584899902 3.375 9.385793685913086 C 3.375 12.7001256942749 6.287450313568115 15.3965892791748 9.867259979248047 15.3965892791748 C 11.26874446868896 15.39800548553467 12.63269519805908 14.97731399536133 13.75325393676758 14.19800662994385 L 17.24945640563965 17.43493270874023 C 17.61690711975098 17.73904609680176 18.17692565917969 17.72453880310059 18.52543258666992 17.40187454223633 C 18.87394142150879 17.07921409606934 18.88961029052734 16.56072807312012 18.56113624572754 16.22052574157715 Z M 5.229931831359863 9.385793685913086 C 5.229931831359863 7.014601707458496 7.306134700775146 5.092370510101318 9.867260932922363 5.092370510101318 C 12.42838764190674 5.092370510101318 14.50459003448486 7.014601707458496 14.50459003448486 9.385794639587402 C 14.50459003448486 11.75698661804199 12.42838668823242 13.67921924591064 9.867260932922363 13.67921924591064 C 7.307407379150391 13.67637825012207 5.23300313949585 11.75580883026123 5.229931831359863 9.385793685913086 Z">
+			</path>
+		</svg>
+		<svg class="Icon_ion-search_ce" viewBox="3.375 3.375 15.423 14.279">
+			<path id="Icon_ion-search_ce"
+				d="M 18.56113624572754 16.22052574157715 L 15.06493377685547 12.98360061645508 C 15.90666198730469 11.94614505767822 16.36105155944824 10.68334293365479 16.35951995849609 9.38579273223877 C 16.35951995849609 6.071463584899902 13.44706916809082 3.375 9.867259979248047 3.375 C 6.287450313568115 3.375 3.375 6.071463584899902 3.375 9.385793685913086 C 3.375 12.7001256942749 6.287450313568115 15.3965892791748 9.867259979248047 15.3965892791748 C 11.26874446868896 15.39800548553467 12.63269519805908 14.97731399536133 13.75325393676758 14.19800662994385 L 17.24945640563965 17.43493270874023 C 17.61690711975098 17.73904609680176 18.17692565917969 17.72453880310059 18.52543258666992 17.40187454223633 C 18.87394142150879 17.07921409606934 18.88961029052734 16.56072807312012 18.56113624572754 16.22052574157715 Z M 5.229931831359863 9.385793685913086 C 5.229931831359863 7.014601707458496 7.306134700775146 5.092370510101318 9.867260932922363 5.092370510101318 C 12.42838764190674 5.092370510101318 14.50459003448486 7.014601707458496 14.50459003448486 9.385794639587402 C 14.50459003448486 11.75698661804199 12.42838668823242 13.67921924591064 9.867260932922363 13.67921924591064 C 7.307407379150391 13.67637825012207 5.23300313949585 11.75580883026123 5.229931831359863 9.385793685913086 Z">
+			</path>
+		</svg>
+		<svg class="Icon_ion-search_cf" viewBox="3.375 3.375 15.423 14.279">
+			<path id="Icon_ion-search_cf"
+				d="M 18.56113624572754 16.22052574157715 L 15.06493377685547 12.98360061645508 C 15.90666198730469 11.94614505767822 16.36105155944824 10.68334293365479 16.35951995849609 9.38579273223877 C 16.35951995849609 6.071463584899902 13.44706916809082 3.375 9.867259979248047 3.375 C 6.287450313568115 3.375 3.375 6.071463584899902 3.375 9.385793685913086 C 3.375 12.7001256942749 6.287450313568115 15.3965892791748 9.867259979248047 15.3965892791748 C 11.26874446868896 15.39800548553467 12.63269519805908 14.97731399536133 13.75325393676758 14.19800662994385 L 17.24945640563965 17.43493270874023 C 17.61690711975098 17.73904609680176 18.17692565917969 17.72453880310059 18.52543258666992 17.40187454223633 C 18.87394142150879 17.07921409606934 18.88961029052734 16.56072807312012 18.56113624572754 16.22052574157715 Z M 5.229931831359863 9.385793685913086 C 5.229931831359863 7.014601707458496 7.306134700775146 5.092370510101318 9.867260932922363 5.092370510101318 C 12.42838764190674 5.092370510101318 14.50459003448486 7.014601707458496 14.50459003448486 9.385794639587402 C 14.50459003448486 11.75698661804199 12.42838668823242 13.67921924591064 9.867260932922363 13.67921924591064 C 7.307407379150391 13.67637825012207 5.23300313949585 11.75580883026123 5.229931831359863 9.385793685913086 Z">
+			</path>
+		</svg>
+		<div id="Icon_akar-person-add">
+			<svg class="Path_69" viewBox="7.292 2.083 10.417 10.417">
+				<path id="Path_69"
+					d="M 17.70833396911621 7.291666507720947 C 17.70833396911621 10.1681489944458 15.37648296356201 12.5 12.5 12.5 C 9.623517036437988 12.5 7.291666507720947 10.1681489944458 7.291666507720947 7.291666030883789 C 7.291666030883789 4.415182113647461 9.623517036437988 2.083331108093262 12.50000095367432 2.08333158493042 C 15.37648391723633 2.08333158493042 17.70833396911621 4.415183067321777 17.70833396911621 7.291666507720947 Z">
+				</path>
+			</svg>
+			<svg class="Path_70" viewBox="3.402 14.583 18.473 8.333">
+				<path id="Path_70"
+					d="M 17.70833396911621 22.91666603088379 L 5.485416889190674 22.91666603088379 C 4.887332439422607 22.91666603088379 4.318480491638184 22.66001129150391 3.923007726669312 22.21194458007812 C 3.527737617492676 21.76430320739746 3.343602657318115 21.16801643371582 3.417709112167358 20.57499885559082 L 3.8239586353302 17.32083129882812 C 4.019447326660156 15.75648880004883 5.349533081054688 14.58272647857666 6.926041603088379 14.58333206176758 L 7.291666507720947 14.58333301544189 M 19.79166603088379 14.58333301544189 L 19.79166603088379 18.75 M 17.70833206176758 16.66666603088379 L 21.87499809265137 16.66666603088379">
+				</path>
+			</svg>
+		</div>
+		<div id="Icon_akar-person-add_cd">
+			<svg class="Path_69_ce" viewBox="7.292 2.083 10.417 10.417">
+				<path id="Path_69_ce"
+					d="M 17.70833396911621 7.291666507720947 C 17.70833396911621 10.1681489944458 15.37648296356201 12.5 12.5 12.5 C 9.623517036437988 12.5 7.291666507720947 10.1681489944458 7.291666507720947 7.291666030883789 C 7.291666030883789 4.415182113647461 9.623517036437988 2.083331108093262 12.50000095367432 2.08333158493042 C 15.37648391723633 2.08333158493042 17.70833396911621 4.415183067321777 17.70833396911621 7.291666507720947 Z">
+				</path>
+			</svg>
+			<svg class="Path_70_cf" viewBox="3.402 14.583 18.473 8.333">
+				<path id="Path_70_cf"
+					d="M 17.70833396911621 22.91666603088379 L 5.485416889190674 22.91666603088379 C 4.887332439422607 22.91666603088379 4.318480491638184 22.66001129150391 3.923007726669312 22.21194458007812 C 3.527737617492676 21.76430320739746 3.343602657318115 21.16801643371582 3.417709112167358 20.57499885559082 L 3.8239586353302 17.32083129882812 C 4.019447326660156 15.75648880004883 5.349533081054688 14.58272647857666 6.926041603088379 14.58333206176758 L 7.291666507720947 14.58333301544189 M 19.79166603088379 14.58333301544189 L 19.79166603088379 18.75 M 17.70833206176758 16.66666603088379 L 21.87499809265137 16.66666603088379">
+				</path>
+			</svg>
+		</div>
+		<div id="Icon_akar-folder-add">
+			<svg class="Path_71" viewBox="2.083 3.125 25.795 21.332">
+				<path id="Path_71"
+					d="M 27.87793159484863 22.08647918701172 L 27.87793159484863 10.23555469512939 C 27.87793159484863 8.92653751373291 26.72306632995605 7.865370273590088 25.29846954345703 7.865370273590088 L 16.57473754882812 7.865370273590088 C 15.59760665893555 7.865370273590088 14.70429515838623 7.357948780059814 14.26744937896729 6.554729461669922 L 13.11439228057861 4.435712337493896 C 12.67736911773682 3.632097482681274 11.78345966339111 3.124581575393677 10.80577754974365 3.124999761581421 L 4.662792682647705 3.124999761581421 C 3.238196611404419 3.124999523162842 2.083333015441895 4.186168193817139 2.083333253860474 5.495184898376465 L 2.083333253860474 22.08647918701172 C 2.083333253860474 23.3954963684082 3.238196611404419 24.4566650390625 4.662792682647705 24.4566650390625 L 25.29846954345703 24.4566650390625 C 26.72306632995605 24.4566650390625 27.87793159484863 23.3954963684082 27.87793159484863 22.08647918701172 Z">
+				</path>
+			</svg>
+			<svg class="Path_72" viewBox="9.375 11.458 6.25 6.25">
+				<path id="Path_72"
+					d="M 12.5 11.45833301544189 L 12.5 14.58333301544189 M 12.5 14.58333301544189 L 12.5 17.70833206176758 M 12.5 14.58333206176758 L 15.625 14.58333206176758 M 12.5 14.58333206176758 L 9.375 14.58333206176758">
+				</path>
+			</svg>
+		</div>
+		<svg class="Icon_material-add-chart" viewBox="2.083 3.125 27.806 23.375">
+			<path id="Icon_material-add-chart"
+				d="M 7.37977409362793 12.20229244232178 L 10.02799415588379 12.20229244232178 L 10.02799415588379 21.29256820678711 L 7.37977409362793 21.29256820678711 L 7.37977409362793 12.20229244232178 Z M 17.97265434265137 16.09812355041504 L 20.62087440490723 16.09812355041504 L 20.62087440490723 21.29256820678711 L 17.97265434265137 21.29256820678711 L 17.97265434265137 16.09812355041504 Z M 12.67621421813965 8.306458473205566 L 15.32443428039551 8.306458473205566 L 15.32443428039551 21.29257011413574 L 12.67621421813965 21.29257011413574 L 12.67621421813965 8.306458473205566 Z M 25.91731834411621 8.31944465637207 L 25.91731834411621 4.423610687255859 L 23.26909637451172 4.423610687255859 L 23.26909637451172 8.31944465637207 L 19.29676628112793 8.31944465637207 L 19.29676628112793 10.91666698455811 L 23.26909637451172 10.91666698455811 L 23.26909637451172 14.8125 L 25.91731834411621 14.8125 L 25.91731834411621 10.91666698455811 L 29.8896484375 10.91666698455811 L 29.8896484375 8.31944465637207 L 25.91731834411621 8.31944465637207 Z M 23.26909637451172 23.90277671813965 L 4.731553554534912 23.90277671813965 L 4.731553554534912 5.722222328186035 L 20.62087440490723 5.722222328186035 L 20.62087440490723 3.125 L 4.731553554534912 3.125 C 3.275032043457031 3.125 2.083333015441895 4.293749809265137 2.083333015441895 5.722221851348877 L 2.083333015441895 23.90277671813965 C 2.083333015441895 25.33124923706055 3.275032520294189 26.5 4.731553554534912 26.5 L 23.26909637451172 26.5 C 24.72561836242676 26.5 25.91731834411621 25.33124923706055 25.91731834411621 23.90277671813965 L 25.91731834411621 17.40971946716309 L 23.26909637451172 17.40971946716309 L 23.26909637451172 23.90277671813965 Z">
+			</path>
+		</svg>
+		<svg class="Icon_material-outline-group-ad" viewBox="0 4.167 33.214 22.333">
+			<path id="Icon_material-outline-group-ad"
+				d="M 30.44604301452637 11.14583301544189 L 30.44604301452637 8.354166030883789 L 27.67821884155273 8.354166030883789 L 27.67821884155273 11.14583301544189 L 24.91039657592773 11.14583301544189 L 24.91039657592773 13.9375 L 27.67821884155273 13.9375 L 27.67821884155273 16.72916412353516 L 30.44604301452637 16.72916412353516 L 30.44604301452637 13.9375 L 33.2138671875 13.9375 L 33.2138671875 11.14583301544189 L 30.44604301452637 11.14583301544189 Z M 11.07128810882568 15.33333301544189 C 14.12973117828369 15.33333301544189 16.60693359375 12.834792137146 16.60693359375 9.750000953674316 C 16.60693359375 6.665209770202637 14.12973213195801 4.166666984558105 11.0712890625 4.166666984558105 C 8.012845993041992 4.166666984558105 5.535645484924316 6.665209770202637 5.535645484924316 9.750000953674316 C 5.535645484924316 12.834792137146 8.012845993041992 15.33333301544189 11.0712890625 15.33333301544189 Z M 11.07128810882568 6.958333015441895 C 12.59358978271484 6.958333015441895 13.83910942077637 8.214583396911621 13.83910942077637 9.75 C 13.83910942077637 11.28541564941406 12.59358978271484 12.54166603088379 11.07128810882568 12.54166603088379 C 9.548986434936523 12.54166603088379 8.303466796875 11.28541564941406 8.303466796875 9.75 C 8.303466796875 8.214583396911621 9.548986434936523 6.958333015441895 11.07128810882568 6.958333015441895 Z M 11.07128810882568 16.72916412353516 C 7.376245498657227 16.72916412353516 0 18.59958076477051 0 22.31249809265137 L 0 26.49999809265137 L 22.14257621765137 26.49999809265137 L 22.14257621765137 22.31249809265137 C 22.14257621765137 18.59958076477051 14.76632976531982 16.72916412353516 11.07128810882568 16.72916412353516 Z M 19.37475395202637 23.70833206176758 L 2.767822027206421 23.70833206176758 L 2.767822027206421 22.32645797729492 C 3.044604539871216 21.32145690917969 7.334728717803955 19.52083206176758 11.07128810882568 19.52083206176758 C 14.80784702301025 19.52083206176758 19.09797286987305 21.32145690917969 19.37475395202637 22.3125 L 19.37475395202637 23.70833206176758 Z M 17.3127269744873 4.236457824707031 C 18.5859260559082 5.71604061126709 19.37475395202637 7.642291069030762 19.37475395202637 9.75 C 19.37475395202637 11.85770797729492 18.5859260559082 13.78395843505859 17.3127269744873 15.26354122161865 C 20.02519416809082 14.91458415985107 22.14257621765137 12.59749984741211 22.14257621765137 9.75 C 22.14257621765137 6.902499198913574 20.02519226074219 4.585415840148926 17.3127269744873 4.236456871032715 Z M 22.87605094909668 17.8877067565918 C 24.10773086547852 19.04624938964844 24.91039848327637 20.49791526794434 24.91039848327637 22.3125 L 24.91039848327637 26.5 L 27.67822265625 26.5 L 27.67822265625 22.3125 C 27.67822265625 20.28854179382324 25.47780418395996 18.80895805358887 22.87605094909668 17.88770866394043 Z">
+			</path>
+		</svg>
+		<svg class="Icon_material-add-chart_cl" viewBox="2.5 3.75 26.25 22.5">
+			<path id="Icon_material-add-chart_cl"
+				d="M 7.5 12.48750019073486 L 10 12.48750019073486 L 10 21.23749923706055 L 7.5 21.23749923706055 L 7.5 12.48750019073486 Z M 17.5 16.23749923706055 L 20 16.23749923706055 L 20 21.23749923706055 L 17.5 21.23749923706055 L 17.5 16.23749923706055 Z M 12.5 8.737499237060547 L 15 8.737499237060547 L 15 21.23749923706055 L 12.5 21.23749923706055 L 12.5 8.737499237060547 Z M 25 8.75 L 25 5 L 22.5 5 L 22.5 8.75 L 18.75 8.75 L 18.75 11.25 L 22.5 11.25 L 22.5 15 L 25 15 L 25 11.25 L 28.75 11.25 L 28.75 8.75 L 25 8.75 Z M 22.5 23.75 L 5 23.75 L 5 6.25 L 20 6.25 L 20 3.75 L 5 3.75 C 3.625 3.75 2.5 4.875 2.5 6.25 L 2.5 23.75 C 2.5 25.125 3.625 26.25 5 26.25 L 22.5 26.25 C 23.875 26.25 25 25.125 25 23.75 L 25 17.5 L 22.5 17.5 L 22.5 23.75 Z">
+			</path>
+		</svg>
+		<svg class="Icon_material-outline-add-to-p" viewBox="2.5 2.5 25 25">
+			<path id="Icon_material-outline-add-to-p"
+				d="M 5 7.5 L 2.5 7.5 L 2.5 25 C 2.5 26.375 3.625 27.5 5 27.5 L 22.5 27.5 L 22.5 25 L 5 25 L 5 7.5 Z M 25 2.5 L 10 2.5 C 8.625 2.5 7.5 3.625 7.5 5 L 7.5 20 C 7.5 21.375 8.625 22.5 10 22.5 L 25 22.5 C 26.375 22.5 27.5 21.375 27.5 20 L 27.5 5 C 27.5 3.625 26.375 2.5 25 2.5 Z M 25 20 L 10 20 L 10 5 L 25 5 L 25 20 Z M 16.25 18.75 L 18.75 18.75 L 18.75 13.75 L 23.75 13.75 L 23.75 11.25 L 18.75 11.25 L 18.75 6.25 L 16.25 6.25 L 16.25 11.25 L 11.25 11.25 L 11.25 13.75 L 16.25 13.75 L 16.25 18.75 Z">
+			</path>
+		</svg>
+
+	</div>
+</body>
+
+</html>

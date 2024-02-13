@@ -36,7 +36,7 @@ app.get('/', async (req, res) => {
     const hospitalLogins = await HospitalLogin.find();
     const hospitalCodes = await HospitalCodes.find();
 
-    res.render('index', { hospitals, patients, reports, bills, prescriptions, patientLogins, hospitalLogins, hospitalCodes });
+    res.render('adminDashboard', { hospitals, patients, reports, bills, prescriptions, patientLogins, hospitalLogins, hospitalCodes });
   } catch (error) {
     console.error('Error rendering HTML:', error);
     res.status(500).send('Internal Server Error');
