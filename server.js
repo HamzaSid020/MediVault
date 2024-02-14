@@ -23,9 +23,18 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/api', apiFunctions);
+app.use('', apiFunctions);
 
 app.get('/', async (req, res) => {
+  try {
+    res.render('home');
+  } catch (error) {
+    console.error('Error rendering HTML:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/database', async (req, res) => {
   try {
     const hospitals = await HospitalInfo.find();
     const patients = await PatientInfo.find();
@@ -37,6 +46,26 @@ app.get('/', async (req, res) => {
     const hospitalCodes = await HospitalCodes.find();
 
     res.render('adminDashboard', { hospitals, patients, reports, bills, prescriptions, patientLogins, hospitalLogins, hospitalCodes });
+  } catch (error) {
+    console.error('Error rendering HTML:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/patientLogin', async (req, res) => {
+  try {
+   
+    res.render('patientLogin');
+  } catch (error) {
+    console.error('Error rendering HTML:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/hospitalLogin', async (req, res) => {
+  try {
+   
+    res.render('hospitalLogin');
   } catch (error) {
     console.error('Error rendering HTML:', error);
     res.status(500).send('Internal Server Error');

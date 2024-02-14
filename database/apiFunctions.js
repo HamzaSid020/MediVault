@@ -71,15 +71,15 @@ router.delete('/hospitals/:id', async (req, res) => {
 
 router.post('/createHospital', async (req, res) => {
     try {
-      const { hospitalName, hospitalDescription, hospitalPicture } = req.body;
-      const newHospital = new HospitalInfo({ Name: hospitalName, Description: hospitalDescription, Picture: hospitalPicture });
-      await newHospital.save();
-      res.redirect('/');
+        const { hospitalName, hospitalDescription, hospitalPicture } = req.body;
+        const newHospital = new HospitalInfo({ Name: hospitalName, Description: hospitalDescription, Picture: hospitalPicture });
+        await newHospital.save();
+        res.redirect('/');
     } catch (error) {
-      console.error('Error creating hospital:', error);
-      res.status(500).send('Internal Server Error');
+        console.error('Error creating hospital:', error);
+        res.status(500).send('Internal Server Error');
     }
-  });
+});
 
 
 
@@ -307,26 +307,34 @@ router.delete('/prescriptions/:id', async (req, res) => {
     }
 });
 // Patient_Login
-router.post('/patient-logins', async (req, res) => {
-    try {
-        const patientLogin = new PatientLogin(req.body);
-        await patientLogin.save();
-        res.status(201).json(patientLogin);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
+router.post('/patient-login', async (req, res) => {
+    const { username, password } = req.body;
 
-router.get('/patient-logins', async (req, res) => {
     try {
-        const patientLogins = await PatientLogin.find({});
-        res.json(patientLogins);
+        // Check if username and password are present in the database
+        const user = await PatientLogin.findOne({ Username: username, Password: password });
+
+        if (user) {
+            // Redirect to the "/home" page or send a success response
+            res.redirect('/');
+        } else {
+            res.status(401).json({ message: 'Invalid username or password' });
+        }
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-router.get('/patient-logins/:id', async (req, res) => {
+router.get('/patient-login', async (req, res) => {
+    try {
+        const patientLogin = await PatientLogin.find({});
+        res.json(patientLogin);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.get('/patient-login/:id', async (req, res) => {
     try {
         const patientLogin = await PatientLogin.findById(req.params.id);
         if (!patientLogin) {
@@ -338,7 +346,7 @@ router.get('/patient-logins/:id', async (req, res) => {
     }
 });
 
-router.put('/patient-logins/:id', async (req, res) => {
+router.put('/patient-login/:id', async (req, res) => {
     try {
         const patientLogin = await PatientLogin.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!patientLogin) {
@@ -350,7 +358,7 @@ router.put('/patient-logins/:id', async (req, res) => {
     }
 });
 
-router.delete('/patient-logins/:id', async (req, res) => {
+router.delete('/patient-login/:id', async (req, res) => {
     try {
         const patientLogin = await PatientLogin.findByIdAndDelete(req.params.id);
         if (!patientLogin) {
@@ -363,26 +371,34 @@ router.delete('/patient-logins/:id', async (req, res) => {
 });
 
 // Hospital_Login
-router.post('/hospital-logins', async (req, res) => {
-    try {
-        const hospitalLogin = new HospitalLogin(req.body);
-        await hospitalLogin.save();
-        res.status(201).json(hospitalLogin);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
+router.post('/hospital-login', async (req, res) => {
+    const { username, password } = req.body;
 
-router.get('/hospital-logins', async (req, res) => {
     try {
-        const hospitalLogins = await HospitalLogin.find({});
-        res.json(hospitalLogins);
+        // Check if username and password are present in the database
+        const user = await HospitalLogin.findOne({ Username: username, Password: password });
+
+        if (user) {
+            // Redirect to the "/home" page or send a success response
+            res.redirect('/');
+        } else {
+            res.status(401).json({ message: 'Invalid username or password' });
+        }
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-router.get('/hospital-logins/:id', async (req, res) => {
+router.get('/hospital-login', async (req, res) => {
+    try {
+        const hospitalLogin = await HospitalLogin.find({});
+        res.json(hospitalLogin);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.get('/hospital-login/:id', async (req, res) => {
     try {
         const hospitalLogin = await HospitalLogin.findById(req.params.id);
         if (!hospitalLogin) {
@@ -394,7 +410,7 @@ router.get('/hospital-logins/:id', async (req, res) => {
     }
 });
 
-router.put('/hospital-logins/:id', async (req, res) => {
+router.put('/hospital-login/:id', async (req, res) => {
     try {
         const hospitalLogin = await HospitalLogin.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!hospitalLogin) {
@@ -406,7 +422,7 @@ router.put('/hospital-logins/:id', async (req, res) => {
     }
 });
 
-router.delete('/hospital-logins/:id', async (req, res) => {
+router.delete('/hospital-login/:id', async (req, res) => {
     try {
         const hospitalLogin = await HospitalLogin.findByIdAndDelete(req.params.id);
         if (!hospitalLogin) {
