@@ -10,8 +10,13 @@ const HospitalInfoSchema = new mongoose.Schema({
 const PatientInfoSchema = new mongoose.Schema({
     Name: String,
     Phone_No: String,
+    Age: Number,
+    DOB: String,
+    Sex: String,
+    Address: String,
     Email: String,
     Picture: String,
+    Medivault_Id: String,
     Hospital_Ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Hospital_Info' }],
 });
 
@@ -67,19 +72,6 @@ const PatientLogin = mongoose.model('Patient_Login', PatientLoginSchema);
 const HospitalLogin = mongoose.model('Hospital_Login', HospitalLoginSchema);
 const HospitalCodes = mongoose.model('Hospital_Codes', HospitalCodesSchema);
 
-
-async function connectToDatabase() {
-    try {
-        await mongoose.connect('mongodb://localhost:27017/mediVault', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log('Connected to MongoDB');
-    } catch (error) {
-        console.error('Error connecting to MongoDB:', error);
-    }
-}
-
 async function createModels() {
     try {
         // Check if models exist in the database
@@ -100,7 +92,6 @@ async function createModels() {
 }
 
 module.exports = {
-    connectToDatabase,
     createModels,
     HospitalInfo,
     PatientInfo,

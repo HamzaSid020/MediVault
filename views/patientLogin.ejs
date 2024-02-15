@@ -3695,43 +3695,52 @@
 			window.addEventListener("load", self.onloadHandler);
 			window.document.addEventListener("DOMContentLoaded", self.onloadHandler);
 		}
-			function submitData() {
-				// Get values from input fields
-				var username = document.getElementById('Patient_Username_Input').value;
-				var password = document.getElementById('Patient_Password_Input').value;
+		function submitData() {
+			// Get values from input fields
+			var username = document.getElementById('Patient_Username_Input').value;
+			var password = document.getElementById('Patient_Password_Input').value;
 
-				// Create data object to be sent in the request body
-				var data = {
-					username: username,
-					password: password
-				};
+			// Create data object to be sent in the request body
+			var data = {
+				username: username,
+				password: password
+			};
 
-				// Send data to "/PatientLogin" using Fetch API
-				fetch('/Patient-login', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(data)
+			// Send data to "/PatientLogin" using Fetch API
+			fetch('/Patient-login', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			})
+				.then(response => {
+					if (response.status === 200) {
+						// Parse the JSON response
+						return response.json();
+					} else {
+						// Handle other response statuses
+						console.log(response.status);
+						throw new Error('Login failed');
+					}
 				})
-					.then(response => {
-						if (response.status === 200) {
-							// Redirect to the home page
-							window.location.href = '/';
-						} else {
-							// Handle other response statuses
-							console.log(response.status);
-						}
-					})
-					.catch(error => {
-						// Handle errors
-						console.error('Error:', error);
-					});
-			}
-		
+				.then(data => {
+
+					// Redirect to the home page or handle the medivaultId as needed
+					const medivaultId = data.medivaultId;
+
+					// Redirect to the patientInfo page with the medivaultId
+					window.location.href = '/patientInfo/' + medivaultId;
+				})
+				.catch(error => {
+					// Handle errors
+					console.error('Error:', error);
+				});
+		}
 
 
-			window.application = new Application();
+
+		window.application = new Application();
 	</script>
 </head>
 

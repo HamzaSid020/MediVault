@@ -306,24 +306,33 @@ router.delete('/prescriptions/:id', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-// Patient_Login
+
 router.post('/patient-login', async (req, res) => {
     const { username, password } = req.body;
-
+  
     try {
-        // Check if username and password are present in the database
-        const user = await PatientLogin.findOne({ Username: username, Password: password });
-
-        if (user) {
-            // Redirect to the "/home" page or send a success response
-            res.redirect('/');
+      // Check if username and password are present in the database
+      const user = await PatientLogin.findOne({ Username: username, Password: password });
+      if (user) {
+        // If login is successful, fetch patient information including the Medivault ID
+        const patientInfo = await PatientInfo.findOne({ _id: user.Patient_Id }).select('Medivault_Id');
+        
+        if (patientInfo) {
+          // Send a success response with the Medivault ID
+          res.status(200).json({ message: 'Login successful', medivaultId: patientInfo.Medivault_Id });
         } else {
-            res.status(401).json({ message: 'Invalid username or password' });
+          // Handle the case where patient information is not found
+          res.status(500).json({ message: 'Patient information not found' });
         }
+      } else {
+        // Send an unauthorized response if login fails
+        res.status(401).json({ message: 'Invalid username or password' });
+      }
     } catch (error) {
-        res.status(500).json({ error: error.message });
+      // Handle other errors
+      res.status(500).json({ error: error.message });
     }
-});
+  });
 
 router.get('/patient-login', async (req, res) => {
     try {

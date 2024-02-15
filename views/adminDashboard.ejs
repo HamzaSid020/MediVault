@@ -1573,6 +1573,7 @@
 						<th>Phone No</th>
 						<th>Email</th>
 						<th>Picture</th>
+						<th>MediVault</th>
 						<th>Hospital Ids</th>
 					</tr>
 				</thead>
@@ -1584,6 +1585,7 @@
 						<td><%- patient.Phone_No %></td>
 						<td><%- patient.Email %></td>
 						<td><%- patient.Picture %></td>
+						<td><%- patient.Medivault_Id %></td>
 						<td><%- patient.Hospital_Ids.join(', ') %></td>
 					  </tr>
 					<% }); %>
