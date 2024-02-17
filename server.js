@@ -24,10 +24,12 @@ const app = express();
 const apiFunctions = require('./database/apiFunctions');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
+const path = require('path');
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true })); // Parse incoming requests with urlencoded payloads
-app.use(express.static('public'));
+// app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 async function connectToDatabase() {
   try {
@@ -41,7 +43,7 @@ async function connectToDatabase() {
   }
 }
 
-app.use('', apiFunctions);
+app.use('/', apiFunctions);
 
 app.get('/', async (req, res) => {
   try {
@@ -51,6 +53,7 @@ app.get('/', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 app.get('/database', async (req, res) => {
   try {

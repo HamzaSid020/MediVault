@@ -1,6 +1,7 @@
 // apiFunctions.js
 const express = require('express');
 const router = express.Router();
+const app = express();
 const {
     HospitalInfo,
     PatientInfo,
@@ -466,12 +467,12 @@ router.get('/patientLogin', async (req, res) => {
     }
   });
   
-  router.get('/patientInfo/:medivaultId', async (req, res) => {
+  router.get('/patient/:medivaultId', async (req, res) => {
     try {
       // Get the patient ID from the URL parameters
       const medivaultId = req.params.medivaultId;
-      const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
-  
+      const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId })
+      .populate('Hospital_Ids');
       // Pass the patient ID to the render function
       res.render('patientInfo', { patientInfo: patientInfo });
     } catch (error) {
