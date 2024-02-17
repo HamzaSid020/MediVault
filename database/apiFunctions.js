@@ -309,75 +309,31 @@ router.delete('/prescriptions/:id', async (req, res) => {
 
 router.post('/patient-login', async (req, res) => {
     const { username, password } = req.body;
-  
+    console.log(username, password);
     try {
-      // Check if username and password are present in the database
-      const user = await PatientLogin.findOne({ Username: username, Password: password });
-      if (user) {
-        // If login is successful, fetch patient information including the Medivault ID
-        const patientInfo = await PatientInfo.findOne({ _id: user.Patient_Id }).select('Medivault_Id');
-        
-        if (patientInfo) {
-          // Send a success response with the Medivault ID
-          res.status(200).json({ message: 'Login successful', medivaultId: patientInfo.Medivault_Id });
+        // Check if username and password are present in the database
+        const user = await PatientLogin.findOne({ username, password});
+
+        if (user) {
+            // If login is successful, fetch patient information including the Medivault ID
+            const patientInfo = await PatientInfo.findOne({ _id: user.Patient_Id }).select('Medivault_Id');
+
+            if (patientInfo) {
+                // Send a success response with the Medivault ID
+                res.status(200).json({ message: 'Login successful', medivaultId: patientInfo.Medivault_Id });
+            } else {
+                // Handle the case where patient information is not found
+                res.status(500).json({ message: 'Patient information not found' });
+            }
         } else {
-          // Handle the case where patient information is not found
-          res.status(500).json({ message: 'Patient information not found' });
+            // Send an unauthorized response if login fails
+            res.status(401).json({ message: 'Invalid username or password' });
         }
-      } else {
-        // Send an unauthorized response if login fails
-        res.status(401).json({ message: 'Invalid username or password' });
-      }
     } catch (error) {
-      // Handle other errors
-      res.status(500).json({ error: error.message });
+        // Handle other errors
+        res.status(500).json({ error: error.message });
     }
   });
-
-router.get('/patient-login', async (req, res) => {
-    try {
-        const patientLogin = await PatientLogin.find({});
-        res.json(patientLogin);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-router.get('/patient-login/:id', async (req, res) => {
-    try {
-        const patientLogin = await PatientLogin.findById(req.params.id);
-        if (!patientLogin) {
-            return res.status(404).json({ error: 'Patient Login not found' });
-        }
-        res.json(patientLogin);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-router.put('/patient-login/:id', async (req, res) => {
-    try {
-        const patientLogin = await PatientLogin.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!patientLogin) {
-            return res.status(404).json({ error: 'Patient Login not found' });
-        }
-        res.json(patientLogin);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-router.delete('/patient-login/:id', async (req, res) => {
-    try {
-        const patientLogin = await PatientLogin.findByIdAndDelete(req.params.id);
-        if (!patientLogin) {
-            return res.status(404).json({ error: 'Patient Login not found' });
-        }
-        res.json({ message: 'Patient Login deleted successfully' });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
 
 // Hospital_Login
 router.post('/hospital-login', async (req, res) => {
@@ -498,5 +454,40 @@ router.delete('/hospital-codes/:id', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+
+router.get('/patientLogin', async (req, res) => {
+    try {
+     
+      res.render('patientLogin');
+    } catch (error) {
+      console.error('Error rendering HTML:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  
+  router.get('/patientInfo/:medivaultId', async (req, res) => {
+    try {
+      // Get the patient ID from the URL parameters
+      const medivaultId = req.params.medivaultId;
+      const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+  
+      // Pass the patient ID to the render function
+      res.render('patientInfo', { patientInfo: patientInfo });
+    } catch (error) {
+      console.error('Error rendering HTML:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  
+  router.get('/hospitalLogin', async (req, res) => {
+    try {
+     
+      res.render('hospitalLogin');
+    } catch (error) {
+      console.error('Error rendering HTML:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
 
 module.exports = router;

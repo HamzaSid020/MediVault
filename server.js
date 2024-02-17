@@ -21,17 +21,13 @@ const {
 
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const apiFunctions = require('./database/apiFunctions');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
-const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true })); // Parse incoming requests with urlencoded payloads
 app.use(express.static('public'));
-// Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 async function connectToDatabase() {
   try {
@@ -68,40 +64,6 @@ app.get('/database', async (req, res) => {
     const hospitalCodes = await HospitalCodes.find();
 
     res.render('adminDashboard', { hospitals, patients, reports, bills, prescriptions, patientLogins, hospitalLogins, hospitalCodes });
-  } catch (error) {
-    console.error('Error rendering HTML:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
-app.get('/patientLogin', async (req, res) => {
-  try {
-   
-    res.render('patientLogin');
-  } catch (error) {
-    console.error('Error rendering HTML:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
-app.get('/patientInfo/:medivaultId', async (req, res) => {
-  try {
-    // Get the patient ID from the URL parameters
-    const medivaultId = req.params.medivaultId;
-    const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
-
-    // Pass the patient ID to the render function
-    res.render('patientInfo', { patientInfo: patientInfo });
-  } catch (error) {
-    console.error('Error rendering HTML:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
-app.get('/hospitalLogin', async (req, res) => {
-  try {
-   
-    res.render('hospitalLogin');
   } catch (error) {
     console.error('Error rendering HTML:', error);
     res.status(500).send('Internal Server Error');
