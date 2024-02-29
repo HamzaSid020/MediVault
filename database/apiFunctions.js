@@ -1,7 +1,7 @@
 // apiFunctions.js
 const express = require('express');
 const router = express.Router();
-const app = express();
+const path = require('path');
 const {
     HospitalInfo,
     PatientInfo,
@@ -313,7 +313,7 @@ router.post('/patient-login', async (req, res) => {
     console.log(username, password);
     try {
         // Check if username and password are present in the database
-        const user = await PatientLogin.findOne({ username, password});
+        const user = await PatientLogin.findOne({ username, password });
 
         if (user) {
             // If login is successful, fetch patient information including the Medivault ID
@@ -334,7 +334,7 @@ router.post('/patient-login', async (req, res) => {
         // Handle other errors
         res.status(500).json({ error: error.message });
     }
-  });
+});
 
 // Hospital_Login
 router.post('/hospital-login', async (req, res) => {
@@ -459,36 +459,66 @@ router.delete('/hospital-codes/:id', async (req, res) => {
 
 router.get('/patientLogin', async (req, res) => {
     try {
-     
-      res.render('patientLogin');
+
+        res.render('patientLogin');
     } catch (error) {
-      console.error('Error rendering HTML:', error);
-      res.status(500).send('Internal Server Error');
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
     }
-  });
-  
-  router.get('/patient/:medivaultId', async (req, res) => {
+});
+
+router.get('/patient/:medivaultId', async (req, res) => {
     try {
-      // Get the patient ID from the URL parameters
-      const medivaultId = req.params.medivaultId;
-      const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId })
-      .populate('Hospital_Ids');
-      // Pass the patient ID to the render function
-      res.render('patientInfo', { patientInfo: patientInfo });
+        // Get the patient ID from the URL parameters
+        const medivaultId = req.params.medivaultId;
+        const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        const patientId = patientInfo._id;
+        // Find all reports related to the patient using the Patient_Id
+        const reports = await Report.find({ Patient_Id: patientId })
+            .populate('Hospital_Id')
+            .exec();
+
+        // Pass the patient ID to the render function
+        console.log(patientInfo);
+        console.log(reports);
+
+        res.render('patientInfo', { patientInfo: patientInfo, report_info: reports});
     } catch (error) {
-      console.error('Error rendering HTML:', error);
-      res.status(500).send('Internal Server Error');
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
     }
-  });
-  
-  router.get('/hospitalLogin', async (req, res) => {
+});
+
+router.get('/hospitalLogin', async (req, res) => {
     try {
-     
-      res.render('hospitalLogin');
+
+        res.render('hospitalLogin');
     } catch (error) {
-      console.error('Error rendering HTML:', error);
-      res.status(500).send('Internal Server Error');
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
     }
-  });
+});
+
+router.get('/download-report/:reportId', async (req, res) => {
+    const reportId = req.params.reportId;
+
+    try {
+        const report = await Report.findById(reportId);
+
+        // Check if the report exists
+        if (!report) {
+            return res.status(404).send('Report not found');
+        }
+
+        // Assuming the document file is stored as a file path or a URL in the report
+        const documentPath = path.resolve(__dirname, '..', 'public', 'documents', 'reports', `${report.File}`);
+
+        // In a real-world scenario, you might want to set appropriate headers for the file type
+        res.download(documentPath, `Report_${report.File}`);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 module.exports = router;

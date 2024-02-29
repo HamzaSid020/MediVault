@@ -66,6 +66,11 @@ async function addDummyHospitals() {
           Description: 'A description for Hospital B',
           Picture: 'hospital_b.jpg',
         },
+        {
+          Name: 'Hospital C',
+          Description: 'A description for Hospital C',
+          Picture: 'hospital_C.jpg',
+        },
       ];
   
       await HospitalInfo.insertMany(dummyHospitals);
@@ -80,6 +85,7 @@ async function addDummyPatients() {
       // Find Hospital_Info IDs by name
       const hospitalA_Id = await HospitalInfo.findOne({ Name: 'Hospital A' }).select('_id');
       const hospitalB_Id = await HospitalInfo.findOne({ Name: 'Hospital B' }).select('_id');
+      const hospitalC_Id = await HospitalInfo.findOne({ Name: 'Hospital C' }).select('_id');
   
       const dummyPatients = [
         {
@@ -92,7 +98,7 @@ async function addDummyPatients() {
           Address: '123 Havelwood Cresent, Waterloo, ON N2L 4L2',
           Picture: 'patient1.jpg',
           Medivault_Id: generateMedivaultId('Hamza', 'Siddiqui'),
-          Hospital_Ids: [hospitalA_Id],
+          Hospital_Ids: [hospitalA_Id,hospitalC_Id],
         },
         {
           Name: 'Nidhi Shukla',
@@ -123,25 +129,34 @@ async function addDummyPatients() {
     if (existingReports.length === 0) {
       // Find Hospital_Info and Patient_Info IDs by name
       const hospitalA_Id = await HospitalInfo.findOne({ Name: 'Hospital A' }).select('_id');
-      const patient1_Id = await PatientInfo.findOne({ Name: 'Patient 1' }).select('_id');
+      const hospitalC_Id = await HospitalInfo.findOne({ Name: 'Hospital C' }).select('_id');
+      const patient1_Id = await PatientInfo.findOne({ Name: 'Hamza Siddiqui' }).select('_id');
   
       const hospitalB_Id = await HospitalInfo.findOne({ Name: 'Hospital B' }).select('_id');
-      const patient2_Id = await PatientInfo.findOne({ Name: 'Patient 2' }).select('_id');
+      const patient2_Id = await PatientInfo.findOne({ Name: 'Nidhi Shukla' }).select('_id');
   
       const dummyReports = [
         {
           Category: 'Test',
           Name: 'Report 1',
+          File: 'Report1.pdf',
           Patient_Id: patient1_Id, // Reference to Patient_Info ID
           Hospital_Id: hospitalA_Id, // Reference to Hospital_Info ID
         },
         {
           Category: 'Test',
           Name: 'Report 2',
+          File: 'Report2.pdf',
           Patient_Id: patient2_Id, // Reference to Patient_Info ID
           Hospital_Id: hospitalB_Id, // Reference to Hospital_Info ID
         },
-        // Add more entries as needed
+        {
+          Category: 'Test',
+          Name: 'Report 3',
+          File: 'Report3.pdf',
+          Patient_Id: patient1_Id, // Reference to Patient_Info ID
+          Hospital_Id: hospitalC_Id, // Reference to Hospital_Info ID
+        },
       ];
   
       await Report.insertMany(dummyReports);

@@ -23,8 +23,10 @@ const PatientInfoSchema = new mongoose.Schema({
 const ReportSchema = new mongoose.Schema({
     Category: String,
     Name: String,
+    File: String,
     Patient_Id: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient_Info' },
     Hospital_Id: { type: mongoose.Schema.Types.ObjectId, ref: 'Hospital_Info' },
+    Last_Updated_Time: { type: Date, default: Date.now }
 });
 
 const BillsSchema = new mongoose.Schema({

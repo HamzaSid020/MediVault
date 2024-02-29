@@ -846,25 +846,6 @@
 			color: rgba(90, 92, 137, 1);
 		}
 
-		#Rectangle_85 {
-			fill: rgba(255, 255, 255, 1);
-			stroke: rgba(112, 112, 112, 1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-		}
-
-		.Rectangle_85 {
-			position: absolute;
-			overflow: visible;
-			width: 1273px;
-			height: 1259px;
-			left: 547px;
-			top: 1519.757px;
-		}
-
 		#Reports_b {
 			left: 1087.5px;
 			top: 1393.757px;
@@ -880,83 +861,61 @@
 			color: rgba(90, 92, 137, 1);
 		}
 
-		#Rectangle_86 {
+		.rectangle-container {
+			position: relative;
+			width: 1273px;
+			height: 1259px;
+			margin-left: 547px;
+			margin-top: 1519.757px;
+			background-color: rgba(255, 255, 255, 1);
+			border: 1px solid rgba(112, 112, 112, 1);
+			overflow-y: auto;
+		}
+
+		.item-list {
+			list-style: none;
+			padding: 0;
+		}
+
+		.item {
+			border: 1px solid rgba(112, 112, 112, 1);
 			fill: rgba(255, 255, 255, 1);
 			stroke: rgba(112, 112, 112, 1);
 			stroke-width: 1px;
 			stroke-linejoin: miter;
 			stroke-linecap: butt;
 			stroke-miterlimit: 4;
+			margin: 20px;
+			border-radius: 30px;
 			shape-rendering: auto;
-		}
-
-		.Rectangle_86 {
-			position: absolute;
-			overflow: visible;
-			width: 1175px;
-			height: 175px;
-			left: 598px;
-			top: 1560.757px;
-		}
-
-		#From {
-			left: 628px;
-			top: 1575.757px;
-			position: absolute;
-			overflow: visible;
-			width: 58px;
-			white-space: nowrap;
-			text-align: left;
+			padding: 20px;
 			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
+		}
+
+		.from {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
 			font-size: 25px;
-			color: rgba(90, 92, 137, 1);
 		}
 
-		#n_2_Jan__1100AM {
-			left: 1592.5px;
-			top: 1584.757px;
-			position: absolute;
-			overflow: visible;
-			width: 135px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
+		.hospital-name {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
+			font-size: 33px;
+		}
+
+		.time {
+			float: right;
 			font-size: 18px;
-			color: rgba(90, 92, 137, 1);
 		}
 
-		#Hospital_Name_1 {
-			left: 628px;
-			top: 1608.757px;
-			position: absolute;
-			overflow: visible;
-			width: 244px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
+		.file-name {
 			font-size: 33px;
-			color: rgba(90, 92, 137, 1);
-		}
+			}
 
-		#File_Name_1 {
-			opacity: 0.8;
-			left: 628px;
-			top: 1655.757px;
-			position: absolute;
-			overflow: visible;
-			width: 173px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 33px;
+		.time,
+		.file-name {
+			margin: 0;
 			color: rgba(90, 92, 137, 1);
 		}
 
@@ -2304,28 +2263,22 @@
 			<div id="Reports">
 				<span>Reports</span>
 			</div>
-			<svg class="Rectangle_85">
-				<rect id="Rectangle_85" rx="0" ry="0" x="0" y="0" width="1273" height="1259">
-				</rect>
-			</svg>
+			<div class="rectangle-container">
+				<ul class="item-list">
+					<% for (let i = 0; i < report_info.length; i++) { %>
+						<a href="/download-report/<%= report_info[i]._id %>">
+						<li class="item">
+						  <p class="time"><%= report_info[i].Last_Updated_Time.toLocaleString()%></p>
+						  <p class="from">From</p>
+						  <p class="hospital-name"><%= report_info[i].Hospital_Id.Name %></p>
+						  <p class="file-name"><%= report_info[i].Name %></p>
+						</li>
+					</a>
+					  <% } %>
+				</ul>
+			</div>
 			<div id="Reports_b">
 				<span>Reports</span>
-			</div>
-			<svg class="Rectangle_86">
-				<rect id="Rectangle_86" rx="56" ry="56" x="0" y="0" width="1175" height="175">
-				</rect>
-			</svg>
-			<div id="From">
-				<span>From</span>
-			</div>
-			<div id="n_2_Jan__1100AM">
-				<span>12 Jan . 11:00AM</span>
-			</div>
-			<div id="Hospital_Name_1">
-				<span>Hospital Name 1</span>
-			</div>
-			<div id="File_Name_1">
-				<span>File Name 1</span>
 			</div>
 			<div id="Bills">
 				<span>Bills</span>
