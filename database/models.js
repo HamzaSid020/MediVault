@@ -36,6 +36,7 @@ const BillsSchema = new mongoose.Schema({
     Hospital_Id: { type: mongoose.Schema.Types.ObjectId, ref: 'Hospital_Info' },
     Patient_Id: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient_Info' },
     Report_Ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Report' }],
+    Last_Updated_Time: { type: Date, default: Date.now }
 });
 
 const PrescriptionSchema = new mongoose.Schema({
@@ -45,6 +46,7 @@ const PrescriptionSchema = new mongoose.Schema({
     Patient_Id: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient_Info' },
     Report_Ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Report' }],
     Bills_Ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bills' }],
+    Last_Updated_Time: { type: Date, default: Date.now }
 });
 
 const PatientLoginSchema = new mongoose.Schema({

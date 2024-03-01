@@ -172,12 +172,16 @@ async function addDummyPatients() {
   
     if (existingBills.length === 0) {
       const hospitalA_Id = await HospitalInfo.findOne({ Name: 'Hospital A' }).select('_id');
-      const patient1_Id = await PatientInfo.findOne({ Name: 'Patient 1' }).select('_id');
+      const patient1_Id = await PatientInfo.findOne({ Name: 'Hamza Siddiqui' }).select('_id');
       const report1_Id = await Report.findOne({ Name: 'Report 1' }).select('_id');
   
       const hospitalB_Id = await HospitalInfo.findOne({ Name: 'Hospital B' }).select('_id');
-      const patient2_Id = await PatientInfo.findOne({ Name: 'Patient 2' }).select('_id');
+      const patient2_Id = await PatientInfo.findOne({ Name: 'Nidhi Shukla' }).select('_id');
       const report2_Id = await Report.findOne({ Name: 'Report 2' }).select('_id');
+
+      const hospitalC_Id = await HospitalInfo.findOne({ Name: 'Hospital C' }).select('_id');
+      const patient3_Id = await PatientInfo.findOne({ Name: 'Hamza Siddiqui' }).select('_id');
+      const report3_Id = await Report.findOne({ Name: 'Report 1' }).select('_id');
   
       const dummyBills = [
         {
@@ -196,6 +200,14 @@ async function addDummyPatients() {
           Patient_Id: patient2_Id, // Reference to Patient_Info ID
           Report_Ids: [report2_Id], // Reference to Report ID
         },
+        {
+          Category: 'Medical',
+          Name: 'Bill 3',
+          File: 'bill3.pdf',
+          Hospital_Id: hospitalC_Id, // Reference to Hospital_Info ID
+          Patient_Id: patient3_Id, // Reference to Patient_Info ID
+          Report_Ids: [report3_Id], // Reference to Report ID
+        },
       ];
   
       await Bills.insertMany(dummyBills);
@@ -211,14 +223,20 @@ async function addDummyPatients() {
   
     if (existingPrescriptions.length === 0) {
       const hospitalA_Id = await HospitalInfo.findOne({ Name: 'Hospital A' }).select('_id');
-      const patient1_Id = await PatientInfo.findOne({ Name: 'Patient 1' }).select('_id');
+      const patient1_Id = await PatientInfo.findOne({ Name: 'Hamza Siddiqui' }).select('_id');
       const report1_Id = await Report.findOne({ Name: 'Report 1' }).select('_id');
       const bill1_Id = await Bills.findOne({ Name: 'Bill 1' }).select('_id');
   
       const hospitalB_Id = await HospitalInfo.findOne({ Name: 'Hospital B' }).select('_id');
-      const patient2_Id = await PatientInfo.findOne({ Name: 'Patient 2' }).select('_id');
+      const patient2_Id = await PatientInfo.findOne({ Name: 'Nidhi Shukla' }).select('_id');
       const report2_Id = await Report.findOne({ Name: 'Report 2' }).select('_id');
       const bill2_Id = await Bills.findOne({ Name: 'Bill 2' }).select('_id');
+  
+  
+      const hospitalC_Id = await HospitalInfo.findOne({ Name: 'Hospital C' }).select('_id');
+      const patient3_Id = await PatientInfo.findOne({ Name: 'Hamza Siddiqui' }).select('_id');
+      const report3_Id = await Report.findOne({ Name: 'Report 1' }).select('_id');
+      const bill3_Id = await Bills.findOne({ Name: 'Bill 1' }).select('_id');
   
       const dummyPrescriptions = [
         {
@@ -236,6 +254,14 @@ async function addDummyPatients() {
           Patient_Id: patient2_Id, // Reference to Patient_Info ID
           Report_Ids: [report2_Id], // Reference to Report ID
           Bills_Ids: [bill2_Id], // Reference to Bills ID
+        },
+        {
+          Name: 'Prescription 3',
+          File: 'prescription3.pdf',
+          Hospital_Id: hospitalC_Id, // Reference to Hospital_Info ID
+          Patient_Id: patient3_Id, // Reference to Patient_Info ID
+          Report_Ids: [report3_Id], // Reference to Report ID
+          Bills_Ids: [bill3_Id], // Reference to Bills ID
         },
       ];
   

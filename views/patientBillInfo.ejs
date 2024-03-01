@@ -336,6 +336,10 @@
 			color: rgba(255, 255, 255, 1);
 		}
 
+		a {
+			text-decoration: none;
+		}
+
 		#Copyright_-_Group_9_ {
 			left: 897.896px;
 			top: 1396.511px;
@@ -911,7 +915,7 @@
 
 		.file-name {
 			font-size: 33px;
-			}
+		}
 
 		.time,
 		.file-name {
@@ -2261,33 +2265,42 @@
 				</path>
 			</svg>
 			<div id="Reports">
+				<a href="/patientReport/<%= patientInfo.Medivault_Id %>" style=" color:  rgba(90, 92, 137, 1);">
 				<span>Reports</span>
+				</a>
 			</div>
 			<div class="rectangle-container">
 				<ul class="item-list">
-					<% for (let i = 0; i < report_info.length; i++) { %>
-						<a href="/download-report/<%= report_info[i]._id %>">
+					<% for (let i = 0; i < bill_info.length; i++) { %>
+					<a href="/download-bill/<%= bill_info[i]._id %>">
 						<li class="item">
-						  <p class="time"><%= report_info[i].Last_Updated_Time.toLocaleString()%></p>
-						  <p class="from">From</p>
-						  <p class="hospital-name"><%= report_info[i].Hospital_Id.Name %></p>
-						  <p class="file-name"><%= report_info[i].Name %></p>
+							<p class="time"><%= bill_info[i].Last_Updated_Time.toLocaleString()%></p>
+							<p class="from">From</p>
+							<p class="hospital-name"><%= bill_info[i].Hospital_Id.Name %></p>
+							<p class="file-name"><%= bill_info[i].Name %></p>
 						</li>
 					</a>
-					  <% } %>
+					<% } %>
 				</ul>
 			</div>
 			<div id="Reports_b">
-				<span>Reports</span>
+				<span>Bills</span>
+			</a>
 			</div>
 			<div id="Bills">
+				<a href="/patientBill/<%= patientInfo.Medivault_Id %>" style=" color:  rgba(90, 92, 137, 1);">
 				<span>Bills</span>
+				</a>
 			</div>
 			<div id="Prescriptions">
+				<a href="/patientPrescription/<%= patientInfo.Medivault_Id %>" style=" color:  rgba(90, 92, 137, 1);">
 				<span>Prescriptions</span>
+			</a>
 			</div>
 			<div id="Appointments">
+				<a href="/patientAppointment/<%= patientInfo.Medivault_Id %>" style=" color:  rgba(90, 92, 137, 1);">
 				<span>Appointments</span>
+				</a>
 			</div>
 			<div id="Inbox">
 				<span>Inbox</span>
