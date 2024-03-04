@@ -8,6 +8,7 @@ const {
   PatientLogin,
   HospitalLogin,
   HospitalCodes, } = require('./database/models');
+
  const {
     addDummyHospitals,
     addDummyPatients,
@@ -17,6 +18,7 @@ const {
     addDummyPatientLogins,
     addDummyHospitalLogins,
     addDummyHospitalCodes,
+    addDummyAppointments,
 }  = require('./database/dummyData');
 
 const express = require('express');
@@ -25,11 +27,25 @@ const apiFunctions = require('./database/apiFunctions');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
 const path = require('path');
+const multer = require('multer');
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true })); // Parse incoming requests with urlencoded payloads
 // app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Set up the storage engine for multer
+const patientImageStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      cb(null, 'public/images/patient'); // specify the directory where you want to save the images
+  },
+  filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+      cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+  }
+});
+
+const uploadPatientImage = multer({ storage: patientImageStorage });
 
 async function connectToDatabase() {
   try {
@@ -54,6 +70,19 @@ app.get('/', async (req, res) => {
   }
 });
 
+app.post('/uploadPatientImage', uploadPatientImage.single('patientImage'), (req, res) => {
+  // Handle the uploaded file
+  const file = req.file;
+  if (!file) {
+      return res.status(400).send('No file uploaded.');
+  }
+
+  // Return a response with the file details
+  res.send({
+      filename: file.filename,
+      path: file.path
+  });
+});
 
 app.get('/database', async (req, res) => {
   try {
@@ -113,6 +142,9 @@ async function seedDatabase() {
 
     // Add dummy data for Hospital_Codes
     await addDummyHospitalCodes();
+
+    // Add dummy data for Appointments
+    await addDummyAppointments();
 
     console.log('Dummy data added to the database');
   } catch (error) {

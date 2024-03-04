@@ -8,6 +8,7 @@ const {
     Report,
     Bills,
     Prescription,
+    Appointment,
     PatientLogin,
     HospitalLogin,
     HospitalCodes,
@@ -41,8 +42,15 @@ router.post('/patient-login', async (req, res) => {
     }
 });
 
+router.get('/patientRegistration', async (req, res) => {
+    try {
 
-
+        res.render('patientRegistration');
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 router.get('/patientLogin', async (req, res) => {
     try {
@@ -69,7 +77,29 @@ router.get('/patientReport/:medivaultId', async (req, res) => {
         console.log(patientInfo);
         console.log(reports);
 
-        res.render('patientReportInfo', { patientInfo: patientInfo, report_info: reports});
+        res.render('patientReportInfo', { patientInfo: patientInfo, report_info: reports });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/patientAppointment/:medivaultId', async (req, res) => {
+    try {
+        // Get the patient ID from the URL parameters
+        const medivaultId = req.params.medivaultId;
+        const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        const patientId = patientInfo._id;
+        // Find all appointment related to the patient using the Patient_Id
+        const appointment = await Appointment.find({ Patient_Id: patientId })
+            .populate('Hospital_Id')
+            .exec();
+
+        // Pass the patient ID to the render function
+        console.log(patientInfo);
+        console.log(appointment);
+
+        res.render('patientAppointmentInfo', { patientInfo: patientInfo, appointment_info: appointment });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -88,10 +118,10 @@ router.get('/patientBill/:medivaultId', async (req, res) => {
             .exec();
 
         // Pass the patient ID to the render function
-        console.log("patientInfo:",patientInfo);
-        console.log("BillInfo:",bills);
+        console.log("patientInfo:", patientInfo);
+        console.log("BillInfo:", bills);
 
-        res.render('patientBillInfo', { patientInfo: patientInfo, bill_info: bills});
+        res.render('patientBillInfo', { patientInfo: patientInfo, bill_info: bills });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -113,7 +143,7 @@ router.get('/patientPrescription/:medivaultId', async (req, res) => {
         console.log("patientInfo:", patientInfo);
         console.log("PrescriptionInfo:", prescriptions);
 
-        res.render('patientPrescriptionInfo', { patientInfo: patientInfo, prescription_info: prescriptions});
+        res.render('patientPrescriptionInfo', { patientInfo: patientInfo, prescription_info: prescriptions });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');

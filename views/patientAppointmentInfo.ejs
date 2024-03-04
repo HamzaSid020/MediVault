@@ -2271,20 +2271,18 @@
 			</div>
 			<div class="rectangle-container">
 				<ul class="item-list">
-					<% for (let i = 0; i < prescription_info.length; i++) { %>
-					<a href="/download-prescription/<%= prescription_info[i]._id %>">
+					<% for (let i = 0; i < appointment_info.length; i++) { %>
 						<li class="item">
-							<p class="time"><%= prescription_info[i].Last_Updated_Time.toLocaleString()%></p>
+							<p class="time">Due: <%= appointment_info[i].Appointment_Date.toLocaleString()%></p>
 							<p class="from">From</p>
-							<p class="hospital-name"><%= prescription_info[i].Hospital_Id.Name %></p>
-							<p class="file-name"><%= prescription_info[i].Name %></p>
+							<p class="hospital-name"><%= appointment_info[i].Hospital_Id.Name %></p>
+							<p class="file-name"><%= appointment_info[i].Doctor_Name %> | <%= appointment_info[i].Status %> | <%= appointment_info[i].Appointment_Type %></p>
 						</li>
-					</a>
 					<% } %>
 				</ul>
 			</div>
 			<div id="Reports_b">
-				<span>Prescription</span>
+				<span>Appointments</span>
 			</a>
 			</div>
 			<div id="Bills">

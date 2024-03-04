@@ -39,6 +39,18 @@ const BillsSchema = new mongoose.Schema({
     Last_Updated_Time: { type: Date, default: Date.now }
 });
 
+const AppointmentSchema = new mongoose.Schema({
+    Doctor_Name: String,
+    Appointment_Date: Date,
+    Appointment_Type: String,
+    Notes: String,
+    Status: String,
+    Created_Time: { type: Date, default: Date.now },
+    Hospital_Id: { type: mongoose.Schema.Types.ObjectId, ref: 'Hospital_Info' },
+    Patient_Id: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient_Info' },
+    Last_Updated_Time: { type: Date, default: Date.now }
+});
+
 const PrescriptionSchema = new mongoose.Schema({
     Name: String,
     File: String,
@@ -72,6 +84,7 @@ const PatientInfo = mongoose.model('Patient_Info', PatientInfoSchema);
 const Report = mongoose.model('Report', ReportSchema);
 const Bills = mongoose.model('Bills', BillsSchema);
 const Prescription = mongoose.model('Prescription', PrescriptionSchema);
+const Appointment = mongoose.model('Appointment', AppointmentSchema);
 const PatientLogin = mongoose.model('Patient_Login', PatientLoginSchema);
 const HospitalLogin = mongoose.model('Hospital_Login', HospitalLoginSchema);
 const HospitalCodes = mongoose.model('Hospital_Codes', HospitalCodesSchema);
@@ -102,6 +115,7 @@ module.exports = {
     Report,
     Bills,
     Prescription,
+    Appointment,
     PatientLogin,
     HospitalLogin,
     HospitalCodes,
