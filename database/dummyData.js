@@ -11,21 +11,30 @@ const {
   HospitalCodes,
 } = require('./models');
 
-
-function generateMedivaultId(firstName, lastName) {
+function generateMedivaultId(firstName, lastName, phoneNumber) {
   // Extracting the first letter of the first name
   const firstLetter = firstName.charAt(0).toUpperCase();
 
   // Extracting the first 4 letters of the last name (or less if last name is shorter)
   const lastFourLetters = lastName.slice(0, 4).toUpperCase();
 
-  // Generating a random 4-digit number
-  const randomDigits = Math.floor(1000 + Math.random() * 9000);
+  // Extracting the last four digits of the phone number
+  const lastFourDigits = extractLastFourDigits(phoneNumber);
 
   // Combining the components to form the 9-digit ID
-  const medivaultId = firstLetter + lastFourLetters + randomDigits;
+  const medivaultId = firstLetter + lastFourLetters + lastFourDigits;
 
   return medivaultId;
+}
+
+function extractLastFourDigits(phoneNumber) {
+  // Convert phone number to string if it's not already
+  const phoneNumberString = phoneNumber.toString();
+
+  // Extract the last four digits of the phone number
+  const lastFourDigits = phoneNumberString.slice(-4);
+
+  return lastFourDigits;
 }
 
 function calculateAge(birthDate) {
@@ -50,7 +59,6 @@ function calculateAge(birthDate) {
     return age;
   }
 }
-
 
 // Add dummy data for Hospital_Info
 async function addDummyHospitals() {
@@ -100,7 +108,7 @@ async function addDummyPatients() {
         Sex: 'M',
         Address: '123 Havelwood Cresent, Waterloo, ON N2L 4L2',
         Picture: 'patient1.jpg',
-        Medivault_Id: generateMedivaultId('Hamza', 'Siddiqui'),
+        Medivault_Id: generateMedivaultId('Hamza', 'Siddiqui','1234567890'),
         Hospital_Ids: [hospitalA_Id, hospitalC_Id],
       },
       {
@@ -112,7 +120,7 @@ async function addDummyPatients() {
         Sex: 'F',
         Address: '1567 Albert Street, Waterloo, ON N2L 4L2',
         Picture: 'patient2.jpg',
-        Medivault_Id: generateMedivaultId('Nidhi', 'Shukla'),
+        Medivault_Id: generateMedivaultId('Nidhi', 'Shukla', '9876543210'),
         Hospital_Ids: [hospitalB_Id],
       },
       // Add more entries as needed

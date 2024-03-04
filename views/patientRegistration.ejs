@@ -896,13 +896,20 @@
 
 		.Path_139 {
 			overflow: visible;
-			position: absolute;
+			position: relative;
 			width: 19.13px;
 			height: 19.128px;
-			left: 7.998px;
-			top: 0px;
-			transform: matrix(1, 0, 0, 1, 0, 0);
 			fill: rgba(91, 91, 137, 1);
+			cursor: pointer;
+		}
+
+		#imageInput {
+			position: absolute;
+			opacity: 0;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
 			cursor: pointer;
 		}
 
@@ -1088,20 +1095,20 @@
 </head>
 <script>
 	// Function to handle the click event and trigger image upload
-    function handleImageUpload() {
-        // Trigger the file input click event when the button is clicked
-        document.getElementById('imageInput').click();
-    }
+	function handleImageUpload() {
+		// Trigger the file input click event when the button is clicked
+		document.getElementById('imageInput').click();
+	}
 
-    // Add an event listener to the file input for handling image uploads
-    document.getElementById('imageInput').addEventListener('change', function (event) {
-        // Handle the selected file here (e.g., upload to server, display preview, etc.)
-        var selectedFile = event.target.files[0];
-        console.log('Selected File:', selectedFile);
+	// Add an event listener to the file input for handling image uploads
+	document.getElementById('imageInput').addEventListener('change', function (event) {
+		// Handle the selected file here (e.g., upload to server, display preview, etc.)
+		var selectedFile = event.target.files[0];
+		console.log('Selected File:', selectedFile);
 
-        // Trigger the form submit when the file input changes
-        document.getElementById('uploadForm').submit();
-    });
+		// Trigger the form submit when the file input changes
+		document.getElementById('uploadForm').submit();
+	});
 </script>
 
 <body>
