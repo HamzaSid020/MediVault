@@ -18,6 +18,7 @@ const PatientInfoSchema = new mongoose.Schema({
     Picture: String,
     Medivault_Id: String,
     Hospital_Ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Hospital_Info' }],
+    Last_Updated_Time: { type: Date, default: Date.now }
 });
 
 const ReportSchema = new mongoose.Schema({

@@ -27,25 +27,12 @@ const apiFunctions = require('./database/apiFunctions');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
 const path = require('path');
-const multer = require('multer');
+const fileUpload = require('express-fileupload');
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true })); // Parse incoming requests with urlencoded payloads
-// app.use(express.static('public'));
+app.use(fileUpload());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Set up the storage engine for multer
-const patientImageStorage = multer.diskStorage({
-  destination: function (req, file, cb) {
-      cb(null, 'public/images/patient'); // specify the directory where you want to save the images
-  },
-  filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-      cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-  }
-});
-
-const uploadPatientImage = multer({ storage: patientImageStorage });
 
 async function connectToDatabase() {
   try {
@@ -70,17 +57,28 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.post('/uploadPatientImage', uploadPatientImage.single('patientImage'), (req, res) => {
-  // Handle the uploaded file
-  const file = req.file;
-  if (!file) {
-      return res.status(400).send('No file uploaded.');
+app.post('/uploadPatientImage', (req, res) => {
+  // Check if the request has files
+  if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).send('No files were uploaded.');
   }
 
-  // Return a response with the file details
-  res.send({
-      filename: file.filename,
-      path: file.path
+  const uploadedFile = req.files.patientImage; // 'patientImage' is the name attribute in the form input
+
+  // Specify the destination path
+  const destinationPath = path.join(__dirname, 'public/images/patient');
+  console.log( "destinationPath", destinationPath );
+  // Use the mv() method to move the file to the specified path
+  uploadedFile.mv(path.join(destinationPath, uploadedFile.name), (err) => {
+      if (err) {
+          return res.status(500).send(err);
+      }
+
+      // Return a response with the file details
+      res.send({
+          filename: uploadedFile.name,
+          path: path.join(destinationPath, uploadedFile.name)
+      });
   });
 });
 
