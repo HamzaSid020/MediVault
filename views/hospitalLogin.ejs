@@ -792,13 +792,13 @@
 	<script>
 		function submitData() {
 			// Get values from input fields
-			var username = document.getElementById('Hospital_Username_Input').value;
-			var password = document.getElementById('Hospital_Password_Input').value;
+			var Username = document.getElementById('Hospital_Username_Input').value;
+			var Password = document.getElementById('Hospital_Password_Input').value;
 
 			// Create data object to be sent in the request body
 			var data = {
-				username: username,
-				password: password
+				username: Username,
+				password: Password
 			};
 
 			// Send data to "/hospitalLogin" using Fetch API
@@ -809,13 +809,18 @@
 				},
 				body: JSON.stringify(data)
 			})
-				.then(response => {
-					if (response.status === 200) {
-						// Redirect to the home page
-						window.location.href = '/';
+				.then(response => response.json())
+				.then(result => {
+					// Check if the login was successful
+					if (result.message === 'Login successful') {
+						const hospitalId = result.hospitalId;
+						console.log(hospitalId);
+
+						// Redirect to the hospitalDashboard page with the hospitalId
+						window.location.href = '/hospitalDashboard/patients/' + hospitalId;
 					} else {
-						// Handle other response statuses
-						console.log(response.status);
+						// Handle login failure
+						console.error('Login failed:', result.message);
 					}
 				})
 				.catch(error => {

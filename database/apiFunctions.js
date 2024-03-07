@@ -14,30 +14,54 @@ const {
     HospitalCodes,
 } = require('./models');
 
+router.use(express.json()); // This middleware will parse JSON data in the request body
 router.post('/patient-login', async (req, res) => {
     const { username, password } = req.body;
-    console.log(username, password);
+    console.log('Received request:', username, password); // Check if request body is received correctly
+
     try {
-        // Check if username and password are present in the database
-        const user = await PatientLogin.findOne({ username, password });
+        const user = await PatientLogin.findOne({ Username: username, Password: password });
+        console.log('User:', user); // Check if user is found
 
         if (user) {
-            // If login is successful, fetch patient information including the Medivault ID
             const patientInfo = await PatientInfo.findOne({ _id: user.Patient_Id }).select('Medivault_Id');
+            console.log('Patient Info:', patientInfo); // Check if patient information is found
 
             if (patientInfo) {
-                // Send a success response with the Medivault ID
                 res.status(200).json({ message: 'Login successful', medivaultId: patientInfo.Medivault_Id });
             } else {
-                // Handle the case where patient information is not found
                 res.status(500).json({ message: 'Patient information not found' });
             }
         } else {
-            // Send an unauthorized response if login fails
             res.status(401).json({ message: 'Invalid username or password' });
         }
     } catch (error) {
-        // Handle other errors
+        console.error('Error:', error); // Log the error for debugging
+        res.status(500).json({ error: error.message });
+    }
+});
+router.post('/hospital-login', async (req, res) => {
+    const { username, password } = req.body;
+    console.log('Received request:', username, password); // Check if request body is received correctly
+
+    try {
+        const user = await HospitalLogin.findOne({ Username: username, Password: password });
+        console.log('User:', user); // Check if user is found
+
+        if (user) {
+            const hospitalInfo = await HospitalInfo.findOne({ _id: user.Hospital_Id });
+            console.log('Hospital Info:', hospitalInfo); // Check if patient information is found
+
+            if (hospitalInfo) {
+                res.status(200).json({ message: 'Login successful', hospitalId: hospitalInfo._id });
+            } else {
+                res.status(500).json({ message: 'Patient information not found' });
+            }
+        } else {
+            res.status(401).json({ message: 'Invalid username or password' });
+        }
+    } catch (error) {
+        console.error('Error:', error); // Log the error for debugging
         res.status(500).json({ error: error.message });
     }
 });
@@ -178,6 +202,55 @@ router.get('/download-report/:reportId', async (req, res) => {
         res.download(documentPath, `Report_${report.File}`);
     } catch (error) {
         console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/hospitalDashboard/patients/:hospitalId', async (req, res) => {
+    try {
+        const hospitalId = req.params.hospitalId;
+
+        // Fetch the hospital information
+        const hospital = await HospitalInfo.findById(hospitalId);
+
+        if (!hospital) {
+            return res.status(404).send('Hospital not found');
+        }
+
+        // Fetch all patients associated with the hospital
+        const patients = await PatientInfo.find({ Hospital_Ids: hospitalId });
+
+        // Aggregate data for each patient
+        const patientDataPromises = patients.map(async (patient) => {
+            const patientId = patient._id;
+
+            // Count the number of bills for the patient
+            const numberOfBills = await Bills.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of prescriptions for the patient
+            const numberOfPrescriptions = await Prescription.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of appointments for the patient
+            const numberOfAppointments = await Appointment.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of reports for the patient
+            const numberOfReports = await Report.countDocuments({ Patient_Id: patientId });
+
+            return {
+                patient,
+                numberOfBills,
+                numberOfPrescriptions,
+                numberOfAppointments,
+                numberOfReports,
+            };
+        });
+
+        const patientData = await Promise.all(patientDataPromises);
+
+        // Render the hospital dashboard with the patients data
+        res.render('hospitalDashboard', { hospital, patientData });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
     }
 });

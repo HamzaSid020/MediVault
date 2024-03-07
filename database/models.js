@@ -3,8 +3,12 @@ const mongoose = require('mongoose');
 
 const HospitalInfoSchema = new mongoose.Schema({
     Name: String,
+    Phone_No: String,
+    License_No: String,
     Description: String,
+    Address: String,
     Picture: String,
+    Last_Updated_Time: { type: Date, default: Date.now }
 });
 
 const PatientInfoSchema = new mongoose.Schema({
@@ -16,6 +20,7 @@ const PatientInfoSchema = new mongoose.Schema({
     Address: String,
     Email: String,
     Picture: String,
+    Patient_Id: String,
     Medivault_Id: String,
     Hospital_Ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Hospital_Info' }],
     Last_Updated_Time: { type: Date, default: Date.now }
