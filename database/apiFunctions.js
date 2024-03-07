@@ -2,6 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+
 const {
     HospitalInfo,
     PatientInfo,
@@ -15,6 +18,15 @@ const {
 } = require('./models');
 
 router.use(express.json()); // This middleware will parse JSON data in the request body
+router.use(cookieParser());
+router.use(
+    session({
+        secret: 'medivault123445566', // Change this to a secure random string
+        resave: false,
+        saveUninitialized: true,
+    })
+);
+
 router.post('/patient-login', async (req, res) => {
     const { username, password } = req.body;
     console.log('Received request:', username, password); // Check if request body is received correctly
@@ -28,7 +40,11 @@ router.post('/patient-login', async (req, res) => {
             console.log('Patient Info:', patientInfo); // Check if patient information is found
 
             if (patientInfo) {
-                res.status(200).json({ message: 'Login successful', medivaultId: patientInfo.Medivault_Id });
+                req.session.loggedIn = true;
+                req.session.username = patientInfo.Name;
+                req.session.medivaultId = patientInfo.Medivault_Id; // Store medivaultId in the session
+
+                res.status(200).json({ message: 'Login successful' });
             } else {
                 res.status(500).json({ message: 'Patient information not found' });
             }
@@ -40,6 +56,16 @@ router.post('/patient-login', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+router.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error destroying session:', err);
+        }
+        res.redirect('/');
+    });
+});
+
 router.post('/hospital-login', async (req, res) => {
     const { username, password } = req.body;
     console.log('Received request:', username, password); // Check if request body is received correctly
@@ -86,10 +112,10 @@ router.get('/patientLogin', async (req, res) => {
     }
 });
 
-router.get('/patientReport/:medivaultId', async (req, res) => {
+router.get('/patientReport', async (req, res) => {
     try {
+        const medivaultId = req.session.medivaultId;
         // Get the patient ID from the URL parameters
-        const medivaultId = req.params.medivaultId;
         const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
         const patientId = patientInfo._id;
         // Find all reports related to the patient using the Patient_Id
@@ -108,10 +134,10 @@ router.get('/patientReport/:medivaultId', async (req, res) => {
     }
 });
 
-router.get('/patientAppointment/:medivaultId', async (req, res) => {
+router.get('/patientAppointment', async (req, res) => {
     try {
         // Get the patient ID from the URL parameters
-        const medivaultId = req.params.medivaultId;
+        const medivaultId = req.session.medivaultId;
         const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
         const patientId = patientInfo._id;
         // Find all appointment related to the patient using the Patient_Id
@@ -130,10 +156,10 @@ router.get('/patientAppointment/:medivaultId', async (req, res) => {
     }
 });
 
-router.get('/patientBill/:medivaultId', async (req, res) => {
+router.get('/patientBill', async (req, res) => {
     try {
         // Get the patient ID from the URL parameters
-        const medivaultId = req.params.medivaultId;
+        const medivaultId = req.session.medivaultId;
         const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
         const patientId = patientInfo._id;
         // Find all bills related to the patient using the Patient_Id
@@ -152,10 +178,10 @@ router.get('/patientBill/:medivaultId', async (req, res) => {
     }
 });
 
-router.get('/patientPrescription/:medivaultId', async (req, res) => {
+router.get('/patientPrescription', async (req, res) => {
     try {
         // Get the patient ID from the URL parameters
-        const medivaultId = req.params.medivaultId;
+        const medivaultId = req.session.medivaultId;
         const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
         const patientId = patientInfo._id;
         // Find all prescriptions related to the patient using the Patient_Id

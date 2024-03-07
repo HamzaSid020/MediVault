@@ -775,7 +775,9 @@
 		}
 	</style>
 	<script>
-		function submitData() {
+		function submitData(event) {
+			event.preventDefault(); // Prevent the default form submission behavior
+
 			// Get values from input fields
 			var Username = document.getElementById('Patient_Username_Input').value;
 			var Password = document.getElementById('Patient_Password_Input').value;
@@ -786,7 +788,7 @@
 				password: Password
 			};
 
-			console.log(data);  // Log the data after creating it
+			console.log(data);
 
 			// Send data to "/patient-login" using Fetch API
 			fetch('/patient-login', {
@@ -807,17 +809,21 @@
 					}
 				})
 				.then(data => {
-					// Redirect to the home page or handle the medivaultId as needed
-					const medivaultId = data.medivaultId;
-
-					// Redirect to the patientInfo page with the medivaultId
-					window.location.href = '/patientReport/' + medivaultId;
+					if (data.message === 'Login successful') {
+						// Redirect to the patientReport page with the medivaultId
+						window.location.href = '/patientReport';
+					} else {
+						// Handle other responses or show an error message
+						console.log(data.message);
+					}
 				})
 				.catch(error => {
 					// Handle errors
 					console.error('Error:', error);
+					// You might want to update UI or show an error message to the user
 				});
 		}
+
 		function checkSubmitButton() {
 			var Username = document.getElementById('Patient_Username_Input');
 			var Password = document.getElementById('Patient_Password_Input');
@@ -826,7 +832,7 @@
 			var submitButton = document.getElementById('Submit');
 
 			// Enable the submit button only if both checkboxes are checked
-    		submitButton.disabled = !(termsCheckbox.checked && privacyCheckbox.checked && Username.value.trim() !== '' && Password.value.trim() !== '');
+			submitButton.disabled = !(termsCheckbox.checked && privacyCheckbox.checked && Username.value.trim() !== '' && Password.value.trim() !== '');
 		}
 	</script>
 </head>
@@ -960,7 +966,7 @@
 						<span><a href="/hospitalLogin"
 								style="text-decoration: none; color: rgba(255,255,255,1);">Clinic/Hospital</a></span>
 					</div>
-					<form id="patientForm" action="/patient-login" method="post" onsubmit="submitData(event)">
+					<form id="patientForm" method="post" onsubmit="submitData(event)">
 
 						<svg class="Patient_Username_Rectangle">
 							<rect id="Patient_Username_Rectangle" rx="0" ry="0" x="0" y="0" width="418" height="85">
