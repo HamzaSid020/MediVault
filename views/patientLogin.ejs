@@ -819,12 +819,14 @@
 				});
 		}
 		function checkSubmitButton() {
+			var Username = document.getElementById('Patient_Username_Input');
+			var Password = document.getElementById('Patient_Password_Input');
 			var termsCheckbox = document.getElementById('termsCheckbox');
 			var privacyCheckbox = document.getElementById('privacyCheckbox');
 			var submitButton = document.getElementById('Submit');
 
 			// Enable the submit button only if both checkboxes are checked
-			submitButton.disabled = !(termsCheckbox.checked && privacyCheckbox.checked);
+    		submitButton.disabled = !(termsCheckbox.checked && privacyCheckbox.checked && Username.value.trim() !== '' && Password.value.trim() !== '');
 		}
 	</script>
 </head>
