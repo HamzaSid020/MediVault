@@ -649,73 +649,8 @@
 			top: 833.5px;
 		}
 
-		#Repeat_Grid_4 {
-			position: absolute;
-			width: 21px;
-			height: 63px;
-			left: 789.948px;
-			top: 644.5px;
-			overflow: hidden;
-		}
-
-		#Group_bu {
-			position: absolute;
-			width: 14px;
-			height: 14px;
-			left: 4px;
-			top: 6px;
-			overflow: visible;
-		}
-
-		#Rectangle_78 {
-			fill: rgba(255, 255, 255, 1);
-			stroke: rgba(189, 192, 225, 1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-		}
-
-		.Rectangle_78 {
-			position: absolute;
-			overflow: visible;
-			width: 14px;
-			height: 14px;
-			left: 0px;
-			top: 0px;
-		}
-
-		#Group_bw {
-			position: absolute;
-			width: 14px;
-			height: 14px;
-			left: 4px;
-			top: 47px;
-			overflow: visible;
-		}
-
-		#Rectangle_78_bx {
-			fill: rgba(255, 255, 255, 1);
-			stroke: rgba(189, 192, 225, 1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-		}
-
-		.Rectangle_78_bx {
-			position: absolute;
-			overflow: visible;
-			width: 14px;
-			height: 14px;
-			left: 0px;
-			top: 0px;
-		}
-
 		#I_accept_the_Terms_and_Conditi {
-			left: 821.948px;
+			left: 750px;
 			top: 641.5px;
 			position: absolute;
 			overflow: visible;
@@ -730,7 +665,7 @@
 		}
 
 		#I_accept_the_Privacy_Policy {
-			left: 821.948px;
+			left: 750px;
 			top: 680.5px;
 			position: absolute;
 			overflow: visible;
@@ -742,6 +677,23 @@
 			font-weight: normal;
 			font-size: 20px;
 			color: rgba(255, 255, 255, 1);
+		}
+
+		.checkbox {
+			display: none;
+		}
+
+		.checkbox+label {
+			cursor: pointer;
+			width: 14px;
+			height: 14px;
+			background: transparent;
+			border: 1px solid rgba(189, 192, 225, 1);
+			display: inline-block;
+		}
+
+		.checkbox:checked+label {
+			background: rgba(255, 255, 255, 1);
 		}
 
 		#Password {
@@ -775,11 +727,12 @@
 		}
 
 		#Submit {
-			left: 912px;
-			top: 1012.103px;
+			left: 848.948px;
+			top: 825px;
 			position: absolute;
 			overflow: visible;
-			width: 98px;
+			width: 228px;
+			height: 79px;
 			white-space: nowrap;
 			text-align: left;
 			font-family: Segoe UI;
@@ -787,6 +740,38 @@
 			font-weight: bold;
 			font-size: 30px;
 			color: rgba(255, 255, 255, 1);
+			background-color: rgba(90, 92, 137, 1);
+			border: 1px solid rgba(189, 192, 225, 1);
+			border-radius: 39.5px;
+			cursor: pointer;
+			transition: color 0.3s, background-color 0.3s;
+			/* Add transition for color and background-color */
+		}
+
+		#Submit:hover {
+			color: rgba(90, 92, 137, 1);
+			background-color: rgba(255, 255, 255, 1);
+		}
+
+		#Submit span {
+			display: block;
+			padding: 20px;
+			margin-top: -5px;
+			margin-left: 40px;
+		}
+
+		#Submit:disabled {
+			/* Styles for the disabled state */
+			opacity: 0.5;
+			/* Reduce opacity for a disabled look */
+			cursor: not-allowed;
+			/* Change cursor for a disabled look */
+			pointer-events: none;
+			/* Disable pointer events to prevent interactions */
+		}
+
+		a {
+			text-decoration: none;
 		}
 	</style>
 	<script>
@@ -800,7 +785,7 @@
 				username: Username,
 				password: Password
 			};
-
+			console.log(data);
 			// Send data to "/hospitalLogin" using Fetch API
 			fetch('/hospital-login', {
 				method: 'POST',
@@ -827,6 +812,14 @@
 					// Handle errors
 					console.error('Error:', error);
 				});
+		}
+		function checkSubmitButton() {
+			var termsCheckbox = document.getElementById('termsCheckbox');
+			var privacyCheckbox = document.getElementById('privacyCheckbox');
+			var submitButton = document.getElementById('Submit');
+
+			// Enable the submit button only if both checkboxes are checked
+			submitButton.disabled = !(termsCheckbox.checked && privacyCheckbox.checked);
 		}
 	</script>
 </head>
@@ -959,6 +952,8 @@
 						<span><a href="/hospitalLogin"
 								style="text-decoration: none; color: rgba(255,255,255,1);">Clinic/Hospital</a></span>
 					</div>
+					<form id="patientForm" action="/hospital-login" method="post" onsubmit="submitData(event)">
+
 					<svg class="Hospital_Username_Rectangle">
 						<rect id="Hospital_Username_Rectangle" rx="0" ry="0" x="0" y="0" width="418" height="85"></rect>
 						<foreignObject class="input-container" x="0" y="0" width="418" height="85">
@@ -973,29 +968,13 @@
 								class="input-field">
 						</foreignObject>
 					</svg>
-					<svg class="Rectangle_77">
-						<rect id="Rectangle_77" rx="39.5" ry="39.5" x="0" y="0" width="228" height="79">
-						</rect>
-					</svg>
-					<div id="Repeat_Grid_4">
-						<div id="Group_bu" class="">
-							<svg class="Rectangle_78">
-								<rect id="Rectangle_78" rx="0" ry="0" x="0" y="0" width="14" height="14">
-								</rect>
-							</svg>
-						</div>
-						<div id="Group_bw" class="">
-							<svg class="Rectangle_78_bx">
-								<rect id="Rectangle_78_bx" rx="0" ry="0" x="0" y="0" width="14" height="14">
-								</rect>
-							</svg>
-						</div>
-					</div>
 					<div id="I_accept_the_Terms_and_Conditi">
-						<span>I accept the Terms and Conditions</span>
+						<input type="checkbox" id="termsCheckbox" onchange="checkSubmitButton()">
+						<label for="termsCheckbox">I accept the Terms and Conditions</label>
 					</div>
 					<div id="I_accept_the_Privacy_Policy">
-						<span>I accept the Privacy Policy</span>
+						<input type="checkbox" id="privacyCheckbox" onchange="checkSubmitButton()">
+						<label for="privacyCheckbox">I accept the Privacy Policy</label>
 					</div>
 					<div id="Password">
 						<span>Password</span>
@@ -1003,10 +982,11 @@
 					<div id="Hospital_Id">
 						<span>Hospital/Clinic Id</span>
 					</div>
+					<button id="Submit" class="Rectangle_77" disabled>
+						<span>Submit</span>
+					</button>
+					</form>
 				</div>
-			</div>
-			<div id="Submit" onclick="submitData()">
-				<span>Submit</span>
 			</div>
 		</div>
 	</div>
