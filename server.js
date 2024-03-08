@@ -29,6 +29,7 @@ const ejs = require('ejs');
 const path = require('path');
 const fileUpload = require('express-fileupload');
 
+
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true })); // Parse incoming requests with urlencoded payloads
 app.use(fileUpload());
@@ -48,15 +49,6 @@ async function connectToDatabase() {
 }
 
 app.use('/', apiFunctions);
-
-app.get('/', async (req, res) => {
-  try {
-    res.render('home');
-  } catch (error) {
-    console.error('Error rendering HTML:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
 
 app.post('/uploadPatientImage', (req, res) => {
   // Check if the request has files

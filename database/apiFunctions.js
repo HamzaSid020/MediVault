@@ -27,6 +27,19 @@ router.use(
     })
 );
 
+router.get('/', async (req, res) => {
+    try {
+        if (req.session.loggedIn == true) {
+            res.render('home', { Username: req.session.username }); // Corrected the object syntax
+        } else {
+            res.render('home', { Username: null });
+        }
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.post('/patient-login', async (req, res) => {
     const { username, password } = req.body;
     console.log('Received request:', username, password); // Check if request body is received correctly
@@ -36,14 +49,13 @@ router.post('/patient-login', async (req, res) => {
         console.log('User:', user); // Check if user is found
 
         if (user) {
-            const patientInfo = await PatientInfo.findOne({ _id: user.Patient_Id }).select('Medivault_Id');
+            const patientInfo = await PatientInfo.findOne({ _id: user.Patient_Id });
             console.log('Patient Info:', patientInfo); // Check if patient information is found
 
             if (patientInfo) {
                 req.session.loggedIn = true;
                 req.session.username = patientInfo.Name;
                 req.session.medivaultId = patientInfo.Medivault_Id; // Store medivaultId in the session
-
                 res.status(200).json({ message: 'Login successful' });
             } else {
                 res.status(500).json({ message: 'Patient information not found' });
@@ -114,6 +126,10 @@ router.get('/patientLogin', async (req, res) => {
 
 router.get('/patientReport', async (req, res) => {
     try {
+        if (!req.session.medivaultId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('Unauthorized Access');
+        }
         const medivaultId = req.session.medivaultId;
         // Get the patient ID from the URL parameters
         const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
@@ -136,6 +152,10 @@ router.get('/patientReport', async (req, res) => {
 
 router.get('/patientAppointment', async (req, res) => {
     try {
+        if (!req.session.medivaultId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('Unauthorized Access');
+        }
         // Get the patient ID from the URL parameters
         const medivaultId = req.session.medivaultId;
         const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
@@ -158,6 +178,10 @@ router.get('/patientAppointment', async (req, res) => {
 
 router.get('/patientBill', async (req, res) => {
     try {
+        if (!req.session.medivaultId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('Unauthorized Access');
+        }
         // Get the patient ID from the URL parameters
         const medivaultId = req.session.medivaultId;
         const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
@@ -180,6 +204,10 @@ router.get('/patientBill', async (req, res) => {
 
 router.get('/patientPrescription', async (req, res) => {
     try {
+        if (!req.session.medivaultId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('Unauthorized Access');
+        }
         // Get the patient ID from the URL parameters
         const medivaultId = req.session.medivaultId;
         const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
