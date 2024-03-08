@@ -150,6 +150,58 @@ router.get('/patientReport', async (req, res) => {
     }
 });
 
+router.get('/patientPrescriptionEdit', async (req, res) => {
+    try {
+        if (!req.session.medivaultId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('Unauthorized Access');
+        }
+        const medivaultId = req.session.medivaultId;
+        // Get the patient ID from the URL parameters
+        const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        const patientId = patientInfo._id;
+        // Find all reports related to the patient using the Patient_Id
+        const reports = await Report.find({ Patient_Id: patientId })
+            .populate('Hospital_Id')
+            .exec();
+
+        // Pass the patient ID to the render function
+        console.log(patientInfo);
+        console.log(reports);
+
+        res.render('patientReportEdit', { patientInfo: patientInfo, report_info: reports });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/patientReportEdit', async (req, res) => {
+    try {
+        if (!req.session.medivaultId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('Unauthorized Access');
+        }
+        const medivaultId = req.session.medivaultId;
+        // Get the patient ID from the URL parameters
+        const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        const patientId = patientInfo._id;
+        // Find all reports related to the patient using the Patient_Id
+        const reports = await Report.find({ Patient_Id: patientId })
+            .populate('Hospital_Id')
+            .exec();
+
+        // Pass the patient ID to the render function
+        console.log(patientInfo);
+        console.log(reports);
+
+        res.render('patientReportEdit', { patientInfo: patientInfo, report_info: reports });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.get('/patientAppointment', async (req, res) => {
     try {
         if (!req.session.medivaultId) {
