@@ -4,6 +4,7 @@ const router = express.Router();
 const path = require('path');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const multer = require('multer');
 
 const {
     HospitalInfo,
@@ -19,6 +20,7 @@ const {
 
 router.use(express.json()); // This middleware will parse JSON data in the request body
 router.use(cookieParser());
+router.use(express.static('public'));
 router.use(
     session({
         secret: 'medivault123445566', // Change this to a secure random string
@@ -26,6 +28,43 @@ router.use(
         saveUninitialized: true,
     })
 );
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/images/patient');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    },
+});
+
+const upload = multer({ storage: storage });
+
+function generateMedivaultId(firstName, lastName, phoneNumber) {
+    // Extracting the first letter of the first name
+    const firstLetter = firstName.charAt(0).toUpperCase();
+
+    // Extracting the first 4 letters of the last name (or less if last name is shorter)
+    const lastFourLetters = lastName.slice(0, 4).toUpperCase();
+
+    // Extracting the last four digits of the phone number
+    const lastFourDigits = extractLastFourDigits(phoneNumber);
+
+    // Combining the components to form the 9-digit ID
+    const medivaultId = firstLetter + lastFourLetters + lastFourDigits;
+
+    return medivaultId;
+}
+
+function extractLastFourDigits(phoneNumber) {
+    // Convert phone number to string if it's not already
+    const phoneNumberString = phoneNumber.toString();
+  
+    // Extract the last four digits of the phone number
+    const lastFourDigits = phoneNumberString.slice(-4);
+  
+    return lastFourDigits;
+  }
 
 router.get('/', async (req, res) => {
     try {
@@ -412,6 +451,7 @@ router.post('/patientUpdate', async (req, res) => {
             return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
         }
 
+
         const { _id, updatedData } = req.body;
         console.log('Updating patient:', _id, updatedData);
 
@@ -433,36 +473,94 @@ router.post('/patientUpdate', async (req, res) => {
     }
 });
 
+router.post('/patientCreate', async (req, res) => {
+    try {
+        const { newData } = req.body; // Assuming newData contains the information for the new patient
+        console.log("New Patient Info Server", newData );
+        // Convert formatted data to the structure expected by your model
+        const formattedData = convertToOriginalData(newData, true);
 
-function convertToOriginalData(formattedData) {
+        // Create a new patient entry in the database
+        await PatientInfo.create(formattedData);
+
+        console.log('Patient created successfully');
+        res.sendStatus(201); // Send a 201 Created response
+    } catch (error) {
+        console.error('Error creating patient:', error);
+        res.status(500).json({ success: false, error: 'Internal Server Error' });
+    }
+});
+
+function convertToOriginalData(formattedData, isCreating = false) {
     // Combine the first and last name into the original 'Name' field
     const name = `${formattedData.firstName} ${formattedData.lastName}`.trim();
-  
+
     // Combine the street, city, zip code, and province into the original 'Address' field
     const address = `${formattedData.streetName}, ${formattedData.city}, ${formattedData.province} ${formattedData.zipCode}`;
-  
+
     // Map the 'gender' back to the original 'Sex' field
     const genderMap = {
-      'male': 'M',
-      'female': 'F',
-      'other': '' // Add more mappings as needed
+        'male': 'M',
+        'female': 'F',
+        'other': 'X' // Add more mappings as needed
     };
     const sex = genderMap[formattedData.gender] || '';
-  
+
     const currentDate = new Date();
-    const formattedCurrentTime = currentDate.toISOString(); // You can format this as needed
-    
-    const originalData = {
-        Name: name,
-        Phone_No: formattedData.mobileNumber,
-        DOB: formattedData.dob,
-        Sex: sex,
-        Address: address,
-        Email: formattedData.emailAddress,
-        Patient_Id: formattedData.patientId,
-        Last_Updated_Time: formattedCurrentTime
-    };
+    const formattedCurrentTime = currentDate.toISOString();
+    let originalData = '';
+
+    if (isCreating) {
+        const medivaultId = generateMedivaultId(formattedData.firstName, formattedData.lastName, formattedData.mobileNumber);
+        originalData = {
+            Medivault_Id: medivaultId,
+            Name: name,
+            Phone_No: formattedData.mobileNumber,
+            DOB: formattedData.dob,
+            Sex: sex,
+            Address: address,
+            Email: formattedData.emailAddress,
+            Patient_Id: formattedData.patientId,
+            Last_Updated_Time: formattedCurrentTime
+        };
+    }
+    else {
+        originalData = {
+            Name: name,
+            Phone_No: formattedData.mobileNumber,
+            DOB: formattedData.dob,
+            Sex: sex,
+            Address: address,
+            Email: formattedData.emailAddress,
+            Patient_Id: formattedData.patientId,
+            Last_Updated_Time: formattedCurrentTime
+        };
+    }
+
     return originalData;
-  }
-  
+}
+
+router.post('/upload', upload.single('image'), (req, res) => {
+    if (!req.session.medivaultId) {
+        // Handle the case when medivaultId is not present
+        return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
+    }
+    console.log('Request received:', req.file);
+
+    // If no file submitted, exit
+    if (!req.file) {
+        console.log('No file found in the request');
+        return res.status(400).json({ error: 'No file found in the request' });
+    }
+
+    // If does not have image mime type prevent from uploading
+    if (!/^image/.test(req.file.mimetype)) {
+        console.log('Invalid image mime type:', req.file.mimetype);
+        return res.status(400).json({ error: 'Invalid image mime type' });
+    }
+
+    console.log('File uploaded successfully:', req.file);
+    res.status(200).json({ message: 'File uploaded successfully' });
+});
+
 module.exports = router;

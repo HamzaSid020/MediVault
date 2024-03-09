@@ -1123,105 +1123,6 @@
 		}
 	</style>
 </head>
-<script>
-	function handleImageUpload() {
-		// Trigger the file input click event when the button is clicked
-		document.getElementById('imageInput').click();
-	}
-
-	// Add an event listener to the file input for handling image uploads
-	document.getElementById('imageInput').addEventListener('change', function (event) {
-		console.log("Event Logged");
-		// Handle the selected file here (e.g., upload to server, display preview, etc.)
-		var selectedFile = event.target.files[0];
-		console.log('Selected File:', selectedFile);
-
-		// Create FormData object to send the file to the server
-		var formData = new FormData();
-		formData.append('patientImage', selectedFile);
-
-		// Use fetch API to make an asynchronous POST request
-		fetch('/uploadPatientImage', {
-			method: 'POST',
-			body: formData
-		})
-			.then(response => {
-				if (!response.ok) {
-					throw new Error('Network response was not ok');
-				}
-				return response.json();
-			})
-			.then(data => {
-				// Handle the server response (e.g., display file details)
-				console.log('Server Response:', data);
-			})
-			.catch(error => {
-				// Handle errors
-				console.error('Error uploading file:', error);
-			});
-	});
-	function submitPatient() {
-		const PatientFirstName = document.getElementById('PatientFirstName').value;
-		const PatientLastName = document.getElementById('PatientLastName').value;
-		const PatientId = document.getElementById('PatientId').value;
-		const MobileNumber = document.getElementById('MobileNumber').value;
-		const EmailAddress = document.getElementById('EmailAddress').value;
-		const DOB = document.getElementById('DOB').value;
-		const Gender = document.getElementById('Gender').value;
-		const StreetName = document.getElementById('StreetName').value;
-		const City = document.getElementById('City').value;
-		const ZipCode = document.getElementById('ZipCode').value;
-		const Province = document.getElementById('Province').value;
-
-		// Basic validations
-		if (!PatientFirstName || !PatientLastName || !MobileNumber || !EmailAddress || !DOB || !Gender || !StreetName || !City || !ZipCode || !Province) {
-			alert('Please fill in all fields');
-			return;
-		}
-
-		// Additional validations (customize as needed)
-		if (!isValidMobileNumber(MobileNumber)) {
-			alert('Invalid Mobile Number');
-			return;
-		}
-
-		fetch('/create-patient', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				PatientFirstName,
-				PatientLastName,
-				PatientId,
-				MobileNumber,
-				EmailAddress,
-				DOB,
-				Gender,
-				StreetName,
-				City,
-				ZipCode,
-				Province,
-			}),
-		})
-			.then(response => response.json())
-			.then(data => {
-				console.log('Patient created successfully:', data);
-			})
-			.catch(error => console.error('Error creating patient:', error));
-	}
-	// Example validation function for a mobile number
-	function isValidMobileNumber(number) {
-		// Customize the validation logic based on your requirements
-		const regex = /^\d{10}$/; // Assumes a 10-digit mobile number
-		return regex.test(number);
-	}
-	function updateMaxDate() {
-		const currentDate = new Date().toISOString().split('T')[0];
-		document.getElementById('DOB').max = currentDate;
-	}
-</script>
-
 <body>
 	<div id="Patient_Registration">
 		<form id="patientForm">
@@ -1408,7 +1309,7 @@
 						</div>
 					</div>
 				</div>
-				<div id="Group_147">
+				<!-- <div id="Group_147">
 					<svg class="Rectangle_109">
 						<rect id="Rectangle_109" rx="56" ry="56" x="0" y="0" width="240" height="225">
 						</rect>
@@ -1442,7 +1343,7 @@
 							</path>
 						</svg>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<div id="Address">
 				<span>Address:</span>
@@ -1452,6 +1353,82 @@
 			</button>
 		</form>
 	</div>
+	<script>
+		function submitPatient() {
+			// Extract values from the form
+			const firstName = document.getElementById('PatientFirstName').value;
+			const lastName = document.getElementById('PatientLastName').value;
+			const dob = document.getElementById('DOB').value;
+			const gender = document.getElementById('Gender').value;
+			const patientId = document.getElementById('PatientId').value;
+			const mobileNumber = document.getElementById('MobileNumber').value;
+			const emailAddress = document.getElementById('EmailAddress').value;
+			const streetName = document.getElementById('StreetName').value;
+			const city = document.getElementById('City').value;
+			const zipCode = document.getElementById('ZipCode').value;
+			const province = document.getElementById('Province').value;
+	
+			// Validation: Check if any of the required fields is empty
+			if (
+				!firstName || !lastName || !dob || !gender ||
+				!patientId || !mobileNumber || !emailAddress ||
+				!streetName || !city || !zipCode || !province
+			) {
+				alert('Please fill in all required fields.');
+				return;
+			}
+	
+			// If all required fields are filled, proceed with sending the update request
+			const newData = {
+				firstName,
+				lastName,
+				dob,
+				gender,
+				patientId,
+				mobileNumber,
+				emailAddress,
+				streetName,
+				city,
+				zipCode,
+				province
+			};
+
+			console.log("New Patient Info", newData );
+	
+			// Send the data to the server
+			fetch('/patientCreate', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({newData })
+			})
+				.then(response => {
+					if (response.status === 201) {
+						console.log('Creation successful');
+						alert(`New Patient: ${firstName} ${lastName} created.`);
+
+					} else {
+						throw new Error('Creation failed');
+					}
+				})
+				.catch(error => {
+					console.error('Error updating patient', error);
+					// Handle error actions here if needed
+				});
+		}
+	
+		// Example validation function for a mobile number
+		function isValidMobileNumber(number) {
+			// Customize the validation logic based on your requirements
+			const regex = /^\d{10}$/; // Assumes a 10-digit mobile number
+			return regex.test(number);
+		}
+		function updateMaxDate() {
+			const currentDate = new Date().toISOString().split('T')[0];
+			document.getElementById('DOB').max = currentDate;
+		}
+	</script>
 </body>
 
 </html>

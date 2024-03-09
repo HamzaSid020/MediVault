@@ -27,12 +27,10 @@ const apiFunctions = require('./database/apiFunctions');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
 const path = require('path');
-const fileUpload = require('express-fileupload');
-
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true })); // Parse incoming requests with urlencoded payloads
-app.use(fileUpload());
+
 app.use(express.json()); // This middleware will parse JSON data in the request body
 app.use(express.static(path.join(__dirname, 'public')));
 
