@@ -3203,7 +3203,7 @@
 								placeholder="Patient Last Name" value="<%= patientInfo.Name.split(' ')[1] || '' %>"
 								required>
 							<input type="date" id="DOB" class="Rectangle_113" placeholder="DOB" max=""
-								value="<%= patientInfo.DOB || '' %>" onchange="updateMaxDate()">
+								value="<%= patientInfo.DOB || '' %>" onchange="updateMaxDate()" required>
 							<select id="Gender" class="Rectangle_117" required>
 								<option value="male" <%= patientInfo.Sex === 'male' ? 'selected' : '' %>>Male</option>
 								<option value="female" <%= patientInfo.Sex === 'female' ? 'selected' : '' %>>Female
@@ -3356,18 +3356,41 @@
 		// Function to send updated data to the server
 		function updatePatient() {
 			// Extract values from the form
+			const firstName = document.getElementById('PatientFirstName').value;
+			const lastName = document.getElementById('PatientLastName').value;
+			const dob = document.getElementById('DOB').value;
+			const gender = document.getElementById('Gender').value;
+			const patientId = document.getElementById('PatientId').value;
+			const mobileNumber = document.getElementById('MobileNumber').value;
+			const emailAddress = document.getElementById('EmailAddress').value;
+			const streetName = document.getElementById('StreetName').value;
+			const city = document.getElementById('City').value;
+			const zipCode = document.getElementById('ZipCode').value;
+			const province = document.getElementById('Province').value;
+
+			// Validation: Check if any of the required fields is empty
+			if (
+				!firstName || !lastName || !dob || !gender ||
+				!patientId || !mobileNumber || !emailAddress ||
+				!streetName || !city || !zipCode || !province
+			) {
+				alert('Please fill in all required fields.');
+				return;
+			}
+
+			// If all required fields are filled, proceed with sending the update request
 			const updatedData = {
-				firstName: document.getElementById('PatientFirstName').value,
-				lastName: document.getElementById('PatientLastName').value,
-				dob: document.getElementById('DOB').value,
-				gender: document.getElementById('Gender').value,
-				patientId: document.getElementById('PatientId').value,
-				mobileNumber: document.getElementById('MobileNumber').value,
-				emailAddress: document.getElementById('EmailAddress').value,
-				streetName: document.getElementById('StreetName').value,
-				city: document.getElementById('City').value,
-				zipCode: document.getElementById('ZipCode').value,
-				province: document.getElementById('Province').value
+				firstName,
+				lastName,
+				dob,
+				gender,
+				patientId,
+				mobileNumber,
+				emailAddress,
+				streetName,
+				city,
+				zipCode,
+				province
 			};
 
 			// Send the updated data to the server
@@ -3394,12 +3417,7 @@
 		// Attach the updatePatient function to the click event of the "Update" button
 		document.getElementById('Submit-button').addEventListener('click', updatePatient);
 
-
 	</script>
-
-
-
-
 </body>
 
 </html>
