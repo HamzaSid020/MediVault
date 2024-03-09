@@ -449,18 +449,19 @@ function convertToOriginalData(formattedData) {
     };
     const sex = genderMap[formattedData.gender] || '';
   
-    // Create the original data object
+    const currentDate = new Date();
+    const formattedCurrentTime = currentDate.toISOString(); // You can format this as needed
+    
     const originalData = {
-      Name: name,
-      Phone_No: formattedData.mobileNumber,
-      DOB: formattedData.dob,
-      Sex: sex,
-      Address: address,
-      Email: formattedData.emailAddress,
-      Patient_Id: formattedData.patientId
-      // Add more fields as needed
+        Name: name,
+        Phone_No: formattedData.mobileNumber,
+        DOB: formattedData.dob,
+        Sex: sex,
+        Address: address,
+        Email: formattedData.emailAddress,
+        Patient_Id: formattedData.patientId,
+        Last_Updated_Time: formattedCurrentTime
     };
-  
     return originalData;
   }
   
