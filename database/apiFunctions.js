@@ -405,4 +405,63 @@ router.get('/download-prescription/:prescriptionId', async (req, res) => {
     }
 });
 
+router.post('/patientUpdate', async (req, res) => {
+    try {
+        if (!req.session.medivaultId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
+        }
+
+        const { _id, updatedData } = req.body;
+        console.log('Updating patient:', _id, updatedData);
+
+        // Convert formatted data back to original structure
+        const originalDataAgain = convertToOriginalData(updatedData);
+
+        // Update the patient information in the database
+        await PatientInfo.findByIdAndUpdate(
+            _id,
+            { $set: originalDataAgain },
+            { new: true } // Return the updated document
+        );
+
+        console.log('Patient updated successfully');
+        res.sendStatus(200); // Send a simple 200 OK response
+    } catch (error) {
+        console.error('Error updating patient:', error);
+        res.status(500).json({ success: false, error: 'Internal Server Error' });
+    }
+});
+
+
+function convertToOriginalData(formattedData) {
+    // Combine the first and last name into the original 'Name' field
+    const name = `${formattedData.firstName} ${formattedData.lastName}`.trim();
+  
+    // Combine the street, city, zip code, and province into the original 'Address' field
+    const address = `${formattedData.streetName}, ${formattedData.city}, ${formattedData.province} ${formattedData.zipCode}`;
+  
+    // Map the 'gender' back to the original 'Sex' field
+    const genderMap = {
+      'male': 'M',
+      'female': 'F',
+      'other': '' // Add more mappings as needed
+    };
+    const sex = genderMap[formattedData.gender] || '';
+  
+    // Create the original data object
+    const originalData = {
+      Name: name,
+      Phone_No: formattedData.mobileNumber,
+      DOB: formattedData.dob,
+      Sex: sex,
+      Address: address,
+      Email: formattedData.emailAddress,
+      Patient_Id: formattedData.patientId
+      // Add more fields as needed
+    };
+  
+    return originalData;
+  }
+  
 module.exports = router;

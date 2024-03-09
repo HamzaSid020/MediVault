@@ -39,7 +39,7 @@ function extractLastFourDigits(phoneNumber) {
 
 function calculateAge(birthDate) {
   // Split the date string into day, month, and year
-  const [day, month, year] = birthDate.split('-').map(Number);
+  const [year, month, day ] = birthDate.split('-').map(Number);
 
   // Create a Date object with the provided values
   const birthDateObject = new Date(year, month - 1, day);
@@ -103,8 +103,8 @@ async function addDummyPatients() {
         Name: 'Hamza Siddiqui',
         Phone_No: '1234567890',
         Email: 'patient1@example.com',
-        DOB: '24-06-2000',
-        Age: calculateAge('24-06-2000'),
+        DOB: '2000-06-24',
+        Age: calculateAge('2000-06-24'),
         Sex: 'M',
         Address: '123 Havelwood Cresent, Waterloo, ON N2L 4L2',
         Picture: 'patient1.jpg',
@@ -116,8 +116,8 @@ async function addDummyPatients() {
         Name: 'Vaishnavi Polina',
         Phone_No: '1234554855',
         Email: 'patient12@example.com',
-        DOB: '10-10-1999',
-        Age: calculateAge('10-10-1999'),
+        DOB: '1999-10-10',
+        Age: calculateAge('1999-10-10'),
         Sex: 'F',
         Address: '123 Havelwood Cresent, Waterloo, ON N2L 4L2',
         Picture: 'patient3.jpg',
@@ -129,8 +129,8 @@ async function addDummyPatients() {
         Name: 'Nidhi Shukla',
         Phone_No: '9876543210',
         Email: 'patient2@example.com',
-        DOB: '11-09-2006',
-        Age: calculateAge('11-09-2006'),
+        DOB: '2006-09-11',
+        Age: calculateAge('2006-09-11'),
         Sex: 'F',
         Address: '1567 Albert Street, Waterloo, ON N2L 4L2',
         Picture: 'patient2.jpg',
