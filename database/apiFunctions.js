@@ -128,7 +128,7 @@ router.get('/patientReport', async (req, res) => {
     try {
         if (!req.session.medivaultId) {
             // Handle the case when medivaultId is not present
-            return res.status(401).send('Unauthorized Access');
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
         }
         const medivaultId = req.session.medivaultId;
         // Get the patient ID from the URL parameters
@@ -154,7 +154,7 @@ router.get('/patientPrescriptionEdit', async (req, res) => {
     try {
         if (!req.session.medivaultId) {
             // Handle the case when medivaultId is not present
-            return res.status(401).send('Unauthorized Access');
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
         }
         const medivaultId = req.session.medivaultId;
         // Get the patient ID from the URL parameters
@@ -180,7 +180,7 @@ router.get('/patientReportEdit', async (req, res) => {
     try {
         if (!req.session.medivaultId) {
             // Handle the case when medivaultId is not present
-            return res.status(401).send('Unauthorized Access');
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
         }
         const medivaultId = req.session.medivaultId;
         // Get the patient ID from the URL parameters
@@ -206,7 +206,7 @@ router.get('/patientAppointment', async (req, res) => {
     try {
         if (!req.session.medivaultId) {
             // Handle the case when medivaultId is not present
-            return res.status(401).send('Unauthorized Access');
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
         }
         // Get the patient ID from the URL parameters
         const medivaultId = req.session.medivaultId;
@@ -232,7 +232,7 @@ router.get('/patientBill', async (req, res) => {
     try {
         if (!req.session.medivaultId) {
             // Handle the case when medivaultId is not present
-            return res.status(401).send('Unauthorized Access');
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
         }
         // Get the patient ID from the URL parameters
         const medivaultId = req.session.medivaultId;
@@ -258,7 +258,7 @@ router.get('/patientPrescription', async (req, res) => {
     try {
         if (!req.session.medivaultId) {
             // Handle the case when medivaultId is not present
-            return res.status(401).send('Unauthorized Access');
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
         }
         // Get the patient ID from the URL parameters
         const medivaultId = req.session.medivaultId;

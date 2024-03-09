@@ -2331,16 +2331,6 @@
 			overflow: visible;
 		}
 
-		#Rectangle_56 {
-			fill: rgba(90, 92, 137, 1);
-			stroke: rgba(90, 92, 137, 1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-		}
-
 		.Rectangle_56 {
 			position: absolute;
 			overflow: visible;
@@ -2348,14 +2338,17 @@
 			height: 89px;
 			left: 0px;
 			top: 451px;
+			background-color: rgba(90, 92, 137, 1);
+			border: 1px solid rgba(90, 92, 137, 1);
+			border-radius: 10px;
 		}
 
 		#Reports {
-			left: 99px;
-			top: 468.5px;
+			left: 0px;
+			top: 450px;
 			position: absolute;
 			overflow: visible;
-			width: 139px;
+			width: 336px;
 			white-space: nowrap;
 			text-align: left;
 			font-family: Segoe UI;
@@ -2363,9 +2356,9 @@
 			font-weight: normal;
 			font-size: 41px;
 			color: rgba(255, 255, 255, 1);
-		}
-
-		#Rectangle_56_fl {
+			background: rgba(90, 92, 137, 1);
+			border: 1px solid rgba(90, 92, 137, 1);
+			border-radius: 43px;
 			fill: rgba(90, 92, 137, 1);
 			stroke: rgba(90, 92, 137, 1);
 			stroke-width: 1px;
@@ -2373,6 +2366,23 @@
 			stroke-linecap: butt;
 			stroke-miterlimit: 4;
 			shape-rendering: auto;
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+		#Reports:hover {
+			background-color: rgb(255, 255, 255);
+			/* Change background color on hover */
+			color: rgb(59, 61, 101);
+			/* Change text color on hover */
+			stroke: rgb(240, 241, 248);
+		}
+
+		#Reports span {
+			position: relative;
+			top: 0%;
+			/* Center the text vertically */
+			left:30%;
+			transform: translateY(-50%);
 		}
 
 		.Rectangle_56_fl {
@@ -2382,14 +2392,17 @@
 			height: 89px;
 			left: 401px;
 			top: 451px;
+			background-color: rgba(90, 92, 137, 1);
+			border: 1px solid rgba(90, 92, 137, 1);
+			border-radius: 10px;
 		}
 
 		#Appointments {
-			left: 440.5px;
-			top: 468.5px;
+			left: 401px;
+			top: 450px;
 			position: absolute;
 			overflow: visible;
-			width: 258px;
+			width: 336px;
 			white-space: nowrap;
 			text-align: left;
 			font-family: Segoe UI;
@@ -2397,9 +2410,9 @@
 			font-weight: normal;
 			font-size: 41px;
 			color: rgba(255, 255, 255, 1);
-		}
-
-		#Rectangle_56_fn {
+			background: rgba(90, 92, 137, 1);
+			border: 1px solid rgba(90, 92, 137, 1);
+			border-radius: 43px;
 			fill: rgba(90, 92, 137, 1);
 			stroke: rgba(90, 92, 137, 1);
 			stroke-width: 1px;
@@ -2407,6 +2420,23 @@
 			stroke-linecap: butt;
 			stroke-miterlimit: 4;
 			shape-rendering: auto;
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+		#Appointments:hover {
+			background-color: rgb(255, 255, 255);
+			/* Change background color on hover */
+			color: rgb(59, 61, 101);
+			/* Change text color on hover */
+			stroke: rgb(240, 241, 248);
+		}
+
+		#Appointments span {
+			position: relative;
+			top: 0%;
+			/* Center the text vertically */
+			left: 10%;
+			transform: translateY(-50%);
 		}
 
 		.Rectangle_56_fn {
@@ -2416,14 +2446,17 @@
 			height: 89px;
 			left: 802px;
 			top: 451px;
+			background-color: rgba(90, 92, 137, 1);
+			border: 1px solid rgba(90, 92, 137, 1);
+			border-radius: 10px;
 		}
 
 		#Prescriptions {
-			left: 854px;
-			top: 468.5px;
+			left: 803px;
+			top: 450px;
 			position: absolute;
 			overflow: visible;
-			width: 233px;
+			width: 335px;
 			white-space: nowrap;
 			text-align: left;
 			font-family: Segoe UI;
@@ -2431,9 +2464,9 @@
 			font-weight: normal;
 			font-size: 41px;
 			color: rgba(255, 255, 255, 1);
-		}
-
-		#Rectangle_70 {
+			background: rgba(90, 92, 137, 1);
+			border: 1px solid rgba(90, 92, 137, 1);
+			border-radius: 43px;
 			fill: rgba(90, 92, 137, 1);
 			stroke: rgba(90, 92, 137, 1);
 			stroke-width: 1px;
@@ -2441,6 +2474,22 @@
 			stroke-linecap: butt;
 			stroke-miterlimit: 4;
 			shape-rendering: auto;
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+		#Prescriptions:hover {
+			background-color: rgb(255, 255, 255);
+			/* Change background color on hover */
+			color: rgb(59, 61, 101);
+			/* Change text color on hover */
+			stroke: rgb(240, 241, 248);
+		}
+
+		#Prescriptions span {
+			position: relative;
+			top: 0%;
+			left: 15%;
+			transform: translateY(-50%);
 		}
 
 		.Rectangle_70 {
@@ -2450,21 +2499,53 @@
 			height: 89px;
 			left: 1203px;
 			top: 451px;
+			background-color: rgba(90, 92, 137, 1);
+			border: 1px solid rgba(90, 92, 137, 1);
+			border-radius: 10px;
 		}
 
 		#Bills {
-			left: 1334px;
-			top: 469px;
+			left: 1395x;
+			top: 450px;
 			position: absolute;
 			overflow: visible;
-			width: 76px;
+			width: 340x;
+			height: 90px;
 			white-space: nowrap;
 			text-align: left;
 			font-family: Segoe UI;
 			font-style: normal;
-			font-weight: bold;
+			font-weight: normal;
 			font-size: 41px;
 			color: rgba(255, 255, 255, 1);
+			background: rgba(90, 92, 137, 1);
+			border: 1px solid rgba(90, 92, 137, 1);
+			border-radius: 43px;
+			fill: rgba(90, 92, 137, 1);
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: background-color 0.3s, color 0.3s;
+		}
+
+		#Bills:hover {
+			background-color: rgb(255, 255, 255);
+			/* Change background color on hover */
+			color: rgb(59, 61, 101);
+			/* Change text color on hover */
+			stroke: rgb(240, 241, 248);
+
+		}
+
+		#Bills span {
+			position: relative;
+			top: 0%;
+			/* Center the text vertically */
+			left: 40%;
+			transform: translateY(-50%);
 		}
 
 		#Group_73 {
@@ -2630,7 +2711,7 @@
 					<% if (Username) { %>
 					<div id="Sign_Up" style="left:1600px">
 						<a href="/patientReport" style="text-decoration: none; color: rgba(255,255,255,1);">
-						<span>Welcome, <%= Username %></span>
+							<span>Welcome, <%= Username %></span>
 						</a>
 					</div>
 					<% } else { %>
@@ -3303,34 +3384,20 @@
 							srcset="/images/Rectangle_55_fi.png 1x, /images/Rectangle_55_fi@2x.png 2x">
 
 					</div>
-					<svg class="Rectangle_56">
-						<rect id="Rectangle_56" rx="44.5" ry="44.5" x="0" y="0" width="336" height="89">
-						</rect>
-					</svg>
-					<div id="Reports">
+					<button id="Reports" class="Rectangle_56" onclick="redirectToPatientReportInfo()">
 						<span>Reports</span>
-					</div>
-					<svg class="Rectangle_56_fl">
-						<rect id="Rectangle_56_fl" rx="44.5" ry="44.5" x="0" y="0" width="336" height="89">
-						</rect>
-					</svg>
-					<div id="Appointments">
+					</button>
+					<button id="Appointments" class="Rectangle_56_fl" onclick="redirectToPatientAppointmentInfo()">
 						<span>Appointments</span>
-					</div>
-					<svg class="Rectangle_56_fn">
-						<rect id="Rectangle_56_fn" rx="44.5" ry="44.5" x="0" y="0" width="336" height="89">
-						</rect>
-					</svg>
-					<div id="Prescriptions">
+					</button>
+					<button id="Prescriptions" class="Rectangle_56_fn" onclick="redirectToPatientPrescriptionInfo()">
 						<span>Prescriptions</span>
-					</div>
-					<svg class="Rectangle_70">
-						<rect id="Rectangle_70" rx="44.5" ry="44.5" x="0" y="0" width="336" height="89">
-						</rect>
-					</svg>
-					<div id="Bills">
+					</button>
+					<button id="Bills" class="Rectangle_70" onclick="redirectToPatientBillInfo()">
 						<span>Bills</span>
-					</div>
+					</button>
+
+
 				</div>
 			</div>
 		</div>
@@ -3365,6 +3432,20 @@
 	</div>
 	</div>
 	</div>
+	<script>
+		function redirectToPatientBillInfo() {
+			window.location.href = "/patientBill";
+		}
+		function redirectToPatientPrescriptionInfo() {
+			window.location.href = "/patientPrescription";
+		}
+		function redirectToPatientAppointmentInfo() {
+			window.location.href = "/patientAppointment";
+		}
+		function redirectToPatientReportInfo() {
+			window.location.href = "/patientReport";
+		}
+	</script>
 </body>
 
 </html>
