@@ -923,6 +923,15 @@
 			color: rgba(90, 92, 137, 1);
 		}
 
+		.hospital-code-wrapper {
+			border: none;
+			background: transparent;
+			padding: 0;
+			margin: 0;
+			cursor: pointer;
+			outline: none;
+		}
+
 		#Bills {
 			left: 247px;
 			top: 1826.757px;
@@ -2102,10 +2111,7 @@
 			background-color: rgb(0, 0, 0);
 			opacity: 0.5;
 			z-index: 1;
-
-
 		}
-
 
 		#Modal-Edit {
 			position: absolute;
@@ -2114,7 +2120,7 @@
 			left: 180px;
 			top: 750px;
 			overflow: visible;
-			background-color: rgb(255, 255, 255);
+			background-color: rgb(232, 230, 241);
 			z-index: 2;
 		}
 
@@ -2126,6 +2132,14 @@
 			stroke-linecap: round;
 			stroke-miterlimit: 4;
 			shape-rendering: auto;
+			transition: fill 0.1s ease, stroke 0.1 ease;
+		}
+
+		#cross:hover {
+			fill: rgba(255, 0, 0, 1);
+			/* Change fill color on hover */
+			stroke: rgba(255, 0, 0, 1);
+			/* Change stroke color on hover */
 		}
 
 		.cross {
@@ -2145,6 +2159,10 @@
 			left: 833px;
 			top: 1912px;
 			overflow: visible;
+		}
+
+		#Submit-button:hover #Update {
+			color: rgba(92, 93, 138, 1);
 		}
 
 		#Rectangle_125 {
@@ -2181,6 +2199,10 @@
 			color: rgba(255, 255, 255, 1);
 		}
 
+		#Submit-button:hover #Rectangle_125 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
 		#update-fields {
 			position: absolute;
 			width: 1499px;
@@ -2215,6 +2237,8 @@
 			height: 66px;
 			left: 0px;
 			top: 237px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		.Rectangle_111 {
@@ -2224,6 +2248,8 @@
 			height: 66px;
 			left: 0px;
 			top: 34px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		.Rectangle_112 {
@@ -2233,6 +2259,8 @@
 			height: 66px;
 			left: 433px;
 			top: 237px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		.Rectangle_124 {
@@ -2242,6 +2270,8 @@
 			height: 66px;
 			left: 866px;
 			top: 237px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		.Rectangle_113 {
@@ -2251,6 +2281,8 @@
 			height: 66px;
 			left: 866px;
 			top: 34px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#Patient_First_Name {
@@ -2305,6 +2337,8 @@
 			height: 66px;
 			left: 433px;
 			top: 34px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#Date_of_Birth {
@@ -2374,6 +2408,8 @@
 			height: 66px;
 			left: 1297px;
 			top: 34px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#Street_Name {
@@ -2398,6 +2434,8 @@
 			height: 78px;
 			left: 2px;
 			top: 523px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#City_Header {
@@ -2422,6 +2460,8 @@
 			height: 78px;
 			left: 435px;
 			top: 523px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#Zip_Code {
@@ -2446,6 +2486,8 @@
 			height: 78px;
 			left: 754px;
 			top: 523px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#Province_Header {
@@ -2470,6 +2512,8 @@
 			height: 78px;
 			left: 1073px;
 			top: 523px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#upload-image {
@@ -2535,6 +2579,10 @@
 			left: 7.998px;
 			top: 0px;
 			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_145:hover #Path_141 {
+			fill: red;
 		}
 
 		#Group_145 {

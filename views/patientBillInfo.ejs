@@ -922,6 +922,15 @@
 			margin: 0;
 			color: rgba(90, 92, 137, 1);
 		}
+		
+		.hospital-code-wrapper {
+			border: none;
+			background: transparent;
+			padding: 0;
+			margin: 0;
+			cursor: pointer;
+			outline: none;
+		}
 
 		#Bills {
 			left: 247px;
@@ -2102,10 +2111,157 @@
 			background-color: rgb(0, 0, 0);
 			opacity: 0.5;
 			z-index: 1;
-
-
 		}
 
+		#HospitalCodeModal {
+			display: none;
+			position: absolute;
+			width: 1920px;
+			height: 2876px;
+			overflow: hidden;
+		}
+
+		#Security-Modal {
+			position: absolute;
+			width: 1042.727px;
+			height: 606.343px;
+			left: 650px;
+			top: 1600px;
+			overflow: visible;
+			background-color: rgb(232, 230, 241);
+			z-index: 2;
+		}
+
+		#Enter_Security_Code {
+			left: 100px;
+			top: 150px;
+			position: absolute;
+			overflow: visible;
+			width: 792px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 40px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Download-Button {
+			position: absolute;
+			width: 253px;
+			height: 95px;
+			left: 2000px;
+			top: 1600px;
+			overflow: visible;
+		}
+
+		#Rectangle_126 {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		#Download-button:hover #Rectangle_126 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Rectangle_126 {
+			position: absolute;
+			overflow: visible;
+			width: 253px;
+			left: 400px;
+			height: 300px;
+			top: 450px;
+		}
+
+		#Download {
+			left: 430px;
+			top: 470px;
+			position: absolute;
+			overflow: visible;
+			width: 189px;
+			height: 47px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 35px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Download-button:hover #Download {
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#security-cross {
+			fill: rgba(0, 0, 0, 1);
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 5px;
+			stroke-linejoin: miter;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.1s ease, stroke 0.1 ease;
+		}
+
+		#security-cross:hover {
+			fill: rgba(255, 0, 0, 1);
+			/* Change fill color on hover */
+			stroke: rgba(255, 0, 0, 1);
+			/* Change stroke color on hover */
+		}
+
+		.security-cross {
+			overflow: visible;
+			position: absolute;
+			width: 25.385px;
+			height: 26.871px;
+			left: 980px;
+			top: 50px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Security_Question {
+			left: 300px;
+			top: 30px;
+			position: absolute;
+			overflow: visible;
+			width: 443px;
+			height: 57px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 43px;
+			color: rgba(92, 93, 138, 1);
+		}
+
+
+		#HospitalCode {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_127 {
+			position: absolute;
+			overflow: visible;
+			width: 682px;
+			height: 66px;
+			left: 200px;
+			top: 250px;
+			font-size: 25px;
+			padding: 10px;
+		}
 
 		#Modal-Edit {
 			position: absolute;
@@ -2114,7 +2270,7 @@
 			left: 180px;
 			top: 750px;
 			overflow: visible;
-			background-color: rgb(255, 255, 255);
+			background-color: rgb(232, 230, 241);
 			z-index: 2;
 		}
 
@@ -2126,6 +2282,14 @@
 			stroke-linecap: round;
 			stroke-miterlimit: 4;
 			shape-rendering: auto;
+			transition: fill 0.1s ease, stroke 0.1 ease;
+		}
+
+		#cross:hover {
+			fill: rgba(255, 0, 0, 1);
+			/* Change fill color on hover */
+			stroke: rgba(255, 0, 0, 1);
+			/* Change stroke color on hover */
 		}
 
 		.cross {
@@ -2138,6 +2302,7 @@
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
 
+	
 		#Submit-button {
 			position: absolute;
 			width: 253px;
@@ -2145,6 +2310,10 @@
 			left: 833px;
 			top: 1912px;
 			overflow: visible;
+		}
+
+		#Submit-button:hover #Update {
+			color: rgba(92, 93, 138, 1);
 		}
 
 		#Rectangle_125 {
@@ -2181,6 +2350,10 @@
 			color: rgba(255, 255, 255, 1);
 		}
 
+		#Submit-button:hover #Rectangle_125 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
 		#update-fields {
 			position: absolute;
 			width: 1499px;
@@ -2215,6 +2388,8 @@
 			height: 66px;
 			left: 0px;
 			top: 237px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		.Rectangle_111 {
@@ -2224,6 +2399,8 @@
 			height: 66px;
 			left: 0px;
 			top: 34px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		.Rectangle_112 {
@@ -2233,6 +2410,8 @@
 			height: 66px;
 			left: 433px;
 			top: 237px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		.Rectangle_124 {
@@ -2242,6 +2421,8 @@
 			height: 66px;
 			left: 866px;
 			top: 237px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		.Rectangle_113 {
@@ -2251,6 +2432,8 @@
 			height: 66px;
 			left: 866px;
 			top: 34px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#Patient_First_Name {
@@ -2305,6 +2488,8 @@
 			height: 66px;
 			left: 433px;
 			top: 34px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#Date_of_Birth {
@@ -2374,6 +2559,8 @@
 			height: 66px;
 			left: 1297px;
 			top: 34px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#Street_Name {
@@ -2398,6 +2585,8 @@
 			height: 78px;
 			left: 2px;
 			top: 523px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#City_Header {
@@ -2422,6 +2611,8 @@
 			height: 78px;
 			left: 435px;
 			top: 523px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#Zip_Code {
@@ -2446,6 +2637,8 @@
 			height: 78px;
 			left: 754px;
 			top: 523px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#Province_Header {
@@ -2470,6 +2663,8 @@
 			height: 78px;
 			left: 1073px;
 			top: 523px;
+			font-size: 25px;
+			padding: 10px;
 		}
 
 		#upload-image {
@@ -2535,6 +2730,10 @@
 			left: 7.998px;
 			top: 0px;
 			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_145:hover #Path_141 {
+			fill: red;
 		}
 
 		#Group_145 {
@@ -2809,13 +3008,15 @@
 			<div class="rectangle-container">
 				<ul class="item-list">
 					<% for (let i = 0; i < bill_info.length; i++) { %>
-					<a href="/download-bill/<%= bill_info[i]._id %>">
+					<!-- <a href="/download-bill/<%= bill_info[i]._id %>"> -->
+					<div id="link" class="hospital-code-wrapper" onclick="showHospitalCodeModal()">
 						<li class="item">
 							<p class="time"><%= bill_info[i].Last_Updated_Time.toLocaleString()%></p>
 							<p class="from">From</p>
 							<p class="hospital-name"><%= bill_info[i].Hospital_Id.Name %></p>
 							<p class="file-name"><%= bill_info[i].Name %></p>
 						</li>
+					</div>
 					</a>
 					<% } %>
 				</ul>
@@ -3347,19 +3548,55 @@
 				</div>
 			</div>
 		</div>
+		<div id="HospitalCodeModal">
+			<div id="background-blur">
+			</div>
+			<div id="Security-Modal">
+				<div id="Modal-Content">
+					<button class="cross-button" onclick="closeModal()">
+						<svg class="security-cross" viewBox="5 5 18.318 19.806">
+							<path id="security-cross"
+								d="M 23.318359375 24.8056640625 L 5 5 M 23.318359375 5 L 5 24.8056640625">
+							</path>
+						</svg>
+					</button>
+					<div id="Download-button">
+						<svg class="Rectangle_126">
+							<rect id="Rectangle_126" rx="47.5" ry="47.5" x="0" y="0" width="253" height="95">
+							</rect>
+						</svg>
+						<div id="Download">
+							<span>Download</span>
+						</div>
+					</div>
+					<input type="text" id="HospitalCode" class="Rectangle_127" placeholder="Enter Hospital Code"
+						required>
+					<div id="Enter_Security_Code">
+						<span>Enter the code provided for Hospital Name:</span>
+					</div>
+					<div id="Security_Question">
+						<span>Security Question</span>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<script>
-		// Get the modal
-		var modal = document.getElementById("ReportsEditModal");
+			var modal = document.getElementById("ReportsEditModal");
+		var hospitalCodeModal = document.getElementById("HospitalCodeModal");
 
 		// Function to open the modal
 		function showModal() {
 			modal.style.display = "block";
 		}
+		function showHospitalCodeModal() {
+			hospitalCodeModal.style.display = "block";
+		}
 
 		// Function to close the modal
 		function closeModal() {
 			modal.style.display = "none";
+			hospitalCodeModal.style.display = "none";
 			location.reload();
 		}
 
