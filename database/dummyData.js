@@ -148,6 +148,45 @@ async function addDummyPatients() {
   }
 }
 
+async function addDummyHospitalCodes() {
+  const existingCodes = await HospitalCodes.find({});
+
+  if (existingCodes.length === 0) {
+    const patientA = await PatientInfo.findOne({ Name: 'Hamza Siddiqui' });
+    const hospitalA = await HospitalInfo.findOne({ Name: 'Hospital A' });
+
+    const patientB = await PatientInfo.findOne({ Name: 'Vaishnavi Polina' });
+    const hospitalB = await HospitalInfo.findOne({ Name: 'Hospital B' });
+
+    const patientC = await PatientInfo.findOne({ Name: 'Nidhi Shukla' });
+    const hospitalC = await HospitalInfo.findOne({ Name: 'Hospital C' });
+
+    const dummyCodes = [
+      {
+        Code: "HSIDD7890",
+        Patient_Id: patientA._id,
+        Hospital_Id: hospitalA._id,
+      },
+      {
+        Code: "VPOLI4855",
+        Patient_Id: patientB._id,
+        Hospital_Id: hospitalB._id,
+      },
+      {
+        Code: "NSHUK3210",
+        Patient_Id: patientC._id,
+        Hospital_Id: hospitalC._id,
+      },
+      // Add more entries as needed
+    ];
+
+    await HospitalCodes.insertMany(dummyCodes);
+    console.log('Dummy data added for Hospital_Codes');
+  } else {
+    console.log('Dummy data for Hospital_Codes already exists');
+  }
+}
+
 // Add dummy data for Report
 async function addDummyReports() {
   const existingReports = await Report.find({});
@@ -404,35 +443,6 @@ async function addDummyHospitalLogins() {
   }
 }
 
-// Add dummy data for Hospital_Codes
-async function addDummyHospitalCodes() {
-  const existingHospitalCodes = await HospitalCodes.find({});
-
-  if (existingHospitalCodes.length === 0) {
-    const hospitalA_Id = await HospitalInfo.findOne({ Name: 'Hospital A' }).select('_id');
-    const patient1_Id = await PatientInfo.findOne({ Name: 'Patient 1' }).select('_id');
-
-    const hospitalB_Id = await HospitalInfo.findOne({ Name: 'Hospital B' }).select('_id');
-    const patient2_Id = await PatientInfo.findOne({ Name: 'Patient 2' }).select('_id');
-    const dummyHospitalCodes = [
-      {
-        Code: '123456',
-        Patient_Id: patient1_Id, // Reference to Patient_Info ID
-        Hospital_Id: hospitalA_Id, // Reference to Hospital_Info ID
-      },
-      {
-        Code: 'ABCDEF',
-        Patient_Id: patient2_Id, // Reference to Patient_Info ID
-        Hospital_Id: hospitalB_Id, // Reference to Hospital_Info ID
-      },
-    ];
-
-    await HospitalCodes.insertMany(dummyHospitalCodes);
-    console.log('Dummy data added for Hospital_Codes');
-  } else {
-    console.log('Dummy data for Hospital_Codes already exists');
-  }
-}
 
 module.exports = {
   addDummyHospitals,

@@ -3209,19 +3209,20 @@
 			</svg>
 			<div class="rectangle-container">
 				<ul class="item-list">
-					<% for (let i = 0; i < report_info.length; i++) { %>
-					<!-- <a href="/download-report/<%= report_info[i]._id %>"> -->
-					<div id="link" class="hospital-code-wrapper" onclick="showHospitalCodeModal()">
-						<li class="item">
-							<p class="time"><%= report_info[i].Last_Updated_Time.toLocaleString()%></p>
-							<p class="from">From</p>
-							<p class="hospital-name"><%= report_info[i].Hospital_Id.Name %></p>
-							<p class="file-name"><%= report_info[i].Name %></p>
-						</li>
+				  <% for (let i = 0; i < report_info.length; i++) { %>
+				  <li class="item">
+					<div id="link" class="hospital-code-wrapper" onclick="showHospitalCodeModal('<%= report_info[i]._id %>', '<%= report_info[i].Hospital_Id._id %>')">
+					  <input type="hidden" class="reportId" value="<%= report_info[i]._id %>">
+					  <input type="hidden" class="hospitalId" value="<%= report_info[i].Hospital_Id._id %>">
+					  <p class="time"><%= report_info[i].Last_Updated_Time.toLocaleString()%></p>
+					  <p class="from">From</p>
+					  <p class="hospital-name"><%= report_info[i].Hospital_Id.Name %></p>
+					  <p class="file-name"><%= report_info[i].Name %></p>
 					</div>
-					<% } %>
+				  </li>
+				  <% } %>
 				</ul>
-			</div>
+			  </div>
 			<div id="Reports_b">
 				<span>Reports</span>
 			</div>
@@ -3755,7 +3756,7 @@
 							</path>
 						</svg>
 					</button>
-					<div id="Download-button">
+					<div id="Download-button" onclick="downloadReport()">
 						<svg class="Rectangle_126">
 							<rect id="Rectangle_126" rx="47.5" ry="47.5" x="0" y="0" width="253" height="95">
 							</rect>
@@ -3764,7 +3765,7 @@
 							<span>Download</span>
 						</div>
 					</div>
-					<input type="text" id="HospitalCode" class="Rectangle_127" placeholder="Enter Hospital Code"
+					<input type="text" id="hospitalCodeText" class="Rectangle_127" placeholder="Enter Hospital Code"
 						required>
 					<div id="Enter_Security_Code">
 						<span>Enter the code provided for Hospital Name:</span>
@@ -3785,8 +3786,29 @@
 		function showModal() {
 			modal.style.display = "block";
 		}
-		function showHospitalCodeModal() {
+
+		function showHospitalCodeModal(reportId, hospitalId) {
 			hospitalCodeModal.style.display = "block";
+			console.log("showHospitalCodeModal",reportId, hospitalId);
+			fetch('/addHospitalReport', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					reportId: reportId,
+					hospitalId: hospitalId,
+				}),
+			})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Network response was not ok');
+					}
+					return response.json();
+				})
+				.catch(error => {
+					console.error('Error during POST request:', error);
+				});
 		}
 
 		// Function to close the modal
@@ -3906,6 +3928,47 @@
 		function isImage(file) {
 			const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']; // Add more if needed
 			return allowedTypes.includes(file.type);
+		}
+
+		function downloadReport() {
+			// Get the hospital code, hospital ID, and report ID from the input fields within the parent container
+			const hospitalCode = document.getElementById('hospitalCodeText').value.toUpperCase();
+			console.log("Hospital code:",hospitalCode);
+			// Make a POST request to your server
+			fetch('/downloadReport', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					hospitalCode: hospitalCode,
+				}),
+			})
+				.then(response => response.json())
+				.then(data => {
+					// Handle the response from the server
+					console.log(data);
+
+					if (data.success) {
+						// If the response is successful, dynamically generate the download link
+						const reportId = data.reportId; // Assuming the server sends back the reportId
+						const downloadLink = document.createElement('a');
+						downloadLink.href = `/download-report/${reportId}`;
+						downloadLink.download = 'report_filename'; // Set the desired filename
+
+						// Trigger the download
+						document.body.appendChild(downloadLink);
+						downloadLink.click();
+						document.body.removeChild(downloadLink);
+					} else {
+						// Handle the case where the server response is not successful
+						console.error('Download request failed:', data.message);
+						alert(data.message);
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
 		}
 	</script>
 </body>
