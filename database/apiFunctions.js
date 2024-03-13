@@ -59,17 +59,22 @@ function generateMedivaultId(firstName, lastName, phoneNumber) {
 function extractLastFourDigits(phoneNumber) {
     // Convert phone number to string if it's not already
     const phoneNumberString = phoneNumber.toString();
-  
+
     // Extract the last four digits of the phone number
     const lastFourDigits = phoneNumberString.slice(-4);
-  
+
     return lastFourDigits;
-  }
+}
 
 router.get('/', async (req, res) => {
     try {
         if (req.session.loggedIn == true) {
-            res.render('home', { Username: req.session.username }); // Corrected the object syntax
+            if(req.session.hospitalLoggedId){
+                res.render('home', { Username: req.session.username, HospitalId: req.session.hospitalLoggedId });
+            }
+            else{
+                res.render('home', { Username: req.session.username }); // Corrected the object syntax
+            }
         } else {
             res.render('home', { Username: null });
         }
@@ -123,14 +128,17 @@ router.post('/hospital-login', async (req, res) => {
 
     try {
         const user = await HospitalLogin.findOne({ Username: username, Password: password });
-        console.log('User:', user); // Check if user is found
+        console.log('User:', user); // Check if user is found     
 
         if (user) {
             const hospitalInfo = await HospitalInfo.findOne({ _id: user.Hospital_Id });
             console.log('Hospital Info:', hospitalInfo); // Check if patient information is found
 
             if (hospitalInfo) {
-                res.status(200).json({ message: 'Login successful', hospitalId: hospitalInfo._id });
+                req.session.hospitalLoggedId = hospitalInfo._id;
+                req.session.loggedIn = true;
+                req.session.username = hospitalInfo.Name;
+                res.status(200).json({ message: 'Login successful'});
             } else {
                 res.status(500).json({ message: 'Patient information not found' });
             }
@@ -145,8 +153,19 @@ router.post('/hospital-login', async (req, res) => {
 
 router.get('/patientRegistration', async (req, res) => {
     try {
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
 
-        res.render('patientRegistration');
+        const hospitalId = req.session.hospitalLoggedId;
+        const hospital = await HospitalInfo.findById(hospitalId);
+
+        if (!hospital) {
+            return res.status(404).send('Hospital not found');
+        }
+
+        res.render('patientRegistration', { hospital });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -351,9 +370,9 @@ router.get('/download-report/:reportId', async (req, res) => {
     }
 });
 
-router.get('/hospitalDashboard/patients/:hospitalId', async (req, res) => {
+router.get('/hospitalDashboard/patients', async (req, res) => {
     try {
-        const hospitalId = req.params.hospitalId;
+        const hospitalId = req.session.hospitalLoggedId;
 
         // Fetch the hospital information
         const hospital = await HospitalInfo.findById(hospitalId);
@@ -476,7 +495,7 @@ router.post('/patientUpdate', async (req, res) => {
 router.post('/patientCreate', async (req, res) => {
     try {
         const { newData } = req.body; // Assuming newData contains the information for the new patient
-        console.log("New Patient Info Server", newData );
+        console.log("New Patient Info Server", newData);
         // Convert formatted data to the structure expected by your model
         const formattedData = convertToOriginalData(newData, true);
 

@@ -2709,7 +2709,13 @@
 						</div>
 					</div>
 
-					<% if (Username) { %>
+					<% if (Username && HospitalId) { %>
+					<div id="Sign_Up" style="left:1600px">
+						<a href="/hospitalDashboard/patients" style="text-decoration: none; color: rgba(255,255,255,1);">
+							<span>Welcome, <%= Username %></span>
+						</a>
+					</div>
+					<% } else if (Username && !HospitalId) { %>
 					<div id="Sign_Up" style="left:1600px">
 						<a href="/patientReport" style="text-decoration: none; color: rgba(255,255,255,1);">
 							<span>Welcome, <%= Username %></span>

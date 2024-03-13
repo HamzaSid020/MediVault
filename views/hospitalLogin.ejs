@@ -186,30 +186,6 @@
 			color: rgba(255, 255, 255, 1);
 		}
 
-		#Group_w {
-			position: absolute;
-			width: 61px;
-			height: 33px;
-			left: 700px;
-			top: -9px;
-			overflow: visible;
-		}
-
-		#Login {
-			left: 0px;
-			top: 0px;
-			position: absolute;
-			overflow: visible;
-			width: 62px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 25px;
-			color: rgba(255, 255, 255, 1);
-		}
-
 		#Sign_Up {
 			left: 1776.478px;
 			top: 25.103px;
@@ -221,7 +197,7 @@
 			font-family: Segoe UI;
 			font-style: normal;
 			font-weight: normal;
-			font-size: 29px;
+			font-size: 25px;
 			color: rgba(255, 255, 255, 1);
 		}
 
@@ -799,11 +775,8 @@
 				.then(result => {
 					// Check if the login was successful
 					if (result.message === 'Login successful') {
-						const hospitalId = result.hospitalId;
-						console.log(hospitalId);
-
 						// Redirect to the hospitalDashboard page with the hospitalId
-						window.location.href = '/hospitalDashboard/patients/' + hospitalId;
+						window.location.href = '/hospitalDashboard/patients';
 					} else {
 						// Handle login failure
 						console.error('Login failed:', result.message);
@@ -856,12 +829,6 @@
 					<div id="Group_u" class="">
 						<div id="Contact_Us">
 							<span>Contact Us</span>
-						</div>
-					</div>
-					<div id="Group_w" class="">
-						<div id="Login">
-							<span><a href="/patientLogin"
-									style="text-decoration: none; color: rgba(255,255,255,1);">Login</a></span>
 						</div>
 					</div>
 				</div>

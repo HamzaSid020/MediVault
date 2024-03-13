@@ -45,7 +45,7 @@
 			width: 100%;
 			height: 100vh;
 			background-color: rgba(255, 255, 255, 1);
-			overflow:hidden;
+			overflow: hidden;
 			overflow-y: auto;
 			--web-view-name: Patient Registration;
 			--web-view-id: Patient_Registration;
@@ -111,7 +111,7 @@
 
 		#Repeat_Grid_1 {
 			position: absolute;
-			width: 781px;
+			width: 1920px;
 			height: 23px;
 			left: 500.979px;
 			top: 32.603px;
@@ -122,7 +122,7 @@
 			position: absolute;
 			width: 67px;
 			height: 33px;
-			left: 1px;
+			left: 100px;
 			top: -9px;
 			overflow: visible;
 		}
@@ -146,7 +146,7 @@
 			position: absolute;
 			width: 103px;
 			height: 33px;
-			left: 234px;
+			left: 400px;
 			top: -9px;
 			overflow: visible;
 		}
@@ -170,7 +170,7 @@
 			position: absolute;
 			width: 120px;
 			height: 33px;
-			left: 467px;
+			left: 600px;
 			top: -9px;
 			overflow: visible;
 		}
@@ -181,30 +181,6 @@
 			position: absolute;
 			overflow: visible;
 			width: 121px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 25px;
-			color: rgba(255, 255, 255, 1);
-		}
-
-		#Group_ba {
-			position: absolute;
-			width: 61px;
-			height: 33px;
-			left: 700px;
-			top: -9px;
-			overflow: visible;
-		}
-
-		#Login {
-			left: 0px;
-			top: 0px;
-			position: absolute;
-			overflow: visible;
-			width: 62px;
 			white-space: nowrap;
 			text-align: left;
 			font-family: Segoe UI;
@@ -1118,13 +1094,61 @@
 			font-size: 25px;
 			color: rgba(255, 255, 255, 1);
 			background-color: rgba(90, 92, 137, 1);
-			border: none;
+			border: 1px solid;
 			cursor: pointer;
 			border-radius: 25px;
 		}
+
+		#SubmitButton:disabled {
+			opacity: 0.6;
+			/* Set the desired level of transparency for the disabled state */
+			cursor: not-allowed;
+			/* Change cursor style to indicate the button is not clickable */
+		}
+
+		#SubmitButton:hover {
+			color: rgba(90, 92, 137, 1);
+			background-color: rgb(240, 240, 245);
+		}
+
+		#Group_ba {
+			position: absolute;
+			width: auto;
+			height: 33px;
+			left: 1000px;
+			top: -9px;
+			display: flex;
+			align-items: center;
+		}
+
+		#Welcome_Clinic_Name {
+			/* Remove the absolute positioning */
+			overflow: visible;
+			white-space: nowrap;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+			margin-right: 10px;
+			/* Add margin to create space between elements */
+		}
+
+		#Logout {
+			/* Remove the absolute positioning */
+			overflow: visible;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
 	</style>
 </head>
-<body>
+
+<body onload="updateMaxDate()">
 	<div id="Patient_Registration">
 		<form id="patientForm">
 			<div id="Group_150">
@@ -1154,10 +1178,14 @@
 									<span>Contact Us</span>
 								</div>
 							</div>
+
 							<div id="Group_ba" class="">
-								<div id="Login">
-									<span><a href="/patientLogin"
-											style="text-decoration: none; color: rgba(255,255,255,1);">Login</a></span>
+								<div id="Welcome_Clinic_Name">
+									<span>Welcome, <%= hospital.Name %> | </span>
+								</div>
+								<div id="Logout">
+									<span><a href="/Logout"
+											style="text-decoration: none; color: rgba(255,255,255,1);">Logout</a></span>
 								</div>
 							</div>
 						</div>
@@ -1230,22 +1258,22 @@
 							<div id="Group_144">
 								<div id="Group_142">
 									<input type="text" id="PatientFirstName" class="Rectangle_111"
-										placeholder="Patient First Name" required>
+										placeholder="Patient First Name" required onchange="onFieldChange()">
 									<input type="text" id="PatientLastName" class="Rectangle_114"
-										placeholder="Patient Last Name" required>
+										placeholder="Patient Last Name" required onchange="onFieldChange()">
 									<input type="date" id="DOB" class="Rectangle_113" placeholder="DOB" max=""
-										onchange="updateMaxDate()">
-									<select id="Gender" class="Rectangle_117" required>
+										onchange="onFieldChange()">
+									<select id="Gender" class="Rectangle_117" required onchange="onFieldChange()">
 										<option value="male">Male</option>
 										<option value="female">Female</option>
 										<option value="other">Other</option>
 									</select>
 									<input type="text" id="PatientId" class="Rectangle_110" placeholder="Patient Id"
-										required>
+										required onchange="onFieldChange()">
 									<input type="text" id="MobileNumber" class="Rectangle_112"
-										placeholder="Mobile Number" required>
+										placeholder="Mobile Number" required onchange="onFieldChange()">
 									<input type="email" id="EmailAddress" class="Rectangle_124"
-										placeholder="Email Address" required>
+										placeholder="Email Address" required onchange="onFieldChange()">
 									<div id="Patient_First_Name">
 										<span>Patient First Name:</span>
 									</div>
@@ -1274,20 +1302,22 @@
 									<span>Street Name:</span>
 								</div>
 								<input type="text" id="StreetName" class="Rectangle_118" placeholder="Street Name"
-									required>
+									required onchange="onFieldChange()">
 
 								<div id="City_Header">
 									<span>City:</span>
 								</div>
-								<input type="text" id="City" class="Rectangle_119" placeholder="City" required>
+								<input type="text" id="City" class="Rectangle_119" placeholder="City" required
+									onchange="onFieldChange()">
 								<div id="Zip_Code">
 									<span>Zip Code:</span>
 								</div>
-								<input type="text" id="ZipCode" class="Rectangle_120" placeholder="Zip Code" required>
+								<input type="text" id="ZipCode" class="Rectangle_120" placeholder="Zip Code" required
+									onchange="onFieldChange()">
 								<div id="Province_Header">
 									<span>Province:</span>
 								</div>
-								<select id="Province" class="Rectangle_121" required>
+								<select id="Province" class="Rectangle_121" required onchange="onFieldChange()">
 									<option value="" disabled selected>Select a province</option>
 									<option value="AB">AB</option>
 									<option value="BC">BC</option>
@@ -1314,7 +1344,7 @@
 			<div id="Address">
 				<span>Address:</span>
 			</div>
-			<button id="SubmitButton" class="Rectangle_123" onclick="submitPatient()">
+			<button id="SubmitButton" class="Rectangle_123" onclick="submitPatient()" disabled>
 				Submit
 			</button>
 		</form>
@@ -1333,7 +1363,7 @@
 			const city = document.getElementById('City').value;
 			const zipCode = document.getElementById('ZipCode').value;
 			const province = document.getElementById('Province').value;
-	
+
 			// Validation: Check if any of the required fields is empty
 			if (
 				!firstName || !lastName || !dob || !gender ||
@@ -1343,7 +1373,7 @@
 				alert('Please fill in all required fields.');
 				return;
 			}
-	
+
 			// If all required fields are filled, proceed with sending the update request
 			const newData = {
 				firstName,
@@ -1359,15 +1389,15 @@
 				province
 			};
 
-			console.log("New Patient Info", newData );
-	
+			console.log("New Patient Info", newData);
+
 			// Send the data to the server
 			fetch('/patientCreate', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({newData })
+				body: JSON.stringify({ newData })
 			})
 				.then(response => {
 					if (response.status === 201) {
@@ -1383,7 +1413,7 @@
 					// Handle error actions here if needed
 				});
 		}
-	
+
 		// Example validation function for a mobile number
 		function isValidMobileNumber(number) {
 			// Customize the validation logic based on your requirements
@@ -1393,6 +1423,45 @@
 		function updateMaxDate() {
 			const currentDate = new Date().toISOString().split('T')[0];
 			document.getElementById('DOB').max = currentDate;
+		}
+
+		function checkFields() {
+			var patientFirstName = document.getElementById("PatientFirstName").value;
+			var patientLastName = document.getElementById("PatientLastName").value;
+			var dob = document.getElementById("DOB").value;
+			var gender = document.getElementById("Gender").value;
+			var patientId = document.getElementById("PatientId").value;
+			var mobileNumber = document.getElementById("MobileNumber").value;
+			var emailAddress = document.getElementById("EmailAddress").value;
+			var streetName = document.getElementById("StreetName").value;
+			var city = document.getElementById("City").value;
+			var zipCode = document.getElementById("ZipCode").value;
+			var province = document.getElementById("Province").value;
+
+			// Check if all required fields are filled
+			if (
+				patientFirstName !== "" &&
+				patientLastName !== "" &&
+				dob !== "" &&
+				gender !== "" &&
+				patientId !== "" &&
+				mobileNumber !== "" &&
+				emailAddress !== "" &&
+				streetName !== "" &&
+				city !== "" &&
+				zipCode !== "" &&
+				province !== ""
+			) {
+				// Enable the submit button
+				document.getElementById("SubmitButton").disabled = false;
+			} else {
+				// Disable the submit button if any field is empty
+				document.getElementById("SubmitButton").disabled = true;
+			}
+		}
+
+		function onFieldChange() {
+			checkFields(); // Call the function to check the fields whenever any field changes
 		}
 	</script>
 </body>
