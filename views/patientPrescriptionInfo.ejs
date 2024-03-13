@@ -2332,8 +2332,13 @@
 			shape-rendering: auto;
 		}
 
-		#Download-button:hover #Rectangle_126 {
+		#download-button:hover #Rectangle_126 {
 			fill: rgba(255, 255, 255, 1);
+		}
+
+		#download-button.disabled {
+			pointer-events: none;
+			opacity: 0.5;
 		}
 
 		.Rectangle_126 {
@@ -2360,7 +2365,7 @@
 			color: rgba(255, 255, 255, 1);
 		}
 
-		#Download-button:hover #Download {
+		#download-button:hover #Download {
 			color: rgba(92, 93, 138, 1);
 		}
 
@@ -2859,13 +2864,23 @@
 			top: 0px;
 		}
 
-		#n_1_Edit {
+		#uploadButton {
 			position: absolute;
 			width: 27.128px;
 			height: 27.128px;
-			left: 83.975px;
-			top: 181.17px;
+			left: 0px;
+			top: 14px;
 			overflow: visible;
+		}
+
+		#fileInput {
+			position: absolute;
+			width: 27.128px;
+			height: 27.128px;
+			left: 0px;
+			top: 14px;
+			opacity: 0;
+			/* Make the file input invisible */
 		}
 
 		#Path_138 {
@@ -2875,10 +2890,10 @@
 		.Path_138 {
 			overflow: visible;
 			position: absolute;
-			width: 25px;
+			width: 40px;
 			height: 25px;
-			left: 0px;
-			top: 2.129px;
+			left: 80px;
+			top: 170px;
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
 
@@ -2890,9 +2905,9 @@
 			overflow: visible;
 			position: absolute;
 			width: 19.13px;
-			height: 19.128px;
-			left: 7.998px;
-			top: 0px;
+			height: 0px;
+			left: 90px;
+			top: 160px;
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
 
@@ -2967,10 +2982,27 @@
 			font-size: 43px;
 			color: rgba(92, 93, 138, 1);
 		}
-	</style>
-	<script>
+		
+		.upload-button {
+			position: relative;
+			background: none;
+			border: none;
+			padding: 0;
+			cursor: pointer;
+		}
 
-	</script>
+		.upload-button svg {
+			fill: #000;
+			/* Change the color as needed */
+			width: 25px;
+			/* Adjust the size as needed */
+			height: 25px;
+			/* Adjust the size as needed */
+			margin-right: 5px;
+			/* Adjust the spacing as needed */
+		}
+
+	</style>
 </head>
 
 <body>
@@ -3124,61 +3156,61 @@
 			<img id="Rectangle_83" src="/images/Rectangle_83.png"
 				srcset="/images/Rectangle_83.png 1x, /images/Rectangle_83@2x.png 2x">
 
-				<div id="Repeat_Grid_5">
-					<div id="Group_bv" class="">
-						<svg class="Rectangle_84">
-							<rect id="Rectangle_84" rx="33" ry="33" x="0" y="0" width="275" height="66">
-							</rect>
-						</svg>
-						<div id="Inbox">
-							<span>Inbox</span>
-						</div>
-					</div>
-					<div id="Group_bx" class="">
-						<svg class="Rectangle_84_by">
-							<rect id="Rectangle_84_by" rx="33" ry="33" x="0" y="0" width="275" height="66">
-							</rect>
-						</svg>
-						<div id="Reports">
-							<a href="/patientReport" style=" color:  rgba(90, 92, 137, 1);">
-								<span>Reports</span>
-							</a>
-						</div>
-					</div>
-					<div id="Group_bz" class="">
-						<svg class="Rectangle_84_b">
-							<rect id="Rectangle_84_b" rx="33" ry="33" x="0" y="0" width="275" height="66">
-							</rect>
-						</svg>
-						<div id="Appointments">
-							<a href="/patientAppointment" style=" color:  rgba(90, 92, 137, 1);">
-								<span>Appointments</span>
-							</a>
-						</div>
-					</div>
-					<div id="Group_b" class="">
-						<svg class="Rectangle_84_ca">
-							<rect id="Rectangle_84_ca" rx="33" ry="33" x="0" y="0" width="275" height="66">
-							</rect>
-						</svg>
-						<div id="Prescriptions">
-							<a href="/patientPrescription" style=" color:  rgba(90, 92, 137, 1);">
-								<span>Prescriptions</span>
-							</a>
-						</div>
-					</div>
-					<div id="Group_ca" class="">
-						<svg class="Rectangle_84_cb">
-							<rect id="Rectangle_84_cb" rx="33" ry="33" x="0" y="0" width="275" height="66">
-							</rect>
-						</svg>
-						<div id="Bills">
-							<a href="/patientBill" style=" color:  rgba(90, 92, 137, 1);">
-								<span>Bills</span>
-							</a>
-						</div>
+			<div id="Repeat_Grid_5">
+				<div id="Group_bv" class="">
+					<svg class="Rectangle_84">
+						<rect id="Rectangle_84" rx="33" ry="33" x="0" y="0" width="275" height="66">
+						</rect>
+					</svg>
+					<div id="Inbox">
+						<span>Inbox</span>
 					</div>
 				</div>
+				<div id="Group_bx" class="">
+					<svg class="Rectangle_84_by">
+						<rect id="Rectangle_84_by" rx="33" ry="33" x="0" y="0" width="275" height="66">
+						</rect>
+					</svg>
+					<div id="Reports">
+						<a href="/patientReport" style=" color:  rgba(90, 92, 137, 1);">
+							<span>Reports</span>
+						</a>
+					</div>
+				</div>
+				<div id="Group_bz" class="">
+					<svg class="Rectangle_84_b">
+						<rect id="Rectangle_84_b" rx="33" ry="33" x="0" y="0" width="275" height="66">
+						</rect>
+					</svg>
+					<div id="Appointments">
+						<a href="/patientAppointment" style=" color:  rgba(90, 92, 137, 1);">
+							<span>Appointments</span>
+						</a>
+					</div>
+				</div>
+				<div id="Group_b" class="">
+					<svg class="Rectangle_84_ca">
+						<rect id="Rectangle_84_ca" rx="33" ry="33" x="0" y="0" width="275" height="66">
+						</rect>
+					</svg>
+					<div id="Prescriptions">
+						<a href="/patientPrescription" style=" color:  rgba(90, 92, 137, 1);">
+							<span>Prescriptions</span>
+						</a>
+					</div>
+				</div>
+				<div id="Group_ca" class="">
+					<svg class="Rectangle_84_cb">
+						<rect id="Rectangle_84_cb" rx="33" ry="33" x="0" y="0" width="275" height="66">
+						</rect>
+					</svg>
+					<div id="Bills">
+						<a href="/patientBill" style=" color:  rgba(90, 92, 137, 1);">
+							<span>Bills</span>
+						</a>
+					</div>
+				</div>
+			</div>
 			<div id="Menu">
 				<span>Menu</span>
 			</div>
@@ -3190,8 +3222,7 @@
 			<div class="rectangle-container">
 				<ul class="item-list">
 					<% for (let i = 0; i < prescription_info.length; i++) { %>
-					<!-- <a href="/download-prescription/<%= prescription_info[i]._id %>"> -->
-					<div id="link" class="hospital-code-wrapper" onclick="showHospitalCodeModal()">
+					<div id="link" class="hospital-code-wrapper" onclick="showHospitalCodeModal('<%= prescription_info[i]._id %>', '<%= prescription_info[i].Hospital_Id._id %>')">
 						<li class="item">
 							<p class="time"><%= prescription_info[i].Last_Updated_Time.toLocaleString()%></p>
 							<p class="from">From</p>
@@ -3199,7 +3230,6 @@
 							<p class="file-name"><%= prescription_info[i].Name %></p>
 						</li>
 					</div>
-					</a>
 					<% } %>
 				</ul>
 			</div>
@@ -3679,7 +3709,7 @@
 						<rect id="Rectangle_109" rx="56" ry="56" x="0" y="0" width="240" height="225">
 						</rect>
 					</svg>
-					<div id="n_1_Edit">
+					<!-- <div id="n_1_Edit">
 						<svg class="Path_138" viewBox="2.5 4.5 25 25">
 							<path id="Path_138"
 								d="M 24 29.5 L 6 29.5 C 4.06700325012207 29.5 2.499999523162842 27.93299674987793 2.5 26 L 2.5 8 C 2.5 6.06700325012207 4.067004203796387 4.499999523162842 6.000000476837158 4.5 L 15 4.5 C 15.8284273147583 4.5 16.5 5.171572685241699 16.5 6 C 16.5 6.828427314758301 15.8284273147583 7.5 15 7.5 L 6 7.5 C 5.723857402801514 7.5 5.5 7.723857879638672 5.5 8 L 5.5 26 C 5.5 26.27614212036133 5.723857879638672 26.5 6 26.5 L 24 26.5 C 24.27614212036133 26.5 24.5 26.27614212036133 24.5 26 L 24.5 17 C 24.5 16.17157363891602 25.17157363891602 15.5 26 15.5 C 26.82842636108398 15.5 27.5 16.17157363891602 27.5 17 L 27.5 26 C 27.50000190734863 27.93299674987793 25.93299865722656 29.5 24.00000190734863 29.5 Z">
@@ -3690,7 +3720,20 @@
 								d="M 12 21.5 C 11.56869697570801 21.5005989074707 11.15800666809082 21.31551361083984 10.87277317047119 20.99199295043945 C 10.58754062652588 20.6684741973877 10.4553689956665 20.23782920837402 10.51000118255615 19.80999946594238 L 11.07000064849854 15.44999885559082 C 11.11166477203369 15.12204074859619 11.25911521911621 14.81660842895508 11.49000072479248 14.57999897003174 L 22.35000038146973 3.730000019073486 C 23.39094734191895 2.5947585105896 24.9708194732666 2.122154712677002 26.46417808532715 2.499282836914062 C 27.9575366973877 2.876410722732544 29.12358856201172 4.042462348937988 29.50071716308594 5.535820960998535 C 29.87784576416016 7.029178619384766 29.40524291992188 8.609051704406738 28.27000045776367 9.649999618530273 L 17.42000007629395 20.51000022888184 C 17.18338966369629 20.74088478088379 16.87795639038086 20.88833618164062 16.54999732971191 20.93000030517578 L 12.18999862670898 21.48999977111816 L 12 21.5 Z M 16.36000061035156 19.45000076293945 L 16.36000061035156 19.45000076293945 Z M 14 16.34000015258789 L 13.75 18.27000045776367 L 15.65999984741211 18 L 26.14999961853027 7.53000020980835 C 26.37474632263184 7.308267116546631 26.50126457214355 7.005717277526855 26.50126457214355 6.690000057220459 C 26.50126457214355 6.374282836914062 26.37474632263184 6.071732997894287 26.14999771118164 5.849999904632568 C 25.68124771118164 5.397893905639648 24.93874740600586 5.397893905639648 24.46999931335449 5.850000381469727 L 14 16.34000015258789 Z">
 							</path>
 						</svg>
-					</div>
+					</div> -->
+					<input type="file" id="fileInput" style="display: none;">
+					<button id="uploadButton" class="upload-button" onclick="handleUpload()">
+						<svg class="Path_138" viewBox="2.5 4.5 25 25">
+							<path id="Path_138"
+								d="M 24 29.5 L 6 29.5 C 4.06700325012207 29.5 2.499999523162842 27.93299674987793 2.5 26 L 2.5 8 C 2.5 6.06700325012207 4.067004203796387 4.499999523162842 6.000000476837158 4.5 L 15 4.5 C 15.8284273147583 4.5 16.5 5.171572685241699 16.5 6 C 16.5 6.828427314758301 15.8284273147583 7.5 15 7.5 L 6 7.5 C 5.723857402801514 7.5 5.5 7.723857879638672 5.5 8 L 5.5 26 C 5.5 26.27614212036133 5.723857879638672 26.5 6 26.5 L 24 26.5 C 24.27614212036133 26.5 24.5 26.27614212036133 24.5 26 L 24.5 17 C 24.5 16.17157363891602 25.17157363891602 15.5 26 15.5 C 26.82842636108398 15.5 27.5 16.17157363891602 27.5 17 L 27.5 26 C 27.50000190734863 27.93299674987793 25.93299865722656 29.5 24.00000190734863 29.5 Z">
+							</path>
+						</svg>
+						<svg class="Path_139" viewBox="10.498 2.372 19.13 19.128">
+							<path id="Path_139"
+								d="M 12 21.5 C 11.56869697570801 21.5005989074707 11.15800666809082 21.31551361083984 10.87277317047119 20.99199295043945 C 10.58754062652588 20.6684741973877 10.4553689956665 20.23782920837402 10.51000118255615 19.80999946594238 L 11.07000064849854 15.44999885559082 C 11.11166477203369 15.12204074859619 11.25911521911621 14.81660842895508 11.49000072479248 14.57999897003174 L 22.35000038146973 3.730000019073486 C 23.39094734191895 2.5947585105896 24.9708194732666 2.122154712677002 26.46417808532715 2.499282836914062 C 27.9575366973877 2.876410722732544 29.12358856201172 4.042462348937988 29.50071716308594 5.535820960998535 C 29.87784576416016 7.029178619384766 29.40524291992188 8.609051704406738 28.27000045776367 9.649999618530273 L 17.42000007629395 20.51000022888184 C 17.18338966369629 20.74088478088379 16.87795639038086 20.88833618164062 16.54999732971191 20.93000030517578 L 12.18999862670898 21.48999977111816 L 12 21.5 Z M 16.36000061035156 19.45000076293945 L 16.36000061035156 19.45000076293945 Z M 14 16.34000015258789 L 13.75 18.27000045776367 L 15.65999984741211 18.000000953674316 L 26.14999961853027 7.53000020980835 C 26.37474632263184 7.308267116546631 26.50126457214355 7.005717277526855 26.50126457214355 6.690000057220459 C 26.50126457214355 6.374282836914062 26.37474632263184 6.071732997894287 26.14999771118164 5.849999904632568 C 25.68124771118164 5.397893905639648 24.93874740600586 5.397893905639648 24.46999931335449 5.850000381469727 L 14 16.34000015258789 Z">
+							</path>
+						</svg>
+					</button>
 					<div id="Group_145">
 						<svg class="Path_140" viewBox="0 0 38.467 38.467">
 							<path id="Path_140"
@@ -3724,7 +3767,7 @@
 							</path>
 						</svg>
 					</button>
-					<div id="Download-button">
+					<div id="download-button" onclick="downloadPrescription()" class="disabled">
 						<svg class="Rectangle_126">
 							<rect id="Rectangle_126" rx="47.5" ry="47.5" x="0" y="0" width="253" height="95">
 							</rect>
@@ -3733,7 +3776,7 @@
 							<span>Download</span>
 						</div>
 					</div>
-					<input type="text" id="HospitalCode" class="Rectangle_127" placeholder="Enter Hospital Code"
+					<input type="text" id="hospitalCodeText" class="Rectangle_127" placeholder="Enter Hospital Code"
 						required>
 					<div id="Enter_Security_Code">
 						<span>Enter the code provided for Hospital Name:</span>
@@ -3754,9 +3797,31 @@
 		function showModal() {
 			modal.style.display = "block";
 		}
-		function showHospitalCodeModal() {
+
+		function showHospitalCodeModal(prescriptionId, hospitalId) {
 			hospitalCodeModal.style.display = "block";
+			console.log("showHospitalCodeModal", prescriptionId, hospitalId);
+			fetch('/addHospitalPrescription', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					prescriptionId: prescriptionId,
+					hospitalId: hospitalId,
+				}),
+			})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Network response was not ok');
+					}
+					return response.json();
+				})
+				.catch(error => {
+					console.error('Error during POST request:', error);
+				});
 		}
+
 
 		// Function to close the modal
 		function closeModal() {
@@ -3828,6 +3893,104 @@
 		}
 		// Attach the updatePatient function to the click event of the "Update" button
 		document.getElementById('Submit-button').addEventListener('click', updatePatient);
+
+		function handleUpload() {
+			const fileInput = document.getElementById('fileInput');
+			fileInput.click(); // Trigger the file input when the button is clicked
+		}
+
+		// Handle the selected file
+		document.getElementById('fileInput').addEventListener('change', function () {
+			const fileInput = this;
+			const selectedFile = fileInput.files[0];
+
+			if (selectedFile && isImage(selectedFile)) {
+				// Create a FormData object
+				const formData = new FormData();
+				formData.append('image', selectedFile);
+
+				// Make a POST request to the server
+				fetch('/upload', {
+					method: 'POST',
+					body: formData,
+					// Note: No need to set the Content-Type header for FormData
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw new Error('Error uploading file');
+						}
+						return response.text(); // Change this to text()
+					})
+					.then(data => {
+						console.log('Response:', data);
+						alert(data.message); // Show alert for invalid file
+					})
+					.catch(error => {
+						console.error('Error:', error.message);
+					});
+			} else {
+				console.log('Invalid file or not an image');
+				alert('Invalid file or not an image. Please select a valid image file.'); // Show alert for invalid file
+
+			}
+		});
+
+		// Helper function to check if a file is an image
+		function isImage(file) {
+			const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']; // Add more if needed
+			return allowedTypes.includes(file.type);
+		}
+
+		function downloadPrescription() {
+			// Get the hospital code, hospital ID, and report ID from the input fields within the parent container
+			const hospitalCode = document.getElementById('hospitalCodeText').value.toUpperCase();
+			console.log("Hospital code:", hospitalCode);
+			// Make a POST request to your server
+			fetch('/downloadPrescription', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					hospitalCode: hospitalCode,
+				}),
+			})
+				.then(response => response.json())
+				.then(data => {
+					// Handle the response from the server
+					console.log(data);
+
+					if (data.success) {
+						// If the response is successful, dynamically generate the download link
+						const prescriptionId = data.prescriptionId; // Assuming the server sends back the prescriptionId
+						const downloadLink = document.createElement('a');
+						downloadLink.href = `/download-prescription/${prescriptionId}`;
+						downloadLink.download = 'Prescription_filename'; // Set the desired filename
+
+						// Trigger the download
+						document.body.appendChild(downloadLink);
+						downloadLink.click();
+						document.body.removeChild(downloadLink);
+					} else {
+						// Handle the case where the server response is not successful
+						console.error('Download request failed:', data.message);
+						alert("Invalid hospital code.");
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
+		}
+
+		document.getElementById("hospitalCodeText").addEventListener("input", function () {
+			var downloadButton = document.getElementById("download-button");
+
+			if (this.value.trim() !== "") {
+				downloadButton.classList.remove("disabled");
+			} else {
+				downloadButton.classList.add("disabled");
+			}
+		});
 
 	</script>
 </body>

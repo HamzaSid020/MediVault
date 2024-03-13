@@ -587,7 +587,7 @@ router.post('/downloadReport', async (req, res) => {
 
         //Reset
         req.session.reportId = '';
-        req.session.reportId = '';
+        req.session.hospitalId = '';
 
         // Step 2: Check if there is a corresponding entry in HospitalCodes
         const hospitalCodeEntry = await HospitalCodes.findOne({
@@ -608,12 +608,118 @@ router.post('/downloadReport', async (req, res) => {
     }
 });
 
+router.post('/downloadPrescription', async (req, res) => {
+    try {
+        if (!req.session.medivaultId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).json({ success: false, message: 'Please log in first.' });
+        }
+
+        const medivaultId = req.session.medivaultId;
+        const hospitalCode = req.body.hospitalCode; // Get hospital code from the request body
+
+        // Step 1: Find the patient ID based on the medivaultId
+        const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+
+        if (!patientInfo) {
+            return res.status(404).json({ success: false, message: 'Patient not found.' });
+        }
+
+        const patientId = patientInfo._id;
+        const hospitalId = req.session.hospitalId;
+        const prescriptionId = req.session.prescriptionId; // Assuming you have the prescriptionId stored in the session
+
+        //Reset
+        req.session.prescriptionId = '';
+        req.session.hospitalId = '';
+
+        // Step 2: Check if there is a corresponding entry in HospitalCodes
+        const hospitalCodeEntry = await HospitalCodes.findOne({
+            Code: hospitalCode,
+            Patient_Id: patientId,
+            Hospital_Id: hospitalId
+        });
+
+        if (!hospitalCodeEntry) {
+            return res.status(404).json({ success: false, message: 'Invalid hospital code.' });
+        }
+
+        // If everything is valid, send the reportId in the response
+        res.json({ success: true, prescriptionId: prescriptionId, message: 'Download request received successfully.' });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: 'Internal server error.' });
+    }
+});
+
+router.post('/downloadBill', async (req, res) => {
+    try {
+        if (!req.session.medivaultId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).json({ success: false, message: 'Please log in first.' });
+        }
+
+        const medivaultId = req.session.medivaultId;
+        const hospitalCode = req.body.hospitalCode; // Get hospital code from the request body
+
+        // Step 1: Find the patient ID based on the medivaultId
+        const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+
+        if (!patientInfo) {
+            return res.status(404).json({ success: false, message: 'Patient not found.' });
+        }
+
+        const patientId = patientInfo._id;
+        const hospitalId = req.session.hospitalId;
+        const billId = req.session.billId; // Assuming you have the reportId stored in the session
+
+        //Reset
+        req.session.billId = '';
+        req.session.hospitalId = '';
+
+        // Step 2: Check if there is a corresponding entry in HospitalCodes
+        const hospitalCodeEntry = await HospitalCodes.findOne({
+            Code: hospitalCode,
+            Patient_Id: patientId,
+            Hospital_Id: hospitalId
+        });
+
+        if (!hospitalCodeEntry) {
+            return res.status(404).json({ success: false, message: 'Invalid hospital code.' });
+        }
+
+        // If everything is valid, send the reportId in the response
+        res.json({ success: true, billId: billId, message: 'Download request received successfully.' });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: 'Internal server error.' });
+    }
+});
+
 router.post('/addHospitalReport', (req, res) => {
     // Extract data from the request body
     const reportId = req.body.reportId;
     const hospitalId = req.body.hospitalId;
     req.session.hospitalId = hospitalId;
     req.session.reportId = reportId;
+    res.json({ status: 'success', message: 'Data received successfully' });
+});
+
+router.post('/addHospitalBill', (req, res) => {
+    // Extract data from the request body
+    const billId = req.body.billId;
+    const hospitalId = req.body.hospitalId;
+    req.session.hospitalId = hospitalId;
+    req.session.billId = billId;
+    res.json({ status: 'success', message: 'Data received successfully' });
+});
+
+router.post('/addHospitalPrescription', (req, res) => {
+    // Extract data from the request body
+    const prescriptionId = req.body.prescriptionId;
+    const hospitalId = req.body.hospitalId;
+    req.session.hospitalId = hospitalId;
+    req.session.prescriptionId = prescriptionId;
     res.json({ status: 'success', message: 'Data received successfully' });
 });
 

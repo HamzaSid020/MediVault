@@ -2325,8 +2325,13 @@
 			shape-rendering: auto;
 		}
 
-		#Download-button:hover #Rectangle_126 {
+		#download-button:hover #Rectangle_126 {
 			fill: rgba(255, 255, 255, 1);
+		}
+
+		#download-button.disabled {
+			pointer-events: none;
+			opacity: 0.5;
 		}
 
 		.Rectangle_126 {
@@ -2353,7 +2358,7 @@
 			color: rgba(255, 255, 255, 1);
 		}
 
-		#Download-button:hover #Download {
+		#download-button:hover #Download {
 			color: rgba(92, 93, 138, 1);
 		}
 
@@ -3209,20 +3214,19 @@
 			</svg>
 			<div class="rectangle-container">
 				<ul class="item-list">
-				  <% for (let i = 0; i < report_info.length; i++) { %>
-				  <li class="item">
-					<div id="link" class="hospital-code-wrapper" onclick="showHospitalCodeModal('<%= report_info[i]._id %>', '<%= report_info[i].Hospital_Id._id %>')">
-					  <input type="hidden" class="reportId" value="<%= report_info[i]._id %>">
-					  <input type="hidden" class="hospitalId" value="<%= report_info[i].Hospital_Id._id %>">
-					  <p class="time"><%= report_info[i].Last_Updated_Time.toLocaleString()%></p>
-					  <p class="from">From</p>
-					  <p class="hospital-name"><%= report_info[i].Hospital_Id.Name %></p>
-					  <p class="file-name"><%= report_info[i].Name %></p>
-					</div>
-				  </li>
-				  <% } %>
+					<% for (let i = 0; i < report_info.length; i++) { %>
+					<li class="item">
+						<div id="link" class="hospital-code-wrapper"
+							onclick="showHospitalCodeModal('<%= report_info[i]._id %>', '<%= report_info[i].Hospital_Id._id %>')">
+							<p class="time"><%= report_info[i].Last_Updated_Time.toLocaleString()%></p>
+							<p class="from">From</p>
+							<p class="hospital-name"><%= report_info[i].Hospital_Id.Name %></p>
+							<p class="file-name"><%= report_info[i].Name %></p>
+						</div>
+					</li>
+					<% } %>
 				</ul>
-			  </div>
+			</div>
 			<div id="Reports_b">
 				<span>Reports</span>
 			</div>
@@ -3756,7 +3760,7 @@
 							</path>
 						</svg>
 					</button>
-					<div id="Download-button" onclick="downloadReport()">
+					<div id="download-button" onclick="downloadReport()" class="disabled">
 						<svg class="Rectangle_126">
 							<rect id="Rectangle_126" rx="47.5" ry="47.5" x="0" y="0" width="253" height="95">
 							</rect>
@@ -3789,7 +3793,7 @@
 
 		function showHospitalCodeModal(reportId, hospitalId) {
 			hospitalCodeModal.style.display = "block";
-			console.log("showHospitalCodeModal",reportId, hospitalId);
+			console.log("showHospitalCodeModal", reportId, hospitalId);
 			fetch('/addHospitalReport', {
 				method: 'POST',
 				headers: {
@@ -3933,7 +3937,7 @@
 		function downloadReport() {
 			// Get the hospital code, hospital ID, and report ID from the input fields within the parent container
 			const hospitalCode = document.getElementById('hospitalCodeText').value.toUpperCase();
-			console.log("Hospital code:",hospitalCode);
+			console.log("Hospital code:", hospitalCode);
 			// Make a POST request to your server
 			fetch('/downloadReport', {
 				method: 'POST',
@@ -3963,13 +3967,23 @@
 					} else {
 						// Handle the case where the server response is not successful
 						console.error('Download request failed:', data.message);
-						alert(data.message);
+						alert("Invalid hospital code.");
 					}
 				})
 				.catch(error => {
 					console.error('Error:', error);
 				});
 		}
+
+		document.getElementById("hospitalCodeText").addEventListener("input", function () {
+			var downloadButton = document.getElementById("download-button");
+
+			if (this.value.trim() !== "") {
+				downloadButton.classList.remove("disabled");
+			} else {
+				downloadButton.classList.add("disabled");
+			}
+		});
 	</script>
 </body>
 
