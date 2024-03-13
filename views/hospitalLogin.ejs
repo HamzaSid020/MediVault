@@ -776,11 +776,11 @@
 		}
 	</style>
 	<script>
-		function submitData() {
+		function submitData(event) {
+			event.preventDefault();
 			// Get values from input fields
 			var Username = document.getElementById('Hospital_Username_Input').value;
 			var Password = document.getElementById('Hospital_Password_Input').value;
-
 			// Create data object to be sent in the request body
 			var data = {
 				username: Username,
