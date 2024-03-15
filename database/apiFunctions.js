@@ -18,7 +18,7 @@ const {
     HospitalCodes,
 } = require('./models');
 
-const{sendEmail} = require('./emailFunctions');
+const { sendEmail } = require('./emailFunctions');
 
 router.use(express.json()); // This middleware will parse JSON data in the request body
 router.use(cookieParser());
@@ -71,10 +71,10 @@ function extractLastFourDigits(phoneNumber) {
 router.get('/', async (req, res) => {
     try {
         if (req.session.loggedIn == true) {
-            if(req.session.hospitalLoggedId){
+            if (req.session.hospitalLoggedId) {
                 res.render('home', { Username: req.session.username, HospitalId: req.session.hospitalLoggedId });
             }
-            else{
+            else {
                 res.render('home', { Username: req.session.username }); // Corrected the object syntax
             }
         } else {
@@ -140,7 +140,7 @@ router.post('/hospital-login', async (req, res) => {
                 req.session.hospitalLoggedId = hospitalInfo._id;
                 req.session.loggedIn = true;
                 req.session.username = hospitalInfo.Name;
-                res.status(200).json({ message: 'Login successful'});
+                res.status(200).json({ message: 'Login successful' });
             } else {
                 res.status(500).json({ message: 'Patient information not found' });
             }
@@ -374,6 +374,11 @@ router.get('/download-report/:reportId', async (req, res) => {
 
 router.get('/hospitalDashboard/patients', async (req, res) => {
     try {
+
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
         const hospitalId = req.session.hospitalLoggedId;
 
         // Fetch the hospital information
@@ -423,6 +428,12 @@ router.get('/hospitalDashboard/patients', async (req, res) => {
 
 router.get('/hospitalDashboard/appointments', async (req, res) => {
     try {
+
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+
         const hospitalId = req.session.hospitalLoggedId;
 
         // Fetch the hospital information
@@ -434,43 +445,279 @@ router.get('/hospitalDashboard/appointments', async (req, res) => {
 
         // Find all appointment related to the patient using the Patient_Id
         const appointmentInfo = await Appointment.find({ Hospital_Id: hospitalId })
-        .populate('Patient_Id')
-        .exec();
+            .populate('Patient_Id')
+            .exec();
 
         console.log(appointmentInfo);
         // Render the hospital dashboard with the patients data
 
-           // Fetch all patients associated with the hospital
-           const patients = await PatientInfo.find({ Hospital_Ids: hospitalId });
+        // Fetch all patients associated with the hospital
+        const patients = await PatientInfo.find({ Hospital_Ids: hospitalId });
 
-           // Aggregate data for each patient
-           const patientDataPromises = patients.map(async (patient) => {
-               const patientId = patient._id;
-   
-               // Count the number of bills for the patient
-               const numberOfBills = await Bills.countDocuments({ Patient_Id: patientId });
-   
-               // Count the number of prescriptions for the patient
-               const numberOfPrescriptions = await Prescription.countDocuments({ Patient_Id: patientId });
-   
-               // Count the number of appointments for the patient
-               const numberOfAppointments = await Appointment.countDocuments({ Patient_Id: patientId });
-   
-               // Count the number of reports for the patient
-               const numberOfReports = await Report.countDocuments({ Patient_Id: patientId });
-   
-               return {
-                   patient,
-                   numberOfBills,
-                   numberOfPrescriptions,
-                   numberOfAppointments,
-                   numberOfReports,
-               };
-           });
-   
-           const patientData = await Promise.all(patientDataPromises);
-   
+        // Aggregate data for each patient
+        const patientDataPromises = patients.map(async (patient) => {
+            const patientId = patient._id;
+
+            // Count the number of bills for the patient
+            const numberOfBills = await Bills.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of prescriptions for the patient
+            const numberOfPrescriptions = await Prescription.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of appointments for the patient
+            const numberOfAppointments = await Appointment.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of reports for the patient
+            const numberOfReports = await Report.countDocuments({ Patient_Id: patientId });
+
+            return {
+                patient,
+                numberOfBills,
+                numberOfPrescriptions,
+                numberOfAppointments,
+                numberOfReports,
+            };
+        });
+
+        const patientData = await Promise.all(patientDataPromises);
+
         res.render('hospitalAppointments', { hospital, appointmentInfo, patientData });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/hospitalDashboard/codes', async (req, res) => {
+    try {
+
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Fetch the hospital information
+        const hospital = await HospitalInfo.findById(hospitalId);
+
+        if (!hospital) {
+            return res.status(404).send('Hospital not found');
+        }
+
+        // Find all hospital codes related to the hospital and populate the associated patient and hospital information
+        const hospitalCodes = await HospitalCodes.find({ Hospital_Id: hospitalId })
+            .populate('Patient_Id')
+            .exec();
+
+        // Fetch all patients associated with the hospital
+        const patients = await PatientInfo.find({ Hospital_Ids: hospitalId });
+
+        // Aggregate data for each patient
+        const patientDataPromises = patients.map(async (patient) => {
+            const patientId = patient._id;
+
+            // Count the number of bills for the patient
+            const numberOfBills = await Bills.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of prescriptions for the patient
+            const numberOfPrescriptions = await Prescription.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of appointments for the patient
+            const numberOfAppointments = await Appointment.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of reports for the patient
+            const numberOfReports = await Report.countDocuments({ Patient_Id: patientId });
+
+            return {
+                patient,
+                numberOfBills,
+                numberOfPrescriptions,
+                numberOfAppointments,
+                numberOfReports,
+            };
+        });
+
+        const patientData = await Promise.all(patientDataPromises);
+
+        res.render('hospitalCodes', { hospital, hospitalCodes, patientData });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/hospitalDashboard/reports', async (req, res) => {
+    try {
+
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Fetch the hospital information
+        const hospital = await HospitalInfo.findById(hospitalId);
+
+        if (!hospital) {
+            return res.status(404).send('Hospital not found');
+        }
+
+        // Find all reports related to the hospital and populate the associated patient and hospital information
+        const reports = await Report.find({ Hospital_Id: hospitalId })
+            .populate('Patient_Id')
+            .exec();
+
+        // Fetch all patients associated with the hospital
+        const patients = await PatientInfo.find({ Hospital_Ids: hospitalId });
+
+        // Aggregate data for each patient
+        const patientDataPromises = patients.map(async (patient) => {
+            const patientId = patient._id;
+
+            // Count the number of bills for the patient
+            const numberOfBills = await Bills.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of prescriptions for the patient
+            const numberOfPrescriptions = await Prescription.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of appointments for the patient
+            const numberOfAppointments = await Appointment.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of reports for the patient
+            const numberOfReports = await Report.countDocuments({ Patient_Id: patientId });
+
+            return {
+                patient,
+                numberOfBills,
+                numberOfPrescriptions,
+                numberOfAppointments,
+                numberOfReports,
+            };
+        });
+
+        const patientData = await Promise.all(patientDataPromises);
+
+        res.render('hospitalReports', { hospital, reports, patientData });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/hospitalDashboard/bills', async (req, res) => {
+    try {
+
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Fetch the hospital information
+        const hospital = await HospitalInfo.findById(hospitalId);
+
+        if (!hospital) {
+            return res.status(404).send('Hospital not found');
+        }
+
+        // Find all bills related to the hospital and populate the associated patient and hospital information
+        const bills = await Bills.find({ Hospital_Id: hospitalId })
+            .populate('Patient_Id')
+            .exec();
+
+        // Fetch all patients associated with the hospital
+        const patients = await PatientInfo.find({ Hospital_Ids: hospitalId });
+
+        // Aggregate data for each patient
+        const patientDataPromises = patients.map(async (patient) => {
+            const patientId = patient._id;
+
+            // Count the number of bills for the patient
+            const numberOfBills = await Bills.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of prescriptions for the patient
+            const numberOfPrescriptions = await Prescription.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of appointments for the patient
+            const numberOfAppointments = await Appointment.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of reports for the patient
+            const numberOfReports = await Report.countDocuments({ Patient_Id: patientId });
+
+            return {
+                patient,
+                numberOfBills,
+                numberOfPrescriptions,
+                numberOfAppointments,
+                numberOfReports,
+            };
+        });
+
+        const patientData = await Promise.all(patientDataPromises);
+
+        res.render('hospitalBills', { hospital, bills, patientData });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/hospitalDashboard/prescriptions', async (req, res) => {
+    try {
+
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Fetch the hospital information
+        const hospital = await HospitalInfo.findById(hospitalId);
+
+        if (!hospital) {
+            return res.status(404).send('Hospital not found');
+        }
+
+        // Find all bills related to the hospital and populate the associated patient and hospital information
+        const prescriptions = await Prescription.find({ Hospital_Id: hospitalId })
+            .populate('Patient_Id')
+            .exec();
+
+        // Fetch all patients associated with the hospital
+        const patients = await PatientInfo.find({ Hospital_Ids: hospitalId });
+
+        // Aggregate data for each patient
+        const patientDataPromises = patients.map(async (patient) => {
+            const patientId = patient._id;
+
+            // Count the number of bills for the patient
+            const numberOfBills = await Bills.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of prescriptions for the patient
+            const numberOfPrescriptions = await Prescription.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of appointments for the patient
+            const numberOfAppointments = await Appointment.countDocuments({ Patient_Id: patientId });
+
+            // Count the number of reports for the patient
+            const numberOfReports = await Report.countDocuments({ Patient_Id: patientId });
+
+            return {
+                patient,
+                numberOfBills,
+                numberOfPrescriptions,
+                numberOfAppointments,
+                numberOfReports,
+            };
+        });
+
+        const patientData = await Promise.all(patientDataPromises);
+
+        res.render('hospitalPrescriptions', { hospital, prescriptions, patientData });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');

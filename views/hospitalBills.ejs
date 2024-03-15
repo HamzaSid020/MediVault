@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard</title>
+	<title>Bills</title>
 	<style id="applicationStylesheet" type="text/css">
 		.mediaViewInfo {
 			--web-view-name: Clinic Home Page;
@@ -951,7 +951,7 @@
 			border: 1px solid rgba(112, 112, 112, 1);
 			margin: 20px;
 			border-radius: 60px;
-			padding: 20px;
+			padding: 30px;
 			font-family: Segoe UI;
 			position: relative;
 			fill: rgba(255, 255, 255, 1);
@@ -1452,6 +1452,33 @@
 		a {
 			text-decoration: none;
 		}
+
+		.time {
+			float: right;
+			font-size: 18px;
+		}
+
+		.file-name {
+			font-size: 25px;
+		}
+
+		.time,
+		.file-name {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.from {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
+			font-size: 25px;
+		}
+
+		.hospital-name {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
+			font-size: 33px;
+		}
 	</style>
 </head>
 
@@ -1639,8 +1666,8 @@
 							</rect>
 						</svg>
 						<div id="Patients">
-							<a href="/hospitalDashboard/patients" style=" color:  rgba(90, 92, 137, 1);">
-								<span>Patients</span>
+							<a href="/hospitalDashboard/bills" style=" color:  rgba(90, 92, 137, 1);">
+								<span>Bills</span>
 							</a>
 						</div>
 					</div>
@@ -1698,38 +1725,13 @@
 					<div class="Rectangle_85">
 
 						<ul class="item-list">
-							<% for (let i = 0; i < patientData.length; i++) { %>
+							<% for (let i = 0; i < bills.length; i++) { %>
 							<li class="item">
-								<a href="/patientReport/<%= patientData[i].patient.Medivault_Id %>"
-									class="patient-link">
-									<div class="patient-info">
-										<div class="left-info">
-											<div class="patient-name" id="Patient_Name_<%= i %>">
-												<span><%= patientData[i].patient.Name %> |
-													<%= patientData[i].patient.Sex %> |
-													<%= patientData[i].patient.Age %> yrs</span>
-											</div>
-											<div class="patient-id" id="Patient_Id_<%= i %>">
-												<span>Patient Id: <%= patientData[i].patient.Patient_Id %></span>
-											</div>
-											<div class="email" id="Email_<%= i %>">
-												<span> <%= patientData[i].patient.Email %> |
-													+<%= patientData[i].patient.Phone_No %></span>
-											</div>
-										</div>
-										<!-- Additional patient information -->
-										<div class="right-info">
-											<div class="patient-additional-info">
-												<span>Appointments:
-													<%= patientData[i].numberOfAppointments || 0 %></span><br>
-												<span>Prescriptions:
-													<%= patientData[i].numberOfPrescriptions || 0 %></span><br>
-												<span>Reports: <%= patientData[i].numberOfReports || 0 %></span><br>
-												<span>Bills: <%= patientData[i].numberOfBills || 0 %></span>
-											</div>
-										</div>
-									</div>
-								</a>
+								<p class="time"><%= bills[i].Last_Updated_Time.toLocaleString()%></p>
+								<p class="from"> Patient name</p>
+								<p class="hospital-name"><%= bills[i].Patient_Id.Name %></p>
+								<p class="file-name"><%= bills[i].Name %> |
+									<%= bills[i].Category %></p>
 							</li>
 							<% } %>
 						</ul>
