@@ -421,6 +421,62 @@ router.get('/hospitalDashboard/patients', async (req, res) => {
     }
 });
 
+router.get('/hospitalDashboard/appointments', async (req, res) => {
+    try {
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Fetch the hospital information
+        const hospital = await HospitalInfo.findById(hospitalId);
+
+        if (!hospital) {
+            return res.status(404).send('Hospital not found');
+        }
+
+        // Find all appointment related to the patient using the Patient_Id
+        const appointmentInfo = await Appointment.find({ Hospital_Id: hospitalId })
+        .populate('Patient_Id')
+        .exec();
+
+        console.log(appointmentInfo);
+        // Render the hospital dashboard with the patients data
+
+           // Fetch all patients associated with the hospital
+           const patients = await PatientInfo.find({ Hospital_Ids: hospitalId });
+
+           // Aggregate data for each patient
+           const patientDataPromises = patients.map(async (patient) => {
+               const patientId = patient._id;
+   
+               // Count the number of bills for the patient
+               const numberOfBills = await Bills.countDocuments({ Patient_Id: patientId });
+   
+               // Count the number of prescriptions for the patient
+               const numberOfPrescriptions = await Prescription.countDocuments({ Patient_Id: patientId });
+   
+               // Count the number of appointments for the patient
+               const numberOfAppointments = await Appointment.countDocuments({ Patient_Id: patientId });
+   
+               // Count the number of reports for the patient
+               const numberOfReports = await Report.countDocuments({ Patient_Id: patientId });
+   
+               return {
+                   patient,
+                   numberOfBills,
+                   numberOfPrescriptions,
+                   numberOfAppointments,
+                   numberOfReports,
+               };
+           });
+   
+           const patientData = await Promise.all(patientDataPromises);
+   
+        res.render('hospitalAppointments', { hospital, appointmentInfo, patientData });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.get('/download-bill/:billId', async (req, res) => {
     const billId = req.params.billId;
 

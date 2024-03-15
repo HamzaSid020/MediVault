@@ -963,9 +963,6 @@
 
 		}
 
-
-
-
 		.patient-info {
 			margin-left: 30px;
 			font-family: Segoe UI;
@@ -1454,6 +1451,27 @@
 		a {
 			text-decoration: none;
 		}
+
+		.time {
+			float: right;
+			font-size: 18px;
+		}
+
+		.file-name {
+			font-size: 25px;
+		}
+
+		.time,
+		.file-name {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.from {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
+			font-size: 25px;
+		}
 	</style>
 </head>
 
@@ -1700,38 +1718,19 @@
 					<div class="Rectangle_85">
 
 						<ul class="item-list">
-							<% for (let i = 0; i < patientData.length; i++) { %>
+							<% for (let i = 0; i < appointmentInfo.length; i++) { %>
 							<li class="item">
-								<a href="/patientReport/<%= patientData[i].patient.Medivault_Id %>"
-									class="patient-link">
-									<div class="patient-info">
-										<div class="left-info">
-											<div class="patient-name" id="Patient_Name_<%= i %>">
-												<span><%= patientData[i].patient.Name %> |
-													<%= patientData[i].patient.Sex %> |
-													<%= patientData[i].patient.Age %> yrs</span>
-											</div>
-											<div class="patient-id" id="Patient_Id_<%= i %>">
-												<span>Patient Id: <%= patientData[i].patient.Patient_Id %></span>
-											</div>
-											<div class="email" id="Email_<%= i %>">
-												<span> <%= patientData[i].patient.Email %> |
-													+<%= patientData[i].patient.Phone_No %></span>
-											</div>
-										</div>
-										<!-- Additional patient information -->
-										<div class="right-info">
-											<div class="patient-additional-info">
-												<span>Appointments:
-													<%= patientData[i].numberOfAppointments || 0 %></span><br>
-												<span>Prescriptions:
-													<%= patientData[i].numberOfPrescriptions || 0 %></span><br>
-												<span>Reports: <%= patientData[i].numberOfReports || 0 %></span><br>
-												<span>Bills: <%= patientData[i].numberOfBills || 0 %></span>
-											</div>
-										</div>
-									</div>
-								</a>
+								<p class="time">Due: <%= appointmentInfo[i].Appointment_Date.toLocaleString()%></p>
+								<% if (appointmentInfo[i].Patient_Id) { %>
+								<p class="from"> <%= appointmentInfo[i].Patient_Id.Name %> |
+									<%= appointmentInfo[i].Patient_Id.Medivault_Id %></p>
+								<% } else { %>
+								<p class="from">Patient Information Not Available</p>
+								<% } %>
+								<p class="hospital-name"><%= appointmentInfo[i].Hospital_Id.Name %></p>
+								<p class="file-name"><%= appointmentInfo[i].Doctor_Name %> |
+									<%= appointmentInfo[i].Status %>
+									| <%= appointmentInfo[i].Appointment_Type %></p>
 							</li>
 							<% } %>
 						</ul>
