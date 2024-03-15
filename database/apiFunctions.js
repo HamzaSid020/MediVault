@@ -18,6 +18,8 @@ const {
     HospitalCodes,
 } = require('./models');
 
+const{sendEmail} = require('./emailFunctions');
+
 router.use(express.json()); // This middleware will parse JSON data in the request body
 router.use(cookieParser());
 router.use(express.static('public'));
@@ -740,6 +742,43 @@ router.post('/addHospitalPrescription', (req, res) => {
     req.session.hospitalId = hospitalId;
     req.session.prescriptionId = prescriptionId;
     res.json({ status: 'success', message: 'Data received successfully' });
+});
+
+router.post('/sendHospitalCodeEmail', async (req, res) => {
+    const medivaultId = req.session.medivaultId;
+
+    try {
+        // Find the patient information using the Medivault Id
+        const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+
+        if (!patientInfo) {
+            return res.status(404).json({ success: false, message: 'Patient not found.' });
+        }
+
+        // Assuming the hospital code is stored in the HospitalCodes collection
+        const hospitalCodeInfo = await HospitalCodes.findOne({ Patient_Id: patientInfo._id });
+
+        if (!hospitalCodeInfo) {
+            return res.status(404).json({ success: false, message: 'Hospital code not found for this patient.' });
+        }
+
+        // Extracting email and hospital code from retrieved data
+        const email = patientInfo.Email;
+        const hospitalCode = hospitalCodeInfo.Code;
+
+        console.log('Email:', email);
+        console.log('Hospital Code:', hospitalCode);
+
+
+        // Sending the hospital code email using sendEmail function
+        sendEmail(email, `Your hospital code is: ${hospitalCode}`);
+
+        // Respond with a success message
+        res.status(200).json({ success: true, message: 'Hospital code email sent successfully.', email, hospitalCode });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: 'Internal server error.' });
+    }
 });
 
 module.exports = router;

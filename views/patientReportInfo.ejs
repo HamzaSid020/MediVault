@@ -23,7 +23,7 @@
 			width: 100%;
 			height: 100vh;
 			background-color: rgba(255, 255, 255, 1);
-			overflow:hidden;
+			overflow: hidden;
 			overflow-y: auto;
 			--web-view-name: Patient info;
 			--web-view-id: Patient_info;
@@ -2428,6 +2428,22 @@
 			padding: 10px;
 		}
 
+		#forgot_code {
+			position: absolute;
+			overflow: visible;
+			width: 682px;
+			height: 66px;
+			left: 680px;
+			top: 320px;
+			font-size: 25px;
+			padding: 10px;
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#forgot_code:hover {
+			color: rgb(0, 0, 0);
+		}
+
 		#Modal-Edit {
 			position: absolute;
 			width: 1600px;
@@ -3703,18 +3719,6 @@
 						<rect id="Rectangle_109" rx="56" ry="56" x="0" y="0" width="240" height="225">
 						</rect>
 					</svg>
-					<!-- <div id="n_1_Edit">
-						<svg class="Path_138" viewBox="2.5 4.5 25 25">
-							<path id="Path_138"
-								d="M 24 29.5 L 6 29.5 C 4.06700325012207 29.5 2.499999523162842 27.93299674987793 2.5 26 L 2.5 8 C 2.5 6.06700325012207 4.067004203796387 4.499999523162842 6.000000476837158 4.5 L 15 4.5 C 15.8284273147583 4.5 16.5 5.171572685241699 16.5 6 C 16.5 6.828427314758301 15.8284273147583 7.5 15 7.5 L 6 7.5 C 5.723857402801514 7.5 5.5 7.723857879638672 5.5 8 L 5.5 26 C 5.5 26.27614212036133 5.723857879638672 26.5 6 26.5 L 24 26.5 C 24.27614212036133 26.5 24.5 26.27614212036133 24.5 26 L 24.5 17 C 24.5 16.17157363891602 25.17157363891602 15.5 26 15.5 C 26.82842636108398 15.5 27.5 16.17157363891602 27.5 17 L 27.5 26 C 27.50000190734863 27.93299674987793 25.93299865722656 29.5 24.00000190734863 29.5 Z">
-							</path>
-						</svg>
-						<svg class="Path_139" viewBox="10.498 2.372 19.13 19.128">
-							<path id="Path_139"
-								d="M 12 21.5 C 11.56869697570801 21.5005989074707 11.15800666809082 21.31551361083984 10.87277317047119 20.99199295043945 C 10.58754062652588 20.6684741973877 10.4553689956665 20.23782920837402 10.51000118255615 19.80999946594238 L 11.07000064849854 15.44999885559082 C 11.11166477203369 15.12204074859619 11.25911521911621 14.81660842895508 11.49000072479248 14.57999897003174 L 22.35000038146973 3.730000019073486 C 23.39094734191895 2.5947585105896 24.9708194732666 2.122154712677002 26.46417808532715 2.499282836914062 C 27.9575366973877 2.876410722732544 29.12358856201172 4.042462348937988 29.50071716308594 5.535820960998535 C 29.87784576416016 7.029178619384766 29.40524291992188 8.609051704406738 28.27000045776367 9.649999618530273 L 17.42000007629395 20.51000022888184 C 17.18338966369629 20.74088478088379 16.87795639038086 20.88833618164062 16.54999732971191 20.93000030517578 L 12.18999862670898 21.48999977111816 L 12 21.5 Z M 16.36000061035156 19.45000076293945 L 16.36000061035156 19.45000076293945 Z M 14 16.34000015258789 L 13.75 18.27000045776367 L 15.65999984741211 18 L 26.14999961853027 7.53000020980835 C 26.37474632263184 7.308267116546631 26.50126457214355 7.005717277526855 26.50126457214355 6.690000057220459 C 26.50126457214355 6.374282836914062 26.37474632263184 6.071732997894287 26.14999771118164 5.849999904632568 C 25.68124771118164 5.397893905639648 24.93874740600586 5.397893905639648 24.46999931335449 5.850000381469727 L 14 16.34000015258789 Z">
-							</path>
-						</svg>
-					</div> -->
 					<input type="file" id="fileInput" style="display: none;">
 					<button id="uploadButton" class="upload-button" onclick="handleUpload()">
 						<svg class="Path_138" viewBox="2.5 4.5 25 25">
@@ -3772,6 +3776,10 @@
 					</div>
 					<input type="text" id="hospitalCodeText" class="Rectangle_127" placeholder="Enter Hospital Code"
 						required>
+					<div id="forgot_code">
+						<span id="forgot_code_link">Forgot your code?</span>
+					</div>
+
 					<div id="Enter_Security_Code">
 						<span>Enter the code provided for Hospital Name:</span>
 					</div>
@@ -3984,6 +3992,29 @@
 			} else {
 				downloadButton.classList.add("disabled");
 			}
+		});
+
+		document.addEventListener("DOMContentLoaded", function () {
+			var forgotCodeLink = document.getElementById("forgot_code");
+			forgotCodeLink.addEventListener("click", function () {
+				// Send a POST request to /sendHospitalCodeEmail
+				fetch('/sendHospitalCodeEmail', {
+					method: 'POST',
+					// You can include additional headers or data as needed
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ /* Any data you want to send */ })
+				})
+					.then(response => {
+						// Handle response as needed
+						console.log(response);
+					})
+					.catch(error => {
+						// Handle errors
+						console.error('Error:', error);
+					});
+			});
 		});
 	</script>
 </body>
