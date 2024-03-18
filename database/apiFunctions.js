@@ -201,6 +201,25 @@ router.get('/patientLogin', async (req, res) => {
     }
 });
 
+router.get('/contactUs', async (req, res) => {
+    try {
+        if (req.session.loggedIn == true) {
+            if (req.session.hospitalLoggedId) {
+                res.render('contactUs', { Username: req.session.username, HospitalId: req.session.hospitalLoggedId });
+            }
+            else {
+                res.render('contactUs', { Username: req.session.username, HospitalId: null }); // Corrected the object syntax
+            }
+        } else {
+            res.render('contactUs', { Username: null, HospitalId: null });
+        }
+
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.get('/patientReport', async (req, res) => {
     try {
         if (!req.session.medivaultId) {
