@@ -1,4 +1,3 @@
-const { Time } = require('msnodesqlv8');
 const {
   HospitalInfo,
   PatientInfo,
@@ -10,6 +9,28 @@ const {
   HospitalLogin,
   HospitalCodes,
 } = require('./models');
+
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
+async function hashPassword(plainTextPassword) {
+  return new Promise((resolve, reject) => {
+      const saltRounds = 10; // The higher the rounds, the more secure but slower the hashing
+      bcrypt.genSalt(saltRounds, function(err, salt) {
+          if (err) {
+              reject(err);
+          } else {
+              bcrypt.hash(plainTextPassword, salt, function(err, hash) {
+                  if (err) {
+                      reject(err);
+                  } else {
+                      resolve(hash);
+                  }
+              });
+          }
+      });
+  });
+}
 
 function generateMedivaultId(firstName, lastName, phoneNumber) {
   // Extracting the first letter of the first name
@@ -392,57 +413,73 @@ async function addDummyPatientLogins() {
   const existingPatientLogins = await PatientLogin.find({});
 
   if (existingPatientLogins.length === 0) {
-    const patient1_Id = await PatientInfo.findOne({ Name: 'Hamza Siddiqui' }).select('_id');
-    const patient2_Id = await PatientInfo.findOne({ Name: 'Nidhi Shukla' }).select('_id');
+      const patient1_Id = await PatientInfo.findOne({ Name: 'Hamza Siddiqui' }).select('_id');
+      const patient2_Id = await PatientInfo.findOne({ Name: 'Nidhi Shukla' }).select('_id');
 
-    const dummyPatientLogins = [
-      {
-        Username: 'hamza',
-        Password: '123',
-        Patient_Id: patient1_Id, // Reference to Patient_Info ID
-      },
-      {
-        Username: 'nidhi',
-        Password: '123',
-        Patient_Id: patient2_Id, // Reference to Patient_Info ID
-      },
-    ];
+      const dummyPatientLogins = [
+          {
+              Username: 'hamza',
+              Password: '123',
+              Patient_Id: patient1_Id, // Reference to Patient_Info ID
+          },
+          {
+              Username: 'nidhi',
+              Password: '123',
+              Patient_Id: patient2_Id, // Reference to Patient_Info ID
+          },
+      ];
 
-    await PatientLogin.insertMany(dummyPatientLogins);
-    console.log('Dummy data added for Patient_Login');
+      // Hash passwords before inserting into the database
+      const hashedDummyPatientLogins = await Promise.all(dummyPatientLogins.map(async (login) => {
+          return {
+              Username: login.Username,
+              Password: await hashPassword(login.Password), // Hashing password
+              Patient_Id: login.Patient_Id,
+          };
+      }));
+
+      await PatientLogin.insertMany(hashedDummyPatientLogins);
+      console.log('Dummy data added for Patient_Login');
   } else {
-    console.log('Dummy data for Patient Login already exists');
+      console.log('Dummy data for Patient Login already exists');
   }
 }
 
-// Add dummy data for Hospital_Login
 async function addDummyHospitalLogins() {
   const existingHospitalLogins = await HospitalLogin.find({});
 
   if (existingHospitalLogins.length === 0) {
-    const hospitalA_Id = await HospitalInfo.findOne({ Name: 'Hospital A' }).select('_id');
-    const hospitalB_Id = await HospitalInfo.findOne({ Name: 'Hospital B' }).select('_id');
+      const hospitalA_Id = await HospitalInfo.findOne({ Name: 'Hospital A' }).select('_id');
+      const hospitalB_Id = await HospitalInfo.findOne({ Name: 'Hospital B' }).select('_id');
 
-    const dummyHospitalLogins = [
-      {
-        Username: 'hamza',
-        Password: '123',
-        Hospital_Id: hospitalA_Id, // Reference to Hospital_Info ID
-      },
-      {
-        Username: 'nidhi',
-        Password: '123',
-        Hospital_Id: hospitalB_Id, // Reference to Hospital_Info ID
-      },
-    ];
+      const dummyHospitalLogins = [
+          {
+              Username: 'hamza',
+              Password: '123',
+              Hospital_Id: hospitalA_Id, // Reference to Hospital_Info ID
+          },
+          {
+              Username: 'nidhi',
+              Password: '123',
+              Hospital_Id: hospitalB_Id, // Reference to Hospital_Info ID
+          },
+      ];
 
-    await HospitalLogin.insertMany(dummyHospitalLogins);
-    console.log('Dummy data added for Hospital_Login');
+      // Hash passwords before inserting into the database
+      const hashedDummyHospitalLogins = await Promise.all(dummyHospitalLogins.map(async (login) => {
+          return {
+              Username: login.Username,
+              Password: await hashPassword(login.Password), // Hashing password
+              Hospital_Id: login.Hospital_Id,
+          };
+      }));
+
+      await HospitalLogin.insertMany(hashedDummyHospitalLogins);
+      console.log('Dummy data added for Hospital_Login');
   } else {
-    console.log('Dummy data for Hospital_Login already exists');
+      console.log('Dummy data for Hospital_Login already exists');
   }
 }
-
 
 module.exports = {
   addDummyHospitals,

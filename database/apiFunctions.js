@@ -5,6 +5,7 @@ const path = require('path');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
+const bcrypt = require('bcrypt');
 
 const {
     HospitalInfo,
@@ -91,20 +92,28 @@ router.post('/patient-login', async (req, res) => {
     console.log('Received request:', username, password); // Check if request body is received correctly
 
     try {
-        const user = await PatientLogin.findOne({ Username: username, Password: password });
+        const user = await PatientLogin.findOne({ Username: username });
         console.log('User:', user); // Check if user is found
 
         if (user) {
-            const patientInfo = await PatientInfo.findOne({ _id: user.Patient_Id });
-            console.log('Patient Info:', patientInfo); // Check if patient information is found
+            // Compare entered password with hashed password
+            const passwordMatch = await bcrypt.compare(password, user.Password);
+            console.log('Password Match:', passwordMatch);
 
-            if (patientInfo) {
-                req.session.loggedIn = true;
-                req.session.username = patientInfo.Name;
-                req.session.medivaultId = patientInfo.Medivault_Id; // Store medivaultId in the session
-                res.status(200).json({ message: 'Login successful' });
+            if (passwordMatch) {
+                const patientInfo = await PatientInfo.findOne({ _id: user.Patient_Id });
+                console.log('Patient Info:', patientInfo); // Check if patient information is found
+
+                if (patientInfo) {
+                    req.session.loggedIn = true;
+                    req.session.username = patientInfo.Name;
+                    req.session.medivaultId = patientInfo.Medivault_Id; // Store medivaultId in the session
+                    res.status(200).json({ message: 'Login successful' });
+                } else {
+                    res.status(500).json({ message: 'Patient information not found' });
+                }
             } else {
-                res.status(500).json({ message: 'Patient information not found' });
+                res.status(401).json({ message: 'Invalid username or password' });
             }
         } else {
             res.status(401).json({ message: 'Invalid username or password' });
@@ -129,20 +138,28 @@ router.post('/hospital-login', async (req, res) => {
     console.log('Received request:', username, password); // Check if request body is received correctly
 
     try {
-        const user = await HospitalLogin.findOne({ Username: username, Password: password });
+        const user = await HospitalLogin.findOne({ Username: username });
         console.log('User:', user); // Check if user is found     
 
         if (user) {
-            const hospitalInfo = await HospitalInfo.findOne({ _id: user.Hospital_Id });
-            console.log('Hospital Info:', hospitalInfo); // Check if patient information is found
+            // Compare entered password with hashed password
+            const passwordMatch = await bcrypt.compare(password, user.Password);
+            console.log('Password Match:', passwordMatch);
 
-            if (hospitalInfo) {
-                req.session.hospitalLoggedId = hospitalInfo._id;
-                req.session.loggedIn = true;
-                req.session.username = hospitalInfo.Name;
-                res.status(200).json({ message: 'Login successful' });
+            if (passwordMatch) {
+                const hospitalInfo = await HospitalInfo.findOne({ _id: user.Hospital_Id });
+                console.log('Hospital Info:', hospitalInfo); // Check if hospital information is found
+
+                if (hospitalInfo) {
+                    req.session.hospitalLoggedId = hospitalInfo._id;
+                    req.session.loggedIn = true;
+                    req.session.username = hospitalInfo.Name;
+                    res.status(200).json({ message: 'Login successful' });
+                } else {
+                    res.status(500).json({ message: 'Hospital information not found' });
+                }
             } else {
-                res.status(500).json({ message: 'Patient information not found' });
+                res.status(401).json({ message: 'Invalid username or password' });
             }
         } else {
             res.status(401).json({ message: 'Invalid username or password' });
