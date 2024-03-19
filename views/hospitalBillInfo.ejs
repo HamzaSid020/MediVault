@@ -2993,13 +2993,450 @@
 
 		.upload-button svg {
 			fill: #000;
-			/* Change the color as needed */
 			width: 25px;
-			/* Adjust the size as needed */
 			height: 25px;
-			/* Adjust the size as needed */
 			margin-right: 5px;
-			/* Adjust the spacing as needed */
+		}
+		
+		.delete-button {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		.pencil-icon {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		/* Style for the delete button SVG */
+		.delete-button svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 24px;
+		}
+
+		.pencil-icon svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 20px;
+		}
+
+		/* Apply hover effect to the delete button */
+		.delete-button:hover #Path_141 {
+			fill: red;
+			/* Change the color to red on hover */
+		}
+
+		.content-wrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			margin-right: -120px;
+		}
+
+		.info-wrapper {
+			flex: 1;
+		}
+
+		.delete-button {
+			margin-top: 0px;
+			top: 35px;
+			left: -40px;
+			/* Adjust margin to add space between content and button */
+		}
+
+		.pencil-icon {
+			margin-top: 0px;
+			top: 35px;
+			left: -125px;
+		}
+
+		.pencil-icon:hover #Path_238 {
+			stroke: rgba(51, 53, 97);
+		}
+
+		#Path_238 {
+			fill: transparent;
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 2.5px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_238 {
+			overflow: visible;
+			position: absolute;
+			width: 24.875px;
+			height: 24.875px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#file-download {
+			fill: transparent;
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 2.5px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.download-icon {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			top: 35px;
+			left: -210px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		.download-icon svg {
+			position: absolute;
+			left: 19px;
+			top: 18px;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 20px;
+		}
+
+		.download-icon:hover #file-download {
+			stroke: rgba(51, 53, 97);
+		}
+
+		/* Adjust the distance from the file name */
+		.file-download {
+			overflow: visible;
+			position: absolute;
+			width: 28.031px;
+			height: 15px;
+			top: 50px;
+			left: 80px;
+			/* Adjusted position for the download icon */
+			transform: translateY(-50%);
+		}
+
+		.delete-button {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		.pencil-icon {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		/* Style for the delete button SVG */
+		.delete-button svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 24px;
+		}
+
+		.pencil-icon svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 20px;
+		}
+
+		/* Apply hover effect to the delete button */
+		.delete-button:hover #Path_141 {
+			fill: red;
+			/* Change the color to red on hover */
+		}
+
+		.content-wrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			margin-right: -120px;
+		}
+
+		.info-wrapper {
+			flex: 1;
+		}
+
+		.delete-button {
+			margin-top: 0px;
+			top: 35px;
+			left: -40px;
+			/* Adjust margin to add space between content and button */
+		}
+
+		.pencil-icon {
+			margin-top: 0px;
+			top: 35px;
+			left: -125px;
+		}
+
+		.pencil-icon:hover #Path_238 {
+			stroke: rgba(51, 53, 97);
+		}
+
+		#Path_238 {
+			fill: transparent;
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 2.5px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_238 {
+			overflow: visible;
+			position: absolute;
+			width: 24.875px;
+			height: 24.875px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#file-download {
+			fill: transparent;
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 2.5px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.download-icon {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			top: 35px;
+			left: -210px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		.download-icon svg {
+			position: absolute;
+			left: 19px;
+			top: 18px;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 20px;
+		}
+
+		.download-icon:hover #file-download {
+			stroke: rgba(51, 53, 97);
+		}
+
+		/* Adjust the distance from the file name */
+		.file-download {
+			overflow: visible;
+			position: absolute;
+			width: 28.031px;
+			height: 15px;
+			top: 50px;
+			left: 80px;
+			/* Adjusted position for the download icon */
+			transform: translateY(-50%);
+		}
+
+		.delete-button {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		.pencil-icon {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		/* Style for the delete button SVG */
+		.delete-button svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 24px;
+		}
+
+		.pencil-icon svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 20px;
+		}
+
+		/* Apply hover effect to the delete button */
+		.delete-button:hover #Path_141 {
+			fill: red;
+			/* Change the color to red on hover */
+		}
+
+		.content-wrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			margin-right: -120px;
+		}
+
+		.info-wrapper {
+			flex: 1;
+		}
+
+		.delete-button {
+			margin-top: 0px;
+			top: 35px;
+			left: -40px;
+			/* Adjust margin to add space between content and button */
+		}
+
+		.pencil-icon {
+			margin-top: 0px;
+			top: 35px;
+			left: -125px;
+		}
+
+		.pencil-icon:hover #Path_238 {
+			stroke: rgba(51, 53, 97);
+		}
+
+		#Path_238 {
+			fill: transparent;
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 2.5px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_238 {
+			overflow: visible;
+			position: absolute;
+			width: 24.875px;
+			height: 24.875px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#file-download {
+			fill: transparent;
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 2.5px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.download-icon {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			top: 35px;
+			left: -210px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		.download-icon svg {
+			position: absolute;
+			left: 19px;
+			top: 18px;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 20px;
+		}
+
+		.download-icon:hover #file-download {
+			stroke: rgba(51, 53, 97);
+		}
+
+		/* Adjust the distance from the file name */
+		.file-download {
+			overflow: visible;
+			position: absolute;
+			width: 28.031px;
+			height: 15px;
+			top: 50px;
+			left: 80px;
+			/* Adjusted position for the download icon */
+			transform: translateY(-50%);
 		}
 	</style>
 </head>
@@ -3225,13 +3662,43 @@
 			<div class="rectangle-container">
 				<ul class="item-list">
 					<% for (let i = 0; i < bill_info.length; i++) { %>
-					<div id="link" class="hospital-code-wrapper"
-						onclick="showHospitalCodeModal('<%= bill_info[i]._id %>', '<%= bill_info[i].Hospital_Id._id %>')">
+					<!-- <div id="link" class="hospital-code-wrapper"
+						onclick="showHospitalCodeModal('<%= bill_info[i]._id %>', '<%= bill_info[i].Hospital_Id._id %>')"> -->
 						<li class="item">
+							<div class="content-wrapper">
+								<div class="info-wrapper">
 							<p class="time"><%= bill_info[i].Last_Updated_Time.toLocaleString()%></p>
 							<p class="from">From</p>
 							<p class="hospital-name"><%= bill_info[i].Hospital_Id.Name %></p>
 							<p class="file-name"><%= bill_info[i].Name %></p>
+							</div>
+							<div class="delete-button" onclick="deleteBill('<%= bill_info[i]._id %>')">
+								<svg class="Path_140" viewBox="0 0 38.467 38.467">
+									<path id="Path_140"
+										d="M 0 0 L 38.466796875 0 L 38.466796875 38.466796875 L 0 38.466796875 L 0 0 Z">
+									</path>
+								</svg>
+								<svg class="Path_141" viewBox="5 3 22.439 28.85">
+									<path id="Path_141"
+										d="M 22.630615234375 12.61669921875 L 22.630615234375 28.64453125 L 9.808349609375 28.64453125 L 9.808349609375 12.61669921875 L 22.630615234375 12.61669921875 M 20.2264404296875 3 L 12.2125244140625 3 L 10.6097412109375 4.602783203125 L 5 4.602783203125 L 5 7.808349609375 L 27.43896484375 7.808349609375 L 27.43896484375 4.602783203125 L 21.8292236328125 4.602783203125 L 20.2264404296875 3 Z M 25.836181640625 9.4111328125 L 6.602783203125 9.4111328125 L 6.602783203125 28.64453125 C 6.602783203125 30.4075927734375 8.0452880859375 31.85009765625 9.808349609375 31.85009765625 L 22.630615234375 31.85009765625 C 24.3936767578125 31.85009765625 25.836181640625 30.4075927734375 25.836181640625 28.64453125 L 25.836181640625 9.4111328125 Z">
+									</path>
+								</svg>
+							</div>
+							<div class="pencil-icon">
+								<svg class="Path_238" viewBox="3.75 3.874 22.375 22.376">
+									<path id="Path_238"
+										d="M 5.416250228881836 20.05999946594238 L 20.71249961853027 4.762499809265137 C 21.96942710876465 3.559701681137085 23.95701789855957 3.581429719924927 25.18734741210938 4.811418533325195 C 26.41767501831055 6.041407585144043 26.4399528503418 8.028993606567383 25.23750114440918 9.286249160766602 L 9.938750267028809 24.58374977111816 C 9.589750289916992 24.93277931213379 9.145244598388672 25.17069053649902 8.661250114440918 25.26749992370605 L 3.75 26.25 L 4.732500076293945 21.33749961853027 C 4.829309463500977 20.85350608825684 5.067220687866211 20.40899848937988 5.416249752044678 20.05999946594238 Z">
+									</path>
+								</svg>
+							</div>
+							<div class="download-icon">
+								<svg class="file-download" viewBox="2.5 3.75 25 22.5">
+									<path id="file-download"
+										d="M 15 18.75 L 15 3.75 M 15 18.75 L 10 13.75 M 15 18.75 L 20 13.75 M 2.5 21.25 L 3.276249885559082 24.35625076293945 C 3.554412841796875 25.46907424926758 4.554188251495361 26.24982643127441 5.701250076293945 26.25 L 24.29874992370605 26.25 C 25.4454345703125 26.25 26.44532775878906 25.46940040588379 26.72365951538086 24.35661888122559 L 27.5 21.25">
+									</path>
+								</svg>
+							</div>
+						</div>
 						</li>
 					</div>
 					<% } %>
