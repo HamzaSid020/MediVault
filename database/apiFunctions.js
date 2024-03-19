@@ -247,6 +247,39 @@ router.get('/patientReport', async (req, res) => {
     }
 });
 
+router.get('/hospitalReportInfo/:medivaultId', async (req, res) => {
+
+    try {
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+        const medivaultId = req.params.medivaultId;
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Get the patient ID from the URL parameters
+        const patientInfo = await PatientInfo.findOne({
+            Medivault_Id: medivaultId,
+            Hospital_Ids: { $elemMatch: { $eq: hospitalId } }
+        });
+        const patientId = patientInfo._id;
+        // Find all reports related to the patient using the Patient_Id
+        const reports = await Report.find({
+            Patient_Id: patientId,
+            Hospital_Id: hospitalId
+        }).populate('Hospital_Id').exec();
+
+        // Pass the patient ID to the render function
+        console.log(patientInfo);
+        console.log(reports);
+
+        res.render('hospitalReportInfo', { patientInfo: patientInfo, report_info: reports });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.get('/patientPrescriptionEdit', async (req, res) => {
     try {
         if (!req.session.medivaultId) {
@@ -325,6 +358,41 @@ router.get('/patientAppointment', async (req, res) => {
     }
 });
 
+router.get('/hospitalAppointmentInfo/:medivaultId', async (req, res) => {
+    try {
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+        // Get the patient ID from the URL parameters
+        const medivaultId = req.params.medivaultId;
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Get the patient ID from the URL parameters
+        const patientInfo = await PatientInfo.findOne({
+            Medivault_Id: medivaultId,
+            Hospital_Ids: { $elemMatch: { $eq: hospitalId } }
+        });
+        const patientId = patientInfo._id;
+        // Find all appointment related to the patient using the Patient_Id
+        const appointment = await Appointment.find({ 
+            Patient_Id: patientId,
+            Hospital_Id: hospitalId
+        })
+            .populate('Hospital_Id')
+            .exec();
+
+        // Pass the patient ID to the render function
+        console.log(patientInfo);
+        console.log(appointment);
+
+        res.render('hospitalAppointmentInfo', { patientInfo: patientInfo, appointment_info: appointment });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.get('/patientBill', async (req, res) => {
     try {
         if (!req.session.medivaultId) {
@@ -351,6 +419,41 @@ router.get('/patientBill', async (req, res) => {
     }
 });
 
+router.get('/hospitalBillInfo/:medivaultId', async (req, res) => {
+    try {
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+        const medivaultId = req.params.medivaultId;
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Get the patient ID from the URL parameters
+        const patientInfo = await PatientInfo.findOne({
+            Medivault_Id: medivaultId,
+            Hospital_Ids: { $elemMatch: { $eq: hospitalId } }
+        });
+
+        const patientId = patientInfo._id;
+        // Find all bills related to the patient using the Patient_Id
+        const bills = await Bills.find({
+            Patient_Id: patientId,
+            Hospital_Id: hospitalId
+        })
+            .populate('Hospital_Id')
+            .exec();
+
+        // Pass the patient ID to the render function
+        console.log("patientInfo:", patientInfo);
+        console.log("BillInfo:", bills);
+
+        res.render('hospitalBillInfo', { patientInfo: patientInfo, bill_info: bills });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.get('/patientPrescription', async (req, res) => {
     try {
         if (!req.session.medivaultId) {
@@ -371,6 +474,40 @@ router.get('/patientPrescription', async (req, res) => {
         console.log("PrescriptionInfo:", prescriptions);
 
         res.render('patientPrescriptionInfo', { patientInfo: patientInfo, prescription_info: prescriptions });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/hospitalPrescriptionInfo/:medivaultId', async (req, res) => {
+    try {
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+        const medivaultId = req.params.medivaultId;
+        const hospitalId = req.session.hospitalLoggedId;
+        // Get the patient ID from the URL parameters
+        const patientInfo = await PatientInfo.findOne({
+            Medivault_Id: medivaultId,
+            Hospital_Ids: { $elemMatch: { $eq: hospitalId } }
+        });
+
+        const patientId = patientInfo._id;
+        // Find all prescriptions related to the patient using the Patient_Id
+        const prescriptions = await Prescription.find({
+            Patient_Id: patientId,
+            Hospital_Id: hospitalId
+        })
+            .populate('Hospital_Id')
+            .exec();
+
+        // Pass the patient ID to the render function
+        console.log("patientInfo:", patientInfo);
+        console.log("PrescriptionInfo:", prescriptions);
+
+        res.render('hospitalPrescriptionInfo', { patientInfo: patientInfo, prescription_info: prescriptions });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -1123,23 +1260,23 @@ router.post('/sendHospitalCodeEmail', async (req, res) => {
 
 router.post('/contactUsMessage', async (req, res) => {
     try {
-      const { FirstName, LastName, EmailAddress, Message } = req.body;
-      // Create new ContactUsMessage document
-      const newMessage = new ContactUsMessage({
-        FirstName,
-        LastName,
-        EmailAddress,
-        Message
-      });
-  
-      // Save the document to the database
-      await newMessage.save();
-  
-      res.status(201).json({ message: 'Message added successfully' });
+        const { FirstName, LastName, EmailAddress, Message } = req.body;
+        // Create new ContactUsMessage document
+        const newMessage = new ContactUsMessage({
+            FirstName,
+            LastName,
+            EmailAddress,
+            Message
+        });
+
+        // Save the document to the database
+        await newMessage.save();
+
+        res.status(201).json({ message: 'Message added successfully' });
     } catch (error) {
-      console.error('Error:', error);
-      res.status(500).json({ error: 'An error occurred while adding the message' });
+        console.error('Error:', error);
+        res.status(500).json({ error: 'An error occurred while adding the message' });
     }
-  });
+});
 
 module.exports = router;

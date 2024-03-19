@@ -1,0 +1,4028 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Patient info</title>
+	<style id="applicationStylesheet" type="text/css">
+		:root {
+			--web-view-ids: Patient_info;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			border: none;
+		}
+
+		#Patient_info {
+			position: absolute;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(255, 255, 255, 1);
+			overflow: hidden;
+			overflow-y: auto;
+			--web-view-name: Patient info;
+			--web-view-id: Patient_info;
+			--web-scale-on-resize: true;
+			--web-enable-deep-linking: true;
+		}
+
+		#Group_83 {
+			opacity: 0.99;
+			position: absolute;
+			width: 1920px;
+			height: 2939.757px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Group_82 {
+			position: absolute;
+			width: 1920px;
+			height: 2939.757px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Path_4 {
+			fill: rgba(189, 192, 225, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_4 {
+			overflow: visible;
+			position: absolute;
+			width: 1919.396px;
+			height: 87.969px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_5 {
+			fill: rgba(189, 192, 225, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_5 {
+			overflow: visible;
+			position: absolute;
+			width: 1919.35px;
+			height: 164.261px;
+			left: 0.65px;
+			top: 2775.496px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Image_1 {
+			position: absolute;
+			width: 106px;
+			height: 68px;
+			left: 22.396px;
+			top: 9.484px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_1 {
+			position: absolute;
+			width: 602px;
+			height: 23px;
+			left: 659.396px;
+			top: 32.484px;
+			overflow: hidden;
+		}
+
+		#Group {
+			position: absolute;
+			width: 67px;
+			height: 33px;
+			left: 1px;
+			top: -9px;
+			overflow: visible;
+		}
+
+		#Home {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 68px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_s {
+			position: absolute;
+			width: 103px;
+			height: 33px;
+			left: 234px;
+			top: -9px;
+			overflow: visible;
+		}
+
+		#About_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 104px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_u {
+			position: absolute;
+			width: 120px;
+			height: 33px;
+			left: 467px;
+			top: -9px;
+			overflow: visible;
+		}
+
+		#Contact_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 121px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Logout {
+			left: 1787.896px;
+			top: 24.484px;
+			position: absolute;
+			overflow: visible;
+			width: 92px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Repeat_Grid_2 {
+			position: absolute;
+			width: 1270px;
+			height: 90px;
+			left: 401.896px;
+			top: 1305.996px;
+			overflow: hidden;
+		}
+
+		#Group_y {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_3 {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: hidden;
+		}
+
+		#Group_ {
+			position: absolute;
+			width: 101px;
+			height: 66px;
+			left: 1px;
+			top: 1px;
+			overflow: visible;
+		}
+
+		#How_It_Works_FAQ_Contact_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 102px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_ba {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 498px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_3_ {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: hidden;
+		}
+
+		#Group_bb {
+			position: absolute;
+			width: 123px;
+			height: 66px;
+			left: 1px;
+			top: 1px;
+			overflow: visible;
+		}
+
+		#Contact_Support_Help_Center_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 124px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_bc {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 996px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_3_ba {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: hidden;
+		}
+
+		#Group_bd {
+			position: absolute;
+			width: 162px;
+			height: 88px;
+			left: 1px;
+			top: 1px;
+			overflow: visible;
+		}
+
+		#Terms_and_Conditions_Privacy_P {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 163px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		#Copyright_-_Group_9_ {
+			left: 897.896px;
+			top: 1396.511px;
+			position: absolute;
+			overflow: visible;
+			width: 148px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 16px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Path_62 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_62 {
+			overflow: visible;
+			position: absolute;
+			width: 51.956px;
+			height: 51.956px;
+			left: 835.44px;
+			top: 1315.771px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_27 {
+			position: absolute;
+			width: 36.368px;
+			height: 51.956px;
+			left: 1347.396px;
+			top: 1315.771px;
+			overflow: visible;
+		}
+
+		#Path_63 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_63 {
+			overflow: visible;
+			position: absolute;
+			width: 36.368px;
+			height: 51.956px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_64 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_64 {
+			overflow: visible;
+			position: absolute;
+			width: 5.195px;
+			height: 10.391px;
+			left: 15.586px;
+			top: 25.977px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Rectangle_80 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_80 {
+			position: absolute;
+			overflow: visible;
+			width: 1920px;
+			height: 641px;
+			left: 0px;
+			top: 126.484px;
+		}
+
+		#Welcome_Patients_name {
+			left: 734.396px;
+			top: 179.984px;
+			position: absolute;
+			overflow: visible;
+			width: 475px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 43px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Ellipse_17 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 15px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Ellipse_17 {
+			position: absolute;
+			overflow: visible;
+			width: 437px;
+			height: 437px;
+			left: 128.396px;
+			top: 260.484px;
+		}
+
+		.imageInEllipse {
+			clip-path: url(#circleClip);
+		}
+
+		#Patient_Name {
+			left: 699.396px;
+			top: 331.484px;
+			position: absolute;
+			overflow: visible;
+			width: 382px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#MediVault_ID_123456 {
+			left: 1214.396px;
+			top: 331.484px;
+			position: absolute;
+			overflow: visible;
+			width: 237px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#DOB_MM-DD-YYYY {
+			left: 699.396px;
+			top: 388.484px;
+			position: absolute;
+			overflow: visible;
+			width: 219px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Address_128_Marshall_Street_Wa {
+			left: 1214.396px;
+			top: 388.484px;
+			position: absolute;
+			overflow: visible;
+			width: 583px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Age_77yrs_ {
+			left: 955.396px;
+			top: 388.484px;
+			position: absolute;
+			overflow: visible;
+			width: 122px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Sex_Male {
+			left: 699.396px;
+			top: 445.484px;
+			position: absolute;
+			overflow: visible;
+			width: 105px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Last_Updated_MM_DD_YYYY {
+			left: 1214.396px;
+			top: 445.484px;
+			position: absolute;
+			overflow: visible;
+			width: 315px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Icon_akar-edit {
+			position: absolute;
+			width: 53.749px;
+			height: 53.749px;
+			left: 1779.647px;
+			top: 179.984px;
+			overflow: visible;
+		}
+
+		#Path_76 {
+			fill: transparent;
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 3px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_76 {
+			overflow: visible;
+			position: absolute;
+			width: 34.616px;
+			height: 34.617px;
+			left: 22.132px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_77 {
+			fill: transparent;
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 3px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_77 {
+			overflow: visible;
+			position: absolute;
+			width: 50.426px;
+			height: 50.426px;
+			left: 0px;
+			top: 6.323px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Rectangle_82 {
+			opacity: 0.96;
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_82 {
+			position: absolute;
+			overflow: visible;
+			width: 1920px;
+			height: 1448px;
+			left: 0px;
+			top: 1330.757px;
+		}
+
+		#Rectangle_83 {
+			position: absolute;
+			width: 1813px;
+			height: 508px;
+			left: 54px;
+			top: 794.757px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_5 {
+			position: absolute;
+			width: 282px;
+			height: 412px;
+			left: 133px;
+			top: 1469.757px;
+			overflow: hidden;
+		}
+
+		#Group_bv {
+			position: absolute;
+			width: 275px;
+			height: 66px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Rectangle_84 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_84 {
+			filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+			position: absolute;
+			overflow: visible;
+			width: 293px;
+			height: 84px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Group_bx {
+			position: absolute;
+			width: 275px;
+			height: 66px;
+			left: 0px;
+			top: 17px;
+			overflow: visible;
+		}
+
+		#Rectangle_84_by {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_84_by {
+			filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+			position: absolute;
+			overflow: visible;
+			width: 293px;
+			height: 84px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Group_bz {
+			position: absolute;
+			width: 275px;
+			height: 66px;
+			left: 0px;
+			top: 30px;
+			overflow: visible;
+		}
+
+		#Rectangle_84_b {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_84_b {
+			filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+			position: absolute;
+			overflow: visible;
+			width: 293px;
+			height: 84px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Group_b {
+			position: absolute;
+			width: 275px;
+			height: 66px;
+			left: 0px;
+			top: 45px;
+			overflow: visible;
+		}
+
+		#Rectangle_84_ca {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_84_ca {
+			filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+			position: absolute;
+			overflow: visible;
+			width: 293px;
+			height: 84px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Group_ca {
+			position: absolute;
+			width: 275px;
+			height: 66px;
+			left: 0px;
+			top: 60px;
+			overflow: visible;
+		}
+
+		#Rectangle_84_cb {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_84_cb {
+			filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+			position: absolute;
+			overflow: visible;
+			width: 293px;
+			height: 84px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Group_bv {
+			position: relative;
+			display: inline-block;
+		}
+
+		#Group_bv:hover #Rectangle_84 {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(255, 255, 255, 1);
+		}
+
+		#Group_bv:hover #Inbox span {
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Inbox {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#Inbox span {
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+			transition: color 0.2s ease;
+		}
+
+		#Group_bx {
+			position: relative;
+			display: inline-block;
+		}
+
+		#Group_bx:hover #Rectangle_84_by {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(255, 255, 255, 1);
+		}
+
+		#Group_bx:hover #Reports span {
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Rectangle_84_by {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.2s ease, stroke 0.2s ease;
+		}
+
+		#Reports {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#Reports a {
+			text-decoration: none;
+		}
+
+		#Reports span {
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+			transition: color 0.2s ease;
+		}
+
+		#Group_bz {
+			position: relative;
+			display: inline-block;
+		}
+
+		#Group_bz:hover #Rectangle_84_b {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(255, 255, 255, 1);
+		}
+
+		#Group_bz:hover #Appointments span {
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Rectangle_84_b {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.2s ease, stroke 0.2s ease;
+		}
+
+		#Appointments {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#Appointments a {
+			text-decoration: none;
+		}
+
+		#Appointments span {
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+			transition: color 0.2s ease;
+		}
+
+		#Group_b {
+			position: relative;
+			display: inline-block;
+		}
+
+		#Group_b:hover #Rectangle_84_ca {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(255, 255, 255, 1);
+		}
+
+		#Group_b:hover #Prescriptions span {
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Rectangle_84_ca {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.2s ease, stroke 0.2s ease;
+		}
+
+		#Prescriptions {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#Prescriptions a {
+			text-decoration: none;
+		}
+
+		#Prescriptions span {
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+			transition: color 0.2s ease;
+		}
+
+		#Group_ca {
+			position: relative;
+			display: inline-block;
+		}
+
+		#Group_ca:hover #Rectangle_84_cb {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(255, 255, 255, 1);
+		}
+
+		#Group_ca:hover #Bills span {
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Rectangle_84_cb {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.2s ease, stroke 0.2s ease;
+		}
+
+		#Bills {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#Bills a {
+			text-decoration: none;
+		}
+
+		#Bills span {
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 25px;
+			color: rgba(90, 92, 137, 1);
+			transition: color 0.2s ease;
+		}
+
+		#Menu {
+			left: 132.5px;
+			top: 1366.257px;
+			position: absolute;
+			overflow: visible;
+			width: 95px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 37px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Path_78 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_78 {
+			overflow: visible;
+			position: absolute;
+			width: 1363.237px;
+			height: 1412.5px;
+			left: 503.763px;
+			top: 1366.257px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Reports_b {
+			left: 1087.5px;
+			top: 1393.757px;
+			position: absolute;
+			overflow: visible;
+			width: 193px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 57px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.rectangle-container {
+			position: relative;
+			width: 1273px;
+			height: 1230px;
+			margin-left: 547px;
+			margin-top: 1519.757px;
+			background-color: rgba(255, 255, 255, 1);
+			border: 1px solid rgba(112, 112, 112, 1);
+			overflow-y: auto;
+		}
+
+		.item-list {
+			list-style: none;
+			padding: 0;
+		}
+
+		.item {
+			border: 1px solid rgba(112, 112, 112, 1);
+			margin: 20px;
+			border-radius: 60px;
+			padding: 30px;
+			font-family: Segoe UI;
+			position: relative;
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(234, 235, 245, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+
+		}
+
+		.from {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
+			font-size: 25px;
+		}
+
+		.hospital-name {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
+			font-size: 33px;
+		}
+
+		.time {
+			float: right;
+			font-size: 18px;
+		}
+
+		.file-name {
+			font-size: 33px;
+		}
+
+		.time,
+		.file-name {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.hospital-code-wrapper {
+			border: none;
+			background: transparent;
+			padding: 0;
+			margin: 0;
+			cursor: pointer;
+			outline: none;
+		}
+
+		#Group_94 {
+			position: absolute;
+			width: 662.607px;
+			height: 415px;
+			left: 1087.5px;
+			top: 887.757px;
+			overflow: visible;
+		}
+
+		#Path_79 {
+			fill: rgba(189, 192, 225, 1);
+		}
+
+		.Path_79 {
+			overflow: visible;
+			position: absolute;
+			width: 662.607px;
+			height: 415px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_80 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_80 {
+			overflow: visible;
+			position: absolute;
+			width: 167.805px;
+			height: 74.076px;
+			left: 247.237px;
+			top: 8.589px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Rectangle_87 {
+			fill: rgba(248, 173, 156, 1);
+		}
+
+		.Rectangle_87 {
+			width: 33.259px;
+			height: 51.652px;
+			position: absolute;
+			overflow: visible;
+			transform: translate(-18.574px, -65.491px) matrix(1, 0, 0, 1, 164.6649, 359.7873) rotate(-54.701deg);
+			transform-origin: center;
+		}
+
+		#Path_81 {
+			fill: rgba(33, 120, 189, 1);
+		}
+
+		.Path_81 {
+			overflow: visible;
+			position: absolute;
+			width: 100.089px;
+			height: 75.84px;
+			left: 61.733px;
+			top: 249.967px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_82 {
+			fill: transparent;
+			stroke: rgba(36, 101, 146, 1);
+			stroke-width: 0.3230000138282776px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			shape-rendering: auto;
+		}
+
+		.Path_82 {
+			overflow: visible;
+			position: absolute;
+			width: 32.13px;
+			height: 13.485px;
+			left: 64.063px;
+			top: 264.328px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_83 {
+			fill: transparent;
+			stroke: rgba(36, 101, 146, 1);
+			stroke-width: 0.3230000138282776px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			shape-rendering: auto;
+		}
+
+		.Path_83 {
+			overflow: visible;
+			position: absolute;
+			width: 32.13px;
+			height: 13.485px;
+			left: 63.055px;
+			top: 272.895px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_84 {
+			fill: transparent;
+			stroke: rgba(36, 101, 146, 1);
+			stroke-width: 0.3230000138282776px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			shape-rendering: auto;
+		}
+
+		.Path_84 {
+			overflow: visible;
+			position: absolute;
+			width: 29.61px;
+			height: 11.973px;
+			left: 65.322px;
+			top: 282.973px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_90 {
+			position: absolute;
+			width: 459.537px;
+			height: 300.508px;
+			left: 146.705px;
+			top: 114.492px;
+			overflow: visible;
+		}
+
+		#Path_85 {
+			fill: rgba(77, 30, 51, 1);
+		}
+
+		.Path_85 {
+			overflow: visible;
+			position: absolute;
+			width: 66.653px;
+			height: 57.367px;
+			left: 242.84px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Rectangle_88 {
+			fill: rgba(248, 173, 156, 1);
+		}
+
+		.Rectangle_88 {
+			position: absolute;
+			overflow: visible;
+			width: 24.188px;
+			height: 35.274px;
+			left: 264.054px;
+			top: 56.359px;
+		}
+
+		#Path_86 {
+			fill: rgba(248, 173, 156, 1);
+		}
+
+		.Path_86 {
+			overflow: visible;
+			position: absolute;
+			width: 68.334px;
+			height: 57.953px;
+			left: 241.583px;
+			top: 19.573px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Ellipse_18 {
+			fill: rgba(77, 30, 51, 1);
+		}
+
+		.Ellipse_18 {
+			width: 15.118px;
+			height: 2.52px;
+			position: absolute;
+			overflow: visible;
+			transform: translate(0px, 0px) matrix(0.9999, 0, 0, 0.9999, 256.2187, 33.6701) rotate(-0.992deg);
+			transform-origin: center;
+		}
+
+		#Ellipse_19 {
+			fill: rgba(77, 30, 51, 1);
+		}
+
+		.Ellipse_19 {
+			width: 2.52px;
+			height: 14.614px;
+			position: absolute;
+			overflow: visible;
+			transform: translate(0px, 0px) matrix(1, 0, 0, 1, 287.7617, 28.2758) rotate(-87.587deg);
+			transform-origin: center;
+		}
+
+		#Path_87 {
+			fill: rgba(208, 132, 135, 1);
+		}
+
+		.Path_87 {
+			overflow: visible;
+			position: absolute;
+			width: 23.954px;
+			height: 4.923px;
+			left: 263.949px;
+			top: 72.632px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_88 {
+			fill: rgba(208, 132, 135, 1);
+		}
+
+		.Path_88 {
+			overflow: visible;
+			position: absolute;
+			width: 4.619px;
+			height: 8.063px;
+			left: 245.409px;
+			top: 46.533px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_89 {
+			fill: rgba(208, 132, 135, 1);
+		}
+
+		.Path_89 {
+			overflow: visible;
+			position: absolute;
+			width: 4.619px;
+			height: 8.063px;
+			left: 302.519px;
+			top: 46.533px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_90 {
+			fill: rgba(208, 132, 135, 1);
+		}
+
+		.Path_90 {
+			overflow: visible;
+			position: absolute;
+			width: 6.968px;
+			height: 2.855px;
+			left: 272.915px;
+			top: 51.522px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_84 {
+			position: absolute;
+			width: 10.857px;
+			height: 5.324px;
+			left: 259.014px;
+			top: 38.959px;
+			overflow: visible;
+		}
+
+		#Path_91 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_91 {
+			overflow: visible;
+			position: absolute;
+			width: 9.929px;
+			height: 4.91px;
+			left: 0.504px;
+			top: 0.414px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_92 {
+			fill: rgba(43, 29, 48, 1);
+		}
+
+		.Path_92 {
+			overflow: visible;
+			position: absolute;
+			width: 10.857px;
+			height: 3.038px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_93 {
+			fill: rgba(43, 29, 48, 1);
+		}
+
+		.Path_93 {
+			overflow: visible;
+			position: absolute;
+			width: 5.543px;
+			height: 4.787px;
+			left: 2.772px;
+			top: 0.015px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Ellipse_20 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Ellipse_20 {
+			width: 1.512px;
+			height: 1.008px;
+			position: absolute;
+			overflow: visible;
+			transform: translate(0px, 0px) matrix(1, 0, 0, 1, 5.8726, 1.759) rotate(-88.448deg);
+			transform-origin: center;
+		}
+
+		#Group_85 {
+			position: absolute;
+			width: 10.748px;
+			height: 5.311px;
+			left: 283.289px;
+			top: 39.478px;
+			overflow: visible;
+		}
+
+		#Path_94 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_94 {
+			overflow: visible;
+			position: absolute;
+			width: 9.646px;
+			height: 4.812px;
+			left: 0.346px;
+			top: 0.499px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_95 {
+			fill: rgba(43, 29, 48, 1);
+		}
+
+		.Path_95 {
+			overflow: visible;
+			position: absolute;
+			width: 10.748px;
+			height: 3.527px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_96 {
+			fill: rgba(43, 29, 48, 1);
+		}
+
+		.Path_96 {
+			overflow: visible;
+			position: absolute;
+			width: 5.543px;
+			height: 4.597px;
+			left: 2.433px;
+			top: 0.694px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Ellipse_21 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Ellipse_21 {
+			width: 1.512px;
+			height: 1.008px;
+			position: absolute;
+			overflow: visible;
+			transform: translate(0px, 0px) matrix(1, 0, 0, 1, 3.2969, 1.9445) rotate(-88.448deg);
+			transform-origin: center;
+		}
+
+		#Path_97 {
+			fill: rgba(77, 30, 51, 1);
+		}
+
+		.Path_97 {
+			overflow: visible;
+			position: absolute;
+			width: 63.667px;
+			height: 27.217px;
+			left: 248.034px;
+			top: 12.512px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_86 {
+			position: absolute;
+			width: 47.872px;
+			height: 33.7px;
+			left: 252.211px;
+			top: 44.328px;
+			overflow: visible;
+		}
+
+		#Path_98 {
+			fill: rgba(198, 226, 239, 1);
+		}
+
+		.Path_98 {
+			overflow: visible;
+			position: absolute;
+			width: 45.101px;
+			height: 33.699px;
+			left: 1.512px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_99 {
+			fill: rgba(149, 185, 220, 1);
+		}
+
+		.Path_99 {
+			overflow: visible;
+			position: absolute;
+			width: 2.771px;
+			height: 14.866px;
+			left: 45.101px;
+			top: 3.968px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_100 {
+			fill: rgba(149, 185, 220, 1);
+		}
+
+		.Path_100 {
+			overflow: visible;
+			position: absolute;
+			width: 2.771px;
+			height: 14.866px;
+			left: 0px;
+			top: 3.968px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_101 {
+			fill: rgba(149, 185, 220, 1);
+		}
+
+		.Path_101 {
+			overflow: visible;
+			position: absolute;
+			width: 37.29px;
+			height: 6.047px;
+			left: 5.291px;
+			top: 19.842px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_102 {
+			fill: rgba(149, 185, 220, 1);
+		}
+
+		.Path_102 {
+			overflow: visible;
+			position: absolute;
+			width: 36.786px;
+			height: 4.283px;
+			left: 5.291px;
+			top: 13.039px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_103 {
+			fill: rgba(149, 185, 220, 1);
+		}
+
+		.Path_103 {
+			overflow: visible;
+			position: absolute;
+			width: 36.282px;
+			height: 4.283px;
+			left: 5.291px;
+			top: 4.22px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_104 {
+			fill: transparent;
+			stroke: rgba(149, 185, 220, 1);
+			stroke-width: 0.6460000276565552px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			shape-rendering: auto;
+		}
+
+		.Path_104 {
+			overflow: visible;
+			position: absolute;
+			width: 4.353px;
+			height: 6.116px;
+			left: 299.076px;
+			top: 43.761px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_105 {
+			fill: transparent;
+			stroke: rgba(149, 185, 220, 1);
+			stroke-width: 0.6460000276565552px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			shape-rendering: auto;
+		}
+
+		.Path_105 {
+			overflow: visible;
+			position: absolute;
+			width: 3.589px;
+			height: 6.36px;
+			left: 250.196px;
+			top: 43.509px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_87 {
+			position: absolute;
+			width: 252.715px;
+			height: 215.173px;
+			left: 148.908px;
+			top: 85.334px;
+			overflow: visible;
+		}
+
+		#Path_106 {
+			fill: rgba(248, 173, 156, 1);
+		}
+
+		.Path_106 {
+			overflow: visible;
+			position: absolute;
+			width: 65.509px;
+			height: 49.384px;
+			left: 94.989px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_107 {
+			fill: rgba(16, 34, 48, 1);
+		}
+
+		.Path_107 {
+			overflow: visible;
+			position: absolute;
+			width: 252.715px;
+			height: 207.111px;
+			left: 0px;
+			top: 8.063px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_89 {
+			position: absolute;
+			width: 459.537px;
+			height: 207.401px;
+			left: 0px;
+			top: 93.106px;
+			overflow: visible;
+		}
+
+		#Path_108 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_108 {
+			overflow: visible;
+			position: absolute;
+			width: 153.154px;
+			height: 207.149px;
+			left: 306.382px;
+			top: 0.252px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_109 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_109 {
+			overflow: visible;
+			position: absolute;
+			width: 249.188px;
+			height: 206.956px;
+			left: 0px;
+			top: 0.445px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_110 {
+			fill: rgba(138, 145, 200, 1);
+		}
+
+		.Path_110 {
+			overflow: visible;
+			position: absolute;
+			width: 47.872px;
+			height: 169.859px;
+			left: 306.635px;
+			top: 0.252px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_111 {
+			fill: rgba(138, 145, 200, 1);
+		}
+
+		.Path_111 {
+			overflow: visible;
+			position: absolute;
+			width: 47.872px;
+			height: 170.111px;
+			left: 201.316px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Line_2 {
+			fill: transparent;
+			stroke: rgba(0, 4, 37, 1);
+			stroke-width: 0.6460000276565552px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			shape-rendering: auto;
+		}
+
+		.Line_2 {
+			overflow: visible;
+			position: absolute;
+			width: 12.251px;
+			height: 11.748px;
+			left: 99.272px;
+			top: 128.034px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Line_3 {
+			fill: transparent;
+			stroke: rgba(0, 4, 37, 1);
+			stroke-width: 0.6460000276565552px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			shape-rendering: auto;
+		}
+
+		.Line_3 {
+			overflow: visible;
+			position: absolute;
+			width: 11.437px;
+			height: 5.642px;
+			left: 396.08px;
+			top: 173.135px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_112 {
+			fill: rgba(138, 145, 200, 1);
+		}
+
+		.Path_112 {
+			overflow: visible;
+			position: absolute;
+			width: 5.543px;
+			height: 57.195px;
+			left: 374.412px;
+			top: 84.949px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_113 {
+			fill: rgba(138, 145, 200, 1);
+		}
+
+		.Path_113 {
+			overflow: visible;
+			position: absolute;
+			width: 4.788px;
+			height: 51.652px;
+			left: 176.372px;
+			top: 84.949px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_114 {
+			fill: transparent;
+			stroke: rgba(42, 47, 124, 1);
+			stroke-width: 1.6139999628067017px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			shape-rendering: auto;
+		}
+
+		.Path_114 {
+			overflow: visible;
+			position: absolute;
+			width: 23.188px;
+			height: 83.341px;
+			left: 323.768px;
+			top: 3.314px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_115 {
+			fill: transparent;
+			stroke: rgba(42, 47, 124, 1);
+			stroke-width: 1.6139999628067017px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			shape-rendering: auto;
+		}
+
+		.Path_115 {
+			overflow: visible;
+			position: absolute;
+			width: 19.656px;
+			height: 78.549px;
+			left: 199.476px;
+			top: 6.086px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_116 {
+			fill: transparent;
+			stroke: rgba(42, 47, 124, 1);
+			stroke-width: 1.6139999628067017px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			shape-rendering: auto;
+		}
+
+		.Path_116 {
+			overflow: visible;
+			position: absolute;
+			width: 49.234px;
+			height: 60.573px;
+			left: 321.248px;
+			top: 86.713px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Ellipse_22 {
+			fill: rgba(42, 46, 125, 1);
+		}
+
+		.Ellipse_22 {
+			position: absolute;
+			overflow: visible;
+			width: 6.551px;
+			height: 8.063px;
+			left: 353.247px;
+			top: 141.64px;
+		}
+
+		#Ellipse_23 {
+			fill: rgba(42, 46, 125, 1);
+		}
+
+		.Ellipse_23 {
+			position: absolute;
+			overflow: visible;
+			width: 6.551px;
+			height: 8.063px;
+			left: 330.067px;
+			top: 141.64px;
+		}
+
+		#Group_88 {
+			position: absolute;
+			width: 23.684px;
+			height: 23.684px;
+			left: 187.458px;
+			top: 78.902px;
+			overflow: visible;
+		}
+
+		#Ellipse_24 {
+			fill: rgba(90, 104, 175, 1);
+		}
+
+		.Ellipse_24 {
+			position: absolute;
+			overflow: visible;
+			width: 23.684px;
+			height: 23.684px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Ellipse_25 {
+			fill: rgba(42, 46, 125, 1);
+		}
+
+		.Ellipse_25 {
+			position: absolute;
+			overflow: visible;
+			width: 14.11px;
+			height: 14.11px;
+			left: 4.787px;
+			top: 4.787px;
+		}
+
+		#Group_92 {
+			position: absolute;
+			width: 145.884px;
+			height: 83.651px;
+			left: 175.933px;
+			top: 122.727px;
+			overflow: visible;
+		}
+
+		#Rectangle_89 {
+			fill: rgba(76, 93, 169, 1);
+		}
+
+		.Rectangle_89 {
+			position: absolute;
+			overflow: visible;
+			width: 145.884px;
+			height: 83.651px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Rectangle_90 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Rectangle_90 {
+			position: absolute;
+			overflow: visible;
+			width: 135.806px;
+			height: 73.572px;
+			left: 4.787px;
+			top: 5.039px;
+		}
+
+		#Rectangle_91 {
+			fill: rgba(239, 73, 35, 1);
+		}
+
+		.Rectangle_91 {
+			position: absolute;
+			overflow: visible;
+			width: 108.595px;
+			height: 1.008px;
+			left: 16.881px;
+			top: 10.33px;
+		}
+
+		#Rectangle_92 {
+			fill: rgba(239, 73, 35, 1);
+		}
+
+		.Rectangle_92 {
+			position: absolute;
+			overflow: visible;
+			width: 70.549px;
+			height: 1.008px;
+			left: 10.582px;
+			top: 31.243px;
+		}
+
+		#Rectangle_93 {
+			fill: rgba(239, 73, 35, 1);
+		}
+
+		.Rectangle_93 {
+			position: absolute;
+			overflow: visible;
+			width: 70.549px;
+			height: 1.008px;
+			left: 10.582px;
+			top: 26.708px;
+		}
+
+		#Rectangle_94 {
+			fill: rgba(239, 73, 35, 1);
+		}
+
+		.Rectangle_94 {
+			position: absolute;
+			overflow: visible;
+			width: 70.549px;
+			height: 1.008px;
+			left: 10.582px;
+			top: 36.282px;
+		}
+
+		#Rectangle_95 {
+			fill: rgba(239, 73, 35, 1);
+		}
+
+		.Rectangle_95 {
+			position: absolute;
+			overflow: visible;
+			width: 70.549px;
+			height: 1.008px;
+			left: 10.582px;
+			top: 41.069px;
+		}
+
+		#Group_91 {
+			position: absolute;
+			width: 46.361px;
+			height: 15.37px;
+			left: 10.582px;
+			top: 47.116px;
+			overflow: visible;
+		}
+
+		#Rectangle_96 {
+			fill: rgba(239, 73, 35, 1);
+		}
+
+		.Rectangle_96 {
+			position: absolute;
+			overflow: visible;
+			width: 46.36px;
+			height: 1.008px;
+			left: 0px;
+			top: 4.535px;
+		}
+
+		#Rectangle_97 {
+			fill: rgba(239, 73, 35, 1);
+		}
+
+		.Rectangle_97 {
+			position: absolute;
+			overflow: visible;
+			width: 46.36px;
+			height: 1.008px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Rectangle_98 {
+			fill: rgba(239, 73, 35, 1);
+		}
+
+		.Rectangle_98 {
+			position: absolute;
+			overflow: visible;
+			width: 46.36px;
+			height: 1.008px;
+			left: 0px;
+			top: 9.574px;
+		}
+
+		#Rectangle_99 {
+			fill: rgba(239, 73, 35, 1);
+		}
+
+		.Rectangle_99 {
+			position: absolute;
+			overflow: visible;
+			width: 46.36px;
+			height: 1.008px;
+			left: 0px;
+			top: 14.362px;
+		}
+
+		#Group_97 {
+			position: absolute;
+			width: 24.592px;
+			height: 30.235px;
+			left: 100.884px;
+			top: 32.251px;
+			overflow: visible;
+		}
+
+		#Group_95 {
+			position: absolute;
+			width: 17.427px;
+			height: 25.622px;
+			left: 4.859px;
+			top: 2.306px;
+			overflow: visible;
+		}
+
+		#Path_117 {
+			fill: rgba(255, 102, 99, 1);
+		}
+
+		.Path_117 {
+			overflow: visible;
+			position: absolute;
+			width: 17.427px;
+			height: 25.622px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_96 {
+			position: absolute;
+			width: 24.592px;
+			height: 30.235px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Path_118 {
+			fill: rgba(84, 44, 44, 1);
+		}
+
+		.Path_118 {
+			overflow: visible;
+			position: absolute;
+			width: 22.04px;
+			height: 30.235px;
+			left: 2.553px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_119 {
+			fill: rgba(84, 44, 44, 1);
+		}
+
+		.Path_119 {
+			overflow: visible;
+			position: absolute;
+			width: 24.592px;
+			height: 21.168px;
+			left: 0px;
+			top: 9.067px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Line_5 {
+			fill: transparent;
+			stroke: rgba(0, 4, 37, 1);
+			stroke-width: 0.6460000276565552px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
+			shape-rendering: auto;
+		}
+
+		.Line_5 {
+			overflow: visible;
+			position: absolute;
+			width: 648.182px;
+			height: 0.646px;
+			left: 7.372px;
+			top: 415px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Access_your_medical__records {
+			left: 179.5px;
+			top: 930.757px;
+			position: absolute;
+			overflow: visible;
+			width: 817px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 89px;
+			color: rgba(92, 93, 138, 1);
+		}
+
+
+		#Modal-Content {
+			position: absolute;
+			/* Add appropriate width, height, and other styling properties */
+			z-index: 3;
+		}
+
+		.edit-button {
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 0;
+		}
+
+		#ReportsEditModal {
+			display: none;
+			position: absolute;
+			width: 1920px;
+			height: 2876px;
+			overflow: hidden;
+			--web-view-name: Reports–EditModal;
+			--web-view-id: ReportsEditModal;
+			--web-scale-on-resize: true;
+			--web-enable-deep-linking: true;
+		}
+
+		#background-blur {
+			position: absolute;
+			width: 1920px;
+			height: 2876px;
+			background-color: rgb(0, 0, 0);
+			opacity: 0.5;
+			z-index: 1;
+		}
+
+		#HospitalCodeModal {
+			display: none;
+			position: absolute;
+			width: 1920px;
+			height: 2876px;
+			overflow: hidden;
+		}
+
+		#Security-Modal {
+			position: absolute;
+			width: 1042.727px;
+			height: 606.343px;
+			left: 650px;
+			top: 1600px;
+			overflow: visible;
+			background-color: rgb(232, 230, 241);
+			z-index: 2;
+		}
+
+		#Enter_Security_Code {
+			left: 100px;
+			top: 150px;
+			position: absolute;
+			overflow: visible;
+			width: 792px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 40px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Download-Button {
+			position: absolute;
+			width: 253px;
+			height: 95px;
+			left: 2000px;
+			top: 1600px;
+			overflow: visible;
+		}
+
+		#Rectangle_126 {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		#download-button:hover #Rectangle_126 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		#download-button.disabled {
+			pointer-events: none;
+			opacity: 0.5;
+		}
+
+		.Rectangle_126 {
+			position: absolute;
+			overflow: visible;
+			width: 253px;
+			left: 400px;
+			height: 300px;
+			top: 450px;
+		}
+
+		#Download {
+			left: 430px;
+			top: 470px;
+			position: absolute;
+			overflow: visible;
+			width: 189px;
+			height: 47px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 35px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#download-button:hover #Download {
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#security-cross {
+			fill: rgba(0, 0, 0, 1);
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 5px;
+			stroke-linejoin: miter;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.1s ease, stroke 0.1 ease;
+		}
+
+		#security-cross:hover {
+			fill: rgba(255, 0, 0, 1);
+			/* Change fill color on hover */
+			stroke: rgba(255, 0, 0, 1);
+			/* Change stroke color on hover */
+		}
+
+		.security-cross {
+			overflow: visible;
+			position: absolute;
+			width: 25.385px;
+			height: 26.871px;
+			left: 980px;
+			top: 50px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Security_Question {
+			left: 300px;
+			top: 30px;
+			position: absolute;
+			overflow: visible;
+			width: 443px;
+			height: 57px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 43px;
+			color: rgba(92, 93, 138, 1);
+		}
+
+
+		#HospitalCode {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_127 {
+			position: absolute;
+			overflow: visible;
+			width: 682px;
+			height: 66px;
+			left: 200px;
+			top: 250px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		#forgot_code {
+			position: absolute;
+			overflow: visible;
+			width: 682px;
+			height: 66px;
+			left: 680px;
+			top: 320px;
+			font-size: 25px;
+			padding: 10px;
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#forgot_code:hover {
+			color: rgb(0, 0, 0);
+		}
+
+		#Modal-Edit {
+			position: absolute;
+			width: 1600px;
+			height: 1300px;
+			left: 180px;
+			top: 750px;
+			overflow: visible;
+			background-color: rgb(232, 230, 241);
+			z-index: 2;
+		}
+
+		#cross {
+			fill: rgba(0, 0, 0, 1);
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 5px;
+			stroke-linejoin: miter;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.1s ease, stroke 0.1 ease;
+		}
+
+		#cross:hover {
+			fill: rgba(255, 0, 0, 1);
+			/* Change fill color on hover */
+			stroke: rgba(255, 0, 0, 1);
+			/* Change stroke color on hover */
+		}
+
+		.cross {
+			overflow: visible;
+			position: absolute;
+			width: 25.385px;
+			height: 26.871px;
+			left: 1705.603px;
+			top: 800px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Submit-button {
+			position: absolute;
+			width: 253px;
+			height: 95px;
+			left: 833px;
+			top: 1912px;
+			overflow: visible;
+		}
+
+		#Submit-button:hover #Update {
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#Rectangle_125 {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_125 {
+			position: absolute;
+			overflow: visible;
+			width: 253px;
+			height: 95px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Update {
+			left: 32px;
+			top: 24px;
+			position: absolute;
+			overflow: visible;
+			width: 189px;
+			height: 47px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 35px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Submit-button:hover #Rectangle_125 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		#update-fields {
+			position: absolute;
+			width: 1499px;
+			height: 601px;
+			left: 240px;
+			top: 1203px;
+			overflow: visible;
+		}
+
+		#Group_144 {
+			position: absolute;
+			width: 1499px;
+			height: 601px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Group_142 {
+			position: absolute;
+			width: 1497px;
+			height: 303px;
+			left: 2px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		.Rectangle_110 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 0px;
+			top: 237px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		.Rectangle_111 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 0px;
+			top: 34px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		.Rectangle_112 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 433px;
+			top: 237px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		.Rectangle_124 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 866px;
+			top: 237px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		.Rectangle_113 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 866px;
+			top: 34px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		#Patient_First_Name {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 167px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Patient_ID {
+			left: 6px;
+			top: 199px;
+			position: absolute;
+			overflow: visible;
+			width: 91px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Patient_Last_Name {
+			left: 432px;
+			top: 4px;
+			position: absolute;
+			overflow: visible;
+			width: 165px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.Rectangle_114 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 433px;
+			top: 34px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		#Date_of_Birth {
+			left: 864px;
+			top: 4px;
+			position: absolute;
+			overflow: visible;
+			width: 117px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Mobile {
+			left: 433px;
+			top: 199px;
+			position: absolute;
+			overflow: visible;
+			width: 67px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Email_Address {
+			left: 866px;
+			top: 199px;
+			position: absolute;
+			overflow: visible;
+			width: 129px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Gender_Header {
+			left: 1297px;
+			top: 4px;
+			position: absolute;
+			overflow: visible;
+			width: 70px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.Rectangle_117 {
+			position: absolute;
+			overflow: visible;
+			width: 200px;
+			height: 66px;
+			left: 1297px;
+			top: 34px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		#Street_Name {
+			left: 2px;
+			top: 479px;
+			position: absolute;
+			overflow: visible;
+			width: 115px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.Rectangle_118 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 78px;
+			left: 2px;
+			top: 523px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		#City_Header {
+			left: 435px;
+			top: 479px;
+			position: absolute;
+			overflow: visible;
+			width: 39px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.Rectangle_119 {
+			position: absolute;
+			overflow: visible;
+			width: 251px;
+			height: 78px;
+			left: 435px;
+			top: 523px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		#Zip_Code {
+			left: 754px;
+			top: 479px;
+			position: absolute;
+			overflow: visible;
+			width: 85px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.Rectangle_120 {
+			position: absolute;
+			overflow: visible;
+			width: 249px;
+			height: 78px;
+			left: 754px;
+			top: 523px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		#Province_Header {
+			left: 1073px;
+			top: 466px;
+			position: absolute;
+			overflow: visible;
+			width: 81px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.Rectangle_121 {
+			position: absolute;
+			overflow: visible;
+			width: 213px;
+			height: 78px;
+			left: 1073px;
+			top: 523px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		#upload-image {
+			position: absolute;
+			width: 240px;
+			height: 225px;
+			left: 1466px;
+			top: 910px;
+			overflow: visible;
+		}
+
+		#Rectangle_109 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_109 {
+			position: absolute;
+			overflow: visible;
+			width: 240px;
+			height: 225px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#uploadButton {
+			position: absolute;
+			width: 27.128px;
+			height: 27.128px;
+			left: 0px;
+			top: 14px;
+			overflow: visible;
+		}
+
+		#fileInput {
+			position: absolute;
+			width: 27.128px;
+			height: 27.128px;
+			left: 0px;
+			top: 14px;
+			opacity: 0;
+			/* Make the file input invisible */
+		}
+
+		#Path_138 {
+			fill: rgba(91, 91, 137, 1);
+		}
+
+		.Path_138 {
+			overflow: visible;
+			position: absolute;
+			width: 40px;
+			height: 25px;
+			left: 80px;
+			top: 170px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_139 {
+			fill: rgba(91, 91, 137, 1);
+		}
+
+		.Path_139 {
+			overflow: visible;
+			position: absolute;
+			width: 19.13px;
+			height: 0px;
+			left: 90px;
+			top: 160px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_145:hover #Path_141 {
+			fill: red;
+		}
+
+		#Group_145 {
+			position: absolute;
+			width: 38.467px;
+			height: 38.467px;
+			left: 122.939px;
+			top: 175.501px;
+			overflow: visible;
+		}
+
+		#Path_140 {
+			fill: transparent;
+		}
+
+		.Path_140 {
+			overflow: visible;
+			position: absolute;
+			width: 38.467px;
+			height: 38.467px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_141 {
+			fill: rgba(91, 91, 137, 1);
+		}
+
+		.Path_141 {
+			overflow: visible;
+			position: absolute;
+			width: 22.439px;
+			height: 28.85px;
+			left: 8.014px;
+			top: 4.809px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Patient_Demographics {
+			left: 242px;
+			top: 1023px;
+			position: absolute;
+			overflow: visible;
+			width: 402px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 40px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Edit_Patient_Record {
+			left: 401px;
+			top: 811.806px;
+			position: absolute;
+			overflow: visible;
+			width: 1117px;
+			height: 57px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 43px;
+			color: rgba(92, 93, 138, 1);
+		}
+
+		.upload-button {
+			position: relative;
+			background: none;
+			border: none;
+			padding: 0;
+			cursor: pointer;
+		}
+
+		.upload-button svg {
+			fill: #000;
+			/* Change the color as needed */
+			width: 25px;
+			/* Adjust the size as needed */
+			height: 25px;
+			/* Adjust the size as needed */
+			margin-right: 5px;
+			/* Adjust the spacing as needed */
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="Patient_info">
+		<div id="Group_83">
+			<div id="Group_82">
+				<svg class="Path_4" viewBox="-12.699 0.031 1919.396 87.969">
+					<path id="Path_4"
+						d="M 44 0.03131330758333206 L 153.1966400146484 0.03131330758333206 L 1876 0.383453369140625 C 1885.8173828125 0.383453369140625 1906.697265625 0.383453369140625 1906.697265625 0.383453369140625 C 1906.697265625 0.383453369140625 1906.697265625 29.06008148193359 1906.697265625 43.54319763183594 C 1906.697265625 67.84372711181641 1900.300537109375 88 1876 88 L 44 88 C 19.69947052001953 88 -12.69921875 68.94168853759766 -12.69921875 44.64115905761719 C -12.69921875 34.62934112548828 -12.69921875 0.03131330758333206 -12.69921875 0.03131330758333206 C -12.69921875 0.03131330758333206 29.71128845214844 0.03131330758333206 44 0.03131330758333206 Z">
+					</path>
+				</svg>
+				<svg class="Path_5" viewBox="-5.523 0 1919.35 164.261">
+					<path id="Path_5"
+						d="M 80.5 0 L 1850.5 0 C 1894.958984375 0 1913.826171875 40.40176010131836 1913.826171875 87.48828125 C 1913.826171875 112.349967956543 1913.826171875 162.987548828125 1913.826171875 162.987548828125 C 1913.826171875 162.987548828125 1871.484619140625 162.987548828125 1850.5 162.987548828125 L 7.22802734375 164.261474609375 C 2.305713176727295 164.261474609375 -5.4951171875 164.261474609375 -5.4951171875 164.261474609375 L -5.4951171875 152.658203125 C -5.4951171875 152.658203125 -5.628095626831055 113.5759582519531 -5.318359375 83.8447265625 C -4.83740234375 37.67822265625 36.04107666015625 0 80.5 0 Z">
+					</path>
+				</svg>
+				<img id="Image_1" src="/images/Image_1.png" srcset="/images/Image_1.png 1x, /images/Image_1@2x.png 2x">
+
+				<div id="Repeat_Grid_1">
+					<div id="Group" class="">
+						<div id="Home">
+							<span><a href="/" style="text-decoration: none; color: rgba(255,255,255,1);">Home</a></span>
+						</div>
+					</div>
+					<div id="Group_s" class="">
+						<a href="/#About_Us_d">
+							<div id="About_Us">
+								<span>About Us</span>
+							</div>
+						</a>
+					</div>
+					<div id="Group_u" class="">
+						<div id="Contact_Us">
+							<a href="/contactUs" style="text-decoration: none; color: rgba(255,255,255,1);">
+							<span>Contact Us</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div id="Logout">
+					<span><a href="/logout" style="text-decoration: none; color: rgba(255,255,255,1);">Logout</a></span>
+				</div>
+				<div id="Repeat_Grid_2">
+					<div id="Group_y" class="">
+						<div id="Repeat_Grid_3">
+							<div id="Group_" class="">
+								<div id="How_It_Works_FAQ_Contact_Us">
+									<span>How It WorksFAQContact Us</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="Group_ba" class="">
+						<div id="Repeat_Grid_3_">
+							<div id="Group_bb" class="">
+								<div id="Contact_Support_Help_Center_Us">
+									<span>Contact SupportHelp CenterUser Guides</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="Group_bc" class="">
+						<div id="Repeat_Grid_3_ba">
+							<div id="Group_bd" class="">
+								<div id="Terms_and_Conditions_Privacy_P">
+									<span>Terms and ConditionsPrivacy PolicyData Protection</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="Copyright_-_Group_9_">
+					<span>Copyright - Group 9 </span>
+				</div>
+				<svg class="Path_62" viewBox="2 2 51.956 51.956">
+					<path id="Path_62"
+						d="M 26.13358497619629 36.52479553222656 C 26.0218677520752 36.64824295043945 25.91776084899902 36.77837371826172 25.82184982299805 36.91446685791016 C 25.72353172302246 37.05927658081055 25.64490699768066 37.21652603149414 25.58804512023926 37.3820686340332 C 25.51314544677734 37.52932739257812 25.46061325073242 37.68692779541016 25.43218231201172 37.84967422485352 C 25.41943168640137 38.02262496948242 25.41943168640137 38.19628143310547 25.43218040466309 38.36923599243164 C 25.42339706420898 38.71000671386719 25.49457550048828 39.04808807373047 25.64000129699707 39.35639572143555 C 25.87620162963867 40.0090446472168 26.39016914367676 40.52301406860352 27.04281806945801 40.75922012329102 C 27.67159080505371 41.03711700439453 28.38837623596191 41.03711700439453 29.01714706420898 40.75920867919922 C 29.66979217529297 40.52301025390625 30.18375396728516 40.0090446472168 30.41996002197266 39.35640335083008 C 30.53531646728516 39.0405387878418 30.58825302124023 38.70527648925781 30.57582855224609 38.36923599243164 C 30.57981872558594 37.67873382568359 30.30873870849609 37.01505279541016 29.82246398925781 36.52479934692383 C 29.33468246459961 36.03300094604492 28.67069816589355 35.75637435913086 27.97802543640137 35.75637435913086 C 27.28535461425781 35.75637435913086 26.62136650085449 36.03300094604492 26.13358879089355 36.52479934692383 Z M 27.97802543640137 1.999999761581421 C 13.63075733184814 1.999999761581421 1.999999761581421 13.63075923919678 1.999999761581421 27.97802543640137 C 1.999999761581421 42.32529449462891 13.63075923919678 53.95605087280273 27.97802543640137 53.95605087280273 C 42.32529449462891 53.95605087280273 53.95605087280273 42.32529067993164 53.95605087280273 27.97802543640137 C 53.95605087280273 13.63075733184814 42.32529067993164 1.999999761581421 27.97802543640137 1.999999761581421 Z M 27.97802543640137 48.76044845581055 C 16.50020980834961 48.76044845581055 7.195605278015137 39.45583724975586 7.195605278015137 27.97802543640137 C 7.195605278015137 16.50020980834961 16.50021171569824 7.195605278015137 27.97802543640137 7.195605278015137 C 39.45583724975586 7.195605278015137 48.76044845581055 16.50021171569824 48.76044845581055 27.97802543640137 C 48.76044845581055 39.45583724975586 39.45583724975586 48.76044845581055 27.97802543640137 48.76044845581055 Z M 27.97802543640137 14.98901271820068 C 25.19192123413086 14.98722743988037 22.61678695678711 16.47288131713867 21.2237377166748 18.88571548461914 C 20.71181106567383 19.69100570678711 20.68258666992188 20.71213531494141 21.14761734008789 21.54538536071777 C 21.61264801025391 22.37863731384277 22.49707412719727 22.88986206054688 23.45121955871582 22.8769474029541 C 24.40536499023438 22.86403274536133 25.27562713623047 22.32905197143555 25.71793174743652 21.48351860046387 C 26.1838264465332 20.67655181884766 27.04623222351074 20.18091583251953 27.97802543640137 20.18461799621582 C 29.41275405883789 20.18461799621582 30.57582855224609 21.34769439697266 30.57582855224609 22.78242111206055 C 30.57582855224609 24.21714782714844 29.41275024414062 25.38022232055664 27.97802543640137 25.38022232055664 C 26.54329681396484 25.38022232055664 25.38022232055664 26.54330062866211 25.38022232055664 27.97802543640137 L 25.38022232055664 30.57582855224609 C 25.38022232055664 32.01055526733398 26.54330062866211 33.17362976074219 27.97802543640137 33.17362976074219 C 29.41275405883789 33.17362976074219 30.57582855224609 32.01055526733398 30.57582855224609 30.57582855224609 L 30.57582855224609 30.10822296142578 C 34.12174987792969 28.82158279418945 36.2371940612793 25.18010902404785 35.59841918945312 21.46245002746582 C 34.95964431762695 17.74479293823242 31.75004577636719 15.01827716827393 27.97802352905273 14.98901462554932 Z">
+					</path>
+				</svg>
+				<div id="Group_27">
+					<svg class="Path_63" viewBox="5 2 36.368 51.956">
+						<path id="Path_63"
+							d="M 38.7702522277832 17.58625602722168 L 36.17254257202148 17.58625602722168 L 36.17254257202148 14.98854732513428 C 36.17254257202148 7.815170764923096 30.35737037658691 2 23.18399620056152 2 C 16.01061630249023 2 10.19544696807861 7.81517219543457 10.19544696807861 14.98854732513428 L 10.19544696807861 17.58625602722168 L 7.597738265991211 17.58625602722168 C 6.163063049316406 17.58625602722168 5.000029563903809 18.74929428100586 5.000029563903809 20.18396759033203 L 5.000029563903809 40.35258483886719 C 4.989954948425293 43.30746841430664 6.660164833068848 46.01123046875 9.30703067779541 47.32483291625977 L 22.02281951904297 53.68143081665039 C 22.75455284118652 54.04759216308594 23.61603736877441 54.04759216308594 24.34777069091797 53.68143081665039 L 37.06355667114258 47.32483291625977 C 39.70941162109375 46.010498046875 41.37852096557617 43.30688095092773 41.36796188354492 40.35257720947266 L 41.36796188354492 20.18396759033203 C 41.36796188354492 18.74929046630859 40.20492553710938 17.58625602722168 38.7702522277832 17.58625602722168 Z M 15.39086723327637 14.98854732513428 C 15.39086723327637 10.68452262878418 18.87996673583984 7.195420742034912 23.18399620056152 7.195420742034912 C 27.48802375793457 7.195420742034912 30.97712326049805 10.68452262878418 30.97712326049805 14.98854827880859 L 30.97712326049805 17.58625602722168 L 15.39086723327637 17.58625602722168 L 15.39086723327637 14.98854732513428 Z M 36.17254257202148 40.35258483886719 C 36.17668914794922 41.33822631835938 35.61935043334961 42.24024963378906 34.73600769042969 42.67753601074219 L 23.18399620056152 48.45224380493164 L 11.63198089599609 42.6749382019043 C 10.74948596954346 42.23805618286133 10.19229602813721 41.33728790283203 10.1954460144043 40.35258483886719 L 10.19544696807861 22.78167533874512 L 36.17254257202148 22.78167533874512 L 36.17254257202148 40.35258483886719 Z">
+						</path>
+					</svg>
+					<svg class="Path_64" viewBox="11 12 5.195 10.391">
+						<path id="Path_64"
+							d="M 13.59771060943604 12 C 12.16303443908691 12 11 13.16303634643555 11 14.59770965576172 L 11 19.79312896728516 C 11 21.22780418395996 12.16303730010986 22.39083862304688 13.59771060943604 22.39083862304688 C 15.03238677978516 22.39083862304688 16.19541931152344 21.22780227661133 16.19541931152344 19.79312896728516 L 16.19541931152344 14.59770965576172 C 16.19541931152344 13.1630334854126 15.03238391876221 12 13.59771060943604 12 Z">
+						</path>
+					</svg>
+				</div>
+				<svg class="Rectangle_80">
+					<rect id="Rectangle_80" rx="0" ry="0" x="0" y="0" width="1920" height="641">
+					</rect>
+				</svg>
+				<div id="Welcome_Patients_name">
+					<span>Welcome, <%= patientInfo.Name %></span>
+				</div>
+				<!-- <img src="/images/<%= patientInfo.Picture %>" alt="Patient Image" class="PatientImage"> -->
+				<svg class="Ellipse_17">
+					<!-- Define the ellipse -->
+					<ellipse id="Ellipse_17" rx="218.5" ry="218.5" cx="218.5" cy="218.5"></ellipse>
+
+					<!-- Define the clipPath with a circular shape -->
+					<defs>
+						<clipPath id="circleClip">
+							<circle cx="218.5" cy="218.5" r="208.5"></circle>
+						</clipPath>
+					</defs>
+
+					<!-- Use the clipPath for the image and adjust attributes for zoom -->
+					<image href="/images/patient/<%= patientInfo.Picture %>" class="imageInEllipse"
+						clip-path="url(#circleClip)" x="5" y="5" width="427" height="427"></image>
+				</svg>
+				<div id="Patient_Name">
+					<span>Patient Name: <%= patientInfo.Name %></span>
+				</div>
+				<div id="MediVault_ID_123456">
+					<span>MediVault ID: <%= patientInfo.Medivault_Id %></span>
+				</div>
+				<div id="DOB_MM-DD-YYYY">
+					<span>DOB: <%= patientInfo.DOB %></span>
+				</div>
+				<div id="Address_128_Marshall_Street_Wa">
+					<span>Address: <%= patientInfo.Address %></span><br />
+				</div>
+				<div id="Age_77yrs_">
+					<span>Age: <%= patientInfo.Age%> yrs </span>
+				</div>
+				<div id="Sex_Male">
+					<span>Sex: <%= patientInfo.Sex%></span>
+				</div>
+				<div id="Last_Updated_MM_DD_YYYY">
+					<span>Last Updated: <%= patientInfo.Last_Updated_Time.toLocaleString()%></span>
+				</div>
+				<div id="Icon_akar-edit">
+					<button id="editButton" class="edit-button" onclick="showModal()">
+						<svg class="Path_76" viewBox="16.5 4.5 31.617 31.617">
+							<path id="Path_76"
+								d="M 33.80728149414062 12.11314582824707 L 40.50381469726562 18.80651664733887 M 38.11354827880859 6.216528415679932 L 20.00635528564453 24.32372283935547 C 19.07075881958008 25.25800514221191 18.43268585205078 26.44834899902344 18.17255020141602 27.74471092224121 L 16.5 36.1169548034668 L 24.87225151062012 34.44124221801758 C 26.16855621337891 34.18198013305664 27.35736274719238 33.54647445678711 28.29323387145996 32.61060333251953 L 46.40042495727539 14.50340938568115 C 48.68877792358398 12.21505165100098 48.68877792358398 8.504888534545898 46.40042114257812 6.216529369354248 C 44.11206436157227 3.928170680999756 40.40190505981445 3.928169250488281 38.11354064941406 6.216528415679932 Z">
+							</path>
+						</svg>
+						<svg class="Path_77" viewBox="6 7.5 47.426 47.426">
+							<path id="Path_77"
+								d="M 53.42586517333984 39.11724472045898 L 53.42586517333984 48.6024169921875 C 53.42586517333984 52.09476470947266 50.59476470947266 54.92586898803711 47.1024169921875 54.92586898803711 L 12.32345008850098 54.92586898803711 C 8.831103324890137 54.92586898803711 6 52.09476470947266 6 48.6024169921875 L 6 13.82344818115234 C 6 10.33110427856445 8.831106185913086 7.499999046325684 12.32345104217529 7.500000953674316 L 21.80862236022949 7.500000953674316">
+							</path>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<svg class="Rectangle_82">
+				<rect id="Rectangle_82" rx="0" ry="0" x="0" y="0" width="1920" height="1448">
+				</rect>
+			</svg>
+			<img id="Rectangle_83" src="/images/Rectangle_83.png"
+				srcset="/images/Rectangle_83.png 1x, /images/Rectangle_83@2x.png 2x">
+
+			<div id="Repeat_Grid_5">
+				<div id="Group_bv" class="">
+					<svg class="Rectangle_84">
+						<rect id="Rectangle_84" rx="33" ry="33" x="0" y="0" width="275" height="66">
+						</rect>
+					</svg>
+					<div id="Inbox">
+						<span>Inbox</span>
+					</div>
+				</div>
+				<div id="Group_bx" class="">
+					<svg class="Rectangle_84_by">
+						<rect id="Rectangle_84_by" rx="33" ry="33" x="0" y="0" width="275" height="66">
+						</rect>
+					</svg>
+					<div id="Reports">
+						<a href="/hospitalReportInfo/<%= patientInfo.Medivault_Id %>" style=" color:  rgba(90, 92, 137, 1);">
+							<span>Reports</span>
+						</a>
+					</div>
+				</div>
+				<div id="Group_bz" class="">
+					<svg class="Rectangle_84_b">
+						<rect id="Rectangle_84_b" rx="33" ry="33" x="0" y="0" width="275" height="66">
+						</rect>
+					</svg>
+					<div id="Appointments">
+						<a href="/hospitalAppointmentInfo/<%= patientInfo.Medivault_Id %>" style=" color:  rgba(90, 92, 137, 1);">
+							<span>Appointments</span>
+						</a>
+					</div>
+				</div>
+				<div id="Group_b" class="">
+					<svg class="Rectangle_84_ca">
+						<rect id="Rectangle_84_ca" rx="33" ry="33" x="0" y="0" width="275" height="66">
+						</rect>
+					</svg>
+					<div id="Prescriptions">
+						<a href="/hospitalPrescriptionInfo/<%= patientInfo.Medivault_Id %>" style=" color:  rgba(90, 92, 137, 1);">
+							<span>Prescriptions</span>
+						</a>
+					</div>
+				</div>
+				<div id="Group_ca" class="">
+					<svg class="Rectangle_84_cb">
+						<rect id="Rectangle_84_cb" rx="33" ry="33" x="0" y="0" width="275" height="66">
+						</rect>
+					</svg>
+					<div id="Bills">
+						<a href="/hospitalBillInfo/<%= patientInfo.Medivault_Id %>" style=" color:  rgba(90, 92, 137, 1);">
+							<span>Bills</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div id="Menu">
+				<span>Menu</span>
+			</div>
+			<svg class="Path_78" viewBox="0 0 1363.237 1412.5">
+				<path id="Path_78"
+					d="M 59.2025260925293 0 L 1304.0341796875 0 C 1320.709594726562 0 1363.23681640625 0 1363.23681640625 0 C 1363.23681640625 0 1363.23681640625 69.36151885986328 1363.23681640625 95.09649658203125 L 1363.23681640625 1317.403564453125 C 1363.23681640625 1340.302368164062 1363.23681640625 1412.499877929688 1363.23681640625 1412.499877929688 C 1363.23681640625 1412.499877929688 1322.475219726562 1412.499877929688 1304.0341796875 1412.499877929688 L 59.2025260925293 1412.499877929688 C 42.88689422607422 1412.499877929688 0 1412.499877929688 0 1412.499877929688 C 0 1412.499877929688 0 1343.71630859375 0 1317.403564453125 L 0 95.09649658203125 C 0 67.83843231201172 0 0 0 0 C 0 0 43.47542953491211 0 59.2025260925293 0 Z">
+				</path>
+			</svg>
+			<div class="rectangle-container">
+				<ul class="item-list">
+					<% for (let i = 0; i < report_info.length; i++) { %>
+					<li class="item">
+						<div id="link" class="hospital-code-wrapper"
+							onclick="showHospitalCodeModal('<%= report_info[i]._id %>', '<%= report_info[i].Hospital_Id._id %>')">
+							<p class="time"><%= report_info[i].Last_Updated_Time.toLocaleString()%></p>
+							<p class="from">From</p>
+							<p class="hospital-name"><%= report_info[i].Hospital_Id.Name %></p>
+							<p class="file-name"><%= report_info[i].Name %></p>
+						</div>
+					</li>
+					<% } %>
+				</ul>
+			</div>
+			<div id="Reports_b">
+				<span>Reports</span>
+			</div>
+			<div id="Group_94">
+				<svg class="Path_79" viewBox="18.574 65.491 662.607 415">
+					<path id="Path_79"
+						d="M 623.5934448242188 480.4908752441406 C 633.6718139648438 469.9085998535156 657.6079711914062 432.8705749511719 668.9461669921875 404.399169921875 C 688.0950927734375 356.7788696289062 699.9371337890625 243.1451721191406 583.2799682617188 220.7207946777344 C 452.0091247558594 195.5248718261719 489.8030395507812 80.12746429443359 374.9095764160156 67.27753448486328 C 244.8985290527344 52.66388702392578 241.623046875 131.7791137695312 182.4126129150391 156.2192077636719 C 123.2021484375 180.6592712402344 43.83495330810547 156.97509765625 22.16645050048828 297.0644836425781 C 2.009698867797852 426.5715637207031 71.80244445800781 468.1448669433594 104.3052062988281 480.4908752441406 L 623.5934448242188 480.4908752441406 Z">
+					</path>
+				</svg>
+				<svg class="Path_80" viewBox="116.7 68.9 167.805 74.076">
+					<path id="Path_80"
+						d="M 261.8285827636719 71.16763305664062 C 261.8285827636719 71.16763305664062 261.0726928710938 70.91567993164062 260.8207702636719 70.66372680664062 C 260.5687866210938 70.66372680664062 259.5609741210938 70.15982055664062 259.5609741210938 70.15982055664062 L 259.5609741210938 128.3624267578125 L 141.8959350585938 128.3624267578125 L 141.8959350585938 68.89999389648438 C 141.8959350585938 68.89999389648438 141.1400451660156 69.15194702148438 140.6361389160156 69.40391540527344 C 140.3841857910156 69.40391540527344 139.6282958984375 69.90782165527344 139.6282958984375 69.90782165527344 L 139.6282958984375 128.6143493652344 L 116.7000122070312 128.6143493652344 L 116.7000122070312 142.9760131835938 L 284.5049743652344 142.9760131835938 L 284.5049743652344 128.6143493652344 L 261.57666015625 128.6143493652344 L 261.57666015625 71.16763305664062 L 261.8285827636719 71.16763305664062 Z">
+					</path>
+				</svg>
+				<svg class="Rectangle_87">
+					<rect id="Rectangle_87" rx="0" ry="0" x="0" y="0" width="33.259" height="51.652">
+					</rect>
+				</svg>
+				<svg class="Path_81" viewBox="43.076 164.7 100.089 75.84">
+					<path id="Path_81"
+						d="M 143.1648254394531 212.3202972412109 L 124.5198440551758 200.4782257080078 C 124.5198440551758 200.4782257080078 99.32390594482422 164.6999969482422 85.71810150146484 164.6999969482422 C 72.11228179931641 164.6999969482422 93.78079986572266 183.8489227294922 93.78079986572266 183.8489227294922 C 93.78079986572266 183.8489227294922 68.58486175537109 185.1087188720703 64.30155181884766 181.0773468017578 C 60.01823425292969 177.0460052490234 47.16831207275391 165.9597930908203 44.14479827880859 176.5420684814453 C 40.86933135986328 187.1243743896484 44.14479827880859 210.5565948486328 67.82898712158203 215.5957794189453 C 91.51317596435547 220.6349639892578 102.0954513549805 223.4065399169922 102.0954513549805 223.4065399169922 L 120.9924087524414 240.5397796630859 L 127.291389465332 236.2564849853516 C 135.6060485839844 230.9652862548828 141.401123046875 222.3986663818359 143.1648254394531 212.3202972412109 L 143.1648254394531 212.3202972412109 Z">
+					</path>
+				</svg>
+				<svg class="Path_82" viewBox="44 170.4 31.747 13.102">
+					<path id="Path_82"
+						d="M 43.99999237060547 170.3999633789062 L 58.61363220214844 179.2185363769531 C 63.14890289306641 181.9901123046875 68.18808746337891 183.5018615722656 73.22727203369141 183.5018615722656 L 75.74686431884766 183.5018615722656">
+					</path>
+				</svg>
+				<svg class="Path_83" viewBox="43.6 173.8 31.747 13.102">
+					<path id="Path_83"
+						d="M 43.59999084472656 173.7999877929688 L 58.21363830566406 182.6185607910156 C 62.7489013671875 185.39013671875 67.7880859375 186.90185546875 72.8272705078125 186.90185546875 L 75.34687805175781 186.90185546875">
+					</path>
+				</svg>
+				<svg class="Path_84" viewBox="44.5 177.8 29.227 11.59">
+					<path id="Path_84"
+						d="M 44.49999237060547 177.7999877929688 L 56.59403991699219 185.1068115234375 C 61.12931060791016 187.8783569335938 66.16849517822266 189.3901062011719 71.20767974853516 189.3901062011719 L 73.72727203369141 189.3901062011719">
+					</path>
+				</svg>
+				<div id="Group_90">
+					<svg class="Path_85" viewBox="173.181 110.932 66.653 57.367">
+						<path id="Path_85"
+							d="M 231.6837158203125 168.2984924316406 L 179.5281066894531 166.7867431640625 C 176.2526245117188 152.928955078125 172.7252197265625 136.8035583496094 173.2291259765625 132.520263671875 C 173.4811096191406 129.7487182617188 174.7409057617188 128.2369689941406 176.0007019042969 127.7330322265625 C 178.7722778320312 126.4732360839844 181.0398864746094 124.4575500488281 182.5516662597656 121.9379577636719 C 185.8271484375 116.3948669433594 194.3937377929688 109.0880432128906 215.0544128417969 111.3556823730469 C 227.9043579101562 112.867431640625 237.478759765625 121.9379577636719 237.9827270507812 125.4653930664062 C 238.4866333007812 128.9928283691406 236.9749145507812 131.7643737792969 236.9749145507812 131.7643737792969 C 236.9749145507812 131.7643737792969 241.0062561035156 132.520263671875 239.4945068359375 140.0790405273438 C 238.7385559082031 144.1104125976562 235.2111511230469 156.9603271484375 231.6837158203125 168.2984924316406 Z">
+						</path>
+					</svg>
+					<svg class="Rectangle_88">
+						<rect id="Rectangle_88" rx="0" ry="0" x="0" y="0" width="24.188" height="35.274">
+						</rect>
+					</svg>
+					<svg class="Path_86" viewBox="172.681 118.7 68.335 57.953">
+						<path id="Path_86"
+							d="M 183.8143920898438 156.9978332519531 C 183.8143920898438 156.9978332519531 179.2791137695312 156.241943359375 175.247802734375 152.7145080566406 C 171.2164306640625 149.1871032714844 172.2242736816406 143.1400451660156 176.255615234375 141.8802490234375 C 180.2869262695312 140.6204528808594 184.0663757324219 144.9037475585938 184.0663757324219 144.9037475585938 L 186.0820617675781 123.9911193847656 C 186.3340148925781 120.9676208496094 189.1055603027344 118.6999816894531 192.1290588378906 118.6999816894531 L 223.8759460449219 119.7078247070312 C 227.1514282226562 119.7078247070312 229.6710205078125 122.4793701171875 229.6710205078125 125.5028991699219 L 229.4190673828125 145.6596374511719 C 229.6710205078125 145.6596374511719 236.7258605957031 138.6047668457031 240.0013427734375 144.6518249511719 C 245.04052734375 153.7223815917969 229.6709899902344 158.7615661621094 229.6709899902344 158.7615661621094 C 229.6709899902344 158.7615661621094 221.1044006347656 176.9026184082031 208.0024719238281 176.6506958007812 C 192.8849182128906 176.3987121582031 183.8143920898438 156.9978332519531 183.8143920898438 156.9978332519531 Z">
+						</path>
+					</svg>
+					<svg class="Ellipse_18">
+						<ellipse id="Ellipse_18" rx="7.558781147003174" ry="1.2597968578338623" cx="7.558781147003174"
+							cy="1.2597968578338623">
+						</ellipse>
+					</svg>
+					<svg class="Ellipse_19">
+						<ellipse id="Ellipse_19" rx="1.2597968578338623" ry="7.306822299957275" cx="1.2597968578338623"
+							cy="7.306822299957275">
+						</ellipse>
+					</svg>
+					<svg class="Path_87" viewBox="181.559 139.759 23.954 4.923">
+						<path id="Path_87"
+							d="M 192.7491455078125 144.650146484375 C 188.9697570800781 144.3981628417969 185.1903686523438 143.3903503417969 181.9148864746094 141.1227111816406 C 181.6629028320312 140.8707580566406 181.4109802246094 140.3668518066406 181.6629028320312 140.1148986816406 L 181.6629028320312 140.1148986816406 C 181.9148864746094 139.8629150390625 182.4187927246094 139.6109924316406 182.6707153320312 139.8629150390625 C 189.2216796875 144.146240234375 197.7882995605469 144.398193359375 204.3392333984375 140.1148986816406 C 204.5912170410156 139.8629150390625 205.0951232910156 139.8629150390625 205.3470764160156 140.3668823242188 C 205.5989990234375 140.8708190917969 205.5990295410156 141.1227722167969 205.0950927734375 141.3746948242188 C 201.8197021484375 143.6423034667969 197.284423828125 144.902099609375 192.7491455078125 144.650146484375 Z">
+						</path>
+					</svg>
+					<svg class="Path_88" viewBox="174.2 129.4 4.619 8.063">
+						<path id="Path_88"
+							d="M 178.4833374023438 132.4235076904297 C 177.7274475097656 129.9039154052734 174.7039184570312 129.4000091552734 174.4519653320312 129.4000091552734 C 174.4519653320312 129.4000091552734 174.1999816894531 129.4000091552734 174.1999816894531 129.6519622802734 C 174.1999816894531 129.6519622802734 174.1999816894531 129.9039459228516 174.4519653320312 129.9039459228516 C 174.4519653320312 129.9039459228516 177.4754638671875 130.4078521728516 178.2313537597656 132.6755218505859 C 178.2313537597656 132.9275054931641 178.4833374023438 133.1794281005859 178.4833374023438 133.4314117431641 C 177.9794006347656 133.6833648681641 176.2156982421875 134.4392242431641 175.4598083496094 134.1873016357422 C 174.7039184570312 133.6833648681641 174.7039184570312 132.9275054931641 174.7039184570312 132.9275054931641 C 174.7039184570312 132.9275054931641 174.7039184570312 132.6755218505859 174.4519653320312 132.6755218505859 C 174.4519653320312 132.6755218505859 174.1999816894531 132.6755218505859 174.1999816894531 132.9275054931641 C 174.1999816894531 132.9275054931641 174.1999816894531 133.9353179931641 175.2077941894531 134.4392547607422 C 175.4597778320312 134.4392547607422 175.7117309570312 134.6912384033203 175.9636840820312 134.6912384033203 C 176.9715270996094 134.6912384033203 178.2313232421875 134.1873321533203 178.4832763671875 133.9353485107422 C 178.7352600097656 135.6990509033203 178.2313232421875 137.2108306884766 178.2313232421875 137.2108306884766 C 178.2313232421875 137.2108306884766 178.2313232421875 137.4628143310547 178.2313232421875 137.4628143310547 C 178.2313232421875 137.4628143310547 178.2313232421875 137.4628143310547 178.2313232421875 137.4628143310547 C 178.2313232421875 137.4628143310547 178.4832763671875 137.4628143310547 178.4832763671875 137.4628143310547 C 178.4833374023438 136.9587554931641 179.2391967773438 134.6911163330078 178.4833374023438 132.4235076904297 Z">
+						</path>
+					</svg>
+					<svg class="Path_89" viewBox="196.867 129.4 4.619 8.063">
+						<path id="Path_89"
+							d="M 197.2026062011719 132.4235076904297 C 197.95849609375 129.9039154052734 200.9819946289062 129.4000091552734 201.2339782714844 129.4000091552734 C 201.2339782714844 129.4000091552734 201.4859619140625 129.4000091552734 201.4859619140625 129.6519622802734 C 201.4859619140625 129.6519622802734 201.4859619140625 129.9039459228516 201.2339782714844 129.9039459228516 C 201.2339782714844 129.9039459228516 198.2104797363281 130.4078521728516 197.45458984375 132.6755218505859 C 197.45458984375 132.9275054931641 197.2026062011719 133.1794281005859 197.2026062011719 133.4314117431641 C 197.7065124511719 133.6833648681641 199.4702453613281 134.4392242431641 200.2261047363281 134.1873016357422 C 200.9819946289062 133.6833648681641 200.9819946289062 132.9275054931641 200.9819946289062 132.9275054931641 C 200.9819946289062 132.9275054931641 200.9819946289062 132.6755218505859 201.2339782714844 132.6755218505859 C 201.2339782714844 132.6755218505859 201.4859619140625 132.6755218505859 201.4859619140625 132.9275054931641 C 201.4859619140625 132.9275054931641 201.4859619140625 133.9353179931641 200.4781188964844 134.4392547607422 C 200.2261657714844 134.4392547607422 199.9742126464844 134.6912384033203 199.7222595214844 134.6912384033203 C 198.7144165039062 134.6912384033203 197.4546203613281 134.1873321533203 197.20263671875 133.9353485107422 C 196.95068359375 135.6990509033203 197.4546203613281 137.2108306884766 197.4546203613281 137.2108306884766 C 197.4546203613281 137.2108306884766 197.4546203613281 137.4628143310547 197.4546203613281 137.4628143310547 C 197.4546203613281 137.4628143310547 197.4546203613281 137.4628143310547 197.4546203613281 137.4628143310547 C 197.4546203613281 137.4628143310547 197.20263671875 137.4628143310547 197.20263671875 137.4628143310547 C 197.2026062011719 136.9587554931641 196.4467163085938 134.6911163330078 197.2026062011719 132.4235076904297 Z">
+						</path>
+					</svg>
+					<svg class="Path_90" viewBox="185.117 131.38 6.968 2.855">
+						<path id="Path_90"
+							d="M 191.3728942871094 131.68212890625 L 190.3650817871094 131.9341125488281 C 189.3572692871094 132.1860961914062 188.3493957519531 132.1860961914062 187.3415832519531 131.9341125488281 L 185.8298034667969 131.4302062988281 C 185.3258972167969 131.17822265625 184.8219909667969 131.9341125488281 185.3258972167969 132.4380187988281 L 186.081787109375 133.1939086914062 C 187.5935668945312 134.7056884765625 189.8611755371094 134.4537048339844 191.3729553222656 133.1939086914062 L 191.8768615722656 132.6900024414062 C 192.3807373046875 132.18603515625 191.8768310546875 131.4301452636719 191.3728942871094 131.68212890625 Z">
+						</path>
+					</svg>
+					<div id="Group_84">
+						<svg class="Path_91" viewBox="179.8 126.558 9.929 4.91">
+							<path id="Path_91"
+								d="M 179.7999877929688 129.1828918457031 C 179.7999877929688 129.1828918457031 181.311767578125 131.7025146484375 184.5872192382812 131.4505310058594 C 187.8627014160156 131.4505310058594 188.1146240234375 129.9387817382812 189.3744201660156 129.9387817382812 C 190.3822326660156 129.9387817382812 189.1224365234375 127.419189453125 187.1068115234375 126.915283203125 C 182.067626953125 125.4035034179688 179.7999877929688 129.1828918457031 179.7999877929688 129.1828918457031 Z">
+							</path>
+						</svg>
+						<svg class="Path_92" viewBox="179.6 126.394 10.857 3.038">
+							<path id="Path_92"
+								d="M 189.9303283691406 129.4325103759766 L 189.9303283691406 129.4325103759766 C 190.4342346191406 129.4325103759766 190.6862182617188 128.6766204833984 190.1822814941406 128.4246673583984 C 189.4264221191406 127.6687774658203 187.9146728515625 126.6609649658203 185.6470336914062 126.4089813232422 C 181.3637084960938 126.1570281982422 179.6000061035156 129.1805267333984 179.6000061035156 129.1805267333984 L 180.1039123535156 129.4324798583984 C 180.1039123535156 129.4324798583984 182.1195983886719 127.1648406982422 184.6391906738281 126.9128875732422 C 187.4107360839844 126.6609649658203 189.9303283691406 129.4325103759766 189.9303283691406 129.4325103759766 Z">
+							</path>
+						</svg>
+						<svg class="Path_93" viewBox="180.7 126.4 5.543 4.787">
+							<path id="Path_93"
+								d="M 180.7000122070312 128.4156494140625 C 180.7000122070312 129.9273986816406 181.9598083496094 131.1872253417969 183.4715576171875 131.1872253417969 C 184.9833374023438 131.1872253417969 186.2431335449219 129.9274291992188 186.2431335449219 128.4156799316406 C 186.2431335449219 126.9039306640625 184.9833374023438 126.3999938964844 183.4715576171875 126.3999938964844 C 181.9598083496094 126.6519470214844 180.7000122070312 126.9039001464844 180.7000122070312 128.4156494140625 Z">
+							</path>
+						</svg>
+						<svg class="Ellipse_20">
+							<ellipse id="Ellipse_20" rx="0.7558781504631042" ry="0.5039187669754028"
+								cx="0.7558781504631042" cy="0.5039187669754028">
+							</ellipse>
+						</svg>
+					</div>
+					<div id="Group_85">
+						<svg class="Path_94" viewBox="189.372 126.798 9.646 4.812">
+							<path id="Path_94"
+								d="M 199.017578125 129.5746612548828 C 199.017578125 129.5746612548828 197.5057983398438 131.8423004150391 194.2303771972656 131.5903167724609 C 190.9548950195312 131.3383331298828 190.7029418945312 129.8266143798828 189.6950988769531 129.8266143798828 C 188.6872863769531 129.8266143798828 190.1990051269531 127.3070220947266 191.9627075195312 127.0550689697266 C 197.2538757324219 125.7952728271484 199.017578125 129.5746612548828 199.017578125 129.5746612548828 Z">
+							</path>
+						</svg>
+						<svg class="Path_95" viewBox="189.234 126.6 10.748 3.527">
+							<path id="Path_95"
+								d="M 189.6517333984375 129.3715362548828 L 189.6517333984375 129.3715362548828 C 189.1478271484375 129.1195831298828 189.1478271484375 128.6156463623047 189.3997497558594 128.3636932373047 C 190.1556396484375 127.6078033447266 191.6673889160156 126.5999908447266 194.1869812011719 126.5999908447266 C 198.4702758789062 126.5999908447266 199.9820556640625 129.8754730224609 199.9820556640625 129.8754730224609 L 199.4781494140625 130.1274261474609 C 199.4781494140625 130.1274261474609 197.7144165039062 127.8597869873047 194.94287109375 127.3558807373047 C 192.1713256835938 126.8519439697266 189.6517333984375 129.3715362548828 189.6517333984375 129.3715362548828 Z">
+							</path>
+						</svg>
+						<svg class="Path_96" viewBox="190.2 126.875 5.543 4.597">
+							<path id="Path_96"
+								d="M 195.7431030273438 128.7010040283203 C 195.7431030273438 130.2127532958984 194.4833068847656 131.4725494384766 192.9715576171875 131.4725494384766 C 191.4597778320312 131.4725494384766 190.1999816894531 130.2127532958984 190.1999816894531 128.7010040283203 C 190.1999816894531 127.1892547607422 191.4597778320312 126.9373016357422 192.9715576171875 126.9373016357422 C 194.4833068847656 126.6853485107422 195.7431030273438 127.1892547607422 195.7431030273438 128.7010040283203 Z">
+							</path>
+						</svg>
+						<svg class="Ellipse_21">
+							<ellipse id="Ellipse_21" rx="0.7558781504631042" ry="0.5039187669754028"
+								cx="0.7558781504631042" cy="0.5039187669754028">
+							</ellipse>
+						</svg>
+					</div>
+					<svg class="Path_97" viewBox="175.242 115.898 63.667 27.217">
+						<path id="Path_97"
+							d="M 228.2994995117188 116.9112701416016 C 235.3543701171875 117.1632232666016 240.1415710449219 123.7141876220703 238.6298522949219 130.2651214599609 C 238.6298522949219 130.2651214599609 238.6298522949219 130.2651214599609 238.6298522949219 130.2651214599609 C 238.6298522949219 130.5170745849609 238.3778686523438 130.7690582275391 238.1259460449219 131.0210113525391 C 235.8583068847656 132.2808074951172 234.3465576171875 134.2964935302734 234.3465576171875 136.8160858154297 L 234.0945739746094 143.1150665283203 C 234.0945739746094 143.1150665283203 227.0397033691406 141.0993804931641 226.5357971191406 137.0680389404297 C 226.0318908691406 133.2886505126953 226.0318908691406 133.2886505126953 226.0318908691406 133.2886505126953 C 226.0318908691406 133.2886505126953 213.6858825683594 135.0523529052734 204.6153259277344 131.7769012451172 C 195.5447692871094 128.5014190673828 191.5134582519531 124.4700775146484 191.5134582519531 124.4700775146484 C 190.0016784667969 127.4935760498047 186.9781799316406 129.7612152099609 183.1987915039062 130.2651519775391 L 182.4429016113281 130.2651519775391 L 179.4194030761719 139.8396148681641 L 176.3959045410156 139.8396148681641 C 176.3959045410156 139.8396148681641 175.8919677734375 136.5641326904297 175.3880615234375 132.5327911376953 C 174.1282653808594 123.7142181396484 181.1831359863281 115.6515350341797 190.253662109375 115.9034881591797 L 228.2994995117188 116.9112701416016 Z">
+						</path>
+					</svg>
+					<div id="Group_86">
+						<svg class="Path_98" viewBox="177.5 128.525 45.101 33.7">
+							<path id="Path_98"
+								d="M 212.0184326171875 130.7296142578125 C 211.5145263671875 130.4776611328125 211.0106201171875 130.4776611328125 210.5066528320312 130.2257080078125 C 203.4517822265625 127.9580993652344 195.8930053710938 127.9580993652344 189.0901184082031 130.2257080078125 C 188.5862121582031 130.4776916503906 188.0823059082031 130.4776916503906 187.5783386230469 130.7296142578125 C 182.2871704101562 132.7453002929688 177.4999694824219 132.4933471679688 177.4999694824219 132.4933471679688 L 179.0117492675781 147.3589172363281 C 179.0117492675781 147.3589172363281 181.5313415527344 153.9098815917969 187.5783386230469 158.1931762695312 C 187.5783386230469 158.1931762695312 187.5783386230469 158.1931762695312 187.830322265625 158.4451599121094 C 195.1371154785156 163.4843444824219 204.9635620117188 163.4843444824219 212.2703857421875 158.4451599121094 C 212.2703857421875 158.4451599121094 212.2703857421875 158.4451599121094 212.5223388671875 158.1931762695312 C 218.5693664550781 153.9098815917969 221.5928955078125 147.3589172363281 221.5928955078125 147.3589172363281 L 222.6007080078125 132.4933471679688 C 222.0968017578125 132.4933776855469 217.3096008300781 132.7453002929688 212.0184326171875 130.7296142578125 Z">
+							</path>
+						</svg>
+						<svg class="Path_99" viewBox="194.8 130.1 2.772 14.866">
+							<path id="Path_99"
+								d="M 194.7999877929688 144.965576171875 L 195.8078002929688 130.1000061035156 L 197.5715026855469 130.3519897460938 L 195.8078002929688 143.957763671875 C 195.8078002929688 144.461669921875 195.5558776855469 144.965576171875 194.7999877929688 144.965576171875 L 194.7999877929688 144.965576171875 Z">
+							</path>
+						</svg>
+						<svg class="Path_100" viewBox="176.9 130.1 2.772 14.866">
+							<path id="Path_100"
+								d="M 179.6715087890625 144.965576171875 L 178.6636962890625 130.1000061035156 L 176.8999938964844 130.3519897460938 L 178.6636962890625 143.957763671875 C 178.6636962890625 144.461669921875 179.1676025390625 144.965576171875 179.6715087890625 144.965576171875 L 179.6715087890625 144.965576171875 Z">
+							</path>
+						</svg>
+						<svg class="Path_101" viewBox="179 136.4 37.29 6.047">
+							<path id="Path_101"
+								d="M 178.9999694824219 136.3999938964844 C 180.5117492675781 136.9039001464844 182.0234985351562 137.6597900390625 183.5352478027344 138.1636962890625 L 185.8028869628906 139.1715087890625 C 186.0548400878906 139.4234924316406 186.5587768554688 139.4234924316406 186.8106994628906 139.6754150390625 C 187.0626831054688 139.9273986816406 187.5665893554688 139.9273986816406 187.8185119628906 140.1793518066406 C 190.8420104980469 141.1871643066406 194.1174926757812 141.6911010742188 197.1410217285156 141.6911010742188 C 197.6449279785156 141.6911010742188 197.8968811035156 141.6911010742188 198.4008178710938 141.6911010742188 L 199.6606140136719 141.6911010742188 L 200.92041015625 141.4391479492188 L 202.1802062988281 141.1871643066406 C 202.6841125488281 141.1871643066406 202.9360961914062 140.9351806640625 203.4400024414062 140.9351806640625 C 203.9439086914062 140.9351806640625 204.1958923339844 140.6831970214844 204.6997985839844 140.6831970214844 C 205.2037048339844 140.6831970214844 205.4556884765625 140.4312438964844 205.7076110839844 140.4312438964844 C 206.2115173339844 140.4312438964844 206.4635009765625 140.1792602539062 206.9674072265625 139.9273376464844 C 209.9909057617188 138.9194946289062 213.0144348144531 137.9116516113281 216.2898864746094 136.90380859375 C 213.2663879394531 138.1636047363281 210.2428894042969 139.4234008789062 207.4713134765625 140.6831970214844 C 207.2193603515625 140.9351806640625 206.7154235839844 140.9351806640625 206.4635009765625 141.1871337890625 L 205.9595947265625 141.4390869140625 L 205.7076110839844 141.4390869140625 C 205.7076110839844 141.4390869140625 205.4556274414062 141.4390869140625 205.4556274414062 141.4390869140625 C 204.9517211914062 141.4390869140625 204.6997375488281 141.6910705566406 204.1958312988281 141.6910705566406 C 203.6919250488281 141.6910705566406 203.43994140625 141.9430541992188 202.93603515625 141.9430541992188 L 201.6762390136719 142.1950073242188 L 200.4164428710938 142.4469909667969 L 199.1566467285156 142.4469909667969 C 198.6527404785156 142.4469909667969 198.4007568359375 142.4469909667969 197.8968505859375 142.4469909667969 C 194.6213684082031 142.4469909667969 191.3458862304688 141.9430847167969 188.3223876953125 140.6832885742188 C 187.8184814453125 140.4313049316406 187.5664978027344 140.4313049316406 187.3145751953125 140.1793823242188 C 186.8106689453125 139.9273986816406 186.5586853027344 139.9273986816406 186.3067626953125 139.6754760742188 L 184.0391235351562 138.6676330566406 C 182.0234985351562 137.9117431640625 180.5117492675781 137.4078369140625 178.9999694824219 136.3999938964844 Z">
+							</path>
+						</svg>
+						<svg class="Path_102" viewBox="179 133.7 36.786 4.283">
+							<path id="Path_102"
+								d="M 178.9999694824219 133.7000274658203 C 182.0234985351562 134.7078704833984 185.0469970703125 135.7157135009766 188.0705261230469 136.2196197509766 C 191.0940246582031 136.7235565185547 194.3695068359375 136.9755096435547 197.3930358886719 136.9755096435547 C 200.4165344238281 136.9755096435547 203.6920166015625 136.7235565185547 206.7155151367188 136.2196197509766 C 207.4714050292969 135.9676666259766 208.227294921875 135.9676666259766 208.9831237792969 135.7157135009766 L 210.242919921875 135.4637603759766 L 210.746826171875 135.2117767333984 C 210.9988098144531 135.2117767333984 211.2507629394531 135.2117767333984 211.2507629394531 134.9597930908203 C 212.0066223144531 134.7078094482422 212.7625122070312 134.4558868408203 213.5183715820312 134.2039031982422 L 214.5261840820312 133.9519500732422 C 215.0300903320312 133.9519500732422 215.2820739746094 133.6999664306641 215.7859802246094 133.6999664306641 C 215.5340270996094 133.9519500732422 215.0300903320312 133.9519500732422 214.7781677246094 134.2038726806641 L 213.7703552246094 134.7077789306641 L 213.5183715820312 134.7077789306641 L 213.2663879394531 134.7077789306641 L 212.7624816894531 134.9597625732422 L 211.7546691894531 135.4636688232422 C 211.502685546875 135.4636688232422 211.502685546875 135.7156524658203 211.2507629394531 135.7156524658203 L 210.746826171875 135.9676055908203 L 209.739013671875 136.4715423583984 C 209.235107421875 136.4715423583984 208.9831237792969 136.7234954833984 208.4792175292969 136.7234954833984 L 207.9753112792969 136.9754791259766 L 207.7233276367188 136.9754791259766 L 207.4713745117188 136.9754791259766 L 207.2193908691406 136.9754791259766 C 204.1958923339844 137.7313690185547 200.92041015625 137.9832916259766 197.6449279785156 137.9832916259766 C 194.3694458007812 137.9832916259766 191.345947265625 137.7313385009766 188.0704650878906 136.9754791259766 C 184.7950439453125 136.2196197509766 182.0234985351562 135.2118072509766 178.9999694824219 133.7000274658203 Z">
+							</path>
+						</svg>
+						<svg class="Path_103" viewBox="179 130.2 36.282 4.283">
+							<path id="Path_103"
+								d="M 215.2820739746094 134.4833068847656 C 213.7703247070312 134.2313537597656 212.2585754394531 133.9794006347656 210.7467956542969 133.7274475097656 C 209.9909362792969 133.4754638671875 209.2350463867188 133.4754638671875 208.4791870117188 133.2235107421875 C 207.7232971191406 132.9715576171875 206.9674072265625 132.9715576171875 206.2115783691406 132.7196044921875 L 205.7076721191406 132.4676513671875 L 205.2037353515625 132.2156677246094 C 204.9517822265625 132.2156677246094 204.6998291015625 132.2156677246094 204.6998291015625 131.9636840820312 L 204.1959228515625 131.7117004394531 L 203.9439392089844 131.7117004394531 L 203.6919860839844 131.7117004394531 C 203.4400024414062 131.7117004394531 203.4400024414062 131.7117004394531 203.1880798339844 131.4597473144531 L 202.6841430664062 131.4597473144531 C 202.4321899414062 131.4597473144531 202.4321899414062 131.4597473144531 202.1802368164062 131.4597473144531 C 201.4243469238281 131.207763671875 200.66845703125 131.207763671875 199.9126281738281 131.207763671875 C 199.15673828125 131.207763671875 198.4008483886719 131.207763671875 197.64501953125 131.207763671875 C 196.1332397460938 131.207763671875 194.6214904785156 131.4597473144531 193.1097412109375 131.9636535644531 C 192.6058044433594 131.9636535644531 192.3538513183594 132.2156372070312 191.8499450683594 132.2156372070312 L 191.3460083007812 132.2156372070312 L 190.8421020507812 132.2156372070312 C 190.3381958007812 132.2156372070312 190.0862121582031 132.4675903320312 189.5823059082031 132.4675903320312 C 189.0783996582031 132.4675903320312 188.826416015625 132.7195739746094 188.322509765625 132.7195739746094 C 185.2990112304688 133.2234802246094 182.0235290527344 133.7273864746094 179.0000305175781 133.9793701171875 C 182.0235290527344 133.2234802246094 185.0470275878906 132.7195739746094 188.0705871582031 131.9636840820312 C 189.5823669433594 131.7117004394531 191.0940856933594 131.2077941894531 192.6058654785156 130.9558715820312 C 193.3617553710938 130.7038879394531 194.1176147460938 130.4519653320312 194.8734741210938 130.4519653320312 C 195.6293640136719 130.1999816894531 196.38525390625 130.1999816894531 197.39306640625 130.1999816894531 C 198.9048461914062 130.1999816894531 200.6685485839844 130.1999816894531 202.1802673339844 130.7038879394531 C 202.9361572265625 130.9558715820312 203.6920471191406 130.9558715820312 204.4479064941406 131.2077941894531 L 204.9518127441406 131.4597778320312 C 205.2037963867188 131.4597778320312 205.2037963867188 131.4597778320312 205.4557189941406 131.7117614746094 L 205.9596252441406 131.9637145996094 L 206.4635314941406 132.2156982421875 C 207.2194213867188 132.4676818847656 207.9753112792969 132.7196044921875 208.7311706542969 132.7196044921875 C 209.487060546875 132.9715881347656 210.2429504394531 132.9715881347656 210.998779296875 133.2235107421875 C 212.2585754394531 133.7274780273438 213.7703552246094 133.9794006347656 215.2820739746094 134.4833068847656 Z">
+							</path>
+						</svg>
+					</div>
+					<svg class="Path_104" viewBox="195.5 128.3 3.527 5.291">
+						<path id="Path_104"
+							d="M 195.4999694824219 133.5911254882812 L 195.4999694824219 133.5911254882812 C 196.0038757324219 131.5754699707031 196.759765625 129.5597839355469 198.5234680175781 128.5519409179688 L 199.0274047851562 128.2999877929688">
+						</path>
+					</svg>
+					<svg class="Path_105" viewBox="176.1 128.2 2.772 5.543">
+						<path id="Path_105"
+							d="M 178.8715209960938 133.7431030273438 L 178.8715209960938 133.7431030273438 C 178.6195678710938 131.7274475097656 177.8637084960938 129.7117614746094 176.3519287109375 128.4519653320312 L 176.0999755859375 128.1999816894531">
+						</path>
+					</svg>
+					<div id="Group_87">
+						<svg class="Path_106" viewBox="173.6 144.8 65.509 49.384">
+							<path id="Path_106"
+								d="M 206.1027526855469 144.8000030517578 L 239.1094360351562 153.3665924072266 L 199.0478820800781 194.1840057373047 L 173.6000061035156 154.6263885498047 L 206.1027526855469 144.8000030517578 Z">
+							</path>
+						</svg>
+						<svg class="Path_107" viewBox="135.9 148 252.715 207.111">
+							<path id="Path_107"
+								d="M 202.1653137207031 256.846435546875 L 191.5830078125 355.1105651855469 L 332.9322204589844 355.1105651855469 L 322.3499450683594 256.846435546875 L 326.3813171386719 266.6728515625 L 388.6152648925781 261.8856201171875 C 388.6152648925781 261.8856201171875 378.0329895019531 220.8162536621094 369.7183532714844 193.8565979003906 C 363.6712951660156 174.2037658691406 342.5066833496094 158.330322265625 322.3499450683594 153.7950744628906 L 296.1462097167969 148 L 292.1148376464844 150.7715759277344 C 274.9815979003906 166.64501953125 248.0219421386719 162.6136474609375 229.376953125 149.2597961425781 L 229.376953125 149.2597961425781 L 201.6614074707031 155.5587768554688 C 181.504638671875 160.0940551757812 160.843994140625 174.2037658691406 154.7969360351562 193.8565979003906 C 146.4822692871094 220.5643005371094 135.8999938964844 261.8856201171875 135.8999938964844 261.8856201171875 L 198.1339416503906 266.6728515625 L 202.1653137207031 256.846435546875 Z">
+							</path>
+						</svg>
+					</div>
+					<div id="Group_89">
+						<svg class="Path_108" viewBox="198.4 147.985 153.154 207.149">
+							<path id="Path_108"
+								d="M 268.6966857910156 355.1337280273438 C 265.1692810058594 341.0239868164062 263.9094543457031 326.158447265625 264.6653137207031 311.5447998046875 L 266.4289855957031 277.2782897949219 L 287.5935974121094 326.1583862304688 L 277.2632141113281 355.1337280273438 L 346.5520324707031 355.1337280273438 L 349.0716247558594 345.8112182617188 C 353.3550109863281 329.6858520507812 352.0951843261719 312.8045654296875 345.2922668457031 297.6869506835938 L 300.6954650878906 196.9032287597656 C 292.3807678222656 178.2582397460938 275.7514953613281 164.4004821777344 255.5947570800781 160.1171264648438 L 201.4234924316406 148.0230712890625 C 199.9117126464844 147.7711181640625 198.3999938964844 148.7789611816406 198.3999938964844 150.5426635742188 L 198.3999938964844 355.1336669921875 L 268.6966857910156 355.1336669921875 Z">
+							</path>
+						</svg>
+						<svg class="Path_109" viewBox="76.8 148.061 249.188 206.956">
+							<path id="Path_109"
+								d="M 259.7224731445312 305.1295776367188 C 260.7303161621094 322.0108642578125 258.2107238769531 338.8921508789062 252.6676025390625 355.0175170898438 L 325.98779296875 355.0175170898438 L 325.98779296875 151.1823883056641 C 325.98779296875 149.1667022705078 324.2240905761719 147.6549530029297 322.2084045410156 148.1588592529297 L 269.5489196777344 159.2450714111328 C 253.1715698242188 162.5205535888672 239.0618286132812 172.5989227294922 230.4952087402344 186.7086334228516 L 176.3239440917969 275.9022827148438 L 106.2792358398438 241.8877410888672 L 76.80000305175781 284.9728393554688 L 135.7584991455078 334.6088256835938 C 161.9622802734375 356.529296875 201.0159912109375 352.2459716796875 221.9286193847656 325.2863159179688 L 258.4627380371094 278.169921875 L 259.7224731445312 305.1295776367188 Z">
+							</path>
+						</svg>
+						<svg class="Path_110" viewBox="198.5 147.985 47.872 169.859">
+							<path id="Path_110"
+								d="M 240.5772094726562 156.5900421142578 L 246.372314453125 183.2977752685547 L 222.1842041015625 191.8643646240234 L 241.5850219726562 215.5485382080078 C 241.5850219726562 215.5485382080078 223.4439697265625 243.5160369873047 214.3734130859375 269.9718017578125 C 205.5548400878906 296.427490234375 198.4999694824219 317.8440551757812 198.4999694824219 317.8440551757812 L 198.4999694824219 150.0391082763672 C 198.4999694824219 148.7793121337891 199.759765625 147.7714691162109 201.0195617675781 148.0234222412109 L 240.5772094726562 156.5900421142578 Z">
+							</path>
+						</svg>
+						<svg class="Path_111" viewBox="156.7 147.885 47.872 170.111">
+							<path id="Path_111"
+								d="M 162.7470092773438 156.2379302978516 L 156.7000122070312 183.4495697021484 L 180.8881225585938 192.0161590576172 L 161.4872436523438 215.7003326416016 C 161.4872436523438 215.7003326416016 179.6283264160156 243.6678314208984 188.6988830566406 270.1235961914062 C 197.5174560546875 296.5792846679688 204.5723266601562 317.995849609375 204.5723266601562 317.995849609375 L 204.5723266601562 150.1909027099609 C 204.5723266601562 148.6791229248047 203.3125305175781 147.6713104248047 201.8007507324219 147.9232635498047 L 162.7470092773438 156.2379302978516 Z">
+							</path>
+						</svg>
+						<svg class="Line_2" viewBox="0 0 11.338 10.834">
+							<path id="Line_2" d="M 11.33817195892334 10.83425331115723 L 0 0">
+							</path>
+						</svg>
+						<svg class="Line_3" viewBox="0 0 10.582 4.787">
+							<path id="Line_3" d="M 0 4.787228107452393 L 10.58229351043701 0">
+							</path>
+						</svg>
+						<svg class="Path_112" viewBox="225.4 181.6 5.543 57.195">
+							<path id="Path_112"
+								d="M 230.943115234375 238.7947387695312 L 225.3999633789062 226.19677734375 L 225.3999633789062 181.5999755859375 L 230.943115234375 238.7947387695312 Z">
+							</path>
+						</svg>
+						<svg class="Path_113" viewBox="146.8 181.6 4.787 51.652">
+							<path id="Path_113"
+								d="M 146.8000030517578 233.2516479492188 L 151.5872039794922 226.9526672363281 L 151.5872039794922 181.5999755859375 L 146.8000030517578 233.2516479492188 Z">
+							</path>
+						</svg>
+						<svg class="Path_114" viewBox="205.3 149.2 21.241 81.383">
+							<path id="Path_114"
+								d="M 205.2999877929688 149.1999816894531 C 205.2999877929688 149.1999816894531 216.63818359375 166.0812683105469 222.1812744140625 186.2380065917969 C 227.472412109375 204.8829956054688 226.464599609375 230.5828857421875 226.464599609375 230.5828857421875">
+							</path>
+						</svg>
+						<svg class="Path_115" viewBox="155.97 150.3 17.714 76.596">
+							<path id="Path_115"
+								d="M 173.6834106445312 150.3000030517578 C 173.6834106445312 150.3000030517578 165.8726501464844 162.3940582275391 160.3295593261719 182.5507965087891 C 155.0383911132812 201.1957855224609 156.0462341308594 226.8956756591797 156.0462341308594 226.8956756591797">
+							</path>
+						</svg>
+						<svg class="Path_116" viewBox="204.3 182.3 47.62 58.958">
+							<path id="Path_116"
+								d="M 238.0625610351562 241.2584838867188 L 251.9202880859375 241.2584838867188 L 251.9202880859375 209.0076904296875 C 251.9202880859375 194.1421203613281 241.5899658203125 182.2999877929688 228.9920043945312 182.2999877929688 L 228.9920043945312 182.2999877929688 C 215.3861694335938 182.2999877929688 204.2999877929688 195.1499328613281 204.2999877929688 211.0233459472656 L 204.2999877929688 241.2584838867188 L 216.1420288085938 241.2584838867188">
+							</path>
+						</svg>
+						<svg class="Ellipse_22">
+							<ellipse id="Ellipse_22" rx="3.2754716873168945" ry="4.031350135803223"
+								cx="3.2754716873168945" cy="4.031350135803223">
+							</ellipse>
+						</svg>
+						<svg class="Ellipse_23">
+							<ellipse id="Ellipse_23" rx="3.2754716873168945" ry="4.031350135803223"
+								cx="3.2754716873168945" cy="4.031350135803223">
+							</ellipse>
+						</svg>
+						<div id="Group_88">
+							<svg class="Ellipse_24">
+								<ellipse id="Ellipse_24" rx="11.842090606689453" ry="11.842090606689453"
+									cx="11.842090606689453" cy="11.842090606689453">
+								</ellipse>
+							</svg>
+							<svg class="Ellipse_25">
+								<ellipse id="Ellipse_25" rx="7.0548624992370605" ry="7.0548624992370605"
+									cx="7.0548624992370605" cy="7.0548624992370605">
+								</ellipse>
+							</svg>
+						</div>
+					</div>
+				</div>
+				<div id="Group_92">
+					<svg class="Rectangle_89">
+						<rect id="Rectangle_89" rx="0" ry="0" x="0" y="0" width="145.884" height="83.651">
+						</rect>
+					</svg>
+					<svg class="Rectangle_90">
+						<rect id="Rectangle_90" rx="0" ry="0" x="0" y="0" width="135.806" height="73.572">
+						</rect>
+					</svg>
+					<svg class="Rectangle_91">
+						<rect id="Rectangle_91" rx="0" ry="0" x="0" y="0" width="108.594" height="1.008">
+						</rect>
+					</svg>
+					<svg class="Rectangle_92">
+						<rect id="Rectangle_92" rx="0" ry="0" x="0" y="0" width="70.549" height="1.008">
+						</rect>
+					</svg>
+					<svg class="Rectangle_93">
+						<rect id="Rectangle_93" rx="0" ry="0" x="0" y="0" width="70.549" height="1.008">
+						</rect>
+					</svg>
+					<svg class="Rectangle_94">
+						<rect id="Rectangle_94" rx="0" ry="0" x="0" y="0" width="70.549" height="1.008">
+						</rect>
+					</svg>
+					<svg class="Rectangle_95">
+						<rect id="Rectangle_95" rx="0" ry="0" x="0" y="0" width="70.549" height="1.008">
+						</rect>
+					</svg>
+					<div id="Group_91">
+						<svg class="Rectangle_96">
+							<rect id="Rectangle_96" rx="0" ry="0" x="0" y="0" width="46.361" height="1.008">
+							</rect>
+						</svg>
+						<svg class="Rectangle_97">
+							<rect id="Rectangle_97" rx="0" ry="0" x="0" y="0" width="46.361" height="1.008">
+							</rect>
+						</svg>
+						<svg class="Rectangle_98">
+							<rect id="Rectangle_98" rx="0" ry="0" x="0" y="0" width="46.361" height="1.008">
+							</rect>
+						</svg>
+						<svg class="Rectangle_99">
+							<rect id="Rectangle_99" rx="0" ry="0" x="0" y="0" width="46.361" height="1.008">
+							</rect>
+						</svg>
+					</div>
+					<div id="Group_97">
+						<div id="Group_95">
+							<svg class="Path_117" viewBox="15 7.01 17.427 25.622">
+								<path id="Path_117"
+									d="M 20.99679183959961 7.010000228881836 L 26.42978286743164 7.010000228881836 L 26.42978286743164 8.342619895935059 L 20.99679183959961 8.342619895935059 L 20.99679183959961 7.010000228881836 Z M 18.34692764282227 9.11143970489502 L 15.00000095367432 9.11143970489502 L 15.00000095367432 32.63218307495117 L 32.42657089233398 32.63218307495117 L 32.42657089233398 9.11143970489502 L 29.07964324951172 9.11143970489502 L 18.34692764282227 9.11143970489502 Z">
+								</path>
+							</svg>
+						</div>
+						<div id="Group_96">
+							<svg class="Path_118" viewBox="10.5 2.51 22.039 30.235">
+								<path id="Path_118"
+									d="M 32.53948593139648 17.62498664855957 L 32.53948593139648 30.86405754089355 C 32.53948593139648 31.89939880371094 31.69378280639648 32.74510192871094 30.65844345092773 32.74510192871094 L 12.38104438781738 32.74510192871094 C 11.34570121765137 32.74510192871094 10.5 31.89939880371094 10.5 30.86405754089355 L 10.5 6.492483615875244 C 10.5 5.452015399932861 11.34570121765137 4.61143970489502 12.38104438781738 4.61143970489502 L 16.15338706970215 4.61143970489502 C 16.27127075195312 4.61143970489502 16.384033203125 4.626815319061279 16.49679183959961 4.647317886352539 L 16.49679183959961 4.273158550262451 C 16.49679183959961 3.299320936203003 17.26560974121094 2.509999752044678 18.21382141113281 2.509999752044678 L 24.8256664276123 2.509999752044678 C 25.77387619018555 2.509999752044678 26.54269599914551 3.299320936203003 26.54269599914551 4.273158550262451 L 26.54269599914551 4.647317886352539 C 26.65545845031738 4.626815319061279 26.76821708679199 4.61143970489502 26.8861026763916 4.61143970489502 L 30.65843963623047 4.61143970489502 C 31.69378280639648 4.61143970489502 32.53948593139648 5.452015399932861 32.53948593139648 6.492483615875244 L 32.53948593139648 9.02446174621582 C 32.53948593139648 9.449873924255371 32.19608306884766 9.793280601501465 31.77066802978516 9.793280601501465 C 31.34525299072266 9.793280601501465 31.00185012817383 9.449873924255371 31.00185012817383 9.02446174621582 L 31.00185012817383 6.492483139038086 C 31.00185012817383 6.302841186523438 30.84808731079102 6.14907693862915 30.65844345092773 6.14907693862915 L 26.8861026763916 6.14907693862915 C 26.69646263122559 6.14907693862915 26.54269981384277 6.302841186523438 26.54269981384277 6.492483139038086 L 26.54269981384277 7.604708194732666 C 26.54269981384277 8.024995803833008 26.19929313659668 8.373527526855469 25.77387809753418 8.373527526855469 L 17.26560974121094 8.373527526855469 C 16.84019660949707 8.373527526855469 16.49679183959961 8.024995803833008 16.49679183959961 7.604708194732666 L 16.49679183959961 6.492483139038086 C 16.49679183959961 6.302841186523438 16.34302711486816 6.14907693862915 16.15338706970215 6.14907693862915 L 12.38104438781738 6.14907693862915 C 12.19140243530273 6.14907693862915 12.03763866424561 6.302841186523438 12.03763866424561 6.492483139038086 L 12.03763866424561 30.86405372619629 C 12.03763866424561 31.05369567871094 12.19140243530273 31.20746040344238 12.38104438781738 31.20746040344238 L 30.65844345092773 31.20746040344238 C 30.84808731079102 31.20746040344238 31.00185012817383 31.05369567871094 31.00185012817383 30.86405372619629 L 31.00185012817383 17.62498664855957 C 31.00185012817383 17.1995735168457 31.34525299072266 16.85616874694824 31.77066802978516 16.85616874694824 C 32.19608306884766 16.85616874694824 32.53948593139648 17.1995735168457 32.53948593139648 17.62498664855957 Z M 25.00505828857422 6.83588981628418 L 25.00505828857422 4.273158550262451 C 25.00505828857422 4.150147914886475 24.92305183410645 4.047638416290283 24.8256664276123 4.047638416290283 L 18.21382141113281 4.047638416290283 C 18.1164379119873 4.047638416290283 18.0344295501709 4.150147438049316 18.0344295501709 4.273158550262451 L 18.0344295501709 6.83588981628418 L 25.00506019592285 6.83588981628418 Z">
+								</path>
+							</svg>
+							<svg class="Path_119" viewBox="5.52 20.2 24.592 21.168">
+								<path id="Path_119"
+									d="M 30.11196517944336 20.96882057189941 L 30.11196517944336 22.29631423950195 C 30.11196517944336 22.72172737121582 29.76855850219727 23.06513595581055 29.34314346313477 23.06513595581055 C 28.91772842407227 23.06513595581055 28.57432556152344 22.72172737121582 28.57432556152344 22.29631423950195 L 28.57432556152344 20.96882057189941 C 28.57432556152344 20.54340934753418 28.91772842407227 20.20000076293945 29.34314346313477 20.20000076293945 C 29.76855850219727 20.20000076293945 30.11196517944336 20.54340934753418 30.11196517944336 20.96882057189941 Z M 26.98543167114258 26.52994918823242 C 27.41084671020508 26.52994918823242 27.75425338745117 26.87335205078125 27.75425338745117 27.29876899719238 C 27.75425338745117 27.72418403625488 27.41084671020508 28.06758689880371 26.98543167114258 28.06758689880371 L 22.15724945068359 28.06758689880371 L 19.77391052246094 32.66000366210938 C 19.64064788818359 32.91627502441406 19.37412643432617 33.07516479492188 19.09222412109375 33.07516479492188 C 19.04609298706055 33.07516479492188 19.00508880615234 33.07003784179688 18.95896148681641 33.05978393554688 C 18.62580490112305 33.00340270996094 18.37466049194336 32.73688507080078 18.32852935791016 32.40372467041016 L 17.53920745849609 26.24292373657227 L 17.1650505065918 27.62679862976074 C 17.07458877563477 27.96275901794434 16.76978302001953 28.19609260559082 16.42185974121094 28.19573020935059 L 12.25998306274414 28.19572257995605 C 11.83457088470459 28.19572257995605 11.4911642074585 27.84719276428223 11.4911642074585 27.42690467834473 C 11.4911642074585 27.00148963928223 11.83457088470459 26.6580867767334 12.25998306274414 26.6580867767334 L 15.83755588531494 26.6580867767334 L 17.06766510009766 22.0964241027832 C 17.1599235534668 21.74276924133301 17.48795318603516 21.49674797058105 17.86211395263672 21.52749824523926 C 18.22602081298828 21.55312728881836 18.52329635620117 21.83502578735352 18.56942749023438 22.19893455505371 L 19.54326248168945 29.76923942565918 L 21.00402069091797 26.94511413574219 C 21.13728332519531 26.6939640045166 21.398681640625 26.52994918823242 21.68570709228516 26.52994918823242 L 26.98543167114258 26.52994918823242 Z M 7.057639122009277 34.92032623291016 L 7.057639122009277 40.59933471679688 C 7.057639122009277 41.02474975585938 6.7142333984375 41.36815643310547 6.288819789886475 41.36815643310547 C 5.863406658172607 41.36815643310547 5.520000457763672 41.02474975585938 5.520000457763672 40.59933471679688 L 5.520000457763672 34.92032623291016 C 5.520000457763672 34.49491119384766 5.863406658172607 34.15150451660156 6.288819789886475 34.15150451660156 C 6.7142333984375 34.15150451660156 7.057639122009277 34.49491119384766 7.057639122009277 34.92032623291016 Z M 7.057639122009277 31.60927772521973 L 7.057639122009277 32.23458862304688 C 7.057639122009277 32.66000366210938 6.7142333984375 33.00340270996094 6.288819789886475 33.00340270996094 C 5.863406658172607 33.00340270996094 5.520000457763672 32.66000366210938 5.520000457763672 32.23458862304688 L 5.520000457763672 31.60927772521973 C 5.520000457763672 31.18386650085449 5.863406658172607 30.8404598236084 6.288819789886475 30.8404598236084 C 6.7142333984375 30.8404598236084 7.057639122009277 31.18386650085449 7.057639122009277 31.60927772521973 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+				</div>
+				<svg class="Line_5" viewBox="0 0 647.536 0.6460000276565552">
+					<path id="Line_5" d="M 647.5355834960938 0 L 0 0">
+					</path>
+				</svg>
+			</div>
+			<div id="Access_your_medical__records">
+				<span>Access your </span><span style="color:rgba(189,192,225,1);">medical </span><br /><span>records
+					with ease! </span>
+			</div>
+		</div>
+		<div id="ReportsEditModal">
+			<div id="background-blur">
+			</div>
+			<div id="Modal-Edit">
+			</div>
+			<div id="Modal-Content">
+				<button class="cross-button" onclick="closeModal()">
+					<svg class="cross" viewBox="5 5 18.318 19.806">
+						<path id="cross" d="M 23.318359375 24.8056640625 L 5 5 M 23.318359375 5 L 5 24.8056640625">
+						</path>
+					</svg>
+				</button>
+				<div id="Submit-button">
+					<svg class="Rectangle_125">
+						<rect id="Rectangle_125" rx="47.5" ry="47.5" x="0" y="0" width="253" height="95">
+						</rect>
+					</svg>
+					<div id="Update">
+						<span>Update</span>
+					</div>
+				</div>
+				<div id="update-fields">
+					<div id="Group_144">
+						<div id="Group_142">
+							<input type="text" id="PatientFirstName" class="Rectangle_111"
+								placeholder="Patient First Name" value="<%= patientInfo.Name.split(' ')[0] || '' %>"
+								required>
+							<input type="text" id="PatientLastName" class="Rectangle_114"
+								placeholder="Patient Last Name" value="<%= patientInfo.Name.split(' ')[1] || '' %>"
+								required>
+							<input type="date" id="DOB" class="Rectangle_113" placeholder="DOB" max=""
+								value="<%= patientInfo.DOB || '' %>" onchange="updateMaxDate()" required>
+							<select id="Gender" class="Rectangle_117" required>
+								<option value="male" <%= patientInfo.Sex === 'male' ? 'selected' : '' %>>Male</option>
+								<option value="female" <%= patientInfo.Sex === 'female' ? 'selected' : '' %>>Female
+								</option>
+								<option value="other" <%= patientInfo.Sex === 'other' ? 'selected' : '' %>>Other
+								</option>
+							</select>
+							<input type="text" id="PatientId" class="Rectangle_110" placeholder="Patient Id"
+								value="<%= patientInfo.Patient_Id || '' %>" required disabled>
+							<input type="text" id="MobileNumber" class="Rectangle_112" placeholder="Mobile Number"
+								value="<%= patientInfo.Phone_No || '' %>" required>
+							<input type="email" id="EmailAddress" class="Rectangle_124" placeholder="Email Address"
+								value="<%= patientInfo.Email || '' %>" required>
+
+							<div id="Patient_First_Name">
+								<span>Patient First Name:</span>
+							</div>
+							<div id="Patient_ID">
+								<span>Patient ID:</span>
+							</div>
+							<div id="Patient_Last_Name">
+								<span>Patient Last Name:</span>
+							</div>
+
+							<div id="Date_of_Birth">
+								<span>Date of Birth:</span>
+							</div>
+							<div id="Mobile">
+								<span>Mobile:</span>
+							</div>
+							<div id="Email_Address">
+								<span>Email Address:</span>
+							</div>
+							<div id="Gender_Header">
+								<span>Gender:</span>
+							</div>
+
+						</div>
+						<div id="Street_Name">
+							<span>Street Name:</span>
+						</div>
+						<input type="text" id="StreetName" class="Rectangle_118" placeholder="Street Name"
+							value="<%= patientInfo.Address.split(', ')[0] || '' %>" required>
+
+						<div id="City_Header">
+							<span>City:</span>
+						</div>
+						<input type="text" id="City" class="Rectangle_119" placeholder="City"
+							value="<%= patientInfo.Address.split(', ')[1] || '' %>" required>
+
+						<div id="Zip_Code">
+							<span>Zip Code:</span>
+						</div>
+						<%
+  							const address = (patientInfo.Address.split(', ')[2] || '').trim();
+  							const ProvinceAbb = address.substring(0, 2).trim();
+  							const ZipCodeStr = address.substring(2).trim();
+						%>
+						<input type="text" id="ZipCode" class="Rectangle_120" placeholder="Zip Code"
+							value="<%= ZipCodeStr || '' %>" required>
+
+						<div id="Province_Header">
+							<span>Province:</span>
+						</div>
+						<select id="Province" class="Rectangle_121" required>
+							<option value="" disabled>Select a province</option>
+							<option value="AB" <%= ProvinceAbb === 'AB' ? 'selected' : '' %>>AB
+							</option>
+							<option value="BC" <%= ProvinceAbb === 'BC' ? 'selected' : '' %>>BC
+							</option>
+							<option value="MB" <%= ProvinceAbb === 'MB' ? 'selected' : '' %>>MB
+							</option>
+							<option value="NB" <%= ProvinceAbb === 'NB' ? 'selected' : '' %>>NB
+							</option>
+							<option value="NL" <%= ProvinceAbb === 'NL' ? 'selected' : '' %>>NL
+							</option>
+							<option value="NS" <%= ProvinceAbb === 'NS' ? 'selected' : '' %>>NS
+							</option>
+							<option value="NT" <%= ProvinceAbb === 'NT' ? 'selected' : '' %>>NT
+							</option>
+							<option value="NU" <%= ProvinceAbb === 'NU' ? 'selected' : '' %>>NU
+							</option>
+							<option value="ON" <%= ProvinceAbb === 'ON' ? 'selected' : '' %>>ON
+							</option>
+							<option value="PE" <%= ProvinceAbb === 'PE' ? 'selected' : '' %>>PE
+							</option>
+							<option value="QC" <%= ProvinceAbb === 'QC' ? 'selected' : '' %>>QC
+							</option>
+							<option value="SK" <%= ProvinceAbb === 'SK' ? 'selected' : '' %>>SK
+							</option>
+							<option value="YT" <%= ProvinceAbb === 'YT' ? 'selected' : '' %>>YT
+							</option>
+						</select>
+					</div>
+				</div>
+				<div id="upload-image">
+					<svg class="Rectangle_109">
+						<rect id="Rectangle_109" rx="56" ry="56" x="0" y="0" width="240" height="225">
+						</rect>
+					</svg>
+					<input type="file" id="fileInput" style="display: none;">
+					<button id="uploadButton" class="upload-button" onclick="handleUpload()">
+						<svg class="Path_138" viewBox="2.5 4.5 25 25">
+							<path id="Path_138"
+								d="M 24 29.5 L 6 29.5 C 4.06700325012207 29.5 2.499999523162842 27.93299674987793 2.5 26 L 2.5 8 C 2.5 6.06700325012207 4.067004203796387 4.499999523162842 6.000000476837158 4.5 L 15 4.5 C 15.8284273147583 4.5 16.5 5.171572685241699 16.5 6 C 16.5 6.828427314758301 15.8284273147583 7.5 15 7.5 L 6 7.5 C 5.723857402801514 7.5 5.5 7.723857879638672 5.5 8 L 5.5 26 C 5.5 26.27614212036133 5.723857879638672 26.5 6 26.5 L 24 26.5 C 24.27614212036133 26.5 24.5 26.27614212036133 24.5 26 L 24.5 17 C 24.5 16.17157363891602 25.17157363891602 15.5 26 15.5 C 26.82842636108398 15.5 27.5 16.17157363891602 27.5 17 L 27.5 26 C 27.50000190734863 27.93299674987793 25.93299865722656 29.5 24.00000190734863 29.5 Z">
+							</path>
+						</svg>
+						<svg class="Path_139" viewBox="10.498 2.372 19.13 19.128">
+							<path id="Path_139"
+								d="M 12 21.5 C 11.56869697570801 21.5005989074707 11.15800666809082 21.31551361083984 10.87277317047119 20.99199295043945 C 10.58754062652588 20.6684741973877 10.4553689956665 20.23782920837402 10.51000118255615 19.80999946594238 L 11.07000064849854 15.44999885559082 C 11.11166477203369 15.12204074859619 11.25911521911621 14.81660842895508 11.49000072479248 14.57999897003174 L 22.35000038146973 3.730000019073486 C 23.39094734191895 2.5947585105896 24.9708194732666 2.122154712677002 26.46417808532715 2.499282836914062 C 27.9575366973877 2.876410722732544 29.12358856201172 4.042462348937988 29.50071716308594 5.535820960998535 C 29.87784576416016 7.029178619384766 29.40524291992188 8.609051704406738 28.27000045776367 9.649999618530273 L 17.42000007629395 20.51000022888184 C 17.18338966369629 20.74088478088379 16.87795639038086 20.88833618164062 16.54999732971191 20.93000030517578 L 12.18999862670898 21.48999977111816 L 12 21.5 Z M 16.36000061035156 19.45000076293945 L 16.36000061035156 19.45000076293945 Z M 14 16.34000015258789 L 13.75 18.27000045776367 L 15.65999984741211 18.000000953674316 L 26.14999961853027 7.53000020980835 C 26.37474632263184 7.308267116546631 26.50126457214355 7.005717277526855 26.50126457214355 6.690000057220459 C 26.50126457214355 6.374282836914062 26.37474632263184 6.071732997894287 26.14999771118164 5.849999904632568 C 25.68124771118164 5.397893905639648 24.93874740600586 5.397893905639648 24.46999931335449 5.850000381469727 L 14 16.34000015258789 Z">
+							</path>
+						</svg>
+					</button>
+					<div id="Group_145">
+						<svg class="Path_140" viewBox="0 0 38.467 38.467">
+							<path id="Path_140"
+								d="M 0 0 L 38.466796875 0 L 38.466796875 38.466796875 L 0 38.466796875 L 0 0 Z">
+							</path>
+						</svg>
+						<svg class="Path_141" viewBox="5 3 22.439 28.85">
+							<path id="Path_141"
+								d="M 22.630615234375 12.61669921875 L 22.630615234375 28.64453125 L 9.808349609375 28.64453125 L 9.808349609375 12.61669921875 L 22.630615234375 12.61669921875 M 20.2264404296875 3 L 12.2125244140625 3 L 10.6097412109375 4.602783203125 L 5 4.602783203125 L 5 7.808349609375 L 27.43896484375 7.808349609375 L 27.43896484375 4.602783203125 L 21.8292236328125 4.602783203125 L 20.2264404296875 3 Z M 25.836181640625 9.4111328125 L 6.602783203125 9.4111328125 L 6.602783203125 28.64453125 C 6.602783203125 30.4075927734375 8.0452880859375 31.85009765625 9.808349609375 31.85009765625 L 22.630615234375 31.85009765625 C 24.3936767578125 31.85009765625 25.836181640625 30.4075927734375 25.836181640625 28.64453125 L 25.836181640625 9.4111328125 Z">
+							</path>
+						</svg>
+					</div>
+				</div>
+				<div id="Patient_Demographics">
+					<span>Patient Demographics</span>
+				</div>
+				<div id="Edit_Patient_Record">
+					<span>Edit Patient Record</span>
+				</div>
+			</div>
+		</div>
+		<div id="HospitalCodeModal">
+			<div id="background-blur">
+			</div>
+			<div id="Security-Modal">
+				<div id="Modal-Content">
+					<button class="cross-button" onclick="closeModal()">
+						<svg class="security-cross" viewBox="5 5 18.318 19.806">
+							<path id="security-cross"
+								d="M 23.318359375 24.8056640625 L 5 5 M 23.318359375 5 L 5 24.8056640625">
+							</path>
+						</svg>
+					</button>
+					<div id="download-button" onclick="downloadReport()" class="disabled">
+						<svg class="Rectangle_126">
+							<rect id="Rectangle_126" rx="47.5" ry="47.5" x="0" y="0" width="253" height="95">
+							</rect>
+						</svg>
+						<div id="Download">
+							<span>Download</span>
+						</div>
+					</div>
+					<input type="text" id="hospitalCodeText" class="Rectangle_127" placeholder="Enter Hospital Code"
+						required>
+					<div id="forgot_code">
+						<span id="forgot_code_link">Forgot your code?</span>
+					</div>
+
+					<div id="Enter_Security_Code">
+						<span>Enter the code provided for Hospital Name:</span>
+					</div>
+					<div id="Security_Question">
+						<span>Security Question</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		// Get the modal
+		var modal = document.getElementById("ReportsEditModal");
+		var hospitalCodeModal = document.getElementById("HospitalCodeModal");
+
+		// Function to open the modal
+		function showModal() {
+			modal.style.display = "block";
+		}
+
+		function showHospitalCodeModal(reportId, hospitalId) {
+			hospitalCodeModal.style.display = "block";
+			console.log("showHospitalCodeModal", reportId, hospitalId);
+			fetch('/addHospitalReport', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					reportId: reportId,
+					hospitalId: hospitalId,
+				}),
+			})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Network response was not ok');
+					}
+					return response.json();
+				})
+				.catch(error => {
+					console.error('Error during POST request:', error);
+				});
+		}
+
+		// Function to close the modal
+		function closeModal() {
+			modal.style.display = "none";
+			hospitalCodeModal.style.display = "none";
+			location.reload();
+		}
+
+		// Function to send updated data to the server
+		function updatePatient() {
+			// Extract values from the form
+			const firstName = document.getElementById('PatientFirstName').value;
+			const lastName = document.getElementById('PatientLastName').value;
+			const dob = document.getElementById('DOB').value;
+			const gender = document.getElementById('Gender').value;
+			const patientId = document.getElementById('PatientId').value;
+			const mobileNumber = document.getElementById('MobileNumber').value;
+			const emailAddress = document.getElementById('EmailAddress').value;
+			const streetName = document.getElementById('StreetName').value;
+			const city = document.getElementById('City').value;
+			const zipCode = document.getElementById('ZipCode').value;
+			const province = document.getElementById('Province').value;
+
+			// Validation: Check if any of the required fields is empty
+			if (
+				!firstName || !lastName || !dob || !gender ||
+				!patientId || !mobileNumber || !emailAddress ||
+				!streetName || !city || !zipCode || !province
+			) {
+				alert('Please fill in all required fields.');
+				return;
+			}
+
+			// If all required fields are filled, proceed with sending the update request
+			const updatedData = {
+				firstName,
+				lastName,
+				dob,
+				gender,
+				patientId,
+				mobileNumber,
+				emailAddress,
+				streetName,
+				city,
+				zipCode,
+				province
+			};
+
+			// Send the updated data to the server
+			fetch('/patientUpdate', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ _id: '<%= patientInfo._id %>', updatedData })
+			})
+				.then(response => {
+					if (response.status === 200) {
+						console.log('Update successful');
+						closeModal();
+					} else {
+						throw new Error('Update failed');
+					}
+				})
+				.catch(error => {
+					console.error('Error updating patient', error);
+					// Handle error actions here if needed
+				});
+		}
+
+		// Attach the updatePatient function to the click event of the "Update" button
+		document.getElementById('Submit-button').addEventListener('click', updatePatient);
+
+		function handleUpload() {
+			const fileInput = document.getElementById('fileInput');
+			fileInput.click(); // Trigger the file input when the button is clicked
+		}
+
+		// Handle the selected file
+		document.getElementById('fileInput').addEventListener('change', function () {
+			const fileInput = this;
+			const selectedFile = fileInput.files[0];
+
+			if (selectedFile && isImage(selectedFile)) {
+				// Create a FormData object
+				const formData = new FormData();
+				formData.append('image', selectedFile);
+
+				// Make a POST request to the server
+				fetch('/upload', {
+					method: 'POST',
+					body: formData,
+					// Note: No need to set the Content-Type header for FormData
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw new Error('Error uploading file');
+						}
+						return response.text(); // Change this to text()
+					})
+					.then(data => {
+						console.log('Response:', data);
+						alert(data.message); // Show alert for invalid file
+					})
+					.catch(error => {
+						console.error('Error:', error.message);
+					});
+			} else {
+				console.log('Invalid file or not an image');
+				alert('Invalid file or not an image. Please select a valid image file.'); // Show alert for invalid file
+
+			}
+		});
+
+		// Helper function to check if a file is an image
+		function isImage(file) {
+			const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']; // Add more if needed
+			return allowedTypes.includes(file.type);
+		}
+
+		function downloadReport() {
+			// Get the hospital code, hospital ID, and report ID from the input fields within the parent container
+			const hospitalCode = document.getElementById('hospitalCodeText').value.toUpperCase();
+			console.log("Hospital code:", hospitalCode);
+			// Make a POST request to your server
+			fetch('/downloadReport', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					hospitalCode: hospitalCode,
+				}),
+			})
+				.then(response => response.json())
+				.then(data => {
+					// Handle the response from the server
+					console.log(data);
+
+					if (data.success) {
+						// If the response is successful, dynamically generate the download link
+						const reportId = data.reportId; // Assuming the server sends back the reportId
+						const downloadLink = document.createElement('a');
+						downloadLink.href = `/download-report/${reportId}`;
+						downloadLink.download = 'report_filename'; // Set the desired filename
+
+						// Trigger the download
+						document.body.appendChild(downloadLink);
+						downloadLink.click();
+						document.body.removeChild(downloadLink);
+					} else {
+						// Handle the case where the server response is not successful
+						console.error('Download request failed:', data.message);
+						alert("Invalid hospital code.");
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
+		}
+
+		document.getElementById("hospitalCodeText").addEventListener("input", function () {
+			var downloadButton = document.getElementById("download-button");
+
+			if (this.value.trim() !== "") {
+				downloadButton.classList.remove("disabled");
+			} else {
+				downloadButton.classList.add("disabled");
+			}
+		});
+
+		document.addEventListener("DOMContentLoaded", function () {
+			var forgotCodeLink = document.getElementById("forgot_code");
+			forgotCodeLink.addEventListener("click", function () {
+				// Send a POST request to /sendHospitalCodeEmail
+				fetch('/sendHospitalCodeEmail', {
+					method: 'POST',
+					// You can include additional headers or data as needed
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ /* Any data you want to send */ })
+				})
+					.then(response => {
+						// Handle response as needed
+						console.log(response);
+					})
+					.catch(error => {
+						// Handle errors
+						console.error('Error:', error);
+					});
+			});
+		});
+	</script>
+</body>
+
+</html>
