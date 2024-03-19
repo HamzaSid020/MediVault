@@ -843,7 +843,6 @@ router.get('/hospitalDashboard/prescriptions', async (req, res) => {
     try {
 
         if (!req.session.hospitalLoggedId) {
-            // Handle the case when medivaultId is not present
             return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
         }
 
