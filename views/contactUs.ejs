@@ -1313,6 +1313,45 @@
 		}
 	</style>
 	<script>
+		async function submitData(event) {
+			event.preventDefault();
+
+			// Get data from form fields
+			const Message = document.getElementById('messageInput').value;
+			const LastName = document.getElementById('lastNameInput').value;
+			const FirstName = document.getElementById('firstNameInput').value;
+			const EmailAddress = document.getElementById('emailInput').value;
+
+			const formData = {
+				Message,
+				LastName,
+				FirstName,
+				EmailAddress
+			};
+
+			console.log(formData);
+
+			try {
+				const response = await fetch('/contactUsMessage', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(formData)
+				});
+
+				if (response.ok) {
+					console.log('Message sent successfully');
+					// Optionally, you can redirect the user to a thank you page or show a success message
+				} else {
+					console.error('Failed to send message');
+					// Optionally, you can display an error message to the user
+				}
+			} catch (error) {
+				console.error('Error:', error);
+				// Optionally, you can display an error message to the user
+			}
+		}
 	</script>
 </head>
 
@@ -1661,15 +1700,18 @@
 					</div>
 				</div>
 			</div>
-			<textarea id="messageInput" name="message" placeholder="Message"></textarea>
+			<form id="contactForm" action="/contactUsMessage" method="post" onsubmit="submitData(event)">
+				<textarea id="messageInput" name="message" placeholder="Message"></textarea>
 
-			<input type="text" id="lastNameInput" name="lastName" placeholder="Last Name">
-			<input type="text" id="firstNameInput" name="firstName" placeholder="First Name">
+				<input type="text" id="firstNameInput" name="firstName" placeholder="First Name">
+				<input type="text" id="lastNameInput" name="lastName" placeholder="Last Name">
 
-			<input type="email" id="emailInput" name="email" placeholder="Email Address">
-			<div id="LastName">
-				<span>LastName</span>
-			</div>
+				<input type="email" id="emailInput" name="email" placeholder="Email Address">
+
+				<button type="submit" id="submitButton" class="Rectangle_134">
+					<span id="submitText">Submit</span>
+				</button>
+			</form>
 			<div id="Lets_Chat_Reach_Out_to_Us">
 				<span>Let's Chat, Reach Out to Us</span>
 			</div>
@@ -1683,9 +1725,7 @@
 			<div id="FirstName">
 				<span>FirstName</span>
 			</div>
-			<button id="submitButton" class="Rectangle_134">
-				<span id="submitText">Submit</span>
-			</button>
+
 			<div id="Message">
 				<span>Message</span>
 			</div>

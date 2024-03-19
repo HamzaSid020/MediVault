@@ -17,6 +17,7 @@ const {
     PatientLogin,
     HospitalLogin,
     HospitalCodes,
+    ContactUsMessage,
 } = require('./models');
 
 const { sendEmail } = require('./emailFunctions');
@@ -1119,5 +1120,26 @@ router.post('/sendHospitalCodeEmail', async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error.' });
     }
 });
+
+router.post('/contactUsMessage', async (req, res) => {
+    try {
+      const { FirstName, LastName, EmailAddress, Message } = req.body;
+      // Create new ContactUsMessage document
+      const newMessage = new ContactUsMessage({
+        FirstName,
+        LastName,
+        EmailAddress,
+        Message
+      });
+  
+      // Save the document to the database
+      await newMessage.save();
+  
+      res.status(201).json({ message: 'Message added successfully' });
+    } catch (error) {
+      console.error('Error:', error);
+      res.status(500).json({ error: 'An error occurred while adding the message' });
+    }
+  });
 
 module.exports = router;

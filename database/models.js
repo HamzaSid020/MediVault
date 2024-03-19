@@ -85,6 +85,18 @@ const HospitalCodesSchema = new mongoose.Schema({
     Hospital_Id: { type: mongoose.Schema.Types.ObjectId, ref: 'Hospital_Info' },
 });
 
+const ContactUsMessageSchema = new mongoose.Schema({
+
+    FirstName: String,
+    LastName: String,
+    EmailAddress: String,
+    Message: String,
+    Last_Updated_Time: {
+        type: Date,
+        default: Date.now
+    }
+});
+
 const HospitalInfo = mongoose.model('Hospital_Info', HospitalInfoSchema);
 const PatientInfo = mongoose.model('Patient_Info', PatientInfoSchema);
 const Report = mongoose.model('Report', ReportSchema);
@@ -94,6 +106,7 @@ const Appointment = mongoose.model('Appointment', AppointmentSchema);
 const PatientLogin = mongoose.model('Patient_Login', PatientLoginSchema);
 const HospitalLogin = mongoose.model('Hospital_Login', HospitalLoginSchema);
 const HospitalCodes = mongoose.model('Hospital_Codes', HospitalCodesSchema);
+const ContactUsMessage = mongoose.model('Contact_Us_Message', ContactUsMessageSchema);
 
 async function createModels() {
     try {
@@ -125,4 +138,5 @@ module.exports = {
     PatientLogin,
     HospitalLogin,
     HospitalCodes,
+    ContactUsMessage,
 };
