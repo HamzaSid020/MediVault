@@ -11,7 +11,6 @@ const {
 } = require('./models');
 
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 async function hashPassword(plainTextPassword) {
   return new Promise((resolve, reject) => {

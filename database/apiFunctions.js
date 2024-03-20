@@ -44,6 +44,36 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+async function hashPassword(plainTextPassword) {
+    return new Promise((resolve, reject) => {
+        const saltRounds = 10; // The higher the rounds, the more secure but slower the hashing
+        bcrypt.genSalt(saltRounds, function(err, salt) {
+            if (err) {
+                reject(err);
+            } else {
+                bcrypt.hash(plainTextPassword, salt, function(err, hash) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(hash);
+                    }
+                });
+            }
+        });
+    });
+  }
+
+function generateRandomPassword() {
+    const length = 6;
+    const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset.charAt(randomIndex);
+    }
+    return password;
+}
+
 function generateMedivaultId(firstName, lastName, phoneNumber) {
     // Extracting the first letter of the first name
     const firstLetter = firstName.charAt(0).toUpperCase();
@@ -972,15 +1002,30 @@ router.post('/patientUpdate', async (req, res) => {
 
 router.post('/patientCreate', async (req, res) => {
     try {
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+
         const { newData } = req.body; // Assuming newData contains the information for the new patient
         console.log("New Patient Info Server", newData);
         // Convert formatted data to the structure expected by your model
         const formattedData = convertToOriginalData(newData, true);
-
+        const newMedivaultId = formattedData.Medivault_Id;
+        const randomPassword = generateRandomPassword();
+        formattedData.Hospital_Ids = [req.session.hospitalLoggedId];
+        
         // Create a new patient entry in the database
-        await PatientInfo.create(formattedData);
+        console.log("Medivault Id:", newMedivaultId, "Password", randomPassword );
+        const newPatient = await PatientInfo.create(formattedData);
+        const newPatientLogin = await PatientLogin.create({
+            Username: newMedivaultId, // Using Medivault ID as the username
+            Password: await hashPassword(randomPassword),
+            Patient_Id: newPatient._id // Assigning the patient ID from the newly created patient
+        });
 
         console.log('Patient created successfully');
+        console.log('Patient Login created successfully');
         res.sendStatus(201); // Send a 201 Created response
     } catch (error) {
         console.error('Error creating patient:', error);
