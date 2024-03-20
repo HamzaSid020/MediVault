@@ -1530,7 +1530,7 @@
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
 
-		.add-icon:hover #add-icon{
+		.add-icon:hover #add-icon {
 			fill: rgba(51, 53, 97);
 		}
 	</style>
@@ -1730,7 +1730,7 @@
 							</a>
 						</div>
 					</div>
-					<svg class="add-icon" viewBox="5.625 5.625 18.75 18.75">
+					<svg class="add-icon" viewBox="5.625 5.625 18.75 18.75" onclick="registerNewPatient()">
 						<path id="add-icon"
 							d="M 24.375 16.24998092651367 L 16.24998092651367 16.24998092651367 L 16.24998092651367 24.375 L 13.75002002716064 24.375 L 13.75002002716064 16.24998092651367 L 5.625 16.24998092651367 L 5.625 13.75002002716064 L 13.75001907348633 13.75002002716064 L 13.75001907348633 5.625 L 16.24998092651367 5.625 L 16.24998092651367 13.75001907348633 L 24.375 13.75001907348633 L 24.375 16.24998092651367 Z">
 						</path>
@@ -1921,6 +1921,12 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<script>
+		function registerNewPatient() {
+			window.location.href = '/patientregistration';
+		}
+	</script>
 </body>
 
 </html>
