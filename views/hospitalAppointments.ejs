@@ -1473,7 +1473,7 @@
 			color: rgba(90, 92, 137, 1);
 			font-size: 25px;
 		}
-		
+
 		#Group_c:hover #Path_135 {
 			fill: rgba(92, 93, 138, 1);
 			stroke: rgba(255, 255, 255, 1);
@@ -1536,11 +1536,11 @@
 		#Group_dh:hover #Bills span {
 			color: rgba(255, 255, 255, 1);
 		}
-		
+
 		#add-icon {
 			fill: rgba(92, 93, 138, 1);
 		}
-		
+
 		.add-icon {
 			overflow: visible;
 			position: absolute;
@@ -1551,10 +1551,127 @@
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
 
-		.add-icon:hover #add-icon{
+		.add-icon:hover #add-icon {
 			fill: rgba(51, 53, 97);
 		}
 
+		#NewPatientModel {
+			display: none;
+			position: absolute;
+			width: 1920px;
+			height: 1790px;
+			overflow: hidden;
+			--web-view-name: Reports–EditModal;
+			--web-view-id: ReportsEditModal;
+			--web-scale-on-resize: true;
+			--web-enable-deep-linking: true;
+		}
+
+		#background-blur {
+			position: absolute;
+			width: 1920px;
+			height: 1790px;
+			background-color: rgb(0, 0, 0);
+			opacity: 0.5;
+			z-index: 1;
+		}
+
+		#Modal-Edit {
+			position: absolute;
+			width: 1600px;
+			height: 1300px;
+			left: 180px;
+			top: 750px;
+			overflow: visible;
+			background-color: rgb(248, 248, 251);
+			z-index: 2;
+		}
+
+		#Modal-Content {
+			position: absolute;
+			/* Add appropriate width, height, and other styling properties */
+			z-index: 3;
+		}
+
+		#cross {
+			fill: rgba(0, 0, 0, 1);
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 5px;
+			stroke-linejoin: miter;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.1s ease, stroke 0.1 ease;
+		}
+
+		#cross:hover {
+			fill: rgba(255, 0, 0, 1);
+			/* Change fill color on hover */
+			stroke: rgba(255, 0, 0, 1);
+			/* Change stroke color on hover */
+		}
+
+		.cross {
+			overflow: visible;
+			position: absolute;
+			width: 25.385px;
+			height: 26.871px;
+			left: 1705.603px;
+			top: 200px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Rectangle_125 {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_125 {
+			position: absolute;
+			overflow: visible;
+			width: 253px;
+			height: 95px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Submit-button {
+			position: absolute;
+			width: 253px;
+			height: 95px;
+			left: 833px;
+			top: 1000px;
+			overflow: visible;
+		}
+
+
+		#Submit-button:hover #Rectangle_125 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		#Update {
+			left: 32px;
+			top: 24px;
+			position: absolute;
+			overflow: visible;
+			width: 189px;
+			height: 47px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 35px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Submit-button:hover #Update {
+			color: rgba(92, 93, 138, 1);
+		}
 	</style>
 </head>
 
@@ -1585,15 +1702,18 @@
 												style="text-decoration: none; color: rgba(255,255,255,1);">Home</a></span>
 									</div>
 									<div id="About_Us">
-										<a href="/"><span>About Us</span></a>
+										<a href="/"
+											style="text-decoration: none; color: rgba(255,255,255,1);"><span>About
+												Us</span></a>
 									</div>
 									<div id="Contact_Us">
 										<a href="/contactUs" style="text-decoration: none; color: rgba(255,255,255,1);">
-										<span>Contact Us</span>
+											<span>Contact Us</span>
 										</a>
 									</div>
 									<div id="Welcome_Clinic_Name">
-										<a href="/logout" style="text-decoration: none; color: rgba(255,255,255,1);" ><span>Logout</span></a>
+										<a href="/logout"
+											style="text-decoration: none; color: rgba(255,255,255,1);"><span>Logout</span></a>
 									</div>
 									<div id="Repeat_Grid_2">
 										<div id="Group" class="">
@@ -1748,7 +1868,7 @@
 								<span>Appointments</span>
 							</a>
 						</div>
-						<svg class="add-icon" viewBox="5.625 5.625 18.75 18.75">
+						<svg class="add-icon" viewBox="5.625 5.625 18.75 18.75" onclick="showModal()">
 							<path id="add-icon"
 								d="M 24.375 16.24998092651367 L 16.24998092651367 16.24998092651367 L 16.24998092651367 24.375 L 13.75002002716064 24.375 L 13.75002002716064 16.24998092651367 L 5.625 16.24998092651367 L 5.625 13.75002002716064 L 13.75001907348633 13.75002002716064 L 13.75001907348633 5.625 L 16.24998092651367 5.625 L 16.24998092651367 13.75001907348633 L 24.375 13.75001907348633 L 24.375 16.24998092651367 Z">
 							</path>
@@ -1878,16 +1998,17 @@
 										</a>
 									</div>
 									<div id="Group_dd" class="">
-										<a href="/hospitalDashboard/prescriptions" style=" color:  rgba(90, 92, 137, 1);">
-										<svg class="Path_135_de" viewBox="0 0 283.344 59.051">
-											<path id="Path_135_de"
-												d="M 34.00130844116211 0 L 249.3429412841797 0 C 268.121337890625 0 283.34423828125 13.21907615661621 283.34423828125 29.525634765625 C 283.34423828125 45.83219146728516 268.121337890625 59.05126953125 249.3429412841797 59.05126953125 L 34.00130844116211 59.05126953125 C 15.22290420532227 59.05126953125 0 45.83219146728516 0 29.525634765625 C 0 13.21907615661621 15.22290420532227 0 34.00130844116211 0 Z">
-											</path>
-										</svg>
-										<div id="Prescriptions">
-											<span>Prescriptions</span>
-										</div>
-									</a>
+										<a href="/hospitalDashboard/prescriptions"
+											style=" color:  rgba(90, 92, 137, 1);">
+											<svg class="Path_135_de" viewBox="0 0 283.344 59.051">
+												<path id="Path_135_de"
+													d="M 34.00130844116211 0 L 249.3429412841797 0 C 268.121337890625 0 283.34423828125 13.21907615661621 283.34423828125 29.525634765625 C 283.34423828125 45.83219146728516 268.121337890625 59.05126953125 249.3429412841797 59.05126953125 L 34.00130844116211 59.05126953125 C 15.22290420532227 59.05126953125 0 45.83219146728516 0 29.525634765625 C 0 13.21907615661621 15.22290420532227 0 34.00130844116211 0 Z">
+												</path>
+											</svg>
+											<div id="Prescriptions">
+												<span>Prescriptions</span>
+											</div>
+										</a>
 									</div>
 									<div id="Group_df" class="">
 										<a href="/hospitalDashboard/reports" style=" color:  rgba(90, 92, 137, 1);">
@@ -1920,6 +2041,144 @@
 				</div>
 			</div>
 		</div>
+		<div id="NewPatientModel">
+			<div id="background-blur">
+			</div>
+			<div id="Modal-Edit">
+			</div>
+			<div id="Modal-Content">
+				<button class="cross-button" onclick="closeModal()">
+					<svg class="cross" viewBox="5 5 18.318 19.806">
+						<path id="cross" d="M 23.318359375 24.8056640625 L 5 5 M 23.318359375 5 L 5 24.8056640625">
+						</path>
+					</svg>
+				</button>
+				<div id="Submit-button">
+					<svg class="Rectangle_125">
+						<rect id="Rectangle_125" rx="47.5" ry="47.5" x="0" y="0" width="253" height="95">
+						</rect>
+					</svg>
+					<div id="Update">
+						<span>New Appointment</span>
+					</div>
+				</div>
+				<div id="update-fields">
+					<div id="Group_144">
+						<div id="Group_142">
+							<input type="text" id="PatientFirstName" class="Rectangle_111"
+								placeholder="Patient First Name" required>
+							<input type="text" id="PatientLastName" class="Rectangle_114"
+								placeholder="Patient Last Name" required>
+							<input type="date" id="DOB" class="Rectangle_113" placeholder="DOB" max=""
+								onchange="updateMaxDate()" required>
+							<select id="Gender" class="Rectangle_117" required>
+								<option value="male">Male</option>
+								<option value="female">Female
+								</option>
+								<option value="other">Other
+								</option>
+							</select>
+							<input type="text" id="PatientId" class="Rectangle_110" placeholder="Patient Id" required
+								disabled>
+							<input type="text" id="MobileNumber" class="Rectangle_112" placeholder="Mobile Number"
+								required>
+							<input type="email" id="EmailAddress" class="Rectangle_124" placeholder="Email Address"
+								required>
+
+							<div id="Patient_First_Name">
+								<span>Patient First Name:</span>
+							</div>
+							<div id="Patient_ID">
+								<span>Patient ID:</span>
+							</div>
+							<div id="Patient_Last_Name">
+								<span>Patient Last Name:</span>
+							</div>
+
+							<div id="Date_of_Birth">
+								<span>Date of Birth:</span>
+							</div>
+							<div id="Mobile">
+								<span>Mobile:</span>
+							</div>
+							<div id="Email_Address">
+								<span>Email Address:</span>
+							</div>
+							<div id="Gender_Header">
+								<span>Gender:</span>
+							</div>
+
+						</div>
+						<div id="Street_Name">
+							<span>Street Name:</span>
+						</div>
+						<input type="text" id="StreetName" class="Rectangle_118" placeholder="Street Name" required>
+
+						<div id="City_Header">
+							<span>City:</span>
+						</div>
+						<input type="text" id="City" class="Rectangle_119" placeholder="City" required>
+
+						<div id="Zip_Code">
+							<span>Zip Code:</span>
+						</div>
+
+						<input type="text" id="ZipCode" class="Rectangle_120" placeholder="Zip Code" required>
+
+						<div id="Province_Header">
+							<span>Province:</span>
+						</div>
+						<select id="Province" class="Rectangle_121" required>
+							<option value="" disabled>Select a province</option>
+							<option value="AB">AB
+							</option>
+							<option value="BC">BC
+							</option>
+							<option value="MB">MB
+							</option>
+							<option value="NB">NB
+							</option>
+							<option value="NL">NL
+							</option>
+							<option value="NS">NS
+							</option>
+							<option value="NT">NT
+							</option>
+							<option value="NU">NU
+							</option>
+							<option value="ON">ON
+							</option>
+							<option value="PE">PE
+							</option>
+							<option value="QC">QC
+							</option>
+							<option value="SK">SK
+							</option>
+							<option value="YT">YT
+							</option>
+						</select>
+					</div>
+				</div>
+				<div id="Patient_Demographics">
+					<span>Patient Demographics</span>
+				</div>
+				<div id="Edit_Patient_Record">
+					<span>Edit Patient Record</span>
+				</div>
+			</div>
+		</div>
+		<script>
+			var modal = document.getElementById("NewPatientModel");
+			function showModal() {
+				modal.style.display = "block";
+			}
+
+			function closeModal() {
+				modal.style.display = "none";
+				// hospitalCodeModal.style.display = "none";
+				location.reload();
+			}
+		</script>
 </body>
 
 </html>
