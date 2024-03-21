@@ -6,6 +6,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const bcrypt = require('bcrypt');
+const fs = require('fs');
 
 const {
     HospitalInfo,
@@ -978,16 +979,15 @@ router.post('/patientUpdate', async (req, res) => {
             return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
         }
 
-
-        const { _id, updatedData } = req.body;
-        console.log('Updating patient:', _id, updatedData);
+        const { patientId, updatedData } = req.body;
+        console.log('Updating patient:', patientId, updatedData);
 
         // Convert formatted data back to original structure
         const originalDataAgain = convertToOriginalData(updatedData);
 
         // Update the patient information in the database
         await PatientInfo.findByIdAndUpdate(
-            _id,
+            patientId,
             { $set: originalDataAgain },
             { new: true } // Return the updated document
         );
@@ -1082,12 +1082,22 @@ function convertToOriginalData(formattedData, isCreating = false) {
     return originalData;
 }
 
-router.post('/upload', upload.single('image'), (req, res) => {
+router.post('/upload', upload.single('image'), async (req, res) => {
     if (!req.session.medivaultId) {
         // Handle the case when medivaultId is not present
         return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
     }
     console.log('Request received:', req.file);
+
+     // Get the patient ID from the request body
+     const { patientId } = req.body;
+
+     // Find the patient by ID
+     const patient = await PatientInfo.findById(patientId);
+
+     if (!patient) {
+         return res.status(404).json({ error: 'Patient not found' });
+     }
 
     // If no file submitted, exit
     if (!req.file) {
@@ -1100,11 +1110,41 @@ router.post('/upload', upload.single('image'), (req, res) => {
         console.log('Invalid image mime type:', req.file.mimetype);
         return res.status(400).json({ error: 'Invalid image mime type' });
     }
+    const imagePath = path.join(__dirname, '../public/images/patient', patient.Picture);
+    fs.unlinkSync(imagePath);
+     // Update patient's picture field with the new image string
+     patient.Picture = req.file.filename; // Assuming you store the filename in the Picture field
+
+     // Save the updated patient information
+     await patient.save();
 
     console.log('File uploaded successfully:', req.file);
+    console.log('Updated Patient info:', patient);
     res.status(200).json({ message: 'File uploaded successfully' });
 });
 
+router.post('/deletePatientImage', async (req, res) => {
+    try {
+        const { patientId } = req.body;
+        
+        // Example using Mongoose:
+        const patient = await PatientInfo.findById(patientId);
+        if (!patient) {
+            return res.status(404).json({ error: 'Patient not found' });
+        }
+        const imagePath = path.join(__dirname, '../public/images/patient', patient.Picture);
+        fs.unlinkSync(imagePath);
+        patient.Picture = ''; 
+        await patient.save();
+        
+        console.log('Image deleted for patient:', patientId);
+        
+        res.sendStatus(200); // Send success status
+    } catch (error) {
+        console.error('Error deleting image:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 router.post('/downloadReport', async (req, res) => {
     try {

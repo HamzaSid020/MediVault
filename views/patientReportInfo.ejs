@@ -2858,10 +2858,10 @@
 			overflow: visible;
 		}
 
-		#Rectangle_109 {
+		.Circle_109 {
 			fill: rgba(255, 255, 255, 1);
-			stroke: rgba(189, 192, 225, 1);
-			stroke-width: 1px;
+			stroke: rgb(0, 0, 0);
+			stroke-width: 3px;
 			stroke-linejoin: miter;
 			stroke-linecap: butt;
 			stroke-miterlimit: 4;
@@ -2871,10 +2871,11 @@
 		.Rectangle_109 {
 			position: absolute;
 			overflow: visible;
-			width: 240px;
-			height: 225px;
-			left: 0px;
-			top: 0px;
+			width: 300px;
+			height: 280px;
+			left: -50px;
+			margin: 0px;
+			bottom: 0px;
 		}
 
 		#uploadButton {
@@ -2905,8 +2906,8 @@
 			position: absolute;
 			width: 40px;
 			height: 25px;
-			left: 80px;
-			top: 170px;
+			left: 75px;
+			top: 210px;
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
 
@@ -2919,8 +2920,8 @@
 			position: absolute;
 			width: 19.13px;
 			height: 0px;
-			left: 90px;
-			top: 160px;
+			left: 82px;
+			top: 203px;
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
 
@@ -2932,8 +2933,8 @@
 			position: absolute;
 			width: 38.467px;
 			height: 38.467px;
-			left: 122.939px;
-			top: 175.501px;
+			left: 110px;
+			top: 155px;
 			overflow: visible;
 		}
 
@@ -2961,7 +2962,7 @@
 			width: 22.439px;
 			height: 28.85px;
 			left: 8.014px;
-			top: 4.809px;
+			top: 65px;
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
 
@@ -3049,7 +3050,7 @@
 					<div id="Group_u" class="">
 						<div id="Contact_Us">
 							<a href="/contactUs" style="text-decoration: none; color: rgba(255,255,255,1);">
-							<span>Contact Us</span>
+								<span>Contact Us</span>
 							</a>
 						</div>
 					</div>
@@ -3113,21 +3114,15 @@
 				<div id="Welcome_Patients_name">
 					<span>Welcome, <%= patientInfo.Name %></span>
 				</div>
-				<!-- <img src="/images/<%= patientInfo.Picture %>" alt="Patient Image" class="PatientImage"> -->
 				<svg class="Ellipse_17">
-					<!-- Define the ellipse -->
 					<ellipse id="Ellipse_17" rx="218.5" ry="218.5" cx="218.5" cy="218.5"></ellipse>
-
-					<!-- Define the clipPath with a circular shape -->
 					<defs>
 						<clipPath id="circleClip">
-							<circle cx="218.5" cy="218.5" r="208.5"></circle>
+							<ellipse rx="208.5" ry="208.5" cx="218.5" cy="218.5"></ellipse>
 						</clipPath>
 					</defs>
-
-					<!-- Use the clipPath for the image and adjust attributes for zoom -->
-					<image href="/images/patient/<%= patientInfo.Picture %>" class="imageInEllipse"
-						clip-path="url(#circleClip)" x="5" y="5" width="427" height="427"></image>
+					<image xlink:href="/images/patient/<%= patientInfo.Picture %>"  preserveAspectRatio="xMidYMid slice"
+						clip-path="url(#circleClip)" x="0" y="0" width="437" height="437"></image>
 				</svg>
 				<div id="Patient_Name">
 					<span>Patient Name: <%= patientInfo.Name %></span>
@@ -3632,7 +3627,9 @@
 								<option value="other" <%= patientInfo.Sex === 'other' ? 'selected' : '' %>>Other
 								</option>
 							</select>
-							<input type="text" id="PatientId" class="Rectangle_110" placeholder="Patient Id"
+							<input type="text" id="PatientId" class="Rectangle_110" value="<%= patientInfo._id || '' %>"
+								hidden>
+							<input type="text" id="PatientIdInput" class="Rectangle_110" placeholder="Patient Id"
 								value="<%= patientInfo.Patient_Id || '' %>" required disabled>
 							<input type="text" id="MobileNumber" class="Rectangle_112" placeholder="Mobile Number"
 								value="<%= patientInfo.Phone_No || '' %>" required>
@@ -3721,9 +3718,14 @@
 					</div>
 				</div>
 				<div id="upload-image">
-					<svg class="Rectangle_109">
-						<rect id="Rectangle_109" rx="56" ry="56" x="0" y="0" width="240" height="225">
-						</rect>
+					<svg class="Rectangle_109" viewBox="0 0 240 240">
+						<defs>
+							<clipPath id="circular-clip">
+								<circle class="Circle_109" cx="120" cy="120" r="112" />
+							</clipPath>
+						</defs>
+						<image xlink:href="/images/patient/<%= patientInfo.Picture %>" x="0" y="0" width="230"
+							height="230" preserveAspectRatio="xMidYMid slice" clip-path="url(#circular-clip)" />
 					</svg>
 					<input type="file" id="fileInput" style="display: none;">
 					<button id="uploadButton" class="upload-button" onclick="handleUpload()">
@@ -3800,6 +3802,15 @@
 		// Get the modal
 		var modal = document.getElementById("ReportsEditModal");
 		var hospitalCodeModal = document.getElementById("HospitalCodeModal");
+		const patientId = document.getElementById('PatientId').value;
+
+		window.onload = function () {
+			if (localStorage.getItem('showModal') === 'true') {
+				showModal();
+				// Clear the flag from local storage
+				localStorage.removeItem('showModal');
+			}
+		};
 
 		// Function to open the modal
 		function showModal() {
@@ -3844,7 +3855,7 @@
 			const lastName = document.getElementById('PatientLastName').value;
 			const dob = document.getElementById('DOB').value;
 			const gender = document.getElementById('Gender').value;
-			const patientId = document.getElementById('PatientId').value;
+			const patientIdInput = document.getElementById('PatientIdInput').value;
 			const mobileNumber = document.getElementById('MobileNumber').value;
 			const emailAddress = document.getElementById('EmailAddress').value;
 			const streetName = document.getElementById('StreetName').value;
@@ -3855,7 +3866,7 @@
 			// Validation: Check if any of the required fields is empty
 			if (
 				!firstName || !lastName || !dob || !gender ||
-				!patientId || !mobileNumber || !emailAddress ||
+				!patientIdInput || !mobileNumber || !emailAddress ||
 				!streetName || !city || !zipCode || !province
 			) {
 				alert('Please fill in all required fields.');
@@ -3868,7 +3879,7 @@
 				lastName,
 				dob,
 				gender,
-				patientId,
+				patientIdInput,
 				mobileNumber,
 				emailAddress,
 				streetName,
@@ -3883,7 +3894,7 @@
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ _id: '<%= patientInfo._id %>', updatedData })
+				body: JSON.stringify({ patientId, updatedData })
 			})
 				.then(response => {
 					if (response.status === 200) {
@@ -3916,22 +3927,23 @@
 				// Create a FormData object
 				const formData = new FormData();
 				formData.append('image', selectedFile);
+				formData.append('patientId', patientId);
 
 				// Make a POST request to the server
 				fetch('/upload', {
 					method: 'POST',
 					body: formData,
-					// Note: No need to set the Content-Type header for FormData
 				})
 					.then(response => {
 						if (!response.ok) {
 							throw new Error('Error uploading file');
 						}
-						return response.text(); // Change this to text()
+						return response.text();
 					})
 					.then(data => {
 						console.log('Response:', data);
-						alert(data.message); // Show alert for invalid file
+						localStorage.setItem('showModal', 'true');
+						location.reload();
 					})
 					.catch(error => {
 						console.error('Error:', error.message);
@@ -4021,6 +4033,30 @@
 						console.error('Error:', error);
 					});
 			});
+		});
+
+		document.getElementById('Group_145').addEventListener('click', function () {
+
+			// Send the delete request to the server
+			fetch('/deletePatientImage', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ patientId })
+			})
+				.then(response => {
+					if (response.ok) {
+						console.log('Image deleted successfully');
+						localStorage.setItem('showModal', 'true');
+						location.reload();
+					} else {
+						throw new Error('Failed to delete image');
+					}
+				})
+				.catch(error => {
+					console.error('Error deleting image:', error);
+				});
 		});
 	</script>
 </body>
