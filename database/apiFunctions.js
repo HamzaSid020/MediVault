@@ -34,7 +34,7 @@ router.use(
     })
 );
 
-const storage = multer.diskStorage({
+const imageStorage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/images/patient');
     },
@@ -43,16 +43,46 @@ const storage = multer.diskStorage({
     },
 });
 
-const upload = multer({ storage: storage });
+const reportStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/documents/reports');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    },
+});
+
+const prescriptionStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/documents/prescriptions');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    },
+});
+
+const billStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/documents/bills');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    },
+});
+
+const uploadImage = multer({ storage: imageStorage });
+const uploadReport = multer({ storage: reportStorage });
+const uploadPrescription = multer({ storage: prescriptionStorage });
+const uploadBill = multer({ storage: billStorage });
 
 async function hashPassword(plainTextPassword) {
     return new Promise((resolve, reject) => {
         const saltRounds = 10; // The higher the rounds, the more secure but slower the hashing
-        bcrypt.genSalt(saltRounds, function(err, salt) {
+        bcrypt.genSalt(saltRounds, function (err, salt) {
             if (err) {
                 reject(err);
             } else {
-                bcrypt.hash(plainTextPassword, salt, function(err, hash) {
+                bcrypt.hash(plainTextPassword, salt, function (err, hash) {
                     if (err) {
                         reject(err);
                     } else {
@@ -62,7 +92,7 @@ async function hashPassword(plainTextPassword) {
             }
         });
     });
-  }
+}
 
 function generateRandomPassword() {
     const length = 6;
@@ -406,7 +436,7 @@ router.get('/hospitalAppointmentInfo/:medivaultId', async (req, res) => {
         });
         const patientId = patientInfo._id;
         // Find all appointment related to the patient using the Patient_Id
-        const appointment = await Appointment.find({ 
+        const appointment = await Appointment.find({
             Patient_Id: patientId,
             Hospital_Id: hospitalId
         })
@@ -686,7 +716,7 @@ router.get('/hospitalDashboard/appointments', async (req, res) => {
 
         const patientData = await Promise.all(patientDataPromises);
 
-        res.render('hospitalAppointments', { hospital, appointmentInfo, patientData });
+        res.render('hospitalAppointments', { hospital, appointmentInfo, patients, patientData });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -804,7 +834,7 @@ router.get('/hospitalDashboard/reports', async (req, res) => {
 
         const patientData = await Promise.all(patientDataPromises);
 
-        res.render('hospitalReports', { hospital, reports, patientData });
+        res.render('hospitalReports', { hospital, reports, patients, patientData });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -863,7 +893,7 @@ router.get('/hospitalDashboard/bills', async (req, res) => {
 
         const patientData = await Promise.all(patientDataPromises);
 
-        res.render('hospitalBills', { hospital, bills, patientData });
+        res.render('hospitalBills', { hospital, bills, patients, patientData });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -921,7 +951,7 @@ router.get('/hospitalDashboard/prescriptions', async (req, res) => {
 
         const patientData = await Promise.all(patientDataPromises);
 
-        res.render('hospitalPrescriptions', { hospital, prescriptions, patientData });
+        res.render('hospitalPrescriptions', { hospital, prescriptions, patients, patientData });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -1014,9 +1044,9 @@ router.post('/patientCreate', async (req, res) => {
         const newMedivaultId = formattedData.Medivault_Id;
         const randomPassword = generateRandomPassword();
         formattedData.Hospital_Ids = [req.session.hospitalLoggedId];
-        
+
         // Create a new patient entry in the database
-        console.log("Medivault Id:", newMedivaultId, "Password", randomPassword );
+        console.log("Medivault Id:", newMedivaultId, "Password", randomPassword);
         const newPatient = await PatientInfo.create(formattedData);
         const newPatientLogin = await PatientLogin.create({
             Username: newMedivaultId, // Using Medivault ID as the username
@@ -1082,22 +1112,22 @@ function convertToOriginalData(formattedData, isCreating = false) {
     return originalData;
 }
 
-router.post('/upload', upload.single('image'), async (req, res) => {
+router.post('/upload', uploadImage.single('image'), async (req, res) => {
     if (!req.session.medivaultId) {
         // Handle the case when medivaultId is not present
         return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
     }
     console.log('Request received:', req.file);
 
-     // Get the patient ID from the request body
-     const { patientId } = req.body;
+    // Get the patient ID from the request body
+    const { patientId } = req.body;
 
-     // Find the patient by ID
-     const patient = await PatientInfo.findById(patientId);
+    // Find the patient by ID
+    const patient = await PatientInfo.findById(patientId);
 
-     if (!patient) {
-         return res.status(404).json({ error: 'Patient not found' });
-     }
+    if (!patient) {
+        return res.status(404).json({ error: 'Patient not found' });
+    }
 
     // If no file submitted, exit
     if (!req.file) {
@@ -1112,21 +1142,161 @@ router.post('/upload', upload.single('image'), async (req, res) => {
     }
     const imagePath = path.join(__dirname, '../public/images/patient', patient.Picture);
     fs.unlinkSync(imagePath);
-     // Update patient's picture field with the new image string
-     patient.Picture = req.file.filename; // Assuming you store the filename in the Picture field
-
-     // Save the updated patient information
-     await patient.save();
+    // Update patient's picture field with the new image string
+    patient.Picture = req.file.filename; // Assuming you store the filename in the Picture field
+    patient.Last_Updated_Time = Date.now();
+    await patient.save();
 
     console.log('File uploaded successfully:', req.file);
     console.log('Updated Patient info:', patient);
     res.status(200).json({ message: 'File uploaded successfully' });
 });
 
+router.post('/uploadBill', uploadBill.single('file'), async (req, res) => {
+    if (!req.session.loggedIn && !req.session.hospitalLoggedId) {
+        // Handle the case when hospitalId is not present
+        return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+    }
+
+    console.log('Request received:', req.file);
+    const hospitalId = req.session.hospitalLoggedId;
+    const file = req.file;
+    // Get the patient ID from the request body
+    const medivaultId = req.body.MedivaultId;
+    console.log("hospitalId", hospitalId, "file", file, "MedivaultId", medivaultId);
+    try {
+        // Find the patient by Medivault Id
+        const patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+
+        if (!patient) {
+            return res.status(404).json({ error: 'Patient not found' });
+        }
+
+        // If no file submitted, exit
+        if (!req.file) {
+            console.log('No file found in the request');
+            return res.status(400).json({ error: 'No file found in the request' });
+        }
+
+        // Create a new bill record
+        const newBill = new Bills({
+            Category: 'Medical',
+            Name: file.originalname,
+            File: file.filename,
+            Hospital_Id: hospitalId,
+            Patient_Id: patient._id
+        });
+
+        // Save the new bill record
+        await newBill.save();
+
+        console.log('File uploaded successfully:', req.file);
+        console.log('Updated Patient info:', patient);
+        res.status(200).json({ message: 'File uploaded successfully' });
+    } catch (error) {
+        console.error('Error uploading report:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
+router.post('/uploadReport', uploadReport.single('file'), async (req, res) => {
+    if (!req.session.loggedIn && !req.session.hospitalLoggedId) {
+        // Handle the case when hospitalId is not present
+        return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+    }
+
+    console.log('Request received:', req.file);
+    const hospitalId = req.session.hospitalLoggedId;
+    const file = req.file;
+    // Get the patient ID from the request body
+    const medivaultId = req.body.MedivaultId;
+    console.log("hospitalId", hospitalId, "file", file, "MedivaultId", medivaultId);
+    try {
+        // Find the patient by Medivault Id
+        const patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+
+        if (!patient) {
+            return res.status(404).json({ error: 'Patient not found' });
+        }
+
+        // If no file submitted, exit
+        if (!req.file) {
+            console.log('No file found in the request');
+            return res.status(400).json({ error: 'No file found in the request' });
+        }
+
+        // Create a new report record
+        const newReport = new Report({
+            Category: 'Medical',
+            Name: file.originalname,
+            File: file.filename,
+            Hospital_Id: hospitalId,
+            Patient_Id: patient._id
+        });
+
+        // Save the new report record
+        await newReport.save();
+
+        console.log('File uploaded successfully:', req.file);
+        console.log('Updated Patient info:', patient);
+        res.status(200).json({ message: 'File uploaded successfully' });
+    } catch (error) {
+        console.error('Error uploading report:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+router.post('/uploadPrescription', uploadPrescription.single('file'), async (req, res) => {
+    if (!req.session.loggedIn && !req.session.hospitalLoggedId) {
+        // Handle the case when hospitalId is not present
+        return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+    }
+
+    console.log('Request received:', req.file);
+    const hospitalId = req.session.hospitalLoggedId;
+    const file = req.file;
+    // Get the patient ID from the request body
+    const medivaultId = req.body.MedivaultId;
+    console.log("hospitalId", hospitalId, "file", file, "MedivaultId", medivaultId);
+    try {
+        // Find the patient by Medivault Id
+        const patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+
+        if (!patient) {
+            return res.status(404).json({ error: 'Patient not found' });
+        }
+
+        // If no file submitted, exit
+        if (!req.file) {
+            console.log('No file found in the request');
+            return res.status(400).json({ error: 'No file found in the request' });
+        }
+
+        // Create a new report record
+        const newPrescription = new Prescription({
+            Name: file.originalname,
+            File: file.filename,
+            Hospital_Id: hospitalId,
+            Patient_Id: patient._id
+        });
+
+        // Save the new report record
+        await newPrescription.save();
+
+        console.log('File uploaded successfully:', req.file);
+        console.log('Updated Patient info:', patient);
+        res.status(200).json({ message: 'File uploaded successfully' });
+    } catch (error) {
+        console.error('Error uploading report:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 router.post('/deletePatientImage', async (req, res) => {
     try {
         const { patientId } = req.body;
-        
+
         // Example using Mongoose:
         const patient = await PatientInfo.findById(patientId);
         if (!patient) {
@@ -1134,11 +1304,12 @@ router.post('/deletePatientImage', async (req, res) => {
         }
         const imagePath = path.join(__dirname, '../public/images/patient', patient.Picture);
         fs.unlinkSync(imagePath);
-        patient.Picture = ''; 
+        patient.Picture = '';
+        patient.Last_Updated_Time = Date.now();
         await patient.save();
-        
+
         console.log('Image deleted for patient:', patientId);
-        
+
         res.sendStatus(200); // Send success status
     } catch (error) {
         console.error('Error deleting image:', error);
