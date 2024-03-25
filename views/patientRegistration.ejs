@@ -1178,7 +1178,7 @@
 							<div id="Group_" class="">
 								<div id="Contact_Us">
 									<a href="/contactUs" style="text-decoration: none; color: rgba(255,255,255,1);">
-									<span>Contact Us</span>
+										<span>Contact Us</span>
 									</a>
 								</div>
 							</div>
@@ -1355,6 +1355,7 @@
 	</div>
 	<script>
 		function submitPatient() {
+			event.preventDefault();
 			// Extract values from the form
 			const firstName = document.getElementById('PatientFirstName').value;
 			const lastName = document.getElementById('PatientLastName').value;
@@ -1404,69 +1405,70 @@
 				body: JSON.stringify({ newData })
 			})
 				.then(response => {
-					if (response.status === 201) {
+					if (response.ok){
 						console.log('Creation successful');
 						alert(`New Patient: ${firstName} ${lastName} created.`);
+						window.location.href="/hospitalDashboard/patients";
 
 					} else {
-						throw new Error('Creation failed');
+						throw new Error(`Failed to create patient. Status: ${response.status}`);
 					}
 				})
 				.catch(error => {
-					console.error('Error updating patient', error);
-					// Handle error actions here if needed
+					console.error('Error creating patient:', error);
 				});
-		}
-
-		// Example validation function for a mobile number
-		function isValidMobileNumber(number) {
-			// Customize the validation logic based on your requirements
-			const regex = /^\d{10}$/; // Assumes a 10-digit mobile number
-			return regex.test(number);
-		}
-		function updateMaxDate() {
-			const currentDate = new Date().toISOString().split('T')[0];
-			document.getElementById('DOB').max = currentDate;
-		}
-
-		function checkFields() {
-			var patientFirstName = document.getElementById("PatientFirstName").value;
-			var patientLastName = document.getElementById("PatientLastName").value;
-			var dob = document.getElementById("DOB").value;
-			var gender = document.getElementById("Gender").value;
-			var patientId = document.getElementById("PatientId").value;
-			var mobileNumber = document.getElementById("MobileNumber").value;
-			var emailAddress = document.getElementById("EmailAddress").value;
-			var streetName = document.getElementById("StreetName").value;
-			var city = document.getElementById("City").value;
-			var zipCode = document.getElementById("ZipCode").value;
-			var province = document.getElementById("Province").value;
-
-			// Check if all required fields are filled
-			if (
-				patientFirstName !== "" &&
-				patientLastName !== "" &&
-				dob !== "" &&
-				gender !== "" &&
-				patientId !== "" &&
-				mobileNumber !== "" &&
-				emailAddress !== "" &&
-				streetName !== "" &&
-				city !== "" &&
-				zipCode !== "" &&
-				province !== ""
-			) {
-				// Enable the submit button
-				document.getElementById("SubmitButton").disabled = false;
-			} else {
-				// Disable the submit button if any field is empty
-				document.getElementById("SubmitButton").disabled = true;
 			}
-		}
 
-		function onFieldChange() {
-			checkFields(); // Call the function to check the fields whenever any field changes
-		}
+			// Example validation function for a mobile number
+			function isValidMobileNumber(number) {
+				// Customize the validation logic based on your requirements
+				const regex = /^\d{10}$/; // Assumes a 10-digit mobile number
+				return regex.test(number);
+			}
+
+			function updateMaxDate() {
+				const currentDate = new Date().toISOString().split('T')[0];
+				document.getElementById('DOB').max = currentDate;
+			}
+
+			function checkFields() {
+				var patientFirstName = document.getElementById("PatientFirstName").value;
+				var patientLastName = document.getElementById("PatientLastName").value;
+				var dob = document.getElementById("DOB").value;
+				var gender = document.getElementById("Gender").value;
+				var patientId = document.getElementById("PatientId").value;
+				var mobileNumber = document.getElementById("MobileNumber").value;
+				var emailAddress = document.getElementById("EmailAddress").value;
+				var streetName = document.getElementById("StreetName").value;
+				var city = document.getElementById("City").value;
+				var zipCode = document.getElementById("ZipCode").value;
+				var province = document.getElementById("Province").value;
+
+				// Check if all required fields are filled
+				if (
+					patientFirstName !== "" &&
+					patientLastName !== "" &&
+					dob !== "" &&
+					gender !== "" &&
+					patientId !== "" &&
+					mobileNumber !== "" &&
+					emailAddress !== "" &&
+					streetName !== "" &&
+					city !== "" &&
+					zipCode !== "" &&
+					province !== ""
+				) {
+					// Enable the submit button
+					document.getElementById("SubmitButton").disabled = false;
+				} else {
+					// Disable the submit button if any field is empty
+					document.getElementById("SubmitButton").disabled = true;
+				}
+			}
+
+			function onFieldChange() {
+				checkFields(); // Call the function to check the fields whenever any field changes
+			}
 	</script>
 </body>
 

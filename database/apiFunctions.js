@@ -22,7 +22,6 @@ const {
 } = require('./models');
 
 const { sendEmail } = require('./emailFunctions');
-
 router.use(express.json()); // This middleware will parse JSON data in the request body
 router.use(cookieParser());
 router.use(express.static('public'));
@@ -121,6 +120,29 @@ function generateMedivaultId(firstName, lastName, phoneNumber) {
     return medivaultId;
 }
 
+function calculateAge(birthDate) {
+    // Split the date string into day, month, and year
+    const [year, month, day ] = birthDate.split('-').map(Number);
+  
+    // Create a Date object with the provided values
+    const birthDateObject = new Date(year, month - 1, day);
+  
+    // Get the current date
+    const currentDate = new Date();
+  
+    // Calculate the difference in years
+    const age = currentDate.getFullYear() - birthDateObject.getFullYear();
+  
+    // Adjust age based on the month and day
+    if (currentDate.getMonth() < birthDateObject.getMonth() ||
+      (currentDate.getMonth() === birthDateObject.getMonth() && currentDate.getDate() < birthDateObject.getDate())) {
+      // If the birthdate has not occurred yet this year, subtract 1 from the age
+      return age - 1;
+    } else {
+      return age;
+    }
+  }
+
 function extractLastFourDigits(phoneNumber) {
     // Convert phone number to string if it's not already
     const phoneNumberString = phoneNumber.toString();
@@ -130,6 +152,45 @@ function extractLastFourDigits(phoneNumber) {
 
     return lastFourDigits;
 }
+
+function generateRandomSuffix(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let suffix = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        suffix += characters[randomIndex];
+    }
+    return suffix;
+  }
+  
+  // Function to generate a random code based on patient information
+  function generateRandomCode(patientInfo) {
+    // Example: Concatenate the first three characters of the name and age
+    const namePrefix = patientInfo.Name.slice(0, 3).toUpperCase();
+    const ageSuffix = patientInfo.Age.toString().padStart(2, '0'); // Ensure age is always two digits
+    const randomSuffix = generateRandomSuffix(4); // Generate a random 4-character suffix
+  
+    // Combine the parts to create the random code
+    const randomCode = namePrefix + ageSuffix + randomSuffix;
+  
+    return randomCode;
+  }
+
+async function createHospitalCodeForPatient(patientInfo) {
+    const hospitalIds = patientInfo.Hospital_Ids;
+  
+    for (const hospitalId of hospitalIds) {
+      const codeExists = await HospitalCodes.findOne({ Patient_Id: patientInfo._id, Hospital_Id: hospitalId });
+  
+      if (!codeExists) {
+        const code = generateRandomCode(patientInfo);
+        await HospitalCodes.create({ Code: code, Patient_Id: patientInfo._id, Hospital_Id: hospitalId });
+        console.log(`Hospital code created for ${patientInfo.Name} at ${hospitalId}`);
+      } else {
+        console.log(`Hospital code already exists for ${patientInfo.Name} at ${hospitalId}`);
+      }
+    }
+  }
 
 router.get('/', async (req, res) => {
     try {
@@ -1044,6 +1105,8 @@ router.post('/patientCreate', async (req, res) => {
         const newMedivaultId = formattedData.Medivault_Id;
         const randomPassword = generateRandomPassword();
         formattedData.Hospital_Ids = [req.session.hospitalLoggedId];
+        console.log("Formatted DOB", formattedData.DOB );
+        formattedData.Age = calculateAge(formattedData.DOB);
 
         // Create a new patient entry in the database
         console.log("Medivault Id:", newMedivaultId, "Password", randomPassword);
@@ -1054,9 +1117,12 @@ router.post('/patientCreate', async (req, res) => {
             Patient_Id: newPatient._id // Assigning the patient ID from the newly created patient
         });
 
+        await createHospitalCodeForPatient(newPatient);
+
         console.log('Patient created successfully');
         console.log('Patient Login created successfully');
-        res.sendStatus(201); // Send a 201 Created response
+        console.log('Patient Code created successfully');
+        res.status(201).json({ message: 'Patient created successfully' });
     } catch (error) {
         console.error('Error creating patient:', error);
         res.status(500).json({ success: false, error: 'Internal Server Error' });
@@ -1534,4 +1600,5 @@ router.post('/contactUsMessage', async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports.router = router;
+module.exports.createHospitalCodeForPatient = createHospitalCodeForPatient;

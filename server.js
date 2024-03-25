@@ -23,7 +23,7 @@ const {
 
 const express = require('express');
 const app = express();
-const apiFunctions = require('./database/apiFunctions');
+const apiFunctions = require('./database/apiFunctions').router;
 const mongoose = require('mongoose');
 const ejs = require('ejs');
 const path = require('path');

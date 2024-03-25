@@ -929,7 +929,8 @@
 
 		.Rectangle_85 {
 			position: absolute;
-			overflow: visible;
+			overflow-y: auto;
+			/* Add vertical scrollbar when content overflows vertically */
 			width: 1304px;
 			height: 773.74px;
 			left: 559.564px;
@@ -938,13 +939,13 @@
 			border: 1px solid rgba(234, 235, 245, 1);
 			border-radius: 0;
 			z-index: 1;
-			/* Set the border-radius accordingly if needed */
 		}
-
 
 		.item-list {
 			list-style: none;
 			padding: 0;
+			margin: 0;
+			/* Add margin 0 to remove default margin */
 		}
 
 		.item {
@@ -961,7 +962,6 @@
 			stroke-linecap: butt;
 			stroke-miterlimit: 4;
 			shape-rendering: auto;
-
 		}
 
 		.patient-info {
@@ -1808,7 +1808,6 @@
 													+<%= patientData[i].patient.Phone_No %></span>
 											</div>
 										</div>
-										<!-- Additional patient information -->
 										<div class="right-info">
 											<div class="patient-additional-info">
 												<span>Appointments:

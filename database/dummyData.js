@@ -10,6 +10,8 @@ const {
   HospitalCodes,
 } = require('./models');
 
+const createHospitalCodeForPatient = require('./apiFunctions').createHospitalCodeForPatient;
+
 const bcrypt = require('bcrypt');
 
 async function hashPassword(plainTextPassword) {
@@ -172,40 +174,22 @@ async function addDummyHospitalCodes() {
   const existingCodes = await HospitalCodes.find({});
 
   if (existingCodes.length === 0) {
-    const patientA = await PatientInfo.findOne({ Name: 'Hamza Siddiqui' });
-    const hospitalA = await HospitalInfo.findOne({ Name: 'Hospital A' });
+    const hospitals = await HospitalInfo.find({});
 
-    const patientB = await PatientInfo.findOne({ Name: 'Vaishnavi Polina' });
-    const hospitalB = await HospitalInfo.findOne({ Name: 'Hospital B' });
+    for (const hospital of hospitals) {
+      const patients = await PatientInfo.find({ Hospital_Ids: hospital._id });
 
-    const patientC = await PatientInfo.findOne({ Name: 'Nidhi Shukla' });
-    const hospitalC = await HospitalInfo.findOne({ Name: 'Hospital C' });
+      for (const patient of patients) {
+        await createHospitalCodeForPatient(patient);
+      }
+    }
 
-    const dummyCodes = [
-      {
-        Code: "HSIDD7890",
-        Patient_Id: patientA._id,
-        Hospital_Id: hospitalA._id,
-      },
-      {
-        Code: "VPOLI4855",
-        Patient_Id: patientB._id,
-        Hospital_Id: hospitalB._id,
-      },
-      {
-        Code: "NSHUK3210",
-        Patient_Id: patientC._id,
-        Hospital_Id: hospitalC._id,
-      },
-      // Add more entries as needed
-    ];
-
-    await HospitalCodes.insertMany(dummyCodes);
     console.log('Dummy data added for Hospital_Codes');
   } else {
     console.log('Dummy data for Hospital_Codes already exists');
   }
 }
+
 
 // Add dummy data for Report
 async function addDummyReports() {
@@ -490,4 +474,5 @@ module.exports = {
   addDummyHospitalLogins,
   addDummyHospitalCodes,
   addDummyAppointments,
-};
+  };
+

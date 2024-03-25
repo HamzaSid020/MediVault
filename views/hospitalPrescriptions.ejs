@@ -929,7 +929,8 @@
 
 		.Rectangle_85 {
 			position: absolute;
-			overflow: visible;
+			overflow-y: auto;
+			/* Add vertical scrollbar when content overflows vertically */
 			width: 1304px;
 			height: 773.74px;
 			left: 559.564px;
@@ -938,20 +939,20 @@
 			border: 1px solid rgba(234, 235, 245, 1);
 			border-radius: 0;
 			z-index: 1;
-			/* Set the border-radius accordingly if needed */
 		}
-
 
 		.item-list {
 			list-style: none;
 			padding: 0;
+			margin: 0;
+			/* Add margin 0 to remove default margin */
 		}
 
 		.item {
 			border: 1px solid rgba(112, 112, 112, 1);
 			margin: 20px;
 			border-radius: 60px;
-			padding: 25px;
+			padding: 20px;
 			font-family: Segoe UI;
 			position: relative;
 			fill: rgba(255, 255, 255, 1);
@@ -961,7 +962,6 @@
 			stroke-linecap: butt;
 			stroke-miterlimit: 4;
 			shape-rendering: auto;
-
 		}
 
 		.patient-info {
