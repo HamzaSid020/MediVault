@@ -30,7 +30,7 @@
 			width: 100%;
 			height: 100vh;
 			background-color: rgba(255, 255, 255, 1);
-			overflow:hidden;
+			overflow: hidden;
 			overflow-y: auto;
 			--web-view-name: Home;
 			--web-view-id: Home_Page;
@@ -2382,7 +2382,7 @@
 			position: relative;
 			top: 0%;
 			/* Center the text vertically */
-			left:30%;
+			left: 30%;
 			transform: translateY(-50%);
 		}
 
@@ -2684,15 +2684,15 @@
 							</div>
 							<div id="Group_r" class="">
 								<a href="#About_Us_d">
-								<div id="About_Us">
-									<span>About Us</span>
-								</div>
+									<div id="About_Us">
+										<span>About Us</span>
+									</div>
 								</a>
 							</div>
 							<div id="Group_t" class="">
 								<div id="Contact_Us">
 									<a href="/contactUs" style="text-decoration: none; color: rgba(255,255,255,1);">
-									<span>Contact Us</span>
+										<span>Contact Us</span>
 									</a>
 								</div>
 							</div>
@@ -2715,7 +2715,8 @@
 
 					<% if (Username && HospitalId) { %>
 					<div id="Sign_Up" style="left:1600px">
-						<a href="/hospitalDashboard/patients" style="text-decoration: none; color: rgba(255,255,255,1);">
+						<a href="/hospitalDashboard/patients"
+							style="text-decoration: none; color: rgba(255,255,255,1);">
 							<span>Welcome, <%= Username %></span>
 						</a>
 					</div>
@@ -3395,6 +3396,20 @@
 							srcset="/images/Rectangle_55_fi.png 1x, /images/Rectangle_55_fi@2x.png 2x">
 
 					</div>
+					<% if (Username && HospitalId) { %>
+					<button id="Reports" class="Rectangle_56" onclick="redirectToHospitalReport()">
+						<span>Reports</span>
+					</button>
+					<button id="Appointments" class="Rectangle_56_fl" onclick="redirectToHospitalAppointment()">
+						<span>Appointments</span>
+					</button>
+					<button id="Prescriptions" class="Rectangle_56_fn" onclick="redirectToHospitalPrescription()">
+						<span>Prescriptions</span>
+					</button>
+					<button id="Bills" class="Rectangle_70" onclick="redirectToHospitalBill()">
+						<span>Bills</span>
+					</button>
+					<% } else if (Username && !HospitalId) { %>
 					<button id="Reports" class="Rectangle_56" onclick="redirectToPatientReportInfo()">
 						<span>Reports</span>
 					</button>
@@ -3407,8 +3422,7 @@
 					<button id="Bills" class="Rectangle_70" onclick="redirectToPatientBillInfo()">
 						<span>Bills</span>
 					</button>
-
-
+					<% }%>
 				</div>
 			</div>
 		</div>
@@ -3447,14 +3461,26 @@
 		function redirectToPatientBillInfo() {
 			window.location.href = "/patientBill";
 		}
+		function redirectToHospitalBill() {
+			window.location.href = "/hospitalDashboard/bills";
+		}
 		function redirectToPatientPrescriptionInfo() {
 			window.location.href = "/patientPrescription";
+		}
+		function redirectToHospitalPrescription() {
+			window.location.href = "/hospitalDashboard/prescriptions";
 		}
 		function redirectToPatientAppointmentInfo() {
 			window.location.href = "/patientAppointment";
 		}
+		function redirectToHospitalAppointment() {
+			window.location.href = "/hospitalDashboard/appointments";
+		}
 		function redirectToPatientReportInfo() {
 			window.location.href = "/patientReport";
+		}
+		function redirectToHospitalReport() {
+			window.location.href = "/hospitalDashboard/reports";
 		}
 	</script>
 </body>
