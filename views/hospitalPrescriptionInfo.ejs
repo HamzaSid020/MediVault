@@ -7,13 +7,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Patient info</title>
 	<style id="applicationStylesheet" type="text/css">
-		.mediaViewInfo {
-			--web-view-name: Patient info;
-			--web-view-id: Patient_info;
-			--web-scale-on-resize: true;
-			--web-enable-deep-linking: true;
-		}
-
 		:root {
 			--web-view-ids: Patient_info;
 		}
@@ -1076,6 +1069,7 @@
 			top: 1366.257px;
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
+
 		#Reports_b {
 			left: 1087.5px;
 			top: 1365px;
@@ -1090,7 +1084,7 @@
 			font-size: 57px;
 			color: rgba(90, 92, 137, 1);
 		}
-		
+
 		.rectangle-container {
 			position: relative;
 			width: 1273px;
@@ -1138,7 +1132,7 @@
 		.time {
 			float: right;
 			font-size: 15px;
-			top:18px;
+			top: 18px;
 		}
 
 		.file-name {
@@ -1149,15 +1143,6 @@
 		.file-name {
 			margin: 0;
 			color: rgba(90, 92, 137, 1);
-		}
-
-		.hospital-code-wrapper {
-			border: none;
-			background: transparent;
-			padding: 0;
-			margin: 0;
-			cursor: pointer;
-			outline: none;
 		}
 
 		#Group_94 {
@@ -2281,160 +2266,6 @@
 			z-index: 1;
 		}
 
-		#HospitalCodeModal {
-			display: none;
-			position: absolute;
-			width: 1920px;
-			height: 2876px;
-			overflow: hidden;
-		}
-
-		#Security-Modal {
-			position: absolute;
-			width: 1042.727px;
-			height: 606.343px;
-			left: 650px;
-			top: 1600px;
-			overflow: visible;
-			background-color: rgb(232, 230, 241);
-			z-index: 2;
-		}
-
-		#Enter_Security_Code {
-			left: 100px;
-			top: 150px;
-			position: absolute;
-			overflow: visible;
-			width: 792px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 40px;
-			color: rgba(90, 92, 137, 1);
-		}
-
-		#Download-Button {
-			position: absolute;
-			width: 253px;
-			height: 95px;
-			left: 2000px;
-			top: 1600px;
-			overflow: visible;
-		}
-
-		#Rectangle_126 {
-			fill: rgba(92, 93, 138, 1);
-			stroke: rgba(112, 112, 112, 1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-		}
-
-		#download-button:hover #Rectangle_126 {
-			fill: rgba(255, 255, 255, 1);
-		}
-
-		#download-button.disabled {
-			pointer-events: none;
-			opacity: 0.5;
-		}
-
-		.Rectangle_126 {
-			position: absolute;
-			overflow: visible;
-			width: 253px;
-			left: 400px;
-			height: 300px;
-			top: 450px;
-		}
-
-		#Download {
-			left: 430px;
-			top: 470px;
-			position: absolute;
-			overflow: visible;
-			width: 189px;
-			height: 47px;
-			text-align: center;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 35px;
-			color: rgba(255, 255, 255, 1);
-		}
-
-		#download-button:hover #Download {
-			color: rgba(92, 93, 138, 1);
-		}
-
-		#security-cross {
-			fill: rgba(0, 0, 0, 1);
-			stroke: rgba(0, 0, 0, 1);
-			stroke-width: 5px;
-			stroke-linejoin: miter;
-			stroke-linecap: round;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-			transition: fill 0.1s ease, stroke 0.1 ease;
-		}
-
-		#security-cross:hover {
-			fill: rgba(255, 0, 0, 1);
-			/* Change fill color on hover */
-			stroke: rgba(255, 0, 0, 1);
-			/* Change stroke color on hover */
-		}
-
-		.security-cross {
-			overflow: visible;
-			position: absolute;
-			width: 25.385px;
-			height: 26.871px;
-			left: 980px;
-			top: 50px;
-			transform: matrix(1, 0, 0, 1, 0, 0);
-		}
-
-		#Security_Question {
-			left: 300px;
-			top: 30px;
-			position: absolute;
-			overflow: visible;
-			width: 443px;
-			height: 57px;
-			text-align: center;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 43px;
-			color: rgba(92, 93, 138, 1);
-		}
-
-		#HospitalCode {
-			fill: rgba(255, 255, 255, 1);
-			stroke: rgba(189, 192, 225, 1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-		}
-
-		.Rectangle_127 {
-			position: absolute;
-			overflow: visible;
-			width: 682px;
-			height: 66px;
-			left: 200px;
-			top: 250px;
-			font-size: 25px;
-			padding: 10px;
-		}
-
 		#Modal-Edit {
 			position: absolute;
 			width: 1600px;
@@ -3102,6 +2933,17 @@
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
 
+		.disabled-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(255, 255, 255, 0.5);
+			backdrop-filter: blur(1px);
+			border-radius: 50%;
+		}
+
 		#file-download {
 			fill: transparent;
 			stroke: rgba(90, 92, 137, 1);
@@ -3378,8 +3220,6 @@
 			<div class="rectangle-container">
 				<ul class="item-list">
 					<% for (let i = 0; i < prescription_info.length; i++) { %>
-					<!-- <div id="link" class="hospital-code-wrapper"
-						onclick="showHospitalCodeModal('<%= prescription_info[i]._id %>', '<%= prescription_info[i].Hospital_Id._id %>')"> -->
 					<li class="item">
 						<div class="content-wrapper">
 							<div class="info-wrapper">
@@ -3406,8 +3246,10 @@
 										d="M 5.416250228881836 20.05999946594238 L 20.71249961853027 4.762499809265137 C 21.96942710876465 3.559701681137085 23.95701789855957 3.581429719924927 25.18734741210938 4.811418533325195 C 26.41767501831055 6.041407585144043 26.4399528503418 8.028993606567383 25.23750114440918 9.286249160766602 L 9.938750267028809 24.58374977111816 C 9.589750289916992 24.93277931213379 9.145244598388672 25.17069053649902 8.661250114440918 25.26749992370605 L 3.75 26.25 L 4.732500076293945 21.33749961853027 C 4.829309463500977 20.85350608825684 5.067220687866211 20.40899848937988 5.416249752044678 20.05999946594238 Z">
 									</path>
 								</svg>
+								<div class="disabled-overlay"></div>
 							</div>
-							<div class="download-icon">
+							<div class="download-icon"
+								onclick="downloadPrescription('<%= prescription_info[i]._id %>')">
 								<svg class="file-download" viewBox="2.5 3.75 25 22.5">
 									<path id="file-download"
 										d="M 15 18.75 L 15 3.75 M 15 18.75 L 10 13.75 M 15 18.75 L 20 13.75 M 2.5 21.25 L 3.276249885559082 24.35625076293945 C 3.554412841796875 25.46907424926758 4.554188251495361 26.24982643127441 5.701250076293945 26.25 L 24.29874992370605 26.25 C 25.4454345703125 26.25 26.44532775878906 25.46940040588379 26.72365951538086 24.35661888122559 L 27.5 21.25">
@@ -3940,78 +3782,20 @@
 			</div>
 		</div>
 	</div>
-	<div id="HospitalCodeModal">
-		<div id="background-blur">
-		</div>
-		<div id="Security-Modal">
-			<div id="Modal-Content">
-				<button class="cross-button" onclick="closeModal()">
-					<svg class="security-cross" viewBox="5 5 18.318 19.806">
-						<path id="security-cross"
-							d="M 23.318359375 24.8056640625 L 5 5 M 23.318359375 5 L 5 24.8056640625">
-						</path>
-					</svg>
-				</button>
-				<div id="download-button" onclick="downloadPrescription()" class="disabled">
-					<svg class="Rectangle_126">
-						<rect id="Rectangle_126" rx="47.5" ry="47.5" x="0" y="0" width="253" height="95">
-						</rect>
-					</svg>
-					<div id="Download">
-						<span>Download</span>
-					</div>
-				</div>
-				<input type="text" id="hospitalCodeText" class="Rectangle_127" placeholder="Enter Hospital Code"
-					required>
-				<div id="Enter_Security_Code">
-					<span>Enter the code provided for Hospital Name:</span>
-				</div>
-				<div id="Security_Question">
-					<span>Security Question</span>
-				</div>
-			</div>
-		</div>
-	</div>
+
 	</div>
 	<script>
 
 		var modal = document.getElementById("ReportsEditModal");
-		var hospitalCodeModal = document.getElementById("HospitalCodeModal");
 
 		// Function to open the modal
 		function showModal() {
 			modal.style.display = "block";
 		}
 
-		function showHospitalCodeModal(prescriptionId, hospitalId) {
-			hospitalCodeModal.style.display = "block";
-			console.log("showHospitalCodeModal", prescriptionId, hospitalId);
-			fetch('/addHospitalPrescription', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					prescriptionId: prescriptionId,
-					hospitalId: hospitalId,
-				}),
-			})
-				.then(response => {
-					if (!response.ok) {
-						throw new Error('Network response was not ok');
-					}
-					return response.json();
-				})
-				.catch(error => {
-					console.error('Error during POST request:', error);
-				});
-		}
-
-
 		// Function to close the modal
 		function closeModal() {
 			modal.style.display = "none";
-			hospitalCodeModal.style.display = "none";
 			location.reload();
 		}
 
@@ -4126,56 +3910,22 @@
 			return allowedTypes.includes(file.type);
 		}
 
-		function downloadPrescription() {
-			// Get the hospital code, hospital ID, and report ID from the input fields within the parent container
-			const hospitalCode = document.getElementById('hospitalCodeText').value.toUpperCase();
-			console.log("Hospital code:", hospitalCode);
-			// Make a POST request to your server
-			fetch('/downloadPrescription', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					hospitalCode: hospitalCode,
-				}),
-			})
-				.then(response => response.json())
-				.then(data => {
-					// Handle the response from the server
-					console.log(data);
+		function downloadPrescription(prescriptionId) {
+			if (prescriptionId) {
+				const downloadLink = document.createElement('a');
+				downloadLink.href = `/download-prescription/${prescriptionId}`;
+				downloadLink.download = 'Prescription_filename'; // Set the desired filename
 
-					if (data.success) {
-						// If the response is successful, dynamically generate the download link
-						const prescriptionId = data.prescriptionId; // Assuming the server sends back the prescriptionId
-						const downloadLink = document.createElement('a');
-						downloadLink.href = `/download-prescription/${prescriptionId}`;
-						downloadLink.download = 'Prescription_filename'; // Set the desired filename
-
-						// Trigger the download
-						document.body.appendChild(downloadLink);
-						downloadLink.click();
-						document.body.removeChild(downloadLink);
-					} else {
-						// Handle the case where the server response is not successful
-						console.error('Download request failed:', data.message);
-						alert("Invalid hospital code.");
-					}
-				})
-				.catch(error => {
-					console.error('Error:', error);
-				});
-		}
-
-		document.getElementById("hospitalCodeText").addEventListener("input", function () {
-			var downloadButton = document.getElementById("download-button");
-
-			if (this.value.trim() !== "") {
-				downloadButton.classList.remove("disabled");
+				// Trigger the download
+				document.body.appendChild(downloadLink);
+				downloadLink.click();
+				document.body.removeChild(downloadLink);
 			} else {
-				downloadButton.classList.add("disabled");
+				// Handle the case where the prescriptionId is missing
+				console.error('Invalid prescriptionId:', prescriptionId);
+				alert("Invalid report ID.");
 			}
-		});
+		}
 
 	</script>
 </body>
