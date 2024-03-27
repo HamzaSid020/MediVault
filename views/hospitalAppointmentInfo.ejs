@@ -3362,21 +3362,15 @@
 				<div id="Welcome_Patients_name">
 					<span>Welcome, <%= patientInfo.Name %></span>
 				</div>
-				<!-- <img src="/images/<%= patientInfo.Picture %>" alt="Patient Image" class="PatientImage"> -->
 				<svg class="Ellipse_17">
-					<!-- Define the ellipse -->
 					<ellipse id="Ellipse_17" rx="218.5" ry="218.5" cx="218.5" cy="218.5"></ellipse>
-
-					<!-- Define the clipPath with a circular shape -->
 					<defs>
 						<clipPath id="circleClip">
-							<circle cx="218.5" cy="218.5" r="208.5"></circle>
+							<ellipse rx="208.5" ry="208.5" cx="218.5" cy="218.5"></ellipse>
 						</clipPath>
 					</defs>
-
-					<!-- Use the clipPath for the image and adjust attributes for zoom -->
-					<image href="/images/patient/<%= patientInfo.Picture %>" class="imageInEllipse"
-						clip-path="url(#circleClip)" x="5" y="5" width="427" height="427"></image>
+					<image xlink:href="/images/patient/<%= patientInfo.Picture %>" preserveAspectRatio="xMidYMid slice"
+						clip-path="url(#circleClip)" x="0" y="0" width="437" height="437"></image>
 				</svg>
 				<div id="Patient_Name">
 					<span>Patient Name: <%= patientInfo.Name %></span>

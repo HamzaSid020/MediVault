@@ -122,26 +122,26 @@ function generateMedivaultId(firstName, lastName, phoneNumber) {
 
 function calculateAge(birthDate) {
     // Split the date string into day, month, and year
-    const [year, month, day ] = birthDate.split('-').map(Number);
-  
+    const [year, month, day] = birthDate.split('-').map(Number);
+
     // Create a Date object with the provided values
     const birthDateObject = new Date(year, month - 1, day);
-  
+
     // Get the current date
     const currentDate = new Date();
-  
+
     // Calculate the difference in years
     const age = currentDate.getFullYear() - birthDateObject.getFullYear();
-  
+
     // Adjust age based on the month and day
     if (currentDate.getMonth() < birthDateObject.getMonth() ||
-      (currentDate.getMonth() === birthDateObject.getMonth() && currentDate.getDate() < birthDateObject.getDate())) {
-      // If the birthdate has not occurred yet this year, subtract 1 from the age
-      return age - 1;
+        (currentDate.getMonth() === birthDateObject.getMonth() && currentDate.getDate() < birthDateObject.getDate())) {
+        // If the birthdate has not occurred yet this year, subtract 1 from the age
+        return age - 1;
     } else {
-      return age;
+        return age;
     }
-  }
+}
 
 function extractLastFourDigits(phoneNumber) {
     // Convert phone number to string if it's not already
@@ -161,36 +161,36 @@ function generateRandomSuffix(length) {
         suffix += characters[randomIndex];
     }
     return suffix;
-  }
-  
-  // Function to generate a random code based on patient information
-  function generateRandomCode(patientInfo) {
+}
+
+// Function to generate a random code based on patient information
+function generateRandomCode(patientInfo) {
     // Example: Concatenate the first three characters of the name and age
     const namePrefix = patientInfo.Name.slice(0, 3).toUpperCase();
     const ageSuffix = patientInfo.Age.toString().padStart(2, '0'); // Ensure age is always two digits
     const randomSuffix = generateRandomSuffix(4); // Generate a random 4-character suffix
-  
+
     // Combine the parts to create the random code
     const randomCode = namePrefix + ageSuffix + randomSuffix;
-  
+
     return randomCode;
-  }
+}
 
 async function createHospitalCodeForPatient(patientInfo) {
     const hospitalIds = patientInfo.Hospital_Ids;
-  
+
     for (const hospitalId of hospitalIds) {
-      const codeExists = await HospitalCodes.findOne({ Patient_Id: patientInfo._id, Hospital_Id: hospitalId });
-  
-      if (!codeExists) {
-        const code = generateRandomCode(patientInfo);
-        await HospitalCodes.create({ Code: code, Patient_Id: patientInfo._id, Hospital_Id: hospitalId });
-        console.log(`Hospital code created for ${patientInfo.Name} at ${hospitalId}`);
-      } else {
-        console.log(`Hospital code already exists for ${patientInfo.Name} at ${hospitalId}`);
-      }
+        const codeExists = await HospitalCodes.findOne({ Patient_Id: patientInfo._id, Hospital_Id: hospitalId });
+
+        if (!codeExists) {
+            const code = generateRandomCode(patientInfo);
+            await HospitalCodes.create({ Code: code, Patient_Id: patientInfo._id, Hospital_Id: hospitalId });
+            console.log(`Hospital code created for ${patientInfo.Name} at ${hospitalId}`);
+        } else {
+            console.log(`Hospital code already exists for ${patientInfo.Name} at ${hospitalId}`);
+        }
     }
-  }
+}
 
 router.get('/', async (req, res) => {
     try {
@@ -1105,7 +1105,7 @@ router.post('/patientCreate', async (req, res) => {
         const newMedivaultId = formattedData.Medivault_Id;
         const randomPassword = generateRandomPassword();
         formattedData.Hospital_Ids = [req.session.hospitalLoggedId];
-        console.log("Formatted DOB", formattedData.DOB );
+        console.log("Formatted DOB", formattedData.DOB);
         formattedData.Age = calculateAge(formattedData.DOB);
 
         // Create a new patient entry in the database
@@ -1597,6 +1597,162 @@ router.post('/contactUsMessage', async (req, res) => {
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ error: 'An error occurred while adding the message' });
+    }
+});
+
+router.post('/addDeleteReportId', (req, res) => {
+    const reportId = req.body.reportId;
+
+    // Assuming you are using express-session middleware to handle sessions
+    req.session.deleteReportId = reportId;
+
+    res.status(200).json({ message: 'Report ID added to session successfully' });
+});
+
+router.post('/removeDeleteReportId', (req, res) => {
+    // Assuming you are using express-session middleware to handle sessions
+    delete req.session.reportId;
+
+    res.status(200).json({ message: 'Report ID removed from session successfully' });
+});
+
+router.delete('/deleteReport', async (req, res) => {
+    if (!req.session.loggedIn || !req.session.hospitalLoggedId) {
+        return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+    }
+
+    const reportId = req.session.deleteReportId;
+    try {
+        // Check if the report exists and is linked to the logged-in hospital
+        const report = await Report.findOne({ _id: reportId, Hospital_Id: req.session.hospitalLoggedId });
+
+        if (!report) {
+            return res.status(404).json({ message: 'Report not found or not authorized to delete' });
+        }
+
+        // Delete the file from the file system
+        const filePath = 'public/documents/reports/' + report.File;
+        fs.unlink(filePath, async (err) => {
+            if (err) {
+                console.error('Error deleting file:', err);
+                return res.status(500).json({ message: 'Error deleting file from the server' });
+            }
+
+            // Remove the report ID from Bills
+            await Bills.updateMany({ Report_Ids: reportId }, { $pull: { Report_Ids: reportId } });
+
+            // Remove the report ID from Prescription
+            await Prescription.updateMany({ Report_Ids: reportId }, { $pull: { Report_Ids: reportId } });
+
+            // Remove the report entry from the database
+            await Report.findOneAndDelete({ _id: reportId });
+
+            res.status(200).json({ message: 'Report and associated data deleted successfully' });
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.post('/addDeletePrescriptionId', (req, res) => {
+    const prescriptionId = req.body.prescriptionId;
+
+    req.session.deletePrescriptionId = prescriptionId;
+
+    res.status(200).json({ message: 'Prescription ID added to session successfully' });
+});
+
+router.post('/removeDeletePrescriptionId', (req, res) => {
+    delete req.session.deletePrescriptionId;
+
+    res.status(200).json({ message: 'Prescription ID removed from session successfully' });
+});
+
+router.delete('/deletePrescription', async (req, res) => {
+    if (!req.session.loggedIn || !req.session.hospitalLoggedId) {
+        return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+    }
+
+    const prescriptionId = req.session.deletePrescriptionId;
+    try {
+        // Check if the prescription exists and is linked to the logged-in hospital
+        const prescription = await Prescription.findOne({ _id: prescriptionId, Hospital_Id: req.session.hospitalLoggedId });
+
+        if (!prescription) {
+            return res.status(404).json({ message: 'Prescription not found or not authorized to delete' });
+        }
+
+        // Delete the file from the file system
+        const filePath = 'public/documents/prescriptions/' + prescription.File;
+        fs.unlink(filePath, async (err) => {
+            if (err) {
+                console.error('Error deleting file:', err);
+                return res.status(500).json({ message: 'Error deleting file from the server' });
+            }
+
+            // Remove the prescription entry from the database
+            await Prescription.findOneAndDelete({ _id: prescriptionId });
+
+            res.status(200).json({ message: 'Prescription and associated data deleted successfully' });
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.post('/addDeleteBillId', (req, res) => {
+    const billId = req.body.billId;
+
+    // Assuming you are using express-session middleware to handle sessions
+    req.session.deleteBillId = billId;
+
+    res.status(200).json({ message: 'Bill ID added to session successfully' });
+});
+
+router.post('/removeDeleteBillId', (req, res) => {
+    // Assuming you are using express-session middleware to handle sessions
+    delete req.session.deleteBillId;
+
+    res.status(200).json({ message: 'Bill ID removed from session successfully' });
+});
+
+router.delete('/deleteBill', async (req, res) => {
+    if (!req.session.loggedIn || !req.session.hospitalLoggedId) {
+        return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+    }
+
+    const billId = req.session.deleteBillId;
+    try {
+        // Check if the bill exists and is linked to the logged-in hospital
+        const bill = await Bills.findOne({ _id: billId, Hospital_Id: req.session.hospitalLoggedId });
+
+        if (!bill) {
+            return res.status(404).json({ message: 'Bill not found or not authorized to delete' });
+        }
+
+
+        // Delete the file from the file system
+        const filePath = 'public/documents/bills/' + bill.File;
+        fs.unlink(filePath, async (err) => {
+            if (err) {
+                console.error('Error deleting file:', err);
+                return res.status(500).json({ message: 'Error deleting file from the server' });
+            }
+
+            // Remove the bill ID from associated documents
+            await Prescription.updateMany({ Bills_Ids: billId }, { $pull: { Bills_Ids: billId } });
+
+            // Remove the bill entry from the database
+            await Bills.findOneAndDelete({ _id: billId });
+
+
+            res.status(200).json({ message: 'Bill and associated data deleted successfully' });
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error' });
     }
 });
 
