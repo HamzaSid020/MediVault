@@ -453,10 +453,6 @@
 			top: 260.484px;
 		}
 
-		.imageInEllipse {
-			clip-path: url(#circleClip);
-		}
-
 		#Patient_Name {
 			left: 699.396px;
 			top: 331.484px;
@@ -649,35 +645,6 @@
 			overflow: hidden;
 		}
 
-		#Group_bv {
-			position: absolute;
-			width: 275px;
-			height: 66px;
-			left: 0px;
-			top: 0px;
-			overflow: visible;
-		}
-
-		#Rectangle_84 {
-			fill: rgba(255, 255, 255, 1);
-			stroke: rgba(112, 112, 112, 1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-		}
-
-		.Rectangle_84 {
-			filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-			position: absolute;
-			overflow: visible;
-			width: 293px;
-			height: 84px;
-			left: 0px;
-			top: 0px;
-		}
-
 		#Group_bx {
 			position: absolute;
 			width: 275px;
@@ -792,42 +759,6 @@
 			height: 84px;
 			left: 0px;
 			top: 0px;
-		}
-
-		#Group_bv {
-			position: relative;
-			display: inline-block;
-		}
-
-		#Group_bv:hover #Rectangle_84 {
-			fill: rgba(92, 93, 138, 1);
-			stroke: rgba(255, 255, 255, 1);
-		}
-
-		#Group_bv:hover #Inbox span {
-			color: rgba(255, 255, 255, 1);
-		}
-
-		#Inbox {
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		#Inbox span {
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 25px;
-			color: rgba(90, 92, 137, 1);
-			transition: color 0.2s ease;
 		}
 
 		#Group_bx {
@@ -2234,7 +2165,6 @@
 
 		#Modal-Content {
 			position: absolute;
-			/* Add appropriate width, height, and other styling properties */
 			z-index: 3;
 		}
 
@@ -2277,6 +2207,17 @@
 			z-index: 2;
 		}
 
+		#Modal-Report-Edit {
+			position: absolute;
+			width: 1000px;
+			height: 400px;
+			left: 700px;
+			top: 750px;
+			overflow: visible;
+			background-color: rgb(248, 248, 251);
+			z-index: 2;
+		}
+
 		#cross {
 			fill: rgba(0, 0, 0, 1);
 			stroke: rgba(0, 0, 0, 1);
@@ -2302,6 +2243,16 @@
 			height: 26.871px;
 			left: 1705.603px;
 			top: 800px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		.cross-report {
+			overflow: visible;
+			position: absolute;
+			width: 15px;
+			height: 15px;
+			left: 1670px;
+			top: 770px;
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
 
@@ -2877,10 +2828,8 @@
 			height: 20px;
 		}
 
-		/* Apply hover effect to the delete button */
 		.delete-button:hover #Path_141 {
 			fill: red;
-			/* Change the color to red on hover */
 		}
 
 		.content-wrapper {
@@ -2899,7 +2848,6 @@
 			margin-top: 0px;
 			top: 35px;
 			left: -40px;
-			/* Adjust margin to add space between content and button */
 		}
 
 		.pencil-icon {
@@ -3034,15 +2982,6 @@
 			color: rgba(90, 92, 137, 1);
 		}
 
-		#download-Button {
-			position: absolute;
-			width: 253px;
-			height: 95px;
-			left: 2000px;
-			top: 1200px;
-			overflow: visible;
-		}
-
 		#Rectangle_126 {
 			fill: rgba(92, 93, 138, 1);
 			stroke: rgba(112, 112, 112, 1);
@@ -3126,6 +3065,111 @@
 			font-weight: normal;
 			font-size: 43px;
 			color: rgba(92, 93, 138, 1);
+		}
+
+		#add-icon {
+			fill: rgba(92, 93, 138, 1);
+		}
+
+		.add-icon {
+			overflow: visible;
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			left: 1800px;
+			top: 1395px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		.add-icon:hover #add-icon {
+			fill: rgba(51, 53, 97);
+		}
+
+		#NewReportModel {
+			display: none;
+			position: absolute;
+			width: 1920px;
+			height: 1790px;
+			overflow: hidden;
+		}
+
+		.Rectangle_140 {
+			position: absolute;
+			overflow: visible;
+			width: 380px;
+			height: 50px;
+			left: 1000px;
+			top: 920px;
+			font-size: 25px;
+			padding: 10px;
+			border: 2px solid rgba(92, 93, 138, 1);
+		}
+
+		#New_Report_Title {
+			left: 1050px;
+			top: 780px;
+			position: absolute;
+			overflow: visible;
+			width: 402px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 40px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Upload {
+			left: 32px;
+			top: 52px;
+			position: absolute;
+			overflow: visible;
+			width: 189px;
+			height: 47px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 35px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Upload-button:hover #Upload {
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#Rectangle_141 {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_141 {
+			position: absolute;
+			overflow: visible;
+			width: 253px;
+			height: 95px;
+			left: 30px;
+			top: 40px;
+		}
+
+		#Upload-button {
+			position: absolute;
+			width: 253px;
+			height: 50px;
+			left: 1050px;
+			top: 1000px;
+			overflow: visible;
+		}
+
+
+		#Upload-button:hover #Rectangle_141 {
+			fill: rgba(255, 255, 255, 1);
 		}
 	</style>
 </head>
@@ -3240,6 +3284,7 @@
 				<div id="Patient_Name">
 					<span>Patient Name: <%= patientInfo.Name %></span>
 				</div>
+				<p id="Patient_Id" hidden><%= patientInfo._id %></p>
 				<div id="MediVault_ID_123456">
 					<span>MediVault ID: <%= patientInfo.Medivault_Id %></span>
 				</div>
@@ -3281,15 +3326,6 @@
 				srcset="/images/Rectangle_83.png 1x, /images/Rectangle_83@2x.png 2x">
 
 			<div id="Repeat_Grid_5">
-				<div id="Group_bv" class="">
-					<svg class="Rectangle_84">
-						<rect id="Rectangle_84" rx="33" ry="33" x="0" y="0" width="275" height="66">
-						</rect>
-					</svg>
-					<div id="Inbox">
-						<span>Inbox</span>
-					</div>
-				</div>
 				<div id="Group_bx" class="">
 					<svg class="Rectangle_84_by">
 						<rect id="Rectangle_84_by" rx="33" ry="33" x="0" y="0" width="275" height="66">
@@ -3357,9 +3393,7 @@
 								<p class="from">From</p>
 								<p class="hospital-name"><%= report_info[i].Hospital_Id.Name %></p>
 								<p class="file-name"><%= report_info[i].Name %></p>
-
 							</div>
-
 							<div class="delete-button" onclick="showDeleteModal('<%= report_info[i]._id %>')">
 								<svg class="Path_140" viewBox="0 0 38.467 38.467">
 									<path id="Path_140"
@@ -3395,6 +3429,11 @@
 			<div id="Reports_b">
 				<span>Reports</span>
 			</div>
+			<svg class="add-icon" viewBox="5.625 5.625 18.75 18.75" onclick="showReportModal()">
+				<path id="add-icon"
+					d="M 24.375 16.24998092651367 L 16.24998092651367 16.24998092651367 L 16.24998092651367 24.375 L 13.75002002716064 24.375 L 13.75002002716064 16.24998092651367 L 5.625 16.24998092651367 L 5.625 13.75002002716064 L 13.75001907348633 13.75002002716064 L 13.75001907348633 5.625 L 16.24998092651367 5.625 L 16.24998092651367 13.75001907348633 L 24.375 13.75001907348633 L 24.375 16.24998092651367 Z">
+				</path>
+			</svg>
 			<div id="Group_94">
 				<svg class="Path_79" viewBox="18.574 65.491 662.607 415">
 					<path id="Path_79"
@@ -3934,14 +3973,46 @@
 		</div>
 	</div>
 	</div>
+	<div id="NewReportModel">
+		<div id="background-blur">
+		</div>
+		<div id="Modal-Report-Edit">
+		</div>
+		<div id="Modal-Content">
+			<button class="cross-button" onclick="closeModal()">
+				<svg class="cross-report" viewBox="5 5 18.318 19.806">
+					<path id="cross" d="M 23.318359375 24.8056640625 L 5 5 M 23.318359375 5 L 5 24.8056640625">
+					</path>
+				</svg>
+			</button>
+			<input type="file" id="uploadFile" class="Rectangle_140">
+			<div id="Upload-button">
+				<svg class="Rectangle_141">
+					<rect id="Rectangle_141" rx="47.5" ry="47.5" x="0" y="0" width="200" height="80">
+					</rect>
+				</svg>
+				<div id="Upload">
+					<span>Upload</span>
+				</div>
+			</div>
+			<div id="New_Report_Title">
+				<span>Add New Report</span>
+			</div>
+		</div>
+	</div>
 	<script>
 		// Get the modal
 		var modal = document.getElementById("ReportsEditModal");
+		var newReportModal = document.getElementById("NewReportModel");
 		var deleteModal = document.getElementById("deleteModal");
 
 		// Function to open the modal
 		function showModal() {
 			modal.style.display = "block";
+		}
+
+		function showReportModal() {
+			newReportModal.style.display = "block";
 		}
 
 		function showDeleteModal(reportId) {
@@ -4144,6 +4215,48 @@
 				alert("Invalid report ID.");
 			}
 		}
+
+		document.getElementById("Upload-button").addEventListener("click", function () {
+			var patientIdElement = document.getElementById("Patient_Id");
+			console.log("Hospital Report Info patient Id", patientIdElement);
+
+			if (patientIdElement) {
+				// Get the patient ID from the element's text content
+				var patientId = patientIdElement.textContent.trim();
+				var fileInput = document.getElementById("uploadFile");
+				// Check if a file is selected
+				if (fileInput.files.length > 0) {
+					var file = fileInput.files[0];
+					// Create a FormData object to send the file and patient ID
+					var formData = new FormData();
+					formData.append("file", file);
+					formData.append("PatientId", patientId);
+
+					console.log("PatientId upload button", patientId);
+
+					// Send the POST request
+					fetch("/uploadReport", {
+						method: "POST",
+						body: formData
+					})
+						.then(response => {
+							// Handle response
+							console.log("Response received:", response);
+							alert('File uploaded successfully!');
+							window.location.reload();
+						})
+						.catch(error => {
+							// Handle errors
+							console.error("Error:", error);
+						});
+				} else {
+					console.error("No file selected");
+				}
+			} else {
+				console.error("Patient ID element not found");
+			}
+		});
+
 
 	</script>
 </body>

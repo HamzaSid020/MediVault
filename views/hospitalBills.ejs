@@ -945,14 +945,12 @@
 			list-style: none;
 			padding: 0;
 			margin: 0;
-			/* Add margin 0 to remove default margin */
 		}
 
 		.item {
 			border: 1px solid rgba(112, 112, 112, 1);
 			margin: 20px;
-			border-radius: 60px;
-			padding: 20px;
+			border-radius: 30px;
 			font-family: Segoe UI;
 			position: relative;
 			fill: rgba(255, 255, 255, 1);
@@ -962,6 +960,7 @@
 			stroke-linecap: butt;
 			stroke-miterlimit: 4;
 			shape-rendering: auto;
+			padding: 20px;
 		}
 
 		.patient-info {
@@ -1790,6 +1789,347 @@
 			font-size: 25px;
 			color: rgba(92, 93, 138, 1);
 		}
+
+		.delete-button {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		/* Style for the delete button SVG */
+		.delete-button svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 24px;
+		}
+
+		/* Apply hover effect to the delete button */
+		.delete-button:hover #Path_141 {
+			fill: red;
+			/* Change the color to red on hover */
+		}
+
+		.delete-button {
+			margin-top: 0px;
+			top: 35px;
+			left: -40px;
+			/* Adjust margin to add space between content and button */
+		}
+
+		#Path_140 {
+			fill: transparent;
+		}
+
+		.Path_140 {
+			overflow: visible;
+			position: absolute;
+			width: 38.467px;
+			height: 38.467px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_141 {
+			fill: rgba(91, 91, 137, 1);
+		}
+
+		.Path_141 {
+			overflow: visible;
+			position: absolute;
+			width: 22.439px;
+			height: 28.85px;
+			left: 8.014px;
+			top: 4.809px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		.pencil-icon {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		.pencil-icon svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 20px;
+		}
+
+		.pencil-icon {
+			margin-top: 0px;
+			top: 35px;
+			left: -125px;
+		}
+
+		.pencil-icon:hover #Path_238 {
+			stroke: rgba(51, 53, 97);
+		}
+
+		#Path_238 {
+			fill: transparent;
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 2.5px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_238 {
+			overflow: visible;
+			position: absolute;
+			width: 24.875px;
+			height: 24.875px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		.disabled-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(255, 255, 255, 0.5);
+			backdrop-filter: blur(1px);
+			border-radius: 50%;
+		}
+
+		.download-icon {
+			position: relative;
+			width: 38.467px;
+			height: 38.467px;
+			top: 35px;
+			left: -210px;
+			cursor: pointer;
+			text-align: right;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+		}
+
+		.download-icon svg {
+			position: absolute;
+			left: 19px;
+			top: 18px;
+			transform: translate(-50%, -50%);
+			transition: fill 0.3s ease;
+			width: 24px;
+			height: 20px;
+		}
+
+		.download-icon:hover #file-download {
+			stroke: rgba(51, 53, 97);
+		}
+
+		#file-download {
+			fill: transparent;
+			stroke: rgba(90, 92, 137, 1);
+			stroke-width: 2.5px;
+			stroke-linejoin: round;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.file-download {
+			overflow: visible;
+			position: absolute;
+			width: 28.031px;
+			height: 15px;
+			top: 50px;
+			left: 80px;
+			transform: translateY(-50%);
+		}
+
+		.content-wrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			margin-right: -120px;
+		}
+
+		.info-wrapper {
+			flex: 1;
+		}
+
+		#delete-background-blur {
+			position: absolute;
+			width: 1920px;
+			height: 2876px;
+			background-color: rgb(0, 0, 0);
+			opacity: 0.5;
+			z-index: 1;
+		}
+
+		#deleteModal {
+			display: none;
+			position: absolute;
+			width: 1920px;
+			height: 2876px;
+			overflow: hidden;
+		}
+
+		#Security-Modal {
+			position: absolute;
+			width: 1042.727px;
+			height: 400px;
+			left: 650px;
+			top: 650px;
+			overflow: visible;
+			background-color: rgb(232, 230, 241);
+			z-index: 2;
+		}
+
+		#Enter_Security_Code {
+			left: 150px;
+			top: 150px;
+			position: absolute;
+			overflow: visible;
+			width: 792px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 40px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#download-Button {
+			position: absolute;
+			width: 253px;
+			height: 95px;
+			left: 2000px;
+			top: 1200px;
+			overflow: visible;
+		}
+
+		#Rectangle_126 {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		#download-button:hover #Rectangle_126 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Rectangle_126 {
+			position: absolute;
+			overflow: visible;
+			width: 253px;
+			left: 400px;
+			height: 300px;
+			top: 270px;
+		}
+
+		#Download {
+			left: 430px;
+			top: 290px;
+			position: absolute;
+			overflow: visible;
+			width: 189px;
+			height: 47px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 35px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#download-button:hover #Download {
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#security-cross {
+			fill: rgba(0, 0, 0, 1);
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 5px;
+			stroke-linejoin: miter;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.1s ease, stroke 0.1 ease;
+		}
+
+		#security-cross:hover {
+			fill: rgba(255, 0, 0, 1);
+			stroke: rgba(255, 0, 0, 1);
+		}
+
+		.security-cross {
+			overflow: visible;
+			position: absolute;
+			width: 25.385px;
+			height: 26.871px;
+			left: 980px;
+			top: 50px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Security_Question {
+			left: 300px;
+			top: 30px;
+			position: absolute;
+			overflow: visible;
+			width: 443px;
+			height: 57px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 43px;
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#Modal-Report-Edit {
+			position: absolute;
+			width: 1000px;
+			height: 400px;
+			left: 700px;
+			top: 750px;
+			overflow: visible;
+			background-color: rgb(248, 248, 251);
+			z-index: 2;
+		}
+
+		.cross-report {
+			overflow: visible;
+			position: absolute;
+			width: 15px;
+			height: 15px;
+			left: 1670px;
+			top: 770px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
 	</style>
 </head>
 
@@ -2048,11 +2388,42 @@
 						<ul class="item-list">
 							<% for (let i = 0; i < bills.length; i++) { %>
 							<li class="item">
-								<p class="time"><%= bills[i].Last_Updated_Time.toLocaleString()%></p>
-								<p class="from"> Patient name</p>
-								<p class="hospital-name"><%= bills[i].Patient_Id.Name %></p>
-								<p class="file-name"><%= bills[i].Name %> |
-									<%= bills[i].Category %></p>
+								<div class="content-wrapper">
+									<div class="info-wrapper">
+										<p class="time"><%= bills[i].Last_Updated_Time.toLocaleString()%></p>
+										<p class="from"> Patient name</p>
+										<p class="hospital-name"><%= bills[i].Patient_Id.Name %></p>
+										<p class="file-name"><%= bills[i].Name %> |
+											<%= bills[i].Category %></p>
+									</div>
+									<div class="delete-button" onclick="showDeleteBillModal('<%= bills[i]._id %>')">
+										<svg class="Path_140" viewBox="0 0 38.467 38.467">
+											<path id="Path_140"
+												d="M 0 0 L 38.466796875 0 L 38.466796875 38.466796875 L 0 38.466796875 L 0 0 Z">
+											</path>
+										</svg>
+										<svg class="Path_141" viewBox="5 3 22.439 28.85">
+											<path id="Path_141"
+												d="M 22.630615234375 12.61669921875 L 22.630615234375 28.64453125 L 9.808349609375 28.64453125 L 9.808349609375 12.61669921875 L 22.630615234375 12.61669921875 M 20.2264404296875 3 L 12.2125244140625 3 L 10.6097412109375 4.602783203125 L 5 4.602783203125 L 5 7.808349609375 L 27.43896484375 7.808349609375 L 27.43896484375 4.602783203125 L 21.8292236328125 4.602783203125 L 20.2264404296875 3 Z M 25.836181640625 9.4111328125 L 6.602783203125 9.4111328125 L 6.602783203125 28.64453125 C 6.602783203125 30.4075927734375 8.0452880859375 31.85009765625 9.808349609375 31.85009765625 L 22.630615234375 31.85009765625 C 24.3936767578125 31.85009765625 25.836181640625 30.4075927734375 25.836181640625 28.64453125 L 25.836181640625 9.4111328125 Z">
+											</path>
+										</svg>
+									</div>
+									<div class="pencil-icon">
+										<svg class="Path_238" viewBox="3.75 3.874 22.375 22.376">
+											<path id="Path_238"
+												d="M 5.416250228881836 20.05999946594238 L 20.71249961853027 4.762499809265137 C 21.96942710876465 3.559701681137085 23.95701789855957 3.581429719924927 25.18734741210938 4.811418533325195 C 26.41767501831055 6.041407585144043 26.4399528503418 8.028993606567383 25.23750114440918 9.286249160766602 L 9.938750267028809 24.58374977111816 C 9.589750289916992 24.93277931213379 9.145244598388672 25.17069053649902 8.661250114440918 25.26749992370605 L 3.75 26.25 L 4.732500076293945 21.33749961853027 C 4.829309463500977 20.85350608825684 5.067220687866211 20.40899848937988 5.416249752044678 20.05999946594238 Z">
+											</path>
+										</svg>
+										<div class="disabled-overlay"></div>
+									</div>
+									<div class="download-icon" onclick="downloadBill('<%= bills[i]._id %>')">
+										<svg class="file-download" viewBox="2.5 3.75 25 22.5">
+											<path id="file-download"
+												d="M 15 18.75 L 15 3.75 M 15 18.75 L 10 13.75 M 15 18.75 L 20 13.75 M 2.5 21.25 L 3.276249885559082 24.35625076293945 C 3.554412841796875 25.46907424926758 4.554188251495361 26.24982643127441 5.701250076293945 26.25 L 24.29874992370605 26.25 C 25.4454345703125 26.25 26.44532775878906 25.46940040588379 26.72365951538086 24.35661888122559 L 27.5 21.25">
+											</path>
+										</svg>
+									</div>
+								</div>
 							</li>
 							<% } %>
 						</ul>
@@ -2197,8 +2568,41 @@
 				</div>
 			</div>
 		</div>
+		<div id="deleteModal">
+			<div id="delete-background-blur">
+			</div>
+			<div id="Security-Modal">
+				<div id="Modal-Content">
+					<button class="cross-button" onclick="closeDeleteBillModal()">
+						<svg class="security-cross" viewBox="5 5 18.318 19.806">
+							<path id="security-cross"
+								d="M 23.318359375 24.8056640625 L 5 5 M 23.318359375 5 L 5 24.8056640625">
+							</path>
+						</svg>
+					</button>
+					<div id="download-button" onclick="deleteBill()">
+						<svg class="Rectangle_126">
+							<rect id="Rectangle_126" rx="47.5" ry="47.5" x="0" y="0" width="253" height="95">
+							</rect>
+						</svg>
+						<div id="Download">
+							<span>Confirm</span>
+						</div>
+					</div>
+
+					<div id="Enter_Security_Code">
+						<span>Are you sure you want to delete this Bill?</span>
+					</div>
+					<div id="Security_Question">
+						<span>Security Question</span>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script>
 			var modal = document.getElementById("NewPatientModel");
+			var deleteModal = document.getElementById("deleteModal");
+
 			function showModal() {
 				modal.style.display = "block";
 			}
@@ -2268,6 +2672,84 @@
 						console.error("Error:", error);
 					});
 			});
+
+			function showDeleteBillModal(billId) {
+				// Display the delete modal
+				deleteModal.style.display = "block";
+
+				// Make a fetch request to /addDeleteBillId endpoint
+				fetch('/addDeleteBillId', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ billId: billId })
+				})
+					.then(response => {
+						if (response.ok) {
+							console.log("Bill ID sent successfully");
+						} else {
+							console.error("Failed to send bill ID");
+						}
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			}
+
+			function closeDeleteBillModal() {
+				fetch('/removeDeleteBillId', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+					.then(response => {
+						if (response.ok) {
+							console.log("Bill ID removed successfully");
+							deleteModal.style.display = "none";
+							location.reload();
+						} else {
+							console.error("Failed to remove bill ID");
+						}
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			}
+
+			function deleteBill() {
+				fetch('/deleteBill', {
+					method: 'DELETE',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw new Error('Network response was not ok');
+						}
+						closeDeleteBillModal();
+					})
+					.catch(error => {
+						console.error('There was a problem with the fetch operation:', error);
+					});
+			}
+			function downloadBill(billId) {
+				if (billId) {
+					const downloadLink = document.createElement('a');
+					downloadLink.href = `/download-bill/${billId}`;
+					downloadLink.download = 'Bill_filename'; // Set the desired filename
+
+					// Trigger the download
+					document.body.appendChild(downloadLink);
+					downloadLink.click();
+					document.body.removeChild(downloadLink);
+				} else {
+					console.error('Invalid billId:', billId);
+					alert("Invalid report ID.");
+				}
+			}
 
 		</script>
 </body>

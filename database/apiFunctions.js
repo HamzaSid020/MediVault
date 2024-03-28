@@ -1227,12 +1227,21 @@ router.post('/uploadBill', uploadBill.single('file'), async (req, res) => {
     console.log('Request received:', req.file);
     const hospitalId = req.session.hospitalLoggedId;
     const file = req.file;
-    // Get the patient ID from the request body
     const medivaultId = req.body.MedivaultId;
-    console.log("hospitalId", hospitalId, "file", file, "MedivaultId", medivaultId);
+    const patientId = req.body.PatientId;
+    console.log("hospitalId", hospitalId, "MedivaultId", medivaultId, "PatientId", patientId);
+
     try {
-        // Find the patient by Medivault Id
-        const patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        let patient;
+        if (medivaultId) {
+            // Find the patient by Medivault Id
+            patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        } else if (patientId) {
+            // Find the patient by Patient Id
+            patient = await PatientInfo.findById(patientId);
+        } else {
+            return res.status(400).json({ error: 'MedivaultId or PatientId is required' });
+        }
 
         if (!patient) {
             return res.status(404).json({ error: 'Patient not found' });
@@ -1260,7 +1269,7 @@ router.post('/uploadBill', uploadBill.single('file'), async (req, res) => {
         console.log('Updated Patient info:', patient);
         res.status(200).json({ message: 'File uploaded successfully' });
     } catch (error) {
-        console.error('Error uploading report:', error);
+        console.error('Error uploading Bill:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
@@ -1277,10 +1286,20 @@ router.post('/uploadReport', uploadReport.single('file'), async (req, res) => {
     const file = req.file;
     // Get the patient ID from the request body
     const medivaultId = req.body.MedivaultId;
-    console.log("hospitalId", hospitalId, "file", file, "MedivaultId", medivaultId);
+    const patientId = req.body.PatientId;
+    console.log("hospitalId", hospitalId, "MedivaultId", medivaultId, "PatientId", patientId);
+
     try {
-        // Find the patient by Medivault Id
-        const patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        let patient;
+        if (medivaultId) {
+            // Find the patient by Medivault Id
+            patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        } else if (patientId) {
+            // Find the patient by Patient Id
+            patient = await PatientInfo.findById(patientId);
+        } else {
+            return res.status(400).json({ error: 'MedivaultId or PatientId is required' });
+        }
 
         if (!patient) {
             return res.status(404).json({ error: 'Patient not found' });
@@ -1322,12 +1341,20 @@ router.post('/uploadPrescription', uploadPrescription.single('file'), async (req
     console.log('Request received:', req.file);
     const hospitalId = req.session.hospitalLoggedId;
     const file = req.file;
-    // Get the patient ID from the request body
     const medivaultId = req.body.MedivaultId;
-    console.log("hospitalId", hospitalId, "file", file, "MedivaultId", medivaultId);
+    const patientId = req.body.PatientId;
+    console.log("hospitalId", hospitalId, "MedivaultId", medivaultId, "PatientId", patientId);
     try {
-        // Find the patient by Medivault Id
-        const patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        let patient;
+        if (medivaultId) {
+            // Find the patient by Medivault Id
+            patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        } else if (patientId) {
+            // Find the patient by Patient Id
+            patient = await PatientInfo.findById(patientId);
+        } else {
+            return res.status(400).json({ error: 'MedivaultId or PatientId is required' });
+        }
 
         if (!patient) {
             return res.status(404).json({ error: 'Patient not found' });
@@ -1354,7 +1381,7 @@ router.post('/uploadPrescription', uploadPrescription.single('file'), async (req
         console.log('Updated Patient info:', patient);
         res.status(200).json({ message: 'File uploaded successfully' });
     } catch (error) {
-        console.error('Error uploading report:', error);
+        console.error('Error uploading Prescription:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
@@ -1609,11 +1636,50 @@ router.post('/addDeleteReportId', (req, res) => {
     res.status(200).json({ message: 'Report ID added to session successfully' });
 });
 
+router.post('/addDeleteAppointmentId', (req, res) => {
+    const appointmentId = req.body.appointmentId;
+
+    // Assuming you are using express-session middleware to handle sessions
+    req.session.deleteAppointmentId = appointmentId;
+
+    res.status(200).json({ message: 'Appointment ID added to session successfully' });
+});
+
+router.post('/removeDeleteAppointmentId', (req, res) => {
+    // Assuming you are using express-session middleware to handle sessions
+    delete req.session.deleteAppointmentId;
+
+    res.status(200).json({ message: 'Appointment ID removed from session successfully' });
+});
+
 router.post('/removeDeleteReportId', (req, res) => {
     // Assuming you are using express-session middleware to handle sessions
     delete req.session.reportId;
 
     res.status(200).json({ message: 'Report ID removed from session successfully' });
+});
+
+router.delete('/deleteAppointment', async (req, res) => {
+    if (!req.session.loggedIn || !req.session.hospitalLoggedId) {
+        return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+    }
+
+    const appointmentId = req.session.deleteAppointmentId;
+    try {
+        const appointment = await Appointment.findOne({ _id: appointmentId, Hospital_Id: req.session.hospitalLoggedId });
+
+        if (!appointment) {
+            return res.status(404).json({ message: 'Appointment not found or not authorized to delete' });
+        }
+
+        await Appointment.findOneAndDelete({ _id: appointmentId });
+
+        res.status(200).json({ message: 'Appointment deleted successfully' });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
 
 router.delete('/deleteReport', async (req, res) => {
