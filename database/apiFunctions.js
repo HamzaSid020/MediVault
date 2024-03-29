@@ -114,6 +114,26 @@ function generateMedivaultId(firstName, lastName, phoneNumber) {
     return medivaultId;
 }
 
+async function hashOHIP(plainTextOHIP) {
+    const saltRounds = 10;
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hash = await bcrypt.hash(plainTextOHIP, salt);
+    return hash;
+}
+
+async function compareOHIP(newPlainTextOHIP, existingHashedOHIP) {
+    try {
+        // Compare the new OHIP number with the existing hashed OHIP number
+        const match = await bcrypt.compare(newPlainTextOHIP, existingHashedOHIP);
+        
+        // Return the result of the comparison
+        return match;
+    } catch (error) {
+        console.error('Error comparing OHIP numbers:', error);
+        throw error; // Propagate the error
+    }
+}
+
 function calculateAge(birthDate) {
     // Split the date string into day, month, and year
     const [year, month, day] = birthDate.split('-').map(Number);
@@ -178,7 +198,7 @@ async function createHospitalCodeForPatient(patientInfo) {
     }
 }
 
-function convertToOriginalData(formattedData, isCreating = false) {
+async function convertToOriginalData(formattedData, isCreating = false) {
     // Combine the first and last name into the original 'Name' field
     const name = `${formattedData.firstName} ${formattedData.lastName}`.trim();
 
@@ -207,10 +227,11 @@ function convertToOriginalData(formattedData, isCreating = false) {
             Sex: sex,
             Address: address,
             Email: formattedData.emailAddress,
-            OHIP_Number: formattedData.ohip,
+            OHIP_Number: await hashOHIP(formattedData.ohip), // Now the hashed OHIP is available
             Patient_Id: formattedData.patientId,
             Last_Updated_Time: formattedCurrentTime
         };
+
     }
     else {
         originalData = {
@@ -1206,15 +1227,19 @@ router.post('/patientCreate', async (req, res) => {
 
         const { newData } = req.body;
         console.log("New Patient Info Server", newData);
-        
-        // Check if the OHIP number already exists
-        const existingPatient = await PatientInfo.findOne({ OHIP_Number: newData.ohip });
-        if (existingPatient) {
-            return res.status(400).json({ success: false, message: 'OHIP number already exists' });
+
+        const existingOHIPs = await PatientInfo.find({}, { OHIP_Number: 1, _id: 0 });
+        const existingOHIPNumbers = existingOHIPs.map(patient => patient.OHIP_Number);
+
+        for (const number of existingOHIPNumbers) {
+            const match = await compareOHIP(newData.ohip, number);
+            if (match) {
+                return res.status(400).json({ success: false, message: 'OHIP number already exists' });
+            }
         }
 
         // Convert formatted data to the structure expected by your model
-        const formattedData = convertToOriginalData(newData, true);
+        const formattedData = await convertToOriginalData(newData, true);
         const newMedivaultId = formattedData.Medivault_Id;
         const randomPassword = generateRandomPassword();
         formattedData.Hospital_Ids = [req.session.hospitalLoggedId];
@@ -1256,9 +1281,29 @@ router.post('/linkPatient', async (req, res) => {
     try {
         // Extract OHIP number and hospital ID from the request body
         const { ohip } = req.body;
+        let patientId;
 
-        // Find the patient by OHIP number
-        const patient = await PatientInfo.findOne({ OHIP_Number: ohip });
+        // Find all existing patients
+        const existingPatients = await PatientInfo.find({});
+
+        // Iterate through existing patients
+        for (const ohipPatient of existingPatients) {
+            // Compare the OHIP numbers
+            const match = await compareOHIP(ohip, ohipPatient.OHIP_Number);
+            if (match) {
+                // If there's a match, store the patient ID and break the loop
+                patientId = ohipPatient._id;
+                break;
+            }
+        }
+
+        // If no matching OHIP found, return a message
+        if (!patientId) {
+            return res.status(404).json({ success: false, message: 'No patient with the provided OHIP number found' });
+        }
+
+        // Find the patient by ID
+        const patient = await PatientInfo.findById(patientId);
 
         // If patient is not found, return an error
         if (!patient) {
@@ -1283,7 +1328,7 @@ router.post('/linkPatient', async (req, res) => {
         // Save hospital's updated information
         const notificationMessage = `${hospital.Name} has been linked`;
         patient.Notifications.push({ message: notificationMessage });
-        
+
         await hospital.save();
         await patient.save();
 
@@ -2181,8 +2226,8 @@ router.get('/patientDashboard', async (req, res) => {
             .populate('Hospital_Id')
             .exec();
 
-            const patientNotifications = patientInfo.Notifications || [];
-            const unreadNotificationsCount = patientInfo.Notifications.filter(notification => !notification.read).length;
+        const patientNotifications = patientInfo.Notifications || [];
+        const unreadNotificationsCount = patientInfo.Notifications.filter(notification => !notification.read).length;
 
         res.render('patientInbox', { patientInfo: patientInfo, patientNotifications, unreadNotificationsCount });
     } catch (error) {

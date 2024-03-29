@@ -14,6 +14,13 @@ const createHospitalCodeForPatient = require('./apiFunctions').createHospitalCod
 
 const bcrypt = require('bcrypt');
 
+async function hashOHIP(plainTextOHIP) {
+  const saltRounds = 10;
+  const salt = await bcrypt.genSalt(saltRounds);
+  const hash = await bcrypt.hash(plainTextOHIP, salt);
+  return hash;
+}
+
 async function hashPassword(plainTextPassword) {
   return new Promise((resolve, reject) => {
       const saltRounds = 10; // The higher the rounds, the more secure but slower the hashing
@@ -119,7 +126,6 @@ async function addDummyPatients() {
     const hospitalA_Id = await HospitalInfo.findOne({ Name: 'Hospital A' }).select('_id');
     const hospitalB_Id = await HospitalInfo.findOne({ Name: 'Hospital B' }).select('_id');
     const hospitalC_Id = await HospitalInfo.findOne({ Name: 'Hospital C' }).select('_id');
-
     const dummyPatients = [
       {
         Name: 'Hamza Siddiqui',
@@ -127,7 +133,7 @@ async function addDummyPatients() {
         Email: 'patient1@example.com',
         DOB: '2000-06-24',
         DOB: '2000-06-24',
-        OHIP_Number:'1234-567-891-AB',
+        OHIP_Number: await hashOHIP('1234-567-891-AB'),
         Age: calculateAge('2000-06-24'),
         Sex: 'M',
         Address: '123 Havelwood Cresent, Waterloo, ON N2L 4L2',
@@ -141,7 +147,7 @@ async function addDummyPatients() {
         Phone_No: '1234554855',
         Email: 'patient12@example.com',
         DOB: '1999-10-10',
-        OHIP_Number:'2345-678-912-CD',
+        OHIP_Number: await hashOHIP('2345-678-912-CD'),
         Age: calculateAge('1999-10-10'),
         Sex: 'F',
         Address: '123 Havelwood Cresent, Waterloo, ON N2L 4L2',
@@ -155,7 +161,7 @@ async function addDummyPatients() {
         Phone_No: '9876543210',
         Email: 'patient2@example.com',
         DOB: '2006-09-11',
-        OHIP_Number:'3456-789-123-EF',
+        OHIP_Number: await hashOHIP('3456-789-123-EF'),
         Age: calculateAge('2006-09-11'),
         Sex: 'F',
         Address: '1567 Albert Street, Waterloo, ON N2L 4L2',
