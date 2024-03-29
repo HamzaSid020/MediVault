@@ -2110,6 +2110,22 @@
 			font-size: 43px;
 			color: rgba(92, 93, 138, 1);
 		}
+
+		.badge {
+			position: absolute;
+			top: 13px;
+			left: 160px;
+			background-color: red;
+			color: white;
+			border-radius: 50%;
+			width: 30px;
+			height: 30px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 18px;
+			font-weight: bold;
+		}
 	</style>
 </head>
 
@@ -2415,6 +2431,7 @@
 							<div id="Group_134">
 								<div id="Repeat_Grid_7">
 									<div id="Group_c" class="">
+										<a href="/hospitalDashboard" style=" color:  rgba(90, 92, 137, 1);">
 										<svg class="Path_135" viewBox="0 0 283.344 59.051">
 											<path id="Path_135"
 												d="M 34.00130844116211 0 L 249.3429412841797 0 C 268.121337890625 0 283.34423828125 13.21907615661621 283.34423828125 29.525634765625 C 283.34423828125 45.83219146728516 268.121337890625 59.05126953125 249.3429412841797 59.05126953125 L 34.00130844116211 59.05126953125 C 15.22290420532227 59.05126953125 0 45.83219146728516 0 29.525634765625 C 0 13.21907615661621 15.22290420532227 0 34.00130844116211 0 Z">
@@ -2422,7 +2439,11 @@
 										</svg>
 										<div id="Inbox">
 											<span>Inbox</span>
+											<% if (unreadNotificationsCount > 0) { %>
+												<div class="badge"><%= unreadNotificationsCount %></div>
+												<% } %>
 										</div>
+									</a>
 									</div>
 									<div id="Group_da" class="">
 										<a href="/hospitalDashboard/patients" style=" color:  rgba(90, 92, 137, 1);">

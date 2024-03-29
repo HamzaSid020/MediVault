@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Patient info</title>
+	<title>Reports</title>
 	<style id="applicationStylesheet" type="text/css">
 		:root {
 			--web-view-ids: Patient_info;
@@ -1087,7 +1087,7 @@
 		.rectangle-container {
 			position: relative;
 			width: 1273px;
-			height: 500px;
+			height: 1300px;
 			margin-left: 547px;
 			margin-top: 1450px;
 			background-color: rgba(255, 255, 255, 1);
@@ -1131,7 +1131,7 @@
 		.time {
 			float: right;
 			font-size: 15px;
-			top:18px;
+			top: 18px;
 		}
 
 		.file-name {
@@ -3025,6 +3025,22 @@
 			margin-right: 5px;
 			/* Adjust the spacing as needed */
 		}
+		
+		.badge {
+			position: absolute;
+			top: 20px;
+			left: 230px;
+			background-color: red;
+			color: white;
+			border-radius: 50%;
+			width: 30px;
+			height: 30px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 18px;
+			font-weight: bold;
+		}
 	</style>
 </head>
 
@@ -3132,7 +3148,7 @@
 							<ellipse rx="208.5" ry="208.5" cx="218.5" cy="218.5"></ellipse>
 						</clipPath>
 					</defs>
-					<image xlink:href="/images/patient/<%= patientInfo.Picture %>"  preserveAspectRatio="xMidYMid slice"
+					<image xlink:href="/images/patient/<%= patientInfo.Picture %>" preserveAspectRatio="xMidYMid slice"
 						clip-path="url(#circleClip)" x="0" y="0" width="437" height="437"></image>
 				</svg>
 				<div id="Patient_Name">
@@ -3180,58 +3196,63 @@
 
 			<div id="Repeat_Grid_5">
 				<div id="Group_bv" class="">
-					<svg class="Rectangle_84">
-						<rect id="Rectangle_84" rx="33" ry="33" x="0" y="0" width="275" height="66">
-						</rect>
-					</svg>
-					<div id="Inbox">
-						<span>Inbox</span>
-					</div>
+					<a href="/patientDashboard" style=" color:  rgba(90, 92, 137, 1);">
+						<svg class="Rectangle_84">
+							<rect id="Rectangle_84" rx="33" ry="33" x="0" y="0" width="275" height="66">
+							</rect>
+						</svg>
+						<div id="Inbox">
+							<span>Inbox</span>
+							<% if (unreadNotificationsCount > 0) { %>
+								<div class="badge"><%= unreadNotificationsCount %></div>
+								<% } %>
+						</div>
+					</a>
 				</div>
 				<div id="Group_bx" class="">
-					<svg class="Rectangle_84_by">
-						<rect id="Rectangle_84_by" rx="33" ry="33" x="0" y="0" width="275" height="66">
-						</rect>
-					</svg>
-					<div id="Reports">
-						<a href="/patientReport" style=" color:  rgba(90, 92, 137, 1);">
+					<a href="/patientReport" style=" color:  rgba(90, 92, 137, 1);">
+						<svg class="Rectangle_84_by">
+							<rect id="Rectangle_84_by" rx="33" ry="33" x="0" y="0" width="275" height="66">
+							</rect>
+						</svg>
+						<div id="Reports">
 							<span>Reports</span>
-						</a>
-					</div>
+						</div>
+					</a>
 				</div>
 				<div id="Group_bz" class="">
-					<svg class="Rectangle_84_b">
-						<rect id="Rectangle_84_b" rx="33" ry="33" x="0" y="0" width="275" height="66">
-						</rect>
-					</svg>
-					<div id="Appointments">
-						<a href="/patientAppointment" style=" color:  rgba(90, 92, 137, 1);">
+					<a href="/patientAppointment" style=" color:  rgba(90, 92, 137, 1);">
+						<svg class="Rectangle_84_b">
+							<rect id="Rectangle_84_b" rx="33" ry="33" x="0" y="0" width="275" height="66">
+							</rect>
+						</svg>
+						<div id="Appointments">
 							<span>Appointments</span>
-						</a>
-					</div>
+						</div>
+					</a>
 				</div>
 				<div id="Group_b" class="">
-					<svg class="Rectangle_84_ca">
-						<rect id="Rectangle_84_ca" rx="33" ry="33" x="0" y="0" width="275" height="66">
-						</rect>
-					</svg>
-					<div id="Prescriptions">
-						<a href="/patientPrescription" style=" color:  rgba(90, 92, 137, 1);">
+					<a href="/patientPrescription" style=" color:  rgba(90, 92, 137, 1);">
+						<svg class="Rectangle_84_ca">
+							<rect id="Rectangle_84_ca" rx="33" ry="33" x="0" y="0" width="275" height="66">
+							</rect>
+						</svg>
+						<div id="Prescriptions">
 							<span>Prescriptions</span>
-						</a>
-					</div>
+						</div>
+					</a>
 				</div>
 				<div id="Group_ca" class="">
+					<a href="/patientBill" style=" color:  rgba(90, 92, 137, 1);">
 					<svg class="Rectangle_84_cb">
 						<rect id="Rectangle_84_cb" rx="33" ry="33" x="0" y="0" width="275" height="66">
 						</rect>
 					</svg>
 					<div id="Bills">
-						<a href="/patientBill" style=" color:  rgba(90, 92, 137, 1);">
 							<span>Bills</span>
-						</a>
+						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 			<div id="Menu">
 				<span>Menu</span>

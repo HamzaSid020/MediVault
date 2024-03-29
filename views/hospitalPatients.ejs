@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Codes</title>
+	<title>Dashboard</title>
 	<style id="applicationStylesheet" type="text/css">
 		.mediaViewInfo {
 			--web-view-name: Clinic Home Page;
@@ -926,6 +926,7 @@
 			font-size: 26px;
 			color: rgba(255, 255, 255, 1);
 		}
+
 		.Rectangle_85 {
 			position: absolute;
 			overflow-y: auto;
@@ -1452,31 +1453,6 @@
 			text-decoration: none;
 		}
 
-		.time {
-			float: right;
-			top: 15px;
-			font-size: 30px;
-			margin: 0;
-			color: rgba(90, 92, 137, 1);
-			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-
-		}
-
-		.file-name {
-			font-size: 15px;
-		}
-
-		.file-name {
-			margin: 0;
-			color: rgba(90, 92, 137, 1);
-		}
-
-		.from {
-			margin: 0;
-			color: rgba(90, 92, 137, 1);
-			font-size: 25px;
-		}
-
 		#Group_c:hover #Path_135 {
 			fill: rgba(92, 93, 138, 1);
 			stroke: rgba(255, 255, 255, 1);
@@ -1543,21 +1519,21 @@
 		#add-icon {
 			fill: rgba(92, 93, 138, 1);
 		}
-		
+
 		.add-icon {
 			overflow: visible;
 			position: absolute;
 			width: 30px;
 			height: 30px;
-			left: 1760px;
-			top: 600px;
+			left: 1780px;
+			top: 728px;
 			transform: matrix(1, 0, 0, 1, 0, 0);
 		}
 
-		.add-icon:hover #add-icon{
+		.add-icon:hover #add-icon {
 			fill: rgba(51, 53, 97);
 		}
-
+		
 		.badge {
 			position: absolute;
 			top: 13px;
@@ -1609,11 +1585,12 @@
 									</a>
 									<div id="Contact_Us">
 										<a href="/contactUs" style="text-decoration: none; color: rgba(255,255,255,1);">
-										<span>Contact Us</span>
+											<span>Contact Us</span>
 										</a>
 									</div>
 									<div id="Welcome_Clinic_Name">
-										<a href="/logout" style="text-decoration: none; color: rgba(255,255,255,1);" ><span>Logout</span></a>
+										<a href="/logout"
+											style="text-decoration: none; color: rgba(255,255,255,1);"><span>Logout</span></a>
 									</div>
 									<div id="Repeat_Grid_2">
 										<div id="Group" class="">
@@ -1764,16 +1741,16 @@
 							</rect>
 						</svg>
 						<div id="Patients">
-							<a href="/hospitalDashboard/codes" style=" color:  rgba(90, 92, 137, 1);">
-								<span>Codes</span>
+							<a href="/hospitalDashboard/patients" style=" color:  rgba(90, 92, 137, 1);">
+								<span>Patients</span>
 							</a>
 						</div>
-						<svg class="add-icon" viewBox="5.625 5.625 18.75 18.75">
-							<path id="add-icon"
-								d="M 24.375 16.24998092651367 L 16.24998092651367 16.24998092651367 L 16.24998092651367 24.375 L 13.75002002716064 24.375 L 13.75002002716064 16.24998092651367 L 5.625 16.24998092651367 L 5.625 13.75002002716064 L 13.75001907348633 13.75002002716064 L 13.75001907348633 5.625 L 16.24998092651367 5.625 L 16.24998092651367 13.75001907348633 L 24.375 13.75001907348633 L 24.375 16.24998092651367 Z">
-							</path>
-						</svg>
 					</div>
+					<svg class="add-icon" viewBox="5.625 5.625 18.75 18.75" onclick="registerNewPatient()">
+						<path id="add-icon"
+							d="M 24.375 16.24998092651367 L 16.24998092651367 16.24998092651367 L 16.24998092651367 24.375 L 13.75002002716064 24.375 L 13.75002002716064 16.24998092651367 L 5.625 16.24998092651367 L 5.625 13.75002002716064 L 13.75001907348633 13.75002002716064 L 13.75001907348633 5.625 L 16.24998092651367 5.625 L 16.24998092651367 13.75001907348633 L 24.375 13.75001907348633 L 24.375 16.24998092651367 Z">
+						</path>
+					</svg>
 					<div id="Register_Patient__">
 						<span>Register Patient<br /></span><br />
 					</div>
@@ -1828,18 +1805,37 @@
 					<div class="Rectangle_85">
 
 						<ul class="item-list">
-							<% for (let i = 0; i < hospitalCodes.length; i++) { %>
+							<% for (let i = 0; i < patientData.length; i++) { %>
 							<li class="item">
-								<p class="time"><%= hospitalCodes[i].Code%></p>
-								<% if (hospitalCodes[i].Patient_Id) { %>
-								<p class="from"> <%= hospitalCodes[i].Patient_Id.Name %></p>
-								<% } else { %>
-								<p class="from">Patient Information Not Available</p>
-								<% } %>
-								<p class="file-name">Medivault Id: <%=hospitalCodes[i].Patient_Id.Medivault_Id %></p>
-								<!-- <p class="file-name"><%= hospitalCodes[i].Doctor_Name %> |
-									<%= hospitalCodes[i].Status %>
-									| <%= hospitalCodes[i].Appointment_Type %></p> -->
+								<a href="/hospitalReportInfo/<%= patientData[i].patient.Medivault_Id %>"
+									class="patient-link">
+									<div class="patient-info">
+										<div class="left-info">
+											<div class="patient-name" id="Patient_Name_<%= i %>">
+												<span><%= patientData[i].patient.Name %> |
+													<%= patientData[i].patient.Sex %> |
+													<%= patientData[i].patient.Age %> yrs</span>
+											</div>
+											<div class="patient-id" id="Patient_Id_<%= i %>">
+												<span>Patient Id: <%= patientData[i].patient.Patient_Id %></span>
+											</div>
+											<div class="email" id="Email_<%= i %>">
+												<span> <%= patientData[i].patient.Email %> |
+													+<%= patientData[i].patient.Phone_No %></span>
+											</div>
+										</div>
+										<div class="right-info">
+											<div class="patient-additional-info">
+												<span>Appointments:
+													<%= patientData[i].numberOfAppointments || 0 %></span><br>
+												<span>Prescriptions:
+													<%= patientData[i].numberOfPrescriptions || 0 %></span><br>
+												<span>Reports: <%= patientData[i].numberOfReports || 0 %></span><br>
+												<span>Bills: <%= patientData[i].numberOfBills || 0 %></span>
+											</div>
+										</div>
+									</div>
+								</a>
 							</li>
 							<% } %>
 						</ul>
@@ -1850,6 +1846,7 @@
 							<div id="Group_134">
 								<div id="Repeat_Grid_7">
 									<div id="Group_c" class="">
+										<a href="/hospitalDashboard" style=" color:  rgba(90, 92, 137, 1);">
 										<svg class="Path_135" viewBox="0 0 283.344 59.051">
 											<path id="Path_135"
 												d="M 34.00130844116211 0 L 249.3429412841797 0 C 268.121337890625 0 283.34423828125 13.21907615661621 283.34423828125 29.525634765625 C 283.34423828125 45.83219146728516 268.121337890625 59.05126953125 249.3429412841797 59.05126953125 L 34.00130844116211 59.05126953125 C 15.22290420532227 59.05126953125 0 45.83219146728516 0 29.525634765625 C 0 13.21907615661621 15.22290420532227 0 34.00130844116211 0 Z">
@@ -1861,6 +1858,7 @@
 												<div class="badge"><%= unreadNotificationsCount %></div>
 												<% } %>
 										</div>
+									</a>
 									</div>
 									<div id="Group_da" class="">
 										<a href="/hospitalDashboard/patients" style=" color:  rgba(90, 92, 137, 1);">
@@ -1925,7 +1923,7 @@
 										</a>
 									</div>
 									<div id="Group_dh" class="">
-										<a href="/hospitalDashboard/bills" style=" color:  rgba(90, 92, 137, 1);">
+										<a href="/hospitalDashboard/Bills" style=" color:  rgba(90, 92, 137, 1);">
 											<svg class="Path_135_di" viewBox="0 0 283.344 59.051">
 												<path id="Path_135_di"
 													d="M 34.00130844116211 0 L 249.3429412841797 0 C 268.121337890625 0 283.34423828125 13.21907615661621 283.34423828125 29.525634765625 C 283.34423828125 45.83219146728516 268.121337890625 59.05126953125 249.3429412841797 59.05126953125 L 34.00130844116211 59.05126953125 C 15.22290420532227 59.05126953125 0 45.83219146728516 0 29.525634765625 C 0 13.21907615661621 15.22290420532227 0 34.00130844116211 0 Z">
@@ -1943,6 +1941,12 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<script>
+		function registerNewPatient() {
+			window.location.href = '/patientRegistration';
+		}
+	</script>
 </body>
 
 </html>

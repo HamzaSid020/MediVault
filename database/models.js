@@ -1,6 +1,13 @@
 // models.js
 const mongoose = require('mongoose');
 
+
+const NotificationSchema = new mongoose.Schema({
+    message: String,
+    timestamp: { type: Date, default: Date.now },
+    read: { type: Boolean, default: false }
+});
+
 const HospitalInfoSchema = new mongoose.Schema({
     Name: String,
     Phone_No: String,
@@ -8,7 +15,8 @@ const HospitalInfoSchema = new mongoose.Schema({
     Description: String,
     Address: String,
     Picture: String,
-    Last_Updated_Time: { type: Date, default: Date.now }
+    Last_Updated_Time: { type: Date, default: Date.now },
+    Notifications: [NotificationSchema]
 });
 
 const PatientInfoSchema = new mongoose.Schema({
@@ -23,7 +31,8 @@ const PatientInfoSchema = new mongoose.Schema({
     Patient_Id: String,
     Medivault_Id: String,
     Hospital_Ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Hospital_Info' }],
-    Last_Updated_Time: { type: Date, default: Date.now }
+    Last_Updated_Time: { type: Date, default: Date.now },
+    Notifications: [NotificationSchema]
 });
 
 const ReportSchema = new mongoose.Schema({

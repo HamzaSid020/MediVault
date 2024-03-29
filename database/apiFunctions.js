@@ -107,14 +107,8 @@ function generateRandomPassword() {
 function generateMedivaultId(firstName, lastName, phoneNumber) {
     // Extracting the first letter of the first name
     const firstLetter = firstName.charAt(0).toUpperCase();
-
-    // Extracting the first 4 letters of the last name (or less if last name is shorter)
     const lastFourLetters = lastName.slice(0, 4).toUpperCase();
-
-    // Extracting the last four digits of the phone number
     const lastFourDigits = extractLastFourDigits(phoneNumber);
-
-    // Combining the components to form the 9-digit ID
     const medivaultId = firstLetter + lastFourLetters + lastFourDigits;
 
     return medivaultId;
@@ -126,11 +120,7 @@ function calculateAge(birthDate) {
 
     // Create a Date object with the provided values
     const birthDateObject = new Date(year, month - 1, day);
-
-    // Get the current date
     const currentDate = new Date();
-
-    // Calculate the difference in years
     const age = currentDate.getFullYear() - birthDateObject.getFullYear();
 
     // Adjust age based on the month and day
@@ -144,12 +134,8 @@ function calculateAge(birthDate) {
 }
 
 function extractLastFourDigits(phoneNumber) {
-    // Convert phone number to string if it's not already
     const phoneNumberString = phoneNumber.toString();
-
-    // Extract the last four digits of the phone number
     const lastFourDigits = phoneNumberString.slice(-4);
-
     return lastFourDigits;
 }
 
@@ -190,6 +176,55 @@ async function createHospitalCodeForPatient(patientInfo) {
             console.log(`Hospital code already exists for ${patientInfo.Name} at ${hospitalId}`);
         }
     }
+}
+
+function convertToOriginalData(formattedData, isCreating = false) {
+    // Combine the first and last name into the original 'Name' field
+    const name = `${formattedData.firstName} ${formattedData.lastName}`.trim();
+
+    // Combine the street, city, zip code, and province into the original 'Address' field
+    const address = `${formattedData.streetName}, ${formattedData.city}, ${formattedData.province} ${formattedData.zipCode}`;
+
+    // Map the 'gender' back to the original 'Sex' field
+    const genderMap = {
+        'male': 'M',
+        'female': 'F',
+        'other': 'X' // Add more mappings as needed
+    };
+    const sex = genderMap[formattedData.gender] || '';
+
+    const currentDate = new Date();
+    const formattedCurrentTime = currentDate.toISOString();
+    let originalData = '';
+
+    if (isCreating) {
+        const medivaultId = generateMedivaultId(formattedData.firstName, formattedData.lastName, formattedData.mobileNumber);
+        originalData = {
+            Medivault_Id: medivaultId,
+            Name: name,
+            Phone_No: formattedData.mobileNumber,
+            DOB: formattedData.dob,
+            Sex: sex,
+            Address: address,
+            Email: formattedData.emailAddress,
+            Patient_Id: formattedData.patientId,
+            Last_Updated_Time: formattedCurrentTime
+        };
+    }
+    else {
+        originalData = {
+            Name: name,
+            Phone_No: formattedData.mobileNumber,
+            DOB: formattedData.dob,
+            Sex: sex,
+            Address: address,
+            Email: formattedData.emailAddress,
+            Patient_Id: formattedData.patientId,
+            Last_Updated_Time: formattedCurrentTime
+        };
+    }
+
+    return originalData;
 }
 
 router.get('/', async (req, res) => {
@@ -362,7 +397,9 @@ router.get('/patientReport', async (req, res) => {
         console.log(patientInfo);
         console.log(reports);
 
-        res.render('patientReportInfo', { patientInfo: patientInfo, report_info: reports });
+        const unreadNotificationsCount = patientInfo.Notifications.filter(notification => !notification.read).length;
+
+        res.render('patientReportInfo', { patientInfo: patientInfo, report_info: reports, unreadNotificationsCount });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -472,8 +509,9 @@ router.get('/patientAppointment', async (req, res) => {
         // Pass the patient ID to the render function
         console.log(patientInfo);
         console.log(appointment);
+        const unreadNotificationsCount = patientInfo.Notifications.filter(notification => !notification.read).length;
 
-        res.render('patientAppointmentInfo', { patientInfo: patientInfo, appointment_info: appointment });
+        res.render('patientAppointmentInfo', { patientInfo: patientInfo, appointment_info: appointment, unreadNotificationsCount });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -533,8 +571,9 @@ router.get('/patientBill', async (req, res) => {
         // Pass the patient ID to the render function
         console.log("patientInfo:", patientInfo);
         console.log("BillInfo:", bills);
+        const unreadNotificationsCount = patientInfo.Notifications.filter(notification => !notification.read).length;
 
-        res.render('patientBillInfo', { patientInfo: patientInfo, bill_info: bills });
+        res.render('patientBillInfo', { patientInfo: patientInfo, bill_info: bills, unreadNotificationsCount });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -594,8 +633,9 @@ router.get('/patientPrescription', async (req, res) => {
         // Pass the patient ID to the render function
         console.log("patientInfo:", patientInfo);
         console.log("PrescriptionInfo:", prescriptions);
+        const unreadNotificationsCount = patientInfo.Notifications.filter(notification => !notification.read).length;
 
-        res.render('patientPrescriptionInfo', { patientInfo: patientInfo, prescription_info: prescriptions });
+        res.render('patientPrescriptionInfo', { patientInfo: patientInfo, prescription_info: prescriptions, unreadNotificationsCount });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -713,9 +753,10 @@ router.get('/hospitalDashboard/patients', async (req, res) => {
         });
 
         const patientData = await Promise.all(patientDataPromises);
+        const unreadNotificationsCount = hospital.Notifications.filter(notification => !notification.read).length;
 
         // Render the hospital dashboard with the patients data
-        res.render('hospitalDashboard', { hospital, patientData });
+        res.render('hospitalPatients', { hospital, patientData, unreadNotificationsCount });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -776,8 +817,9 @@ router.get('/hospitalDashboard/appointments', async (req, res) => {
         });
 
         const patientData = await Promise.all(patientDataPromises);
+        const unreadNotificationsCount = hospital.Notifications.filter(notification => !notification.read).length;
 
-        res.render('hospitalAppointments', { hospital, appointmentInfo, patients, patientData });
+        res.render('hospitalAppointments', { hospital, appointmentInfo, patients, patientData, unreadNotificationsCount });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -835,8 +877,57 @@ router.get('/hospitalDashboard/codes', async (req, res) => {
         });
 
         const patientData = await Promise.all(patientDataPromises);
+        const unreadNotificationsCount = hospital.Notifications.filter(notification => !notification.read).length;
 
-        res.render('hospitalCodes', { hospital, hospitalCodes, patientData });
+        res.render('hospitalCodes', { hospital, hospitalCodes, patientData, unreadNotificationsCount });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.get('/hospitalDashboard', async (req, res) => {
+    try {
+        if (!req.session.hospitalLoggedId) {
+            // Handle the case when hospitalLoggedId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Fetch the hospital information
+        const hospital = await HospitalInfo.findById(hospitalId);
+
+        if (!hospital) {
+            return res.status(404).send('Hospital not found');
+        }
+
+        // Fetch all patients associated with the hospital
+        const patients = await PatientInfo.find({ Hospital_Ids: hospitalId });
+
+        // Aggregate data for each patient
+        const patientDataPromises = patients.map(async (patient) => {
+            const patientId = patient._id;
+
+            const numberOfBills = await Bills.countDocuments({ Patient_Id: patientId });
+            const numberOfPrescriptions = await Prescription.countDocuments({ Patient_Id: patientId });
+            const numberOfAppointments = await Appointment.countDocuments({ Patient_Id: patientId });
+            const numberOfReports = await Report.countDocuments({ Patient_Id: patientId });
+
+            return {
+                patient,
+                numberOfBills,
+                numberOfPrescriptions,
+                numberOfAppointments,
+                numberOfReports,
+            };
+        });
+
+        const patientData = await Promise.all(patientDataPromises);
+        const hospitalNotifications = hospital.Notifications || [];
+        const unreadNotificationsCount = hospital.Notifications.filter(notification => !notification.read).length;
+
+        res.render('hospitalInbox', { hospital, patientData, hospitalNotifications, unreadNotificationsCount });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -894,8 +985,9 @@ router.get('/hospitalDashboard/reports', async (req, res) => {
         });
 
         const patientData = await Promise.all(patientDataPromises);
+        const unreadNotificationsCount = hospital.Notifications.filter(notification => !notification.read).length;
 
-        res.render('hospitalReports', { hospital, reports, patients, patientData });
+        res.render('hospitalReports', { hospital, reports, patients, patientData, unreadNotificationsCount });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -953,8 +1045,9 @@ router.get('/hospitalDashboard/bills', async (req, res) => {
         });
 
         const patientData = await Promise.all(patientDataPromises);
+        const unreadNotificationsCount = hospital.Notifications.filter(notification => !notification.read).length;
 
-        res.render('hospitalBills', { hospital, bills, patients, patientData });
+        res.render('hospitalBills', { hospital, bills, patients, patientData, unreadNotificationsCount });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -1011,8 +1104,9 @@ router.get('/hospitalDashboard/prescriptions', async (req, res) => {
         });
 
         const patientData = await Promise.all(patientDataPromises);
+        const unreadNotificationsCount = hospital.Notifications.filter(notification => !notification.read).length;
 
-        res.render('hospitalPrescriptions', { hospital, prescriptions, patients, patientData });
+        res.render('hospitalPrescriptions', { hospital, prescriptions, patients, patientData, unreadNotificationsCount });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -1080,8 +1174,19 @@ router.post('/patientUpdate', async (req, res) => {
         await PatientInfo.findByIdAndUpdate(
             patientId,
             { $set: originalDataAgain },
-            { new: true } // Return the updated document
+            { new: true }
         );
+
+        // Fetch patient's information using the Patient_Id
+        const patient = await PatientInfo.findById(patientId);
+        if (!patient.notifications) {
+            patient.notifications = [];
+        }
+        const notificationMessage = `Patient data updated for "${patient.Name}"`;
+        patient.Notifications.push({ message: notificationMessage });
+
+        // Save patient's updated information
+        await patient.save();
 
         console.log('Patient updated successfully');
         res.sendStatus(200); // Send a simple 200 OK response
@@ -1119,9 +1224,19 @@ router.post('/patientCreate', async (req, res) => {
 
         await createHospitalCodeForPatient(newPatient);
 
-        console.log('Patient created successfully');
-        console.log('Patient Login created successfully');
-        console.log('Patient Code created successfully');
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Fetch hospital's information using the Hospital_Id
+        const hospital = await HospitalInfo.findById(hospitalId);
+        if (!hospital.notifications) {
+            hospital.notifications = [];
+        }
+        const hospitalNotificationMessage = `New Patient ${newPatient.Name} (MediVaultId: ${newPatient.Medivault_Id}) has been added`;
+        hospital.Notifications.push({ message: hospitalNotificationMessage });
+
+        // Save hospital's updated information
+        await hospital.save();
+
         res.status(201).json({ message: 'Patient created successfully' });
     } catch (error) {
         console.error('Error creating patient:', error);
@@ -1129,54 +1244,6 @@ router.post('/patientCreate', async (req, res) => {
     }
 });
 
-function convertToOriginalData(formattedData, isCreating = false) {
-    // Combine the first and last name into the original 'Name' field
-    const name = `${formattedData.firstName} ${formattedData.lastName}`.trim();
-
-    // Combine the street, city, zip code, and province into the original 'Address' field
-    const address = `${formattedData.streetName}, ${formattedData.city}, ${formattedData.province} ${formattedData.zipCode}`;
-
-    // Map the 'gender' back to the original 'Sex' field
-    const genderMap = {
-        'male': 'M',
-        'female': 'F',
-        'other': 'X' // Add more mappings as needed
-    };
-    const sex = genderMap[formattedData.gender] || '';
-
-    const currentDate = new Date();
-    const formattedCurrentTime = currentDate.toISOString();
-    let originalData = '';
-
-    if (isCreating) {
-        const medivaultId = generateMedivaultId(formattedData.firstName, formattedData.lastName, formattedData.mobileNumber);
-        originalData = {
-            Medivault_Id: medivaultId,
-            Name: name,
-            Phone_No: formattedData.mobileNumber,
-            DOB: formattedData.dob,
-            Sex: sex,
-            Address: address,
-            Email: formattedData.emailAddress,
-            Patient_Id: formattedData.patientId,
-            Last_Updated_Time: formattedCurrentTime
-        };
-    }
-    else {
-        originalData = {
-            Name: name,
-            Phone_No: formattedData.mobileNumber,
-            DOB: formattedData.dob,
-            Sex: sex,
-            Address: address,
-            Email: formattedData.emailAddress,
-            Patient_Id: formattedData.patientId,
-            Last_Updated_Time: formattedCurrentTime
-        };
-    }
-
-    return originalData;
-}
 
 router.post('/upload', uploadImage.single('image'), async (req, res) => {
     if (!req.session.medivaultId) {
@@ -1211,6 +1278,14 @@ router.post('/upload', uploadImage.single('image'), async (req, res) => {
     // Update patient's picture field with the new image string
     patient.Picture = req.file.filename; // Assuming you store the filename in the Picture field
     patient.Last_Updated_Time = Date.now();
+
+    // Fetch patient's information using the Patient_Id
+    if (!patient.notifications) {
+        patient.notifications = [];
+    }
+    const notificationMessage = `Patient image has been updated`;
+    patient.Notifications.push({ message: notificationMessage });
+
     await patient.save();
 
     console.log('File uploaded successfully:', req.file);
@@ -1223,13 +1298,10 @@ router.post('/uploadBill', uploadBill.single('file'), async (req, res) => {
         // Handle the case when hospitalId is not present
         return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
     }
-
-    console.log('Request received:', req.file);
     const hospitalId = req.session.hospitalLoggedId;
     const file = req.file;
     const medivaultId = req.body.MedivaultId;
     const patientId = req.body.PatientId;
-    console.log("hospitalId", hospitalId, "MedivaultId", medivaultId, "PatientId", patientId);
 
     try {
         let patient;
@@ -1265,7 +1337,26 @@ router.post('/uploadBill', uploadBill.single('file'), async (req, res) => {
         // Save the new bill record
         await newBill.save();
 
-        console.log('File uploaded successfully:', req.file);
+        if (!patient.notifications) {
+            patient.notifications = [];
+        }
+        const notificationMessage = `The bill "${newBill.Name}" has been added`;
+        patient.Notifications.push({ message: notificationMessage });
+
+        // Save patient's updated information
+        await patient.save();
+
+        // Fetch hospital's information using the Hospital_Id
+        const hospital = await HospitalInfo.findById(hospitalId);
+        if (!hospital.notifications) {
+            hospital.notifications = [];
+        }
+        const hospitalNotificationMessage = `The bill "${newBill.Name}" for Patient ${patient.Name} (MediVaultId: ${patient.Medivault_Id}) has been added`;
+        hospital.Notifications.push({ message: hospitalNotificationMessage });
+
+        // Save hospital's updated information
+        await hospital.save();
+
         console.log('Updated Patient info:', patient);
         res.status(200).json({ message: 'File uploaded successfully' });
     } catch (error) {
@@ -1274,20 +1365,16 @@ router.post('/uploadBill', uploadBill.single('file'), async (req, res) => {
     }
 });
 
-
 router.post('/uploadReport', uploadReport.single('file'), async (req, res) => {
     if (!req.session.loggedIn && !req.session.hospitalLoggedId) {
         // Handle the case when hospitalId is not present
         return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
     }
-
-    console.log('Request received:', req.file);
     const hospitalId = req.session.hospitalLoggedId;
     const file = req.file;
     // Get the patient ID from the request body
     const medivaultId = req.body.MedivaultId;
     const patientId = req.body.PatientId;
-    console.log("hospitalId", hospitalId, "MedivaultId", medivaultId, "PatientId", patientId);
 
     try {
         let patient;
@@ -1323,7 +1410,27 @@ router.post('/uploadReport', uploadReport.single('file'), async (req, res) => {
         // Save the new report record
         await newReport.save();
 
-        console.log('File uploaded successfully:', req.file);
+
+        if (!patient.notifications) {
+            patient.notifications = [];
+        }
+        const notificationMessage = `The report "${newReport.Name}" has been added`;
+        patient.Notifications.push({ message: notificationMessage });
+
+        // Save patient's updated information
+        await patient.save();
+
+        // Fetch hospital's information using the Hospital_Id
+        const hospital = await HospitalInfo.findById(hospitalId);
+        if (!hospital.notifications) {
+            hospital.notifications = [];
+        }
+        const hospitalNotificationMessage = `The report "${newReport.Name}" for Patient ${patient.Name} (MediVaultId: ${patient.Medivault_Id}) has been added`;
+        hospital.Notifications.push({ message: hospitalNotificationMessage });
+
+        // Save hospital's updated information
+        await hospital.save();
+
         console.log('Updated Patient info:', patient);
         res.status(200).json({ message: 'File uploaded successfully' });
     } catch (error) {
@@ -1334,7 +1441,6 @@ router.post('/uploadReport', uploadReport.single('file'), async (req, res) => {
 
 router.post('/uploadPrescription', uploadPrescription.single('file'), async (req, res) => {
     if (!req.session.loggedIn && !req.session.hospitalLoggedId) {
-        // Handle the case when hospitalId is not present
         return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
     }
 
@@ -1343,14 +1449,12 @@ router.post('/uploadPrescription', uploadPrescription.single('file'), async (req
     const file = req.file;
     const medivaultId = req.body.MedivaultId;
     const patientId = req.body.PatientId;
-    console.log("hospitalId", hospitalId, "MedivaultId", medivaultId, "PatientId", patientId);
+
     try {
         let patient;
         if (medivaultId) {
-            // Find the patient by Medivault Id
             patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
         } else if (patientId) {
-            // Find the patient by Patient Id
             patient = await PatientInfo.findById(patientId);
         } else {
             return res.status(400).json({ error: 'MedivaultId or PatientId is required' });
@@ -1377,7 +1481,26 @@ router.post('/uploadPrescription', uploadPrescription.single('file'), async (req
         // Save the new report record
         await newPrescription.save();
 
-        console.log('File uploaded successfully:', req.file);
+        if (!patient.notifications) {
+            patient.notifications = [];
+        }
+        const notificationMessage = `The prescription "${newPrescription.Name}" has been added`;
+        patient.Notifications.push({ message: notificationMessage });
+
+        // Save patient's updated information
+        await patient.save();
+
+        // Fetch hospital's information using the Hospital_Id
+        const hospital = await HospitalInfo.findById(hospitalId);
+        if (!hospital.notifications) {
+            hospital.notifications = [];
+        }
+        const hospitalNotificationMessage = `The prescription "${newPrescription.Name}" for Patient ${patient.Name} (MediVaultId: ${patient.Medivault_Id}) has been added`;
+        hospital.Notifications.push({ message: hospitalNotificationMessage });
+
+        // Save hospital's updated information
+        await hospital.save();
+
         console.log('Updated Patient info:', patient);
         res.status(200).json({ message: 'File uploaded successfully' });
     } catch (error) {
@@ -1399,11 +1522,20 @@ router.post('/deletePatientImage', async (req, res) => {
         fs.unlinkSync(imagePath);
         patient.Picture = '';
         patient.Last_Updated_Time = Date.now();
-        await patient.save();
 
+        // Fetch patient's information using the Patient_Id
+        if (!patient.notifications) {
+            patient.notifications = [];
+        }
+
+        const notificationMessage = `Patient image has been deleted`;
+        patient.Notifications.push({ message: notificationMessage });
+
+        // Save patient's updated information
+        await patient.save();
         console.log('Image deleted for patient:', patientId);
 
-        res.sendStatus(200); // Send success status
+        res.sendStatus(200);
     } catch (error) {
         console.error('Error deleting image:', error);
         res.status(500).json({ error: 'Internal server error' });
@@ -1672,6 +1804,33 @@ router.delete('/deleteAppointment', async (req, res) => {
             return res.status(404).json({ message: 'Appointment not found or not authorized to delete' });
         }
 
+        // Retrieve the Patient_Id associated with the report
+        const patientId = appointment.Patient_Id;
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Fetch patient's information using the Patient_Id
+        const patient = await PatientInfo.findById(patientId);
+        if (!patient.notifications) {
+            patient.notifications = [];
+        }
+
+        const notificationMessage = `The appointment "${appointment.Name}" has been deleted`;
+        patient.Notifications.push({ message: notificationMessage });
+
+        // Save patient's updated information
+        await patient.save();
+
+        // Fetch hospital's information using the Hospital_Id
+        const hospital = await HospitalInfo.findById(hospitalId);
+        if (!hospital.notifications) {
+            hospital.notifications = [];
+        }
+        const hospitalNotificationMessage = `The  appointment "${appointment.Name}" for Patient ${patient.Name} (MediVaultId: ${patient.Medivault_Id}) has been deleted`;
+        hospital.Notifications.push({ message: hospitalNotificationMessage });
+
+        // Save hospital's updated information
+        await hospital.save();
+
         await Appointment.findOneAndDelete({ _id: appointmentId });
 
         res.status(200).json({ message: 'Appointment deleted successfully' });
@@ -1696,6 +1855,32 @@ router.delete('/deleteReport', async (req, res) => {
             return res.status(404).json({ message: 'Report not found or not authorized to delete' });
         }
 
+        // Retrieve the Patient_Id associated with the report
+        const patientId = report.Patient_Id;
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Fetch patient's information using the Patient_Id
+        const patient = await PatientInfo.findById(patientId);
+        if (!patient.notifications) {
+            patient.notifications = [];
+        }
+        const notificationMessage = `The report "${report.Name}" has been deleted`;
+        patient.Notifications.push({ message: notificationMessage });
+
+        // Save patient's updated information
+        await patient.save();
+
+        // Fetch hospital's information using the Hospital_Id
+        const hospital = await HospitalInfo.findById(hospitalId);
+        if (!hospital.notifications) {
+            hospital.notifications = [];
+        }
+        const hospitalNotificationMessage = `The report "${report.Name}" for Patient ${patient.Name} (MediVaultId: ${patient.Medivault_Id}) has been deleted`;
+        hospital.Notifications.push({ message: hospitalNotificationMessage });
+
+        // Save hospital's updated information
+        await hospital.save();
+
         // Delete the file from the file system
         const filePath = 'public/documents/reports/' + report.File;
         fs.unlink(filePath, async (err) => {
@@ -1712,6 +1897,9 @@ router.delete('/deleteReport', async (req, res) => {
 
             // Remove the report entry from the database
             await Report.findOneAndDelete({ _id: reportId });
+
+            // Log success message
+            console.log('Report and associated data deleted successfully');
 
             res.status(200).json({ message: 'Report and associated data deleted successfully' });
         });
@@ -1748,6 +1936,28 @@ router.delete('/deletePrescription', async (req, res) => {
         if (!prescription) {
             return res.status(404).json({ message: 'Prescription not found or not authorized to delete' });
         }
+
+        // Retrieve the Patient_Id associated with the prescription
+        const patientId = prescription.Patient_Id;
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Fetch patient's information using the Patient_Id
+        const patient = await PatientInfo.findById(patientId);
+        if (!patient.notifications) {
+            patient.notifications = [];
+        }
+        const patientNotificationMessage = `The prescription "${prescription.Name}" has been deleted`;
+        patient.notifications.push({ message: patientNotificationMessage });
+        await patient.save();
+
+        // Fetch hospital's information using the Hospital_Id
+        const hospital = await HospitalInfo.findById(hospitalId);
+        if (!hospital.notifications) {
+            hospital.notifications = [];
+        }
+        const hospitalNotificationMessage = `The prescription "${prescription.Name}" for Patient ${patient.Name} (MediVaultId: ${patient.Medivault_Id}) has been deleted`;
+        hospital.notifications.push({ message: hospitalNotificationMessage });
+        await hospital.save();
 
         // Delete the file from the file system
         const filePath = 'public/documents/prescriptions/' + prescription.File;
@@ -1798,6 +2008,27 @@ router.delete('/deleteBill', async (req, res) => {
             return res.status(404).json({ message: 'Bill not found or not authorized to delete' });
         }
 
+        // Retrieve the Patient_Id associated with the bill
+        const patientId = bill.Patient_Id;
+        const hospitalId = req.session.hospitalLoggedId;
+
+        // Fetch patient's information using the Patient_Id
+        const patient = await PatientInfo.findById(patientId);
+        if (!patient.notifications) {
+            patient.notifications = [];
+        }
+        const patientNotificationMessage = `The bill "${bill.Name}" has been deleted`;
+        patient.notifications.push({ message: patientNotificationMessage });
+        await patient.save();
+
+        // Fetch hospital's information using the Hospital_Id
+        const hospital = await HospitalInfo.findById(hospitalId);
+        if (!hospital.notifications) {
+            hospital.notifications = [];
+        }
+        const hospitalNotificationMessage = `The bill "${bill.File}" for Patient ${patient.Name} (MediVaultId: ${patient.Medivault_Id}) has been deleted`;
+        hospital.notifications.push({ message: hospitalNotificationMessage });
+        await hospital.save();
 
         // Delete the file from the file system
         const filePath = 'public/documents/bills/' + bill.File;
@@ -1813,7 +2044,6 @@ router.delete('/deleteBill', async (req, res) => {
             // Remove the bill entry from the database
             await Bills.findOneAndDelete({ _id: billId });
 
-
             res.status(200).json({ message: 'Bill and associated data deleted successfully' });
         });
     } catch (err) {
@@ -1821,6 +2051,94 @@ router.delete('/deleteBill', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+router.post('/readHospitalNotification', async (req, res) => {
+    try {
+        const { notificationId, hospitalId } = req.body;
+
+        // Find the hospital by ID
+        const hospital = await HospitalInfo.findById(hospitalId);
+
+        if (!hospital) {
+            return res.status(404).json({ message: 'Hospital not found' });
+        }
+
+        // Find the notification by ID
+        const notification = hospital.Notifications.id(notificationId);
+
+        if (!notification) {
+            return res.status(404).json({ message: 'Notification not found' });
+        }
+
+        // Mark the notification as read
+        notification.read = true;
+
+        // Save the hospital with the updated notification
+        await hospital.save();
+
+        res.status(200).json({ message: 'Notification marked as read' });
+    } catch (error) {
+        console.error('Error marking notification as read:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.post('/readPatientNotification', async (req, res) => {
+    try {
+        const { notificationId, patientId } = req.body;
+
+        // Find the patient by ID
+        const patient = await PatientInfo.findById(patientId);
+
+        if (!patient) {
+            return res.status(404).json({ message: 'Patient not found' });
+        }
+
+        // Find the notification by ID
+        const notification = patient.Notifications.id(notificationId);
+
+        if (!notification) {
+            return res.status(404).json({ message: 'Notification not found' });
+        }
+
+        // Mark the notification as read
+        notification.read = true;
+
+        // Save the patient with the updated notification
+        await patient.save();
+
+        res.status(200).json({ message: 'Notification marked as read' });
+    } catch (error) {
+        console.error('Error marking notification as read:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+router.get('/patientDashboard', async (req, res) => {
+    try {
+        if (!req.session.medivaultId) {
+            // Handle the case when medivaultId is not present
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
+        }
+        const medivaultId = req.session.medivaultId;
+        // Get the patient ID from the URL parameters
+        const patientInfo = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        const patientId = patientInfo._id;
+        // Find all reports related to the patient using the Patient_Id
+        const reports = await Report.find({ Patient_Id: patientId })
+            .populate('Hospital_Id')
+            .exec();
+
+            const patientNotifications = patientInfo.Notifications || [];
+            const unreadNotificationsCount = patientInfo.Notifications.filter(notification => !notification.read).length;
+
+        res.render('patientInbox', { patientInfo: patientInfo, patientNotifications, unreadNotificationsCount });
+    } catch (error) {
+        console.error('Error rendering HTML:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 
 module.exports.router = router;
 module.exports.createHospitalCodeForPatient = createHospitalCodeForPatient;

@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard</title>
+	<title>Inbox</title>
 	<style id="applicationStylesheet" type="text/css">
 		.mediaViewInfo {
 			--web-view-name: Clinic Home Page;
@@ -1453,6 +1453,26 @@
 			text-decoration: none;
 		}
 
+		.time {
+			float: right;
+			font-size: 15px;
+			top: 18px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.file-name {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
+			font-size: 20px;
+			font-weight: normal;
+		}
+
+		.from {
+			margin: 0;
+			color: rgba(90, 92, 137, 1);
+			font-size: 25px;
+		}
+
 		#Group_c:hover #Path_135 {
 			fill: rgba(92, 93, 138, 1);
 			stroke: rgba(255, 255, 255, 1);
@@ -1516,22 +1536,24 @@
 			color: rgba(255, 255, 255, 1);
 		}
 
-		#add-icon {
-			fill: rgba(92, 93, 138, 1);
-		}
-
-		.add-icon {
-			overflow: visible;
+		.badge {
 			position: absolute;
+			top: 13px;
+			left: 160px;
+			background-color: red;
+			color: white;
+			border-radius: 50%;
 			width: 30px;
 			height: 30px;
-			left: 1780px;
-			top: 728px;
-			transform: matrix(1, 0, 0, 1, 0, 0);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 18px;
+			font-weight: bold;
 		}
 
-		.add-icon:hover #add-icon {
-			fill: rgba(51, 53, 97);
+		.bold-text {
+			font-weight: bold;
 		}
 	</style>
 </head>
@@ -1725,16 +1747,11 @@
 							</rect>
 						</svg>
 						<div id="Patients">
-							<a href="/hospitalDashboard/patients" style=" color:  rgba(90, 92, 137, 1);">
-								<span>Patients</span>
+							<a href="/hospitalDashboard" style=" color:  rgba(90, 92, 137, 1);">
+								<span>Inbox</span>
 							</a>
 						</div>
 					</div>
-					<svg class="add-icon" viewBox="5.625 5.625 18.75 18.75" onclick="registerNewPatient()">
-						<path id="add-icon"
-							d="M 24.375 16.24998092651367 L 16.24998092651367 16.24998092651367 L 16.24998092651367 24.375 L 13.75002002716064 24.375 L 13.75002002716064 16.24998092651367 L 5.625 16.24998092651367 L 5.625 13.75002002716064 L 13.75001907348633 13.75002002716064 L 13.75001907348633 5.625 L 16.24998092651367 5.625 L 16.24998092651367 13.75001907348633 L 24.375 13.75001907348633 L 24.375 16.24998092651367 Z">
-						</path>
-					</svg>
 					<div id="Register_Patient__">
 						<span>Register Patient<br /></span><br />
 					</div>
@@ -1787,57 +1804,41 @@
 					</div>
 
 					<div class="Rectangle_85">
-
 						<ul class="item-list">
-							<% for (let i = 0; i < patientData.length; i++) { %>
+							<% for (let i = 0; i < hospitalNotifications.length; i++) { %>
 							<li class="item">
-								<a href="/hospitalReportInfo/<%= patientData[i].patient.Medivault_Id %>"
-									class="patient-link">
-									<div class="patient-info">
-										<div class="left-info">
-											<div class="patient-name" id="Patient_Name_<%= i %>">
-												<span><%= patientData[i].patient.Name %> |
-													<%= patientData[i].patient.Sex %> |
-													<%= patientData[i].patient.Age %> yrs</span>
-											</div>
-											<div class="patient-id" id="Patient_Id_<%= i %>">
-												<span>Patient Id: <%= patientData[i].patient.Patient_Id %></span>
-											</div>
-											<div class="email" id="Email_<%= i %>">
-												<span> <%= patientData[i].patient.Email %> |
-													+<%= patientData[i].patient.Phone_No %></span>
-											</div>
-										</div>
-										<div class="right-info">
-											<div class="patient-additional-info">
-												<span>Appointments:
-													<%= patientData[i].numberOfAppointments || 0 %></span><br>
-												<span>Prescriptions:
-													<%= patientData[i].numberOfPrescriptions || 0 %></span><br>
-												<span>Reports: <%= patientData[i].numberOfReports || 0 %></span><br>
-												<span>Bills: <%= patientData[i].numberOfBills || 0 %></span>
-											</div>
-										</div>
-									</div>
+								<a href="#" class="notification-item"
+									data-notification-id="<%= hospitalNotifications[i]._id %>"
+									data-hospital-id="<%= hospital._id %>">
+									<p class="time">
+										<%= new Date(hospitalNotifications[i].timestamp).toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true }) %>
+									</p>
+									<p class="file-name <% if (!hospitalNotifications[i].read) { %>bold-text <% } %>">
+										<%= hospitalNotifications[i].message %>
+									</p>
 								</a>
 							</li>
 							<% } %>
 						</ul>
-
 					</div>
 					<div id="Group_136">
 						<div id="Component_2__1" class="Component_2___1">
 							<div id="Group_134">
 								<div id="Repeat_Grid_7">
 									<div id="Group_c" class="">
-										<svg class="Path_135" viewBox="0 0 283.344 59.051">
-											<path id="Path_135"
-												d="M 34.00130844116211 0 L 249.3429412841797 0 C 268.121337890625 0 283.34423828125 13.21907615661621 283.34423828125 29.525634765625 C 283.34423828125 45.83219146728516 268.121337890625 59.05126953125 249.3429412841797 59.05126953125 L 34.00130844116211 59.05126953125 C 15.22290420532227 59.05126953125 0 45.83219146728516 0 29.525634765625 C 0 13.21907615661621 15.22290420532227 0 34.00130844116211 0 Z">
-											</path>
-										</svg>
-										<div id="Inbox">
-											<span>Inbox</span>
-										</div>
+										<a href="/hospitalDashboard" style=" color:  rgba(90, 92, 137, 1);">
+											<svg class="Path_135" viewBox="0 0 283.344 59.051">
+												<path id="Path_135"
+													d="M 34.00130844116211 0 L 249.3429412841797 0 C 268.121337890625 0 283.34423828125 13.21907615661621 283.34423828125 29.525634765625 C 283.34423828125 45.83219146728516 268.121337890625 59.05126953125 249.3429412841797 59.05126953125 L 34.00130844116211 59.05126953125 C 15.22290420532227 59.05126953125 0 45.83219146728516 0 29.525634765625 C 0 13.21907615661621 15.22290420532227 0 34.00130844116211 0 Z">
+												</path>
+											</svg>
+											<div id="Inbox">
+												<span>Inbox</span>
+												<% if (unreadNotificationsCount > 0) { %>
+												<div class="badge"><%= unreadNotificationsCount %></div>
+												<% } %>
+											</div>
+										</a>
 									</div>
 									<div id="Group_da" class="">
 										<a href="/hospitalDashboard/patients" style=" color:  rgba(90, 92, 137, 1);">
@@ -1902,7 +1903,7 @@
 										</a>
 									</div>
 									<div id="Group_dh" class="">
-										<a href="/hospitalDashboard/Bills" style=" color:  rgba(90, 92, 137, 1);">
+										<a href="/hospitalDashboard/bills" style=" color:  rgba(90, 92, 137, 1);">
 											<svg class="Path_135_di" viewBox="0 0 283.344 59.051">
 												<path id="Path_135_di"
 													d="M 34.00130844116211 0 L 249.3429412841797 0 C 268.121337890625 0 283.34423828125 13.21907615661621 283.34423828125 29.525634765625 C 283.34423828125 45.83219146728516 268.121337890625 59.05126953125 249.3429412841797 59.05126953125 L 34.00130844116211 59.05126953125 C 15.22290420532227 59.05126953125 0 45.83219146728516 0 29.525634765625 C 0 13.21907615661621 15.22290420532227 0 34.00130844116211 0 Z">
@@ -1920,12 +1921,38 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<script>
-		function registerNewPatient() {
-			window.location.href = '/patientRegistration';
-		}
-	</script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const notificationItems = document.querySelectorAll('.notification-item');
+
+				notificationItems.forEach(function (item) {
+					item.addEventListener('click', function (event) {
+						event.preventDefault();
+						const notificationId = this.getAttribute('data-notification-id');
+						const hospitalId = this.getAttribute('data-hospital-id');
+
+						fetch('/readHospitalNotification', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json'
+							},
+							body: JSON.stringify({ notificationId, hospitalId })
+						})
+							.then(response => {
+								if (response.ok) {
+									console.log('Notification marked as read');
+									location.reload();
+								} else {
+									console.error('Failed to mark notification as read');
+								}
+							})
+							.catch(error => {
+								console.error('Error marking notification as read:', error);
+							});
+					});
+				});
+			});
+		</script>
 </body>
 
 </html>
