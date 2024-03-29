@@ -1,31 +1,22 @@
-const nodemailer = require('nodemailer');
+const mailgun = require("mailgun-js");
 
-function sendEmail(to, text) {
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'medivault2024@gmail.com',
-          pass: 'medivault123'
-        },
-        tls: {
-          rejectUnauthorized: false
-      }
-      });      
-  
-    let mailOptions = {
-      from: "medivault2024@gmail.com",
-      to: to,
-      subject: "Your Hospital Code",
-      text: text
+async function sendEmail(to, subject, text) {
+    const DOMAIN = "sandbox1ded8a33a6b44e4587b85ed637dfb8cb.mailgun.org";
+    const mg = mailgun({ apiKey: "24e1496507c4cac4c461b656ffbb9a8f-f68a26c9-bf67d16a", domain: DOMAIN });
+
+    const data = {
+        from: "Mailgun Sandbox <postmaster@sandbox1ded8a33a6b44e4587b85ed637dfb8cb.mailgun.org>",
+        to: to,
+        subject: subject,
+        text: text
     };
-  
-    transporter.sendMail(mailOptions, function(error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
-  }
-  
-  module.exports = { sendEmail };
+
+    try {
+        const result = await mg.messages().send(data);
+        console.log('Email sent:', result);
+    } catch (error) {
+        console.error('Error sending email:', error);
+    }
+}
+
+module.exports = sendEmail;

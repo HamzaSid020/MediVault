@@ -3025,7 +3025,7 @@
 			margin-right: 5px;
 			/* Adjust the spacing as needed */
 		}
-		
+
 		.badge {
 			position: absolute;
 			top: 20px;
@@ -3204,8 +3204,8 @@
 						<div id="Inbox">
 							<span>Inbox</span>
 							<% if (unreadNotificationsCount > 0) { %>
-								<div class="badge"><%= unreadNotificationsCount %></div>
-								<% } %>
+							<div class="badge"><%= unreadNotificationsCount %></div>
+							<% } %>
 						</div>
 					</a>
 				</div>
@@ -3244,14 +3244,14 @@
 				</div>
 				<div id="Group_ca" class="">
 					<a href="/patientBill" style=" color:  rgba(90, 92, 137, 1);">
-					<svg class="Rectangle_84_cb">
-						<rect id="Rectangle_84_cb" rx="33" ry="33" x="0" y="0" width="275" height="66">
-						</rect>
-					</svg>
-					<div id="Bills">
+						<svg class="Rectangle_84_cb">
+							<rect id="Rectangle_84_cb" rx="33" ry="33" x="0" y="0" width="275" height="66">
+							</rect>
+						</svg>
+						<div id="Bills">
 							<span>Bills</span>
 						</div>
-					</div>
+				</div>
 				</a>
 			</div>
 			<div id="Menu">
@@ -4058,7 +4058,13 @@
 					body: JSON.stringify({ /* Any data you want to send */ })
 				})
 					.then(response => {
-						// Handle response as needed
+						if (response.ok) {
+							// Display alert if email was sent successfully
+							alert('Hospital code has been sent to your registered email.');
+						} else {
+							// Handle other response statuses
+							alert('Failed to send hospital code. Please try again later.');
+						}
 						console.log(response);
 					})
 					.catch(error => {

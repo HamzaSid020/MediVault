@@ -21,7 +21,7 @@ const {
     ContactUsMessage,
 } = require('./models');
 
-const { sendEmail } = require('./emailFunctions');
+const sendEmail  = require('./emailFunctions');
 router.use(express.json()); // This middleware will parse JSON data in the request body
 router.use(cookieParser());
 router.use(express.static('public'));
@@ -1825,7 +1825,7 @@ router.post('/sendHospitalCodeEmail', async (req, res) => {
 
 
         // Sending the hospital code email using sendEmail function
-        sendEmail(email, `Your hospital code is: ${hospitalCode}`);
+        sendEmail(email,'MediVault Hospital Code', `Your hospital code is: ${hospitalCode}`);
 
         // Respond with a success message
         res.status(200).json({ success: true, message: 'Hospital code email sent successfully.', email, hospitalCode });

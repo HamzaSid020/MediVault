@@ -130,7 +130,7 @@ async function addDummyPatients() {
       {
         Name: 'Hamza Siddiqui',
         Phone_No: '1234567890',
-        Email: 'patient1@example.com',
+        Email: 'hamzahmedsiddiqui@outlook.com',
         DOB: '2000-06-24',
         DOB: '2000-06-24',
         OHIP_Number: await hashOHIP('1234-567-891-AB'),

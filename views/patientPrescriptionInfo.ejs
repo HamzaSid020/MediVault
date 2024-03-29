@@ -3012,7 +3012,7 @@
 			height: 25px;
 			margin-right: 5px;
 		}
-		
+
 		.badge {
 			position: absolute;
 			top: 20px;
@@ -3027,6 +3027,22 @@
 			align-items: center;
 			font-size: 18px;
 			font-weight: bold;
+		}
+
+		#forgot_code {
+			position: absolute;
+			overflow: visible;
+			width: 682px;
+			height: 66px;
+			left: 680px;
+			top: 320px;
+			font-size: 25px;
+			padding: 10px;
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#forgot_code:hover {
+			color: rgb(0, 0, 0);
 		}
 	</style>
 </head>
@@ -3190,8 +3206,8 @@
 						<div id="Inbox">
 							<span>Inbox</span>
 							<% if (unreadNotificationsCount > 0) { %>
-								<div class="badge"><%= unreadNotificationsCount %></div>
-								<% } %>
+							<div class="badge"><%= unreadNotificationsCount %></div>
+							<% } %>
 						</div>
 					</a>
 				</div>
@@ -3803,6 +3819,9 @@
 					</div>
 					<input type="text" id="hospitalCodeText" class="Rectangle_127" placeholder="Enter Hospital Code"
 						required>
+					<div id="forgot_code">
+						<span id="forgot_code_link">Forgot your code?</span>
+					</div>
 					<div id="Enter_Security_Code">
 						<span>Enter the code provided for Hospital Name:</span>
 					</div>
@@ -3998,7 +4017,7 @@
 
 					if (data.success) {
 						// If the response is successful, dynamically generate the download link
-						const prescriptionId = data.prescriptionId; 
+						const prescriptionId = data.prescriptionId;
 						const downloadLink = document.createElement('a');
 						downloadLink.href = `/download-prescription/${prescriptionId}`;
 						downloadLink.download = 'Prescription_filename'; // Set the desired filename
@@ -4051,6 +4070,36 @@
 				.catch(error => {
 					console.error('Error deleting image:', error);
 				});
+		});
+
+
+		document.addEventListener("DOMContentLoaded", function () {
+			var forgotCodeLink = document.getElementById("forgot_code");
+			forgotCodeLink.addEventListener("click", function () {
+				// Send a POST request to /sendHospitalCodeEmail
+				fetch('/sendHospitalCodeEmail', {
+					method: 'POST',
+					// You can include additional headers or data as needed
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ /* Any data you want to send */ })
+				})
+					.then(response => {
+						if (response.ok) {
+							// Display alert if email was sent successfully
+							alert('Hospital code has been sent to your registered email.');
+						} else {
+							// Handle other response statuses
+							alert('Failed to send hospital code. Please try again later.');
+						}
+						console.log(response);
+					})
+					.catch(error => {
+						// Handle errors
+						console.error('Error:', error);
+					});
+			});
 		});
 	</script>
 </body>
