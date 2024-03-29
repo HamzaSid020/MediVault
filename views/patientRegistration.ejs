@@ -40,6 +40,21 @@
 			color: rgba(90, 92, 137, 1);
 		}
 
+		#OHIP_Number {
+			left: 1345px;
+			top: 134px;
+			position: absolute;
+			overflow: visible;
+			width: 129px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
 		#Patient_Registration {
 			position: absolute;
 			width: 100%;
@@ -968,7 +983,8 @@
 		.Rectangle_121,
 		.Rectangle_123,
 		.Rectangle_117,
-		.Rectangle_124 {
+		.Rectangle_124,
+		.Rectangle_125 {
 			fill: rgba(255, 255, 255, 1);
 			stroke: rgba(189, 192, 225, 1);
 			stroke-width: 1px;
@@ -987,6 +1003,11 @@
 		.Rectangle_114,
 		.Rectangle_124 {
 			width: 363px;
+			height: 66px;
+		}
+
+		.Rectangle_125 {
+			width: 300px;
 			height: 66px;
 		}
 
@@ -1013,6 +1034,11 @@
 
 		.Rectangle_124 {
 			left: 902px;
+			top: 161px;
+		}
+
+		.Rectangle_125 {
+			left: 1345px;
 			top: 161px;
 		}
 
@@ -1046,7 +1072,19 @@
 			font-family: Segoe UI;
 			font-style: normal;
 			font-weight: bold;
-			font-size: 16px;
+			font-size: 20px;
+			color: rgba(0, 0, 0, 1);
+			border: 1px solid rgba(189, 192, 225, 1);
+			padding: 8px;
+		}
+
+		#OHIP {
+			position: absolute;
+			overflow: visible;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 20px;
 			color: rgba(0, 0, 0, 1);
 			border: 1px solid rgba(189, 192, 225, 1);
 			padding: 8px;
@@ -1144,6 +1182,157 @@
 			font-weight: normal;
 			font-size: 25px;
 			color: rgba(255, 255, 255, 1);
+		}
+
+		#NewReportModel {
+			display: none;
+			position: absolute;
+			width: 1920px;
+			height: 1410px;
+		}
+
+		#background-blur {
+			position: absolute;
+			width: 1920px;
+			height: 1410px;
+			background-color: rgb(0, 0, 0);
+			opacity: 0.5;
+			z-index: 1;
+			overflow: hidden;
+		}
+
+		#Modal-Report-Edit {
+			position: absolute;
+			width: 1000px;
+			height: 400px;
+			left: 500px;
+			top: 40px;
+			overflow: visible;
+			background-color: rgb(248, 248, 251);
+			z-index: 2;
+		}
+
+		.cross-report {
+			overflow: visible;
+			position: absolute;
+			width: 15px;
+			height: 15px;
+			left: 950px;
+			top: 30px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#cross {
+			fill: rgba(0, 0, 0, 1);
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 5px;
+			stroke-linejoin: miter;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.1s ease, stroke 0.1 ease;
+		}
+
+		#cross:hover {
+			fill: rgba(255, 0, 0, 1);
+			stroke: rgba(255, 0, 0, 1);
+		}
+
+		.cross {
+			overflow: visible;
+			position: absolute;
+			width: 25.385px;
+			height: 26.871px;
+			left: 970px;
+			top: 20px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Modal-Content {
+			position: absolute;
+			/* Add appropriate width, height, and other styling properties */
+			z-index: 3;
+		}
+
+		#New_Report_Title {
+			left: 300px;
+			top: 20px;
+			position: absolute;
+			overflow: visible;
+			width: 402px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 40px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Upload {
+			left: 32px;
+			top: 55px;
+			position: absolute;
+			overflow: visible;
+			width: 189px;
+			height: 47px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 33px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Upload-button:hover #Upload {
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#Rectangle_141 {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_141 {
+			position: absolute;
+			overflow: visible;
+			width: 253px;
+			height: 95px;
+			left: 30px;
+			top: 40px;
+		}
+
+		#Upload-button {
+			position: absolute;
+			width: 253px;
+			height: 50px;
+			left: 350px;
+			top: 250px;
+			overflow: visible;
+		}
+
+		#Upload-button:hover #Rectangle_141 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Rectangle_140 {
+			position: absolute;
+			overflow: visible;
+			width: 850px;
+			height: 50px;
+			left: 100px;
+			top: 150px;
+			font-size: 25px;
+			padding: 10px;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			color: rgba(90, 92, 137, 1);
 		}
 	</style>
 </head>
@@ -1278,6 +1467,8 @@
 										placeholder="Mobile Number" required onchange="onFieldChange()">
 									<input type="email" id="EmailAddress" class="Rectangle_124"
 										placeholder="Email Address" required onchange="onFieldChange()">
+									<input type="text" id="OHIP" class="Rectangle_125" placeholder="5555-555-123-XX"
+										required onchange="onFieldChange()">
 									<div id="Patient_First_Name">
 										<span>Patient First Name:</span>
 									</div>
@@ -1296,6 +1487,9 @@
 									</div>
 									<div id="Email_Address">
 										<span>Email Address:</span>
+									</div>
+									<div id="OHIP_Number">
+										<span>OHIP Card Number:</span>
 									</div>
 									<div id="Gender_Header">
 										<span>Gender:</span>
@@ -1353,7 +1547,75 @@
 			</button>
 		</form>
 	</div>
+	<div id="NewReportModel">
+		<div id="background-blur">
+		</div>
+		<div id="Modal-Report-Edit">
+			<div id="Modal-Content">
+				<button class="cross-button" onclick="closeModal()">
+					<svg class="cross-report" viewBox="5 5 18.318 19.806">
+						<path id="cross" d="M 23.318359375 24.8056640625 L 5 5 M 23.318359375 5 L 5 24.8056640625">
+						</path>
+					</svg>
+				</button>
+				<p class="Rectangle_140">Patient with entered OHIP already exists, would you like to link to it?</p>
+				<div id="Upload-button">
+					<svg class="Rectangle_141">
+						<rect id="Rectangle_141" rx="47.5" ry="47.5" x="0" y="0" width="200" height="80">
+						</rect>
+					</svg>
+					<div id="Upload">
+						<span>Link</span>
+					</div>
+				</div>
+				<div id="New_Report_Title">
+					<span>Patient Information</span>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script>
+		var modal = document.getElementById("NewReportModel");
+		const uploadButton = document.getElementById('Upload-button');
+
+		function linkPatient() {
+			const ohip = document.getElementById('OHIP').value;
+
+			fetch('/linkPatient', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ ohip})
+			})
+				.then(response => {
+					if (response.ok) {
+						console.log('Patient linked successfully');
+						window.location.href = "/hospitalDashboard/patients"
+					} else {
+						throw new Error(`Failed to link patient. Status: ${response.status}`);
+					}
+				})
+				.catch(error => {
+					console.error('Error linking patient:', error);
+					// Handle the error as needed
+				});
+		}
+
+		// Attach an event listener to the Upload-button element
+		uploadButton.addEventListener('click', function () {
+			linkPatient();
+		});
+
+		function closeModal() {
+			modal.style.display = "none";
+			location.reload();
+		}
+
+		function showModal() {
+			modal.style.display = "block";
+		}
+
 		function submitPatient() {
 			event.preventDefault();
 			// Extract values from the form
@@ -1364,6 +1626,7 @@
 			const patientId = document.getElementById('PatientId').value;
 			const mobileNumber = document.getElementById('MobileNumber').value;
 			const emailAddress = document.getElementById('EmailAddress').value;
+			const ohip = document.getElementById('OHIP').value;
 			const streetName = document.getElementById('StreetName').value;
 			const city = document.getElementById('City').value;
 			const zipCode = document.getElementById('ZipCode').value;
@@ -1372,10 +1635,16 @@
 			// Validation: Check if any of the required fields is empty
 			if (
 				!firstName || !lastName || !dob || !gender ||
-				!patientId || !mobileNumber || !emailAddress ||
+				!patientId || !mobileNumber || !emailAddress || !ohip ||
 				!streetName || !city || !zipCode || !province
 			) {
 				alert('Please fill in all required fields.');
+				return;
+			}
+
+			const ohipRegex = /^\d{4}-\d{3}-\d{3}-\w{2}$/;
+			if (!ohipRegex.test(ohip)) {
+				alert('OHIP number format is incorrect. Please use the format: XXXX-XXX-XXX-XX');
 				return;
 			}
 
@@ -1388,6 +1657,7 @@
 				patientId,
 				mobileNumber,
 				emailAddress,
+				ohip,
 				streetName,
 				city,
 				zipCode,
@@ -1405,11 +1675,14 @@
 				body: JSON.stringify({ newData })
 			})
 				.then(response => {
-					if (response.ok){
+					if (response.ok) {
 						console.log('Creation successful');
 						alert(`New Patient: ${firstName} ${lastName} created.`);
-						window.location.href="/hospitalDashboard/patients";
+						window.location.href = "/hospitalDashboard/patients";
 
+					} else if (response.status === 400) {
+						console.log('OHIP number already exists');
+						showModal();
 					} else {
 						throw new Error(`Failed to create patient. Status: ${response.status}`);
 					}
@@ -1417,58 +1690,60 @@
 				.catch(error => {
 					console.error('Error creating patient:', error);
 				});
-			}
+		}
 
-			// Example validation function for a mobile number
-			function isValidMobileNumber(number) {
-				// Customize the validation logic based on your requirements
-				const regex = /^\d{10}$/; // Assumes a 10-digit mobile number
-				return regex.test(number);
-			}
+		// Example validation function for a mobile number
+		function isValidMobileNumber(number) {
+			// Customize the validation logic based on your requirements
+			const regex = /^\d{10}$/; // Assumes a 10-digit mobile number
+			return regex.test(number);
+		}
 
-			function updateMaxDate() {
-				const currentDate = new Date().toISOString().split('T')[0];
-				document.getElementById('DOB').max = currentDate;
-			}
+		function updateMaxDate() {
+			const currentDate = new Date().toISOString().split('T')[0];
+			document.getElementById('DOB').max = currentDate;
+		}
 
-			function checkFields() {
-				var patientFirstName = document.getElementById("PatientFirstName").value;
-				var patientLastName = document.getElementById("PatientLastName").value;
-				var dob = document.getElementById("DOB").value;
-				var gender = document.getElementById("Gender").value;
-				var patientId = document.getElementById("PatientId").value;
-				var mobileNumber = document.getElementById("MobileNumber").value;
-				var emailAddress = document.getElementById("EmailAddress").value;
-				var streetName = document.getElementById("StreetName").value;
-				var city = document.getElementById("City").value;
-				var zipCode = document.getElementById("ZipCode").value;
-				var province = document.getElementById("Province").value;
+		function checkFields() {
+			var patientFirstName = document.getElementById("PatientFirstName").value;
+			var patientLastName = document.getElementById("PatientLastName").value;
+			var dob = document.getElementById("DOB").value;
+			var gender = document.getElementById("Gender").value;
+			var patientId = document.getElementById("PatientId").value;
+			var mobileNumber = document.getElementById("MobileNumber").value;
+			var emailAddress = document.getElementById("EmailAddress").value;
+			var ohip = document.getElementById('OHIP').value;
+			var streetName = document.getElementById("StreetName").value;
+			var city = document.getElementById("City").value;
+			var zipCode = document.getElementById("ZipCode").value;
+			var province = document.getElementById("Province").value;
 
-				// Check if all required fields are filled
-				if (
-					patientFirstName !== "" &&
-					patientLastName !== "" &&
-					dob !== "" &&
-					gender !== "" &&
-					patientId !== "" &&
-					mobileNumber !== "" &&
-					emailAddress !== "" &&
-					streetName !== "" &&
-					city !== "" &&
-					zipCode !== "" &&
-					province !== ""
-				) {
-					// Enable the submit button
-					document.getElementById("SubmitButton").disabled = false;
-				} else {
-					// Disable the submit button if any field is empty
-					document.getElementById("SubmitButton").disabled = true;
-				}
+			// Check if all required fields are filled
+			if (
+				patientFirstName !== "" &&
+				patientLastName !== "" &&
+				dob !== "" &&
+				gender !== "" &&
+				patientId !== "" &&
+				mobileNumber !== "" &&
+				emailAddress !== "" &&
+				ohip !== "" &&
+				streetName !== "" &&
+				city !== "" &&
+				zipCode !== "" &&
+				province !== ""
+			) {
+				// Enable the submit button
+				document.getElementById("SubmitButton").disabled = false;
+			} else {
+				// Disable the submit button if any field is empty
+				document.getElementById("SubmitButton").disabled = true;
 			}
+		}
 
-			function onFieldChange() {
-				checkFields(); // Call the function to check the fields whenever any field changes
-			}
+		function onFieldChange() {
+			checkFields(); // Call the function to check the fields whenever any field changes
+		}
 	</script>
 </body>
 

@@ -3979,7 +3979,7 @@
 
 		function downloadPrescription() {
 			// Get the hospital code, hospital ID, and report ID from the input fields within the parent container
-			const hospitalCode = document.getElementById('hospitalCodeText').value.toUpperCase();
+			const hospitalCode = document.getElementById('hospitalCodeText').value;
 			console.log("Hospital code:", hospitalCode);
 			// Make a POST request to your server
 			fetch('/downloadPrescription', {
@@ -3998,7 +3998,7 @@
 
 					if (data.success) {
 						// If the response is successful, dynamically generate the download link
-						const prescriptionId = data.prescriptionId; // Assuming the server sends back the prescriptionId
+						const prescriptionId = data.prescriptionId; 
 						const downloadLink = document.createElement('a');
 						downloadLink.href = `/download-prescription/${prescriptionId}`;
 						downloadLink.download = 'Prescription_filename'; // Set the desired filename
@@ -4007,6 +4007,7 @@
 						document.body.appendChild(downloadLink);
 						downloadLink.click();
 						document.body.removeChild(downloadLink);
+						closeModal();
 					} else {
 						// Handle the case where the server response is not successful
 						console.error('Download request failed:', data.message);

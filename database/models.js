@@ -28,6 +28,7 @@ const PatientInfoSchema = new mongoose.Schema({
     Address: String,
     Email: String,
     Picture: String,
+    OHIP_Number: String,
     Patient_Id: String,
     Medivault_Id: String,
     Hospital_Ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Hospital_Info' }],

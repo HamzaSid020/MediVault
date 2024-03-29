@@ -207,6 +207,7 @@ function convertToOriginalData(formattedData, isCreating = false) {
             Sex: sex,
             Address: address,
             Email: formattedData.emailAddress,
+            OHIP_Number: formattedData.ohip,
             Patient_Id: formattedData.patientId,
             Last_Updated_Time: formattedCurrentTime
         };
@@ -1203,8 +1204,15 @@ router.post('/patientCreate', async (req, res) => {
             return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
         }
 
-        const { newData } = req.body; // Assuming newData contains the information for the new patient
+        const { newData } = req.body;
         console.log("New Patient Info Server", newData);
+        
+        // Check if the OHIP number already exists
+        const existingPatient = await PatientInfo.findOne({ OHIP_Number: newData.ohip });
+        if (existingPatient) {
+            return res.status(400).json({ success: false, message: 'OHIP number already exists' });
+        }
+
         // Convert formatted data to the structure expected by your model
         const formattedData = convertToOriginalData(newData, true);
         const newMedivaultId = formattedData.Medivault_Id;
@@ -1240,6 +1248,50 @@ router.post('/patientCreate', async (req, res) => {
         res.status(201).json({ message: 'Patient created successfully' });
     } catch (error) {
         console.error('Error creating patient:', error);
+        res.status(500).json({ success: false, error: 'Internal Server Error' });
+    }
+});
+
+router.post('/linkPatient', async (req, res) => {
+    try {
+        // Extract OHIP number and hospital ID from the request body
+        const { ohip } = req.body;
+
+        // Find the patient by OHIP number
+        const patient = await PatientInfo.findOne({ OHIP_Number: ohip });
+
+        // If patient is not found, return an error
+        if (!patient) {
+            return res.status(404).json({ success: false, message: 'Patient not found' });
+        }
+        const hospitalId = req.session.hospitalLoggedId;
+        // Add the hospital ID to the patient's Hospital_Ids array
+        if (!patient.Hospital_Ids.includes(hospitalId)) {
+            patient.Hospital_Ids.push(hospitalId);
+        }
+        // Save the updated patient
+        if (!patient.notifications) {
+            patient.notifications = [];
+        }
+        const hospital = await HospitalInfo.findById(hospitalId);
+        if (!hospital.notifications) {
+            hospital.notifications = [];
+        }
+        const hospitalNotificationMessage = `New Patient ${patient.Name} (MediVaultId: ${patient.Medivault_Id}) has been added`;
+        hospital.Notifications.push({ message: hospitalNotificationMessage });
+
+        // Save hospital's updated information
+        const notificationMessage = `${hospital.Name} has been linked`;
+        patient.Notifications.push({ message: notificationMessage });
+        
+        await hospital.save();
+        await patient.save();
+
+        await createHospitalCodeForPatient(patient);
+        // Respond with success message
+        res.status(200).json({ success: true, message: 'Hospital linked to patient successfully' });
+    } catch (error) {
+        console.error('Error linking hospital to patient:', error);
         res.status(500).json({ success: false, error: 'Internal Server Error' });
     }
 });
@@ -1559,13 +1611,13 @@ router.post('/downloadReport', async (req, res) => {
             return res.status(404).json({ success: false, message: 'Patient not found.' });
         }
 
-        const patientId = patientInfo._id;
+        const patientId = patientInfo._id.toString();
         const hospitalId = req.session.hospitalId;
         const reportId = req.session.reportId; // Assuming you have the reportId stored in the session
 
         //Reset
-        req.session.reportId = '';
-        req.session.hospitalId = '';
+        delete req.session.reportId;
+        delete req.session.hospitalId;
 
         // Step 2: Check if there is a corresponding entry in HospitalCodes
         const hospitalCodeEntry = await HospitalCodes.findOne({
@@ -1603,13 +1655,13 @@ router.post('/downloadPrescription', async (req, res) => {
             return res.status(404).json({ success: false, message: 'Patient not found.' });
         }
 
-        const patientId = patientInfo._id;
+        const patientId = patientInfo._id.toString();
         const hospitalId = req.session.hospitalId;
         const prescriptionId = req.session.prescriptionId; // Assuming you have the prescriptionId stored in the session
 
         //Reset
-        req.session.prescriptionId = '';
-        req.session.hospitalId = '';
+        delete req.session.reportId;
+        delete req.session.hospitalId;
 
         // Step 2: Check if there is a corresponding entry in HospitalCodes
         const hospitalCodeEntry = await HospitalCodes.findOne({
@@ -1647,13 +1699,13 @@ router.post('/downloadBill', async (req, res) => {
             return res.status(404).json({ success: false, message: 'Patient not found.' });
         }
 
-        const patientId = patientInfo._id;
+        const patientId = patientInfo._id.toString();
         const hospitalId = req.session.hospitalId;
         const billId = req.session.billId; // Assuming you have the reportId stored in the session
 
         //Reset
-        req.session.billId = '';
-        req.session.hospitalId = '';
+        delete req.session.reportId;
+        delete req.session.hospitalId;
 
         // Step 2: Check if there is a corresponding entry in HospitalCodes
         const hospitalCodeEntry = await HospitalCodes.findOne({
