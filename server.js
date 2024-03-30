@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { 
   createModels,
   HospitalInfo,
@@ -36,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 async function connectToDatabase() {
   try {
-      await mongoose.connect('mongodb://localhost:27017/mediVault', {
+      await mongoose.connect(process.env.MONGODB_URI, {
           useNewUrlParser: true,
           useUnifiedTopology: true,
       });
@@ -57,7 +59,7 @@ app.post('/uploadPatientImage', (req, res) => {
   const uploadedFile = req.files.patientImage; // 'patientImage' is the name attribute in the form input
 
   // Specify the destination path
-  const destinationPath = path.join(__dirname, 'public/images/patient');
+  const destinationPath = path.join(__dirname, process.env.IMAGE_DESTINATION);
   console.log( "destinationPath", destinationPath );
   // Use the mv() method to move the file to the specified path
   uploadedFile.mv(path.join(destinationPath, uploadedFile.name), (err) => {
@@ -97,7 +99,7 @@ connectToDatabase()
   .then(() => {
     seedDatabase();
     // Start your Express app
-    app.listen(3000, () => {
+    app.listen(process.env.PORT, () => {
       console.log('Server is running on port 3000');
     });
   })

@@ -1,11 +1,12 @@
+require('dotenv').config();
 const mailgun = require("mailgun-js");
 
 async function sendEmail(to, subject, text) {
-    const DOMAIN = "sandbox1ded8a33a6b44e4587b85ed637dfb8cb.mailgun.org";
-    const mg = mailgun({ apiKey: "24e1496507c4cac4c461b656ffbb9a8f-f68a26c9-bf67d16a", domain: DOMAIN });
+    const DOMAIN = process.env.DOMAIN;
+    const mg = mailgun({apiKey: MAILGUN_KEY, domain: DOMAIN});
 
     const data = {
-        from: "Mailgun Sandbox <postmaster@sandbox1ded8a33a6b44e4587b85ed637dfb8cb.mailgun.org>",
+        from: process.env.SENDER_EMAIL,
         to: to,
         subject: subject,
         text: text

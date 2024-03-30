@@ -11,7 +11,7 @@ const {
 } = require('./models');
 
 const createHospitalCodeForPatient = require('./apiFunctions').createHospitalCodeForPatient;
-
+require('dotenv').config();
 const bcrypt = require('bcrypt');
 
 async function hashOHIP(plainTextOHIP) {
@@ -145,7 +145,7 @@ async function addDummyPatients() {
       {
         Name: 'Vaishnavi Polina',
         Phone_No: '1234554855',
-        Email: 'patient12@example.com',
+        Email: 'Vaish.chowdary2013@gmail.com',
         DOB: '1999-10-10',
         OHIP_Number: await hashOHIP('2345-678-912-CD'),
         Age: calculateAge('1999-10-10'),
@@ -159,7 +159,7 @@ async function addDummyPatients() {
       {
         Name: 'Nidhi Shukla',
         Phone_No: '9876543210',
-        Email: 'patient2@example.com',
+        Email: 'nidhishukla1410@gmail.com',
         DOB: '2006-09-11',
         OHIP_Number: await hashOHIP('3456-789-123-EF'),
         Age: calculateAge('2006-09-11'),

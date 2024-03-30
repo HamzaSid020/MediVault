@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const bcrypt = require('bcrypt');
 const fs = require('fs');
-
+require('dotenv').config();
 const {
     HospitalInfo,
     PatientInfo,
@@ -27,7 +27,7 @@ router.use(cookieParser());
 router.use(express.static('public'));
 router.use(
     session({
-        secret: 'medivault123445566', // Change this to a secure random string
+        secret:  process.env.SESSION_SECRET, // Change this to a secure random string
         resave: false,
         saveUninitialized: true,
     })
@@ -35,7 +35,7 @@ router.use(
 
 const imageStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/images/patient');
+        cb(null, process.env.IMAGE_DESTINATION);
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname);
@@ -44,7 +44,7 @@ const imageStorage = multer.diskStorage({
 
 const reportStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/documents/reports');
+        cb(null, process.env.REPORT_DESTINATION);
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname);
@@ -53,7 +53,7 @@ const reportStorage = multer.diskStorage({
 
 const prescriptionStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/documents/prescriptions');
+        cb(null, process.env.PRESCRIPTION_DESTINATION);
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname);
@@ -62,7 +62,7 @@ const prescriptionStorage = multer.diskStorage({
 
 const billStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/documents/bills');
+        cb(null, process.env.BILL_DESTINATION);
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname);
@@ -76,8 +76,8 @@ const uploadBill = multer({ storage: billStorage });
 
 async function hashPassword(plainTextPassword) {
     return new Promise((resolve, reject) => {
-        const saltRounds = 10; // The higher the rounds, the more secure but slower the hashing
-        bcrypt.genSalt(saltRounds, function (err, salt) {
+        
+        bcrypt.genSalt(process.env.SALT_ROUNDS, function (err, salt) {
             if (err) {
                 reject(err);
             } else {
