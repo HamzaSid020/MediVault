@@ -3482,10 +3482,585 @@
 			font-size: 43px;
 			color: rgba(92, 93, 138, 1);
 		}
-	</style>
-	<script>
 
-	</script>
+		#add-icon {
+			fill: rgba(92, 93, 138, 1);
+		}
+
+		.add-icon {
+			overflow: visible;
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			left: 1800px;
+			top: 1395px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		.add-icon:hover #add-icon {
+			fill: rgba(51, 53, 97);
+		}
+
+		#NewAppointmentModel {
+			display: none;
+			position: absolute;
+			width: 1920px;
+			height: 1790px;
+			overflow: hidden;
+			--web-view-name: Reports–EditModal;
+			--web-view-id: ReportsEditModal;
+			--web-scale-on-resize: true;
+			--web-enable-deep-linking: true;
+		}
+
+		#background-blur-appointment {
+			position: absolute;
+			width: 1920px;
+			height: 1790px;
+			background-color: rgb(0, 0, 0);
+			opacity: 0.5;
+			z-index: 1;
+		}
+
+		#Modal-Edit-Appointment {
+			position: absolute;
+			width: 1600px;
+			height: 800px;
+			left: 180px;
+			top: 500px;
+			overflow: visible;
+			background-color: rgb(239, 239, 245);
+			z-index: 2;
+		}
+
+		#Modal-Content-Appointment {
+			position: absolute;
+			/* Add appropriate width, height, and other styling properties */
+			z-index: 3;
+		}
+
+		#cross-appointment {
+			fill: rgba(0, 0, 0, 1);
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 5px;
+			stroke-linejoin: miter;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.1s ease, stroke 0.1 ease;
+		}
+
+		#cross-appointment:hover {
+			fill: rgba(255, 0, 0, 1);
+			stroke: rgba(255, 0, 0, 1);
+		}
+
+		.cross-appointment {
+			overflow: visible;
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			left: 1725px;
+			top: 540px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#update-fields-appointment {
+			position: absolute;
+			width: 1499px;
+			height: 601px;
+			left: 210px;
+			top: 700px;
+			overflow: visible;
+		}
+
+		#Group_144-appointment {
+			position: absolute;
+			width: 1499px;
+			height: 601px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Group_142-appointment {
+			position: absolute;
+			width: 1497px;
+			height: 303px;
+			left: 150px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		.Rectangle_111-appointment {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 0px;
+			top: 35px;
+			font-size: 20px;
+			font-weight: bold;
+			font-family: Segoe UI;
+			padding: 10px;
+			background-color: white;
+		}
+
+		#Group_145 {
+			position: absolute;
+			width: 38.467px;
+			height: 38.467px;
+			left: 122.939px;
+			top: 175.501px;
+			overflow: visible;
+		}
+
+		#Path_140 {
+			fill: transparent;
+		}
+
+		.Path_140 {
+			overflow: visible;
+			position: absolute;
+			width: 38.467px;
+			height: 38.467px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_141 {
+			fill: rgba(91, 91, 137, 1);
+		}
+
+		.Path_141 {
+			overflow: visible;
+			position: absolute;
+			width: 22.439px;
+			height: 28.85px;
+			left: 8.014px;
+			top: 4.808px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Address {
+			left: 166px;
+			top: 856px;
+			position: absolute;
+			overflow: visible;
+			width: 117px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 30px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Rectangle_112-appointment {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_112-appointment {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 900px;
+			top: 200px;
+		}
+
+		.Rectangle_110-appointment,
+		.Rectangle_111-appointment,
+		.Rectangle_112-appointment,
+		.Rectangle_113-appointment,
+		.Rectangle_114-appointment,
+		.Rectangle_118-appointment,
+		.Rectangle_119-appointment,
+		.Rectangle_120-appointment,
+		.Rectangle_121-appointment,
+		.Rectangle_123-appointment,
+		.Rectangle_117-appointment,
+		.Rectangle_124-appointment,
+		.Rectangle_125-appointment {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			position: absolute;
+			overflow: visible;
+			font-size: 20px;
+			font-weight: bold;
+			font-family: Segoe UI;
+			padding: 10px;
+		}
+
+		.Rectangle_110-appointment,
+		.Rectangle_111-appointment,
+		.Rectangle_112-appointment,
+		.Rectangle_113-appointment,
+		.Rectangle_114-appointment,
+		.Rectangle_124-appointment {
+			width: 363px;
+			height: 66px;
+		}
+
+		.Rectangle_125-appointment {
+			width: 300px;
+			height: 66px;
+		}
+
+		.Rectangle_118-appointment,
+		.Rectangle_119-appointment,
+		.Rectangle_120-appointment,
+		.Rectangle_121-appointment {
+			width: 363px;
+			height: 78px;
+		}
+
+		.Rectangle_119-appointment,
+		.Rectangle_120-appointment,
+		.Rectangle_121-appointment {
+			width: 249px;
+		}
+
+		.Rectangle_124-appointment {
+			left: 902px;
+			top: 161px;
+		}
+
+		.Rectangle_123-appointment {
+			width: 278px;
+			height: 56px;
+			fill: rgba(90, 92, 137, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		#PatientId-appointment,
+		#PatientFirstName-appointment,
+		#MobileNumber-appointment,
+		#DOB-appointment,
+		#PatientLastName-appointment,
+		#StreetName-appointment,
+		#City-appointment,
+		#ZipCode-appointment,
+		#Province-appointment,
+		#Gender-appointment,
+		#EmailAddress-appointment {
+			width: 363px;
+			height: 66px;
+			position: absolute;
+			overflow: visible;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 20px;
+			color: rgba(0, 0, 0, 1);
+			border: 1px solid rgba(189, 192, 225, 1);
+			padding: 8px;
+		}
+
+		#OHIP {
+			position: absolute;
+			overflow: visible;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 20px;
+			color: rgba(0, 0, 0, 1);
+			border: 1px solid rgba(189, 192, 225, 1);
+			padding: 8px;
+		}
+
+		#StreetName,
+		#City,
+		#ZipCode,
+		#Province {
+			width: 249px;
+		}
+
+		#Province {
+			-webkit-appearance: menulist-button;
+			-moz-appearance: menulist-button;
+			appearance: menulist-button;
+			padding: 10px;
+		}
+
+		#Gender {
+			width: 200px;
+			height: 66px;
+			position: absolute;
+			overflow: visible;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 16px;
+			color: rgba(0, 0, 0, 1);
+			border: 1px solid rgba(189, 192, 225, 1);
+			padding: 8px;
+		}
+
+		#Email_Address {
+			left: 866px;
+			top: 199px;
+			position: absolute;
+			overflow: visible;
+			width: 129px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		.Rectangle_110-appointment {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 450px;
+			top: 200px;
+			font-size: 25px;
+			padding: 10px;
+		}
+
+		#Patient_Demographics-appointment {
+			left: 750px;
+			top: 525px;
+			position: absolute;
+			overflow: visible;
+			width: 402px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 40px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Patient_First_Name-appointment {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 167px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Patient_ID-appointment {
+			left: 453px;
+			top: 160px;
+			position: absolute;
+			overflow: visible;
+			width: 91px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Patient_Last_Name-appointment {
+			left: 450px;
+			top: 4px;
+			position: absolute;
+			overflow: visible;
+			width: 165px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Date_of_Birth-appointment {
+			left: 903px;
+			top: 4px;
+			position: absolute;
+			overflow: visible;
+			width: 117px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Mobile-appointment {
+			left: 900px;
+			top: 160px;
+			position: absolute;
+			overflow: visible;
+			width: 67px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Gender_Header-appointment {
+			left: 0px;
+			top: 160px;
+			position: absolute;
+			overflow: visible;
+			width: 70px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Rectangle_113-appointment {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_113-appointment {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 901px;
+			top: 38px;
+		}
+
+		#Rectangle_117-appointment {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_117-appointment {
+			position: absolute;
+			overflow: visible;
+			width: 600px;
+			height: 66px;
+			left: 20x;
+			top: 200px;
+			font-size: 20px;
+			font-weight: bold;
+			font-family: Segoe UI;
+			padding: 10px;
+		}
+
+		#Rectangle_114-appointment {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_114-appointment {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 451px;
+			top: 34px;
+		}
+
+		#Submit-button-appointment {
+			position: absolute;
+			width: 253px;
+			height: 95px;
+			left: 833px;
+			top: 1150px;
+			overflow: visible;
+			border: none;
+			background: none;
+			cursor: pointer;
+		}
+
+		#Submit-button-appointment:hover #Rectangle_125-appointment {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		#Update-appointment {
+			left: 32px;
+			top: 30px;
+			position: absolute;
+			overflow: visible;
+			width: 189px;
+			height: 47px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 35px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Submit-button-appointment:hover #Update-appointment {
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#Rectangle_125-appointment {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_125-appointment {
+			position: absolute;
+			overflow: visible;
+			width: 253px;
+			height: 95px;
+			left: 0px;
+			top: 0px;
+		}
+	</style>
 </head>
 
 <body>
@@ -3745,6 +4320,11 @@
 				<span>Appointments</span>
 				</a>
 			</div>
+			<svg class="add-icon" viewBox="5.625 5.625 18.75 18.75" onclick="showAppointmentModal()">
+				<path id="add-icon"
+					d="M 24.375 16.24998092651367 L 16.24998092651367 16.24998092651367 L 16.24998092651367 24.375 L 13.75002002716064 24.375 L 13.75002002716064 16.24998092651367 L 5.625 16.24998092651367 L 5.625 13.75002002716064 L 13.75001907348633 13.75002002716064 L 13.75001907348633 5.625 L 16.24998092651367 5.625 L 16.24998092651367 13.75001907348633 L 24.375 13.75001907348633 L 24.375 16.24998092651367 Z">
+				</path>
+			</svg>
 			<div id="Group_94">
 				<svg class="Path_79" viewBox="18.574 65.491 662.607 415">
 					<path id="Path_79"
@@ -4251,6 +4831,87 @@
 			</div>
 		</div>
 	</div>
+	<div id="NewAppointmentModel">
+		<div id="background-blur-appointment">
+		</div>
+		<div id="Modal-Edit-Appointment">
+		</div>
+		<div id="Modal-Content-Appointment">
+			<button class="cross-button" onclick="closeModal()">
+				<svg class="cross-appointment" viewBox="5 5 18.318 19.806">
+					<path id="cross-appointment"
+						d="M 23.318359375 24.8056640625 L 5 5 M 23.318359375 5 L 5 24.8056640625">
+					</path>
+				</svg>
+			</button>
+
+			<form id="appointmentForm" action="/createAppointment" method="post">
+
+				<div id="update-fields-appointment">
+					<div id="Group_144-appointment">
+						<div id="Group_142-appointment">
+							<input class="Rectangle_111-appointment" type="text" value="<%= patientInfo.Name %>" disabled>
+							<input id="Patient-Medivault-Id" value="<%= patientInfo.Medivault_Id %>" hidden>
+							<input type="text" id="PatientLastName-appointment" class="Rectangle_114-appointment"
+								placeholder="Doctor Name" required>
+							<input type="date" id="DOB-appointment" class="Rectangle_113-appointment" placeholder="Appointment Date"
+								max="" onchange="updateMinMaxDate()" required>
+							<select id="Gender-appointment" class="Rectangle_117-appointment" required>
+								<option value="Scheduled">Scheduled</option>
+								<option value="Cancelled">Cancelled</option>
+								<option value="Completed">Completed</option>
+								<option value="Rescheduled">Rescheduled</option>
+								<option value="Pending">Pending</option>
+							</select>
+
+							<select id="Appointment_Types-appointment" class="Rectangle_110-appointment" required>
+								<option value="Regular_Checkup">Regular Checkup</option>
+								<option value="Dental_Checkup">Dental Checkup</option>
+								<option value="Eye_Examination">Eye Examination</option>
+								<option value="Vaccination">Vaccination</option>
+								<option value="Consultation">Consultation</option>
+								<option value="Follow-up">Follow-up</option>
+							</select>
+							<textarea id="Notes-appointment" class="Rectangle_112-appointment" placeholder="Notes"></textarea>
+
+							<div id="Patient_First_Name-appointment">
+								<span>Patient Name:</span>
+							</div>
+							<div id="Patient_ID-appointment">
+								<span>Appointment Type:</span>
+							</div>
+							<div id="Patient_Last_Name-appointment">
+								<span>Doctor's Name:</span>
+							</div>
+
+							<div id="Date_of_Birth-appointment">
+								<span>Appointment Date:</span>
+							</div>
+							<div id="Mobile-appointment">
+								<span>Notes:</span>
+							</div>
+							<div id="Gender_Header-appointment">
+								<span>Status:</span>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<button id="Submit-button-appointment">
+					<svg class="Rectangle_125-appointment">
+						<rect id="Rectangle_125-appointment" rx="47.5" ry="47.5" x="0" y="0" width="253" height="95">
+						</rect>
+					</svg>
+					<div id="Update-appointment">
+						<span>Create</span>
+					</div>
+				</button>
+			</form>
+			<div id="Patient_Demographics-appointment">
+				<span>Appointment Details</span>
+			</div>
+		</div>
+	</div>
 	<div id="deleteModal">
 		<div id="delete-background-blur">
 		</div>
@@ -4285,16 +4946,21 @@
 	<script>
 		// Get the modal
 		var modal = document.getElementById("ReportsEditModal");
+		var modalAppointment = document.getElementById("NewAppointmentModel");
 		var deleteModal = document.getElementById("deleteModal");
 
 		// Function to open the modal
 		function showModal() {
 			modal.style.display = "block";
 		}
+		function showAppointmentModal() {
+			modalAppointment.style.display = "block";
+		}
 
 		// Function to close the modal
 		function closeModal() {
 			modal.style.display = "none";
+			modalAppointment.style.display = "none";
 			location.reload();
 		}
 
@@ -4429,6 +5095,61 @@
 					console.error('There was a problem with the fetch operation:', error);
 				});
 		}
+
+		function updateMinMaxDate() {
+			const currentDate = new Date().toISOString().split('T')[0];
+			document.getElementById('DOB').min = currentDate;
+		}
+
+		window.onload = function () {
+			updateMinMaxDate();
+		};
+
+		document.getElementById("appointmentForm").addEventListener("submit", function (event) {
+			// Prevent default form submission behavior
+			event.preventDefault();
+
+			// Gather data from input fields
+			const medivaultId = document.getElementById("Patient-Medivault-Id").value;
+			const doctorName = document.getElementById("PatientLastName-appointment").value;
+			const appointmentDate = document.getElementById("DOB-appointment").value;
+			const appointmentType = document.getElementById("Appointment_Types-appointment").value;
+			const notes = document.getElementById("Notes-appointment").value;
+			const status = document.getElementById("Gender-appointment").value;
+			console.log("medivaultId",medivaultId);
+			// Construct the appointment object
+			const appointmentData = {
+				doctorName,
+				appointmentDate,
+				appointmentType,
+				notes,
+				status,
+				medivaultId
+			};
+
+			console.log("appointmentData", appointmentData);
+			// Send the appointment data to the server using fetch
+			fetch('/createAppointment', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(appointmentData)
+			})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Network response was not ok');
+					}
+					return response.json();
+				})
+				.then(data => {
+					console.log('Appointment created successfully:', data);
+					closeModal()
+				})
+				.catch(error => {
+					console.error('Error creating appointment:', error);
+				});
+		});
 
 	</script>
 </body>
