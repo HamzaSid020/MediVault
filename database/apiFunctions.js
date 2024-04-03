@@ -1919,13 +1919,17 @@ router.post('/sendForgotPasswordEmail', async (req, res) => {
 
 router.post('/contactUsMessage', async (req, res) => {
     try {
-        const { FirstName, LastName, EmailAddress, Message } = req.body;
+        const { message,
+            lastName,
+            firstName,
+            emailAddress } = req.body;
+            
         // Create new ContactUsMessage document
         const newMessage = new ContactUsMessage({
-            FirstName,
-            LastName,
-            EmailAddress,
-            Message
+            FirstName: firstName,
+            LastName: lastName,
+            EmailAddress: emailAddress,
+            Message: message
         });
 
         // Save the document to the database
@@ -2382,7 +2386,7 @@ router.post('/updateAppointment', async (req, res) => {
         }
 
         const hospitalId = req.session.hospitalLoggedId;
-        
+
         // Check if the appointment exists
         const existingAppointment = await Appointment.findById(appointmentId);
         if (!existingAppointment) {

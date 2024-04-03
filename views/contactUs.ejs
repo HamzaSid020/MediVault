@@ -1314,72 +1314,72 @@
 	</style>
 	<script>
 		async function submitData(event) {
-    event.preventDefault();
+			event.preventDefault();
 
-    // Get data from form fields
-    const message = document.getElementById('messageInput').value.trim();
-    const lastName = document.getElementById('lastNameInput').value.trim();
-    const firstName = document.getElementById('firstNameInput').value.trim();
-    const emailAddress = document.getElementById('emailInput').value.trim();
+			// Get data from form fields
+			const message = document.getElementById('messageInput').value.trim();
+			const lastName = document.getElementById('lastNameInput').value.trim();
+			const firstName = document.getElementById('firstNameInput').value.trim();
+			const emailAddress = document.getElementById('emailInput').value.trim();
 
-    // Validate form fields
-    if (firstName === '') {
-        alert('Please enter your first name.');
-        return;
-    }
+			// Validate form fields
+			if (firstName === '') {
+				alert('Please enter your first name.');
+				return;
+			}
 
-    if (lastName === '') {
-        alert('Please enter your last name.');
-        return;
-    }
+			if (lastName === '') {
+				alert('Please enter your last name.');
+				return;
+			}
 
-    if (emailAddress === '') {
-        alert('Please enter your email address.');
-        return;
-    }
-		
-    if (message === '') {
-        alert('Please enter a message.');
-        return;
-    }
+			if (emailAddress === '') {
+				alert('Please enter your email address.');
+				return;
+			}
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(emailAddress)) {
-        alert('Please enter a valid email address.');
-        return;
-    }
+			if (message === '') {
+				alert('Please enter a message.');
+				return;
+			}
 
-    const formData = {
-        message,
-        lastName,
-        firstName,
-        emailAddress
-    };
+			// Email validation
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (!emailRegex.test(emailAddress)) {
+				alert('Please enter a valid email address.');
+				return;
+			}
 
-    console.log(formData);
+			const formData = {
+				message,
+				lastName,
+				firstName,
+				emailAddress
+			};
 
-    try {
-        const response = await fetch('/contactUsMessage', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
+			console.log(formData);
 
-        if (response.ok) {
-            console.log('Message sent successfully');
-            // Optionally, you can redirect the user to a thank you page or show a success message
-        } else {
-            console.error('Failed to send message');
-            // Optionally, you can display an error message to the user
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        // Optionally, you can display an error message to the user
-    }
-}
+			try {
+				const response = await fetch('/contactUsMessage', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(formData)
+				});
+
+				if (response.ok) {
+					console.log('Message sent successfully');
+					alert('Message sent succesfully!');
+				} else {
+					console.error('Failed to send message');
+					// Optionally, you can display an error message to the user
+				}
+			} catch (error) {
+				console.error('Error:', error);
+				// Optionally, you can display an error message to the user
+			}
+		}
 	</script>
 </head>
 
