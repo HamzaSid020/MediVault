@@ -1479,7 +1479,19 @@
 			fill: rgba(51, 53, 97);
 		}
 
-		#NewPatientModel {
+		#NewAppointmentModel {
+			display: none;
+			position: absolute;
+			width: 1920px;
+			height: 1790px;
+			overflow: hidden;
+			--web-view-name: Reports–EditModal;
+			--web-view-id: ReportsEditModal;
+			--web-scale-on-resize: true;
+			--web-enable-deep-linking: true;
+		}
+
+		#EditAppointmentModel {
 			display: none;
 			position: absolute;
 			width: 1920px;
@@ -1578,6 +1590,30 @@
 			fill: rgba(255, 255, 255, 1);
 		}
 
+		#Submit-button:hover #Update {
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#Submit-edit-button {
+			position: absolute;
+			width: 253px;
+			height: 95px;
+			left: 833px;
+			top: 1150px;
+			overflow: visible;
+			border: none;
+			background: none;
+			cursor: pointer;
+		}
+
+		#Submit-edit-button:hover #Rectangle_125 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		#Submit-edit-button:hover #Update {
+			color: rgba(92, 93, 138, 1);
+		}
+
 		#Update {
 			left: 32px;
 			top: 30px;
@@ -1591,10 +1627,6 @@
 			font-weight: normal;
 			font-size: 35px;
 			color: rgba(255, 255, 255, 1);
-		}
-
-		#Submit-button:hover #Update {
-			color: rgba(92, 93, 138, 1);
 		}
 
 		.delete-button {
@@ -1970,6 +2002,19 @@
 			padding: 10px;
 		}
 
+		.Rectangle_130 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 0px;
+			top: 35px;
+			font-size: 20px;
+			font-weight: bold;
+			font-family: Segoe UI;
+			padding: 10px;
+		}
+
 		.Rectangle_112 {
 			position: absolute;
 			overflow: visible;
@@ -2090,7 +2135,7 @@
 		.Rectangle_117 {
 			position: absolute;
 			overflow: visible;
-			width: 600px;
+			width: 380px;
 			height: 66px;
 			left: 20x;
 			top: 200px;
@@ -2180,8 +2225,7 @@
 		}
 
 		#DOB,
-		#PatientLastName,
-		#Gender {
+		#PatientLastName {
 			width: 363px;
 			height: 66px;
 			position: absolute;
@@ -2196,14 +2240,14 @@
 		}
 
 		#Gender {
-			width: 200px;
+			width: 380px;
 			height: 66px;
 			position: absolute;
 			overflow: visible;
 			font-family: Segoe UI;
 			font-style: normal;
 			font-weight: bold;
-			font-size: 16px;
+			font-size: 20px;
 			color: rgba(0, 0, 0, 1);
 			border: 1px solid rgba(189, 192, 225, 1);
 			padding: 8px;
@@ -2533,7 +2577,7 @@
 											</path>
 										</svg>
 									</div>
-									<div class="pencil-icon">
+									<div class="pencil-icon" onclick="showEditModal('<%= appointmentInfo[i]._id %>')">
 										<svg class="Path_238" viewBox="3.75 3.874 22.375 22.376">
 											<path id="Path_238"
 												d="M 5.416250228881836 20.05999946594238 L 20.71249961853027 4.762499809265137 C 21.96942710876465 3.559701681137085 23.95701789855957 3.581429719924927 25.18734741210938 4.811418533325195 C 26.41767501831055 6.041407585144043 26.4399528503418 8.028993606567383 25.23750114440918 9.286249160766602 L 9.938750267028809 24.58374977111816 C 9.589750289916992 24.93277931213379 9.145244598388672 25.17069053649902 8.661250114440918 25.26749992370605 L 3.75 26.25 L 4.732500076293945 21.33749961853027 C 4.829309463500977 20.85350608825684 5.067220687866211 20.40899848937988 5.416249752044678 20.05999946594238 Z">
@@ -2655,7 +2699,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="NewPatientModel">
+		<div id="NewAppointmentModel">
 			<div id="background-blur">
 			</div>
 			<div id="Modal-Edit">
@@ -2667,9 +2711,7 @@
 						</path>
 					</svg>
 				</button>
-
 				<form id="appointmentForm" action="/createAppointment" method="post">
-
 					<div id="update-fields">
 						<div id="Group_144">
 							<div id="Group_142">
@@ -2744,6 +2786,84 @@
 				</div>
 			</div>
 		</div>
+		<div id="EditAppointmentModel">
+			<div id="background-blur">
+			</div>
+			<div id="Modal-Edit">
+			</div>
+			<div id="Modal-Content">
+				<button class="cross-button" onclick="closeModal()">
+					<svg class="cross" viewBox="5 5 18.318 19.806">
+						<path id="cross" d="M 23.318359375 24.8056640625 L 5 5 M 23.318359375 5 L 5 24.8056640625">
+						</path>
+					</svg>
+				</button>
+				<form id="appointmentEditForm" action="/updateAppointment" method="post">
+					<div id="update-fields">
+						<div id="Group_144">
+							<div id="Group_142">
+								<input class="Rectangle_130" id="PatientName-appointment" type="text" disabled>
+								<input class="Rectangle_130" id="Patient-AppointmentId" type="text" hidden>
+								<input class="Rectangle_130" id="Patient-MedivaultId" type="text" hidden>
+								<input class="Rectangle_130" id="Patient-MedivaultId" type="text" hidden>
+								<input type="text" id="PatientLastName-appointment" class="Rectangle_114" required>
+								<input type="date" id="DOB-appointment" class="Rectangle_113"
+									placeholder="Appointment Date" max="" onchange="updateMinMaxDate()" required>
+								<select id="Gender-appointment" class="Rectangle_117" required>
+									<option value="Scheduled">Scheduled</option>
+									<option value="Cancelled">Cancelled</option>
+									<option value="Completed">Completed</option>
+									<option value="Rescheduled">Rescheduled</option>
+									<option value="Pending">Pending</option>
+								</select>
+
+								<select id="Appointment_Types-appointment" class="Rectangle_110" required>
+									<option value="Regular_Checkup">Regular Checkup</option>
+									<option value="Dental_Checkup">Dental Checkup</option>
+									<option value="Eye_Examination">Eye Examination</option>
+									<option value="Vaccination">Vaccination</option>
+									<option value="Consultation">Consultation</option>
+									<option value="Follow-up">Follow-up</option>
+								</select>
+								<textarea id="Notes-appointment" class="Rectangle_112"></textarea>
+
+								<div id="Patient_First_Name">
+									<span>Patient Name:</span>
+								</div>
+								<div id="Patient_ID">
+									<span>Appointment Type:</span>
+								</div>
+								<div id="Patient_Last_Name">
+									<span>Doctor's Name:</span>
+								</div>
+
+								<div id="Date_of_Birth">
+									<span>Appointment Date:</span>
+								</div>
+								<div id="Mobile">
+									<span>Notes:</span>
+								</div>
+								<div id="Gender_Header">
+									<span>Status:</span>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</form>
+				<button id="Submit-edit-button">
+					<svg class="Rectangle_125">
+						<rect id="Rectangle_125" rx="47.5" ry="47.5" x="0" y="0" width="253" height="95"></rect>
+					</svg>
+					<div id="Update">
+						<span>Update</span>
+					</div>
+				</button>
+				<div id="Patient_Demographics">
+					<span>Appointment Details</span>
+				</div>
+			</div>
+		</div>
 		<div id="deleteModal">
 			<div id="delete-background-blur">
 			</div>
@@ -2776,7 +2896,8 @@
 			</div>
 		</div>
 		<script>
-			var modal = document.getElementById("NewPatientModel");
+			var modal = document.getElementById("NewAppointmentModel");
+			var modalEdit = document.getElementById("EditAppointmentModel");
 			var deleteModal = document.getElementById("deleteModal");
 			const input = document.querySelector('.dropdown input');
 			const options = document.querySelectorAll('.dropdown-content div');
@@ -2852,6 +2973,10 @@
 				modal.style.display = "block";
 			}
 
+			function showEditModal(appointmentId) {
+				modalEdit.style.display = "block";
+			}
+
 			function closeModal() {
 				modal.style.display = "none";
 				location.reload();
@@ -2905,7 +3030,8 @@
 
 				// Gather data from input fields
 				const doctorName = document.getElementById("PatientLastName").value;
-				const appointmentDate = document.getElementById("DOB").value;
+				const appointmentDateInput = document.getElementById("DOB").value;
+				const appointmentDate = new Date(appointmentDateInput);
 				const appointmentType = document.getElementById("Appointment_Types").value;
 				const notes = document.getElementById("Notes").value;
 				const status = document.getElementById("Gender").value;
@@ -2922,6 +3048,7 @@
 					status,
 					medivaultId,
 				};
+				
 				console.log("appointmentData", appointmentData);
 				// Send the appointment data to the server using fetch
 				fetch('/createAppointment', {
@@ -2946,6 +3073,103 @@
 						// Handle error, such as displaying an error message to the user
 					});
 			});
+
+			document.getElementById("Submit-edit-button").addEventListener("click", function (event) {
+				// Prevent default button click behavior
+				event.preventDefault();
+
+				// Gather data from input fields
+				const appointmentId = document.getElementById("Patient-AppointmentId").value;
+				const medivaultId = document.getElementById("Patient-MedivaultId").value;
+				const doctorName = document.getElementById("PatientLastName-appointment").value;
+				const appointmentDate = document.getElementById("DOB-appointment").value;
+				const appointmentType = document.getElementById("Appointment_Types-appointment").value;
+				const notes = document.getElementById("Notes-appointment").value;
+				const status = document.getElementById("Gender-appointment").value;
+
+				// Construct the appointment object
+				const appointmentData = {
+					appointmentId,
+					doctorName,
+					appointmentDate,
+					appointmentType,
+					notes,
+					status,
+					medivaultId
+				};
+				console.log("appointmentData", appointmentData);
+				// Send the appointment data to the server using fetch
+				fetch('/updateAppointment', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(appointmentData)
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw new Error('Network response was not ok');
+						}
+						return response.json();
+					})
+					.then(data => {
+						console.log('Appointment updated successfully:', data);
+						closeModal();
+					})
+					.catch(error => {
+						console.error('Error updating appointment:', error);
+						// Handle error, such as displaying an error message to the user
+					});
+			});
+
+			function showEditModal(appointmentId) {
+				fetchAppointmentData(appointmentId)
+					.then(appointment => {
+						// Populate modal fields with appointment data
+						document.getElementById('Patient-AppointmentId').value = appointment._id;
+						document.getElementById('Patient-MedivaultId').value = appointment.Patient_Id.Medivault_Id;
+						document.getElementById('PatientName-appointment').value = appointment.Patient_Id.Name;
+						document.getElementById('PatientLastName-appointment').value = appointment.Doctor_Name;
+						const appointmentDate = new Date(appointment.Appointment_Date);
+						const formattedDate = appointmentDate.toISOString().split('T')[0];
+						document.getElementById('DOB-appointment').value = formattedDate;
+						document.getElementById('Gender-appointment').value = appointment.Status;
+						document.getElementById('Appointment_Types-appointment').value = appointment.Appointment_Type;
+						document.getElementById('Notes-appointment').value = appointment.Notes;
+
+						// Show the modal
+						document.getElementById('EditAppointmentModel').style.display = 'block';
+					})
+					.catch(error => {
+						console.error('Error fetching appointment data:', error);
+					});
+			}
+
+			function fetchAppointmentData(appointmentId) {
+				return new Promise((resolve, reject) => {
+					// Make an AJAX request to fetch appointment data by ID
+					fetch('/getAppointmentData', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ appointmentId: appointmentId })
+					})
+						.then(response => {
+							if (!response.ok) {
+								throw new Error('Error fetching appointment data');
+							}
+							return response.json();
+						})
+						.then(appointment => {
+							resolve(appointment);
+						})
+						.catch(error => {
+							reject(error.message);
+						});
+				});
+			}
+
 		</script>
 </body>
 

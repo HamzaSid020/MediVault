@@ -539,7 +539,6 @@ router.get('/patientAppointment', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
 router.get('/hospitalAppointmentInfo/:medivaultId', async (req, res) => {
     try {
         if (!req.session.hospitalLoggedId) {
@@ -556,6 +555,20 @@ router.get('/hospitalAppointmentInfo/:medivaultId', async (req, res) => {
             Hospital_Ids: { $elemMatch: { $eq: hospitalId } }
         });
         const patientId = patientInfo._id;
+
+        let appointmentEdit = null; // Define appointmentEdit and initialize it as null
+
+        if (req.session.appointmentId) {
+            // Find appointment using req.session.appointmentId
+            appointmentEdit = await Appointment.findOne({
+                _id: req.session.appointmentId,
+                Patient_Id: patientId,
+                Hospital_Id: hospitalId
+            })
+                .populate('Hospital_Id')
+                .exec();
+        }
+
         // Find all appointment related to the patient using the Patient_Id
         const appointment = await Appointment.find({
             Patient_Id: patientId,
@@ -568,7 +581,7 @@ router.get('/hospitalAppointmentInfo/:medivaultId', async (req, res) => {
         console.log(patientInfo);
         console.log(appointment);
 
-        res.render('hospitalAppointmentInfo', { patientInfo: patientInfo, appointment_info: appointment });
+        res.render('hospitalAppointmentInfo', { patientInfo: patientInfo, appointment_info: appointment, appointmentEdit: appointmentEdit });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -785,6 +798,31 @@ router.get('/hospitalDashboard/patients', async (req, res) => {
     }
 });
 
+router.post('/getAppointmentData', async (req, res) => {
+    try {
+        if (!req.body.appointmentId) {
+            return res.status(400).send('Appointment ID is required');
+        }
+
+        const appointmentId = req.body.appointmentId;
+
+        // Fetch the appointment data using the provided appointmentId
+        const appointmentInfo = await Appointment.findById(appointmentId)
+            .populate('Patient_Id')
+            .exec();
+
+        if (!appointmentInfo) {
+            return res.status(404).send('Appointment not found');
+        }
+
+        // Send the appointment data as JSON response
+        res.status(200).json(appointmentInfo);
+    } catch (error) {
+        console.error('Error fetching appointment data:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 router.get('/hospitalDashboard/appointments', async (req, res) => {
     try {
 
@@ -808,7 +846,6 @@ router.get('/hospitalDashboard/appointments', async (req, res) => {
             .exec();
 
         console.log(appointmentInfo);
-        // Render the hospital dashboard with the patients data
 
         // Fetch all patients associated with the hospital
         const patients = await PatientInfo.find({ Hospital_Ids: hospitalId });
@@ -1911,20 +1948,19 @@ router.delete('/deleteAppointment', async (req, res) => {
             patient.Notifications = [];
         }
 
-        const notificationMessage = `The appointment "${appointment.Name}" has been deleted`;
-        patient.Notifications.push({ message: notificationMessage });
-
-        // Save patient's updated information
-        await patient.save();
-
         // Fetch hospital's information using the Hospital_Id
         const hospital = await HospitalInfo.findById(hospitalId);
         if (!hospital.Notifications) {
             hospital.Notifications = [];
         }
-        const hospitalNotificationMessage = `The  appointment "${appointment.Name}" for Patient ${patient.Name} (MediVaultId: ${patient.Medivault_Id}) has been deleted`;
-        hospital.Notifications.push({ message: hospitalNotificationMessage });
+        const hospitalNotificationMessage = `Appointment for Patient ${patient.Name} (MediVaultId: ${patient.Medivault_Id}) has been deleted`;
+        const notificationMessage = `Appointment from "${hospital.Name}" has been deleted`;
 
+        hospital.Notifications.push({ message: hospitalNotificationMessage });
+        patient.Notifications.push({ message: notificationMessage });
+
+        // Save patient's updated information
+        await patient.save();
         // Save hospital's updated information
         await hospital.save();
 
@@ -2235,6 +2271,7 @@ router.get('/patientDashboard', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
 router.post('/createAppointment', async (req, res) => {
     try {
         if (!req.session.hospitalLoggedId) {
@@ -2259,7 +2296,6 @@ router.post('/createAppointment', async (req, res) => {
             Hospital_Id: hospitalId,
             Patient_Id: patient._id,
         });
-        console.log("patient Info before notifications", patient);
         const hospital = await HospitalInfo.findById(hospitalId);
         if (!hospital) {
             return res.status(404).json({ success: false, error: 'Hospital not found' });
@@ -2278,11 +2314,71 @@ router.post('/createAppointment', async (req, res) => {
         const patientNotificationMessage = `New Appointment created by "${hospital.Name}".`;
         patient.Notifications.push({ message: patientNotificationMessage });
         await patient.save();
-        console.log("patient Info after notifications", patient);
 
         res.status(201).json({ message: 'Appointment created successfully', appointment: newAppointment });
     } catch (error) {
         console.error('Error creating appointment:', error);
+        res.status(500).json({ success: false, error: 'Internal Server Error' });
+    }
+});
+
+router.post('/updateAppointment', async (req, res) => {
+    try {
+        if (!req.session.hospitalLoggedId) {
+            return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
+        }
+
+        const { appointmentId, doctorName, appointmentDate, appointmentType, notes, status, medivaultId } = req.body;
+        console.log("Received data:", appointmentId, doctorName, appointmentDate, appointmentType, notes, status, medivaultId);
+
+        const patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        if (!patient) {
+            return res.status(404).json({ success: false, error: 'Patient not found' });
+        }
+
+        const hospitalId = req.session.hospitalLoggedId;
+        
+        // Check if the appointment exists
+        const existingAppointment = await Appointment.findById(appointmentId);
+        if (!existingAppointment) {
+            return res.status(404).json({ success: false, error: 'Appointment not found' });
+        }
+
+        // Update the appointment fields
+        existingAppointment.Doctor_Name = doctorName;
+        existingAppointment.Appointment_Date = appointmentDate;
+        existingAppointment.Appointment_Type = appointmentType;
+        existingAppointment.Notes = notes;
+        existingAppointment.Status = status;
+
+        // Save the updated appointment
+        await existingAppointment.save();
+
+        console.log("Updated appointment:", existingAppointment);
+
+        const hospital = await HospitalInfo.findById(hospitalId);
+        if (!hospital) {
+            return res.status(404).json({ success: false, error: 'Hospital not found' });
+        }
+
+        if (!hospital.Notifications) {
+            hospital.Notifications = [];
+        }
+        const hospitalNotificationMessage = `Appointment updated for Patient ${patient.Name} (MediVaultId: ${patient.Medivault_Id}).`;
+        hospital.Notifications.push({ message: hospitalNotificationMessage });
+        await hospital.save();
+
+        if (!patient.Notifications) {
+            patient.Notifications = [];
+        }
+        const patientNotificationMessage = `Appointment updated by "${hospital.Name}".`;
+        patient.Notifications.push({ message: patientNotificationMessage });
+        await patient.save();
+
+
+        res.status(200).json({ message: 'Appointment updated successfully', appointment: existingAppointment });
+    } catch (error) {
+        console.error('Error updating appointment:', error);
         res.status(500).json({ success: false, error: 'Internal Server Error' });
     }
 });

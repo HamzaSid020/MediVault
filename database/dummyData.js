@@ -271,7 +271,7 @@ async function addDummyAppointments() {
       {
         Doctor_Name: 'Dr Jones',
         Appointment_Date: '2024-04-21 14:30:00',
-        Appointment_Type: 'Follow up',
+        Appointment_Type: 'Regular Checkup',
         Notes: 'To do',
         Status: 'Scheduled',
         Hospital_Id: hospitalB_Id,
@@ -280,7 +280,7 @@ async function addDummyAppointments() {
       {
         Doctor_Name: 'Dr Priyanka',
         Appointment_Date: '2024-04-01 14:30:00',
-        Appointment_Type: 'Follow up',
+        Appointment_Type: 'Regular Checkup',
         Notes: 'To do',
         Status: 'Scheduled',
         Hospital_Id: hospitalC_Id,
