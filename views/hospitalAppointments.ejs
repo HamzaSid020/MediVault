@@ -2805,7 +2805,6 @@
 								<input class="Rectangle_130" id="PatientName-appointment" type="text" disabled>
 								<input class="Rectangle_130" id="Patient-AppointmentId" type="text" hidden>
 								<input class="Rectangle_130" id="Patient-MedivaultId" type="text" hidden>
-								<input class="Rectangle_130" id="Patient-MedivaultId" type="text" hidden>
 								<input type="text" id="PatientLastName-appointment" class="Rectangle_114" required>
 								<input type="date" id="DOB-appointment" class="Rectangle_113"
 									placeholder="Appointment Date" max="" onchange="updateMinMaxDate()" required>
@@ -2973,10 +2972,6 @@
 				modal.style.display = "block";
 			}
 
-			function showEditModal(appointmentId) {
-				modalEdit.style.display = "block";
-			}
-
 			function closeModal() {
 				modal.style.display = "none";
 				location.reload();
@@ -3048,7 +3043,7 @@
 					status,
 					medivaultId,
 				};
-				
+
 				console.log("appointmentData", appointmentData);
 				// Send the appointment data to the server using fetch
 				fetch('/createAppointment', {
