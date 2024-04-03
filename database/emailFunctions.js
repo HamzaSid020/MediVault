@@ -3,7 +3,7 @@ const mailgun = require("mailgun-js");
 
 async function sendEmail(to, subject, text) {
     const DOMAIN = process.env.DOMAIN;
-    const mg = mailgun({apiKey: MAILGUN_KEY, domain: DOMAIN});
+    const mg = mailgun({apiKey: process.env.MAILGUN_KEY, domain: DOMAIN});
 
     const data = {
         from: process.env.SENDER_EMAIL,
@@ -19,5 +19,6 @@ async function sendEmail(to, subject, text) {
         console.error('Error sending email:', error);
     }
 }
+
 
 module.exports = sendEmail;

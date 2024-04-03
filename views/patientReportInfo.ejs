@@ -3817,9 +3817,8 @@
 					<input type="text" id="hospitalCodeText" class="Rectangle_127" placeholder="Enter Hospital Code"
 						required>
 					<div id="forgot_code">
-						<span id="forgot_code_link">Forgot your code?</span>
+						<span id="forgot_code_link" onclick="sendHospitalCodeEmail()">Forgot your code?</span>
 					</div>
-
 					<div id="Enter_Security_Code">
 						<span>Enter the code provided for Hospital Name:</span>
 					</div>
@@ -4045,35 +4044,31 @@
 			}
 		});
 
-		document.addEventListener("DOMContentLoaded", function () {
-			var forgotCodeLink = document.getElementById("forgot_code");
-			forgotCodeLink.addEventListener("click", function () {
-				// Send a POST request to /sendHospitalCodeEmail
-				fetch('/sendHospitalCodeEmail', {
-					method: 'POST',
-					// You can include additional headers or data as needed
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({ /* Any data you want to send */ })
+		function sendHospitalCodeEmail() {
+			// Send a POST request to /sendHospitalCodeEmail
+			fetch('/sendHospitalCodeEmail', {
+				method: 'POST',
+				// You can include additional headers or data as needed
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ /* Any data you want to send */ })
+			})
+				.then(response => {
+					if (response.ok) {
+						// Display alert if email was sent successfully
+						alert('Hospital code has been sent to your registered email.');
+					} else {
+						// Handle other response statuses
+						alert('Failed to send hospital code. Please try again later.');
+					}
+					console.log(response);
 				})
-					.then(response => {
-						if (response.ok) {
-							// Display alert if email was sent successfully
-							alert('Hospital code has been sent to your registered email.');
-						} else {
-							// Handle other response statuses
-							alert('Failed to send hospital code. Please try again later.');
-						}
-						console.log(response);
-					})
-					.catch(error => {
-						// Handle errors
-						console.error('Error:', error);
-					});
-			});
-		});
-
+				.catch(error => {
+					// Handle errors
+					console.error('Error:', error);
+				});
+		}
 		document.getElementById('Group_145').addEventListener('click', function () {
 
 			// Send the delete request to the server

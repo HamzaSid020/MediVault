@@ -1847,7 +1847,7 @@ router.post('/sendHospitalCodeEmail', async (req, res) => {
         }
 
         // Assuming the hospital code is stored in the HospitalCodes collection
-        const hospitalCodeInfo = await HospitalCodes.findOne({ Patient_Id: patientInfo._id });
+        const hospitalCodeInfo = await HospitalCodes.findOne({ Patient_Id: patientInfo._id, Hospital_Id: req.session.hospitalId });
 
         if (!hospitalCodeInfo) {
             return res.status(404).json({ success: false, message: 'Hospital code not found for this patient.' });
@@ -1860,9 +1860,16 @@ router.post('/sendHospitalCodeEmail', async (req, res) => {
         console.log('Email:', email);
         console.log('Hospital Code:', hospitalCode);
 
-
         // Sending the hospital code email using sendEmail function
         sendEmail(email, 'MediVault Hospital Code', `Your hospital code is: ${hospitalCode}`);
+        if (!patientInfo.Notifications) {
+            patientInfo.Notifications = [];
+        }
+        const notificationMessage = `Hospital code has been sent to email.`;
+        patientInfo.Notifications.push({ message: notificationMessage });
+
+        // Save patient's updated information
+        await patientInfo.save();
 
         // Respond with a success message
         res.status(200).json({ success: true, message: 'Hospital code email sent successfully.', email, hospitalCode });
