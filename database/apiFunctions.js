@@ -76,8 +76,12 @@ const uploadBill = multer({ storage: billStorage });
 
 async function hashPassword(plainTextPassword) {
     return new Promise((resolve, reject) => {
+        const saltRounds = parseInt(process.env.SALT_ROUNDS); // Convert to number
+        if (isNaN(saltRounds)) {
+            return reject(new Error('Invalid SALT_ROUNDS value. Please set it to a valid number.'));
+        }
 
-        bcrypt.genSalt(process.env.SALT_ROUNDS, function (err, salt) {
+        bcrypt.genSalt(saltRounds, function (err, salt) {
             if (err) {
                 reject(err);
             } else {
@@ -1293,7 +1297,7 @@ router.post('/patientCreate', async (req, res) => {
         });
 
         await createHospitalCodeForPatient(newPatient);
-
+        await sendEmail(newPatient.Email, 'MediVault Username & Password', `Your username is: ${newMedivaultId} \n Your password is: ${randomPassword}`);
         const hospitalId = req.session.hospitalLoggedId;
 
         // Fetch hospital's information using the Hospital_Id
@@ -1876,6 +1880,40 @@ router.post('/sendHospitalCodeEmail', async (req, res) => {
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ success: false, message: 'Internal server error.' });
+    }
+});
+
+router.post('/sendForgotPasswordEmail', async (req, res) => {
+    try {
+        const { medivaultId } = req.body;
+
+        // Find the patient by username (assuming username is the Medivault ID)
+        const patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
+        const user = await PatientLogin.findOne({ Patient_Id: patient._id });
+
+        // If patient not found, send an error response
+        if (!patient) {
+            return res.status(404).json({ success: false, message: 'Patient not found' });
+        }
+
+        // Generate a temporary password
+        const temporaryPassword = generateRandomPassword();
+
+        // Update the user's password with the temporary password
+        user.Password = await hashPassword(temporaryPassword);
+        await user.save();
+
+        // Get the patient's email
+        const email = patient.Email;
+
+        // Send email with temporary password
+        await sendEmail(email, 'MediVault Password Reset', `Your temporary password is: ${temporaryPassword}`);
+
+        // Send a success response
+        res.status(200).json({ success: true, message: 'Password reset instructions sent to your email.' });
+    } catch (error) {
+        console.error('Error sending forgot password email:', error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
     }
 });
 

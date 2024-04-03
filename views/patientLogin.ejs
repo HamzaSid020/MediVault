@@ -628,7 +628,7 @@
 
 		#I_accept_the_Terms_and_Conditi {
 			left: 750px;
-			top: 641.5px;
+			top: 660px;
 			position: absolute;
 			overflow: visible;
 			width: 300px;
@@ -643,7 +643,7 @@
 
 		#I_accept_the_Privacy_Policy {
 			left: 750px;
-			top: 680.5px;
+			top: 710px;
 			position: absolute;
 			overflow: visible;
 			width: 227px;
@@ -738,17 +738,30 @@
 		}
 
 		#Submit:disabled {
-			/* Styles for the disabled state */
 			opacity: 0.5;
-			/* Reduce opacity for a disabled look */
 			cursor: not-allowed;
-			/* Change cursor for a disabled look */
 			pointer-events: none;
-			/* Disable pointer events to prevent interactions */
 		}
 
 		a {
 			text-decoration: none;
+		}
+
+		#forgot_code {
+			position: absolute;
+			overflow: visible;
+			width: 682px;
+			height: 66px;
+			left: 1000px;
+			top: 590px;
+			font-size: 20px;
+			padding: 10px;
+			color: white;
+			font-family: Segoe UI;
+		}
+
+		#forgot_code:hover {
+			color: rgb(0, 0, 0);
 		}
 	</style>
 	<script>
@@ -845,7 +858,7 @@
 					<div id="Group_u" class="">
 						<div id="Contact_Us">
 							<a href="/contactUs" style="text-decoration: none; color: rgba(255,255,255,1);">
-							<span>Contact Us</span>
+								<span>Contact Us</span>
 							</a>
 						</div>
 					</div>
@@ -960,6 +973,9 @@
 									class="input-field">
 							</foreignObject>
 						</svg>
+						<div id="forgot_code">
+							<span id="forgot_code_link" onclick="sendForgotPasswordEmail()">Forgot Password?</span>
+						</div>
 						<div id="I_accept_the_Terms_and_Conditi">
 							<input type="checkbox" id="termsCheckbox" onchange="checkSubmitButton()">
 							<label for="termsCheckbox">I accept the Terms and Conditions</label>
@@ -972,7 +988,7 @@
 							<span>Password</span>
 						</div>
 						<div id="Patient_ID">
-							<span>Patient ID</span>
+							<span>Medivault Id</span>
 						</div>
 						<button id="Submit" class="Rectangle_77" disabled>
 							<span>Submit</span>
@@ -982,6 +998,42 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		function sendForgotPasswordEmail() {
+			// Get the username input value
+			const username = document.getElementById("Patient_Username_Input").value;
+
+			// Check if the username is empty
+			if (!username) {
+				alert("Please enter your username.");
+				return;
+			}
+
+			// Send a POST request to /sendForgotPasswordEmail
+			fetch('/sendForgotPasswordEmail', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ medivaultId: username })
+			})
+				.then(response => {
+					if (response.ok) {
+						alert('Password reset instructions have been sent to your registered email.');
+						window.reload();
+					} else if (response.status === 404) {
+						alert('Patient not found. Please enter a valid username.');
+					} else {
+						alert('Failed to send password reset instructions. Please try again later.');
+					}
+					console.log(response);
+				})
+				.catch(error => {
+					// Handle errors
+					console.error('Error:', error);
+				});
+		}
+	</script>
 </body>
 
 </html>
