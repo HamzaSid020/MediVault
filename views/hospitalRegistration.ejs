@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Patient Registration</title>
+	<style id="applicationStylesheet" type="text/css">
+		.mediaViewInfo {
+			--web-view-name: Patient Registration;
+			--web-view-id: Patient_Registration;
+			--web-scale-on-resize: true;
+			--web-enable-deep-linking: true;
+		}
+
+		:root {
+			--web-view-ids: Patient_Registration;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			border: none;
+		}
+
+		#Email_Address {
+			left: 1300px;
+			top: 134px;
+			position: absolute;
+			overflow: visible;
+			width: 129px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#OHIP_Number {
+			left: 1550px;
+			top: 134px;
+			position: absolute;
+			overflow: visible;
+			width: 129px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Patient_Registration {
+			position: absolute;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(255, 255, 255, 1);
+			overflow: hidden;
+			overflow-y: auto;
+			--web-view-name: Patient Registration;
+			--web-view-id: Patient_Registration;
+			--web-scale-on-resize: true;
+			--web-enable-deep-linking: true;
+		}
+
+		#Group_150 {
+			position: absolute;
+			width: 1919.405px;
+			height: 1200px;
+			left: 0.021px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Component_1__5 {
+			position: absolute;
+			width: 1919.405px;
+			height:1200px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Path_4 {
+			fill: rgba(189, 192, 225, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_4 {
+			overflow: visible;
+			position: absolute;
+			width: 1919.405px;
+			height: 88.103px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Image_1 {
+			position: absolute;
+			width: 106px;
+			height: 68px;
+			left: 10.979px;
+			top: 10.103px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_1 {
+			position: absolute;
+			width: 1920px;
+			height: 23px;
+			left: 500.979px;
+			top: 32.603px;
+			overflow: hidden;
+		}
+
+		#Group {
+			position: absolute;
+			width: 67px;
+			height: 33px;
+			left: 100px;
+			top: -9px;
+			overflow: visible;
+		}
+
+		#Home {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 68px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_y {
+			position: absolute;
+			width: 103px;
+			height: 33px;
+			left: 400px;
+			top: -9px;
+			overflow: visible;
+		}
+
+		#About_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 104px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_ {
+			position: absolute;
+			width: 120px;
+			height: 33px;
+			left: 600px;
+			top: -9px;
+			overflow: visible;
+		}
+
+		#Contact_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 121px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Path_5 {
+			fill: rgba(189, 192, 225, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Path_5 {
+			overflow: visible;
+			position: absolute;
+			width: 1918.392px;
+			height: 169.758px;
+			left: 0.03px;
+			top: 1250px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Repeat_Grid_2 {
+			position: absolute;
+			width: 1270px;
+			height: 90px;
+			left: 389.202px;
+			top: 1200px;
+			overflow: hidden;
+		}
+
+		#Group_bb {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_3 {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: hidden;
+		}
+
+		#Group_bc {
+			position: absolute;
+			width: 101px;
+			height: 66px;
+			left: 1px;
+			top: 1px;
+			overflow: visible;
+		}
+
+		#How_It_Works_FAQ_Contact_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 102px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_bd {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 498px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_3_bc {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: hidden;
+		}
+
+		#Group_be {
+			position: absolute;
+			width: 123px;
+			height: 66px;
+			left: 1px;
+			top: 1px;
+			overflow: visible;
+		}
+
+		#Contact_Support_Help_Center_Us {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 124px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Group_bf {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 996px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Repeat_Grid_3_bg {
+			position: absolute;
+			width: 165px;
+			height: 90px;
+			left: 0px;
+			top: 0px;
+			overflow: hidden;
+		}
+
+		#Group_bh {
+			position: absolute;
+			width: 162px;
+			height: 88px;
+			left: 1px;
+			top: 1px;
+			overflow: visible;
+		}
+
+		#Terms_and_Conditions_Privacy_P {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 163px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 17px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Copyright_-_Group_9_ {
+			left: 885.202px;
+			top: 1389.886px;
+			position: absolute;
+			overflow: visible;
+			width: 148px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 16px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Path_62 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_62 {
+			overflow: visible;
+			position: absolute;
+			width: 51.956px;
+			height: 51.956px;
+			left: 822.746px;
+			top: 1309.146px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Group_27 {
+			position: absolute;
+			width: 36.368px;
+			height: 51.956px;
+			left: 1334.702px;
+			top: 1309.146px;
+			overflow: visible;
+		}
+
+		#Path_63 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_63 {
+			overflow: visible;
+			position: absolute;
+			width: 36.368px;
+			height: 51.956px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_64 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Path_64 {
+			overflow: visible;
+			position: absolute;
+			width: 5.195px;
+			height: 10.391px;
+			left: 15.587px;
+			top: 25.977px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Register_a_New_Patient {
+			left: 761.979px;
+			top: 165px;
+			position: absolute;
+			overflow: visible;
+			width: 398px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 40px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Rectangle_107 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_107 {
+			position: absolute;
+			overflow: visible;
+			width: 1826px;
+			height: 900px;
+			left: 48.979px;
+			top: 267px;
+		}
+
+		#Group_148 {
+			position: absolute;
+			width: 1544px;
+			height: 689px;
+			left: 163.979px;
+			top: 376px;
+			overflow: visible;
+		}
+
+		#Group_149 {
+			position: absolute;
+			width: 1544px;
+			height: 689px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Group_146 {
+			position: absolute;
+			width: 1544px;
+			height: 500px;
+			left: 0px;
+			top: 189px;
+			overflow: visible;
+		}
+
+		#Group_144 {
+			position: absolute;
+			width: 1544px;
+			height: 500px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		#Group_142 {
+			position: absolute;
+			width: 1544px;
+			height: 227px;
+			left: 0px;
+			top: 0px;
+			overflow: visible;
+		}
+
+		.Rectangle_110 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 0px;
+			top: 161px;
+		}
+
+		#Rectangle_111 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_111 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#Rectangle_112 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_112 {
+			position: absolute;
+			overflow: visible;
+			width: 200px;
+			height: 66px;
+			left: 900px;
+			top: 161px;
+		}
+
+		#Rectangle_113 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_113 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 1200px;
+			top: 0px;
+		}
+
+		#Patient_First_Name {
+			left: 0px;
+			top: -30px;
+			position: absolute;
+			overflow: visible;
+			width: 167px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Patient_ID {
+			left: 0px;
+			top: 131px;
+			position: absolute;
+			overflow: visible;
+			width: 91px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Patient_Last_Name {
+			left: 600px;
+			top: -30px;
+			position: absolute;
+			overflow: visible;
+			width: 165px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Rectangle_114 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_114 {
+			position: absolute;
+			overflow: visible;
+			width: 363px;
+			height: 66px;
+			left: 600px;
+			top: 0px;
+		}
+
+		#Date_of_Birth {
+			left: 1200px;
+			top: -30px;
+			position: absolute;
+			overflow: visible;
+			width: 117px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Mobile {
+			left: 900px;
+			top: 131px;
+			position: absolute;
+			overflow: visible;
+			width: 67px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Rectangle_117 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_117 {
+			position: absolute;
+			overflow: visible;
+			width: 200px;
+			height: 66px;
+			left: 1344px;
+			top: 34px;
+		}
+
+		#Rectangle_121 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_121 {
+			position: absolute;
+			overflow: visible;
+			width: 213px;
+			height: 78px;
+			left: 1118px;
+			top: 422px;
+		}
+
+		#Patient_Demographics {
+			left: 0px;
+			top: 0px;
+			position: absolute;
+			overflow: visible;
+			width: 402px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 40px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Group_147 {
+			position: absolute;
+			width: 240px;
+			height: 225px;
+			left: 1564.979px;
+			top: 299px;
+			overflow: visible;
+		}
+
+		#Rectangle_109 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_109 {
+			position: absolute;
+			overflow: visible;
+			width: 240px;
+			height: 225px;
+			left: 0px;
+			top: 0px;
+		}
+
+		#n_1_Edit {
+			position: absolute;
+			width: 27.128px;
+			height: 27.128px;
+			left: 83.975px;
+			top: 181.17px;
+			overflow: visible;
+		}
+
+		#Path_138 {
+			fill: rgba(91, 91, 137, 1);
+		}
+
+		.Path_138 {
+			overflow: visible;
+			position: absolute;
+			width: 25px;
+			height: 25px;
+			left: 0px;
+			top: 2.128px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		.Path_139 {
+			overflow: visible;
+			position: relative;
+			width: 19.13px;
+			height: 19.128px;
+			fill: rgba(91, 91, 137, 1);
+			cursor: pointer;
+		}
+
+		#imageInput {
+			position: absolute;
+			opacity: 0;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			cursor: pointer;
+		}
+
+		#Group_145 {
+			position: absolute;
+			width: 38.467px;
+			height: 38.467px;
+			left: 122.939px;
+			top: 175.501px;
+			overflow: visible;
+		}
+
+		#Path_140 {
+			fill: transparent;
+		}
+
+		.Path_140 {
+			overflow: visible;
+			position: absolute;
+			width: 38.467px;
+			height: 38.467px;
+			left: 0px;
+			top: 0px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Path_141 {
+			fill: rgba(91, 91, 137, 1);
+		}
+
+		.Path_141 {
+			overflow: visible;
+			position: absolute;
+			width: 22.439px;
+			height: 28.85px;
+			left: 8.014px;
+			top: 4.808px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		.Rectangle_110,
+		.Rectangle_111,
+		.Rectangle_112,
+		.Rectangle_113,
+		.Rectangle_114,
+		.Rectangle_121,
+		.Rectangle_123,
+		.Rectangle_117,
+		.Rectangle_124,
+		.Rectangle_125 {
+			fill: rgba(255, 255, 255, 1);
+			stroke: rgba(189, 192, 225, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			position: absolute;
+			overflow: visible;
+		}
+
+		.Rectangle_111,
+		.Rectangle_112,
+		.Rectangle_113,
+		.Rectangle_114,
+		.Rectangle_124 {
+			width: 363px;
+			height: 66px;
+		}
+
+		.Rectangle_125 {
+			left: 1550px;
+			top: 161px;
+			width: 100px;
+			height: 66px;
+		}
+
+		.Rectangle_121 {
+			width: 363px;
+			height: 78px;
+		}
+
+		.Rectangle_121 {
+			width: 249px;
+		}
+
+		.Rectangle_117 {
+			width: 200px;
+			height: 66px;
+			left: 1344px;
+			top: 34px;
+		}
+
+		.Rectangle_124 {
+			left: 1300px;
+			top: 161px;
+		}
+
+		.Rectangle_123 {
+			width: 278px;
+			height: 56px;
+			fill: rgba(90, 92, 137, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+
+		#PatientFirstName,
+		#MobileNumber,
+		#ClinicLicenseNumber,
+		#PatientLastName,
+		#StreetName,
+		#City {
+			width: 363px;
+			height: 66px;
+			position: absolute;
+			overflow: visible;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 20px;
+			color: rgba(0, 0, 0, 1);
+			border: 1px solid rgba(189, 192, 225, 1);
+			padding: 8px;
+		}
+
+		#ZipCode {
+			width: 200px;
+			height: 66px;
+			position: absolute;
+			overflow: visible;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 20px;
+			color: rgba(0, 0, 0, 1);
+			border: 1px solid rgba(189, 192, 225, 1);
+			padding: 8px;
+		}
+
+		#EmailAddress {
+			width: 200px;
+			height: 66px;
+			position: absolute;
+			overflow: visible;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 20px;
+			color: rgba(0, 0, 0, 1);
+			border: 1px solid rgba(189, 192, 225, 1);
+			padding: 8px;
+		}
+
+		#PatientId {
+			width: 850px;
+			height: 66px;
+			position: absolute;
+			overflow: visible;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 20px;
+			color: rgba(0, 0, 0, 1);
+			border: 1px solid rgba(189, 192, 225, 1);
+			padding: 8px;
+		}
+
+		#OHIP {
+			position: absolute;
+			overflow: visible;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 20px;
+			color: rgba(0, 0, 0, 1);
+			border: 1px solid rgba(189, 192, 225, 1);
+			padding: 8px;
+		}
+
+		#StreetName,
+		#City,
+		#ZipCode {
+			width: 249px;
+		}
+
+		#SubmitButton {
+			left: 814px;
+			top: 1000px;
+			position: absolute;
+			overflow: visible;
+			width: 206px;
+			height: 50px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+			background-color: rgba(90, 92, 137, 1);
+			border: 1px solid;
+			cursor: pointer;
+			border-radius: 25px;
+		}
+
+		#SubmitButton:disabled {
+			opacity: 0.6;
+			/* Set the desired level of transparency for the disabled state */
+			cursor: not-allowed;
+			/* Change cursor style to indicate the button is not clickable */
+		}
+
+		#SubmitButton:hover {
+			color: rgba(90, 92, 137, 1);
+			background-color: rgb(240, 240, 245);
+		}
+
+		#Group_ba {
+			position: absolute;
+			width: auto;
+			height: 33px;
+			left: 1000px;
+			top: -9px;
+			display: flex;
+			align-items: center;
+		}
+
+		#Welcome_Clinic_Name {
+			/* Remove the absolute positioning */
+			overflow: visible;
+			white-space: nowrap;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+			margin-right: 10px;
+			/* Add margin to create space between elements */
+		}
+
+		#Logout {
+			/* Remove the absolute positioning */
+			overflow: visible;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 25px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#NewReportModel {
+			display: none;
+			position: absolute;
+			width: 1920px;
+			height: 1410px;
+		}
+
+		#background-blur {
+			position: absolute;
+			width: 1920px;
+			height: 1410px;
+			background-color: rgb(0, 0, 0);
+			opacity: 0.5;
+			z-index: 1;
+			overflow: hidden;
+		}
+
+		#Modal-Report-Edit {
+			position: absolute;
+			width: 1000px;
+			height: 400px;
+			left: 500px;
+			top: 40px;
+			overflow: visible;
+			background-color: rgb(248, 248, 251);
+			z-index: 2;
+		}
+
+		.cross-report {
+			overflow: visible;
+			position: absolute;
+			width: 15px;
+			height: 15px;
+			left: 950px;
+			top: 30px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#cross {
+			fill: rgba(0, 0, 0, 1);
+			stroke: rgba(0, 0, 0, 1);
+			stroke-width: 5px;
+			stroke-linejoin: miter;
+			stroke-linecap: round;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+			transition: fill 0.1s ease, stroke 0.1 ease;
+		}
+
+		#cross:hover {
+			fill: rgba(255, 0, 0, 1);
+			stroke: rgba(255, 0, 0, 1);
+		}
+
+		.cross {
+			overflow: visible;
+			position: absolute;
+			width: 25.385px;
+			height: 26.871px;
+			left: 970px;
+			top: 20px;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+
+		#Modal-Content {
+			position: absolute;
+			/* Add appropriate width, height, and other styling properties */
+			z-index: 3;
+		}
+
+		#New_Report_Title {
+			left: 300px;
+			top: 20px;
+			position: absolute;
+			overflow: visible;
+			width: 402px;
+			white-space: nowrap;
+			text-align: left;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 40px;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#Upload {
+			left: 32px;
+			top: 55px;
+			position: absolute;
+			overflow: visible;
+			width: 189px;
+			height: 47px;
+			text-align: center;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 33px;
+			color: rgba(255, 255, 255, 1);
+		}
+
+		#Upload-button:hover #Upload {
+			color: rgba(92, 93, 138, 1);
+		}
+
+		#Rectangle_141 {
+			fill: rgba(92, 93, 138, 1);
+			stroke: rgba(112, 112, 112, 1);
+			stroke-width: 1px;
+			stroke-linejoin: miter;
+			stroke-linecap: butt;
+			stroke-miterlimit: 4;
+			shape-rendering: auto;
+		}
+
+		.Rectangle_141 {
+			position: absolute;
+			overflow: visible;
+			width: 253px;
+			height: 95px;
+			left: 30px;
+			top: 40px;
+		}
+
+		#Upload-button {
+			position: absolute;
+			width: 253px;
+			height: 50px;
+			left: 350px;
+			top: 250px;
+			overflow: visible;
+		}
+
+		#Upload-button:hover #Rectangle_141 {
+			fill: rgba(255, 255, 255, 1);
+		}
+
+		.Rectangle_140 {
+			position: absolute;
+			overflow: visible;
+			width: 850px;
+			height: 50px;
+			left: 100px;
+			top: 150px;
+			font-size: 25px;
+			padding: 10px;
+			font-family: Segoe UI;
+			font-style: normal;
+			font-weight: bold;
+			color: rgba(90, 92, 137, 1);
+		}
+
+		#subscription-cards {
+			display: flex;
+			justify-content: space-around;
+			align-items: flex-start;
+		}
+
+		.subscription-card {
+			width: 300px;
+			border: 1px solid #ccc;
+			border-radius: 8px;
+			padding: 20px;
+			margin: 20px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			text-align: center;
+		}
+
+		.subscription-card h2 {
+			color: #333;
+		}
+
+		.subscription-card ul {
+			list-style-type: none;
+			padding: 0;
+		}
+
+		.subscription-card ul li {
+			margin-bottom: 10px;
+		}
+
+		.subscribe-button {
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			padding: 10px 20px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		.subscribe-button:hover {
+			background-color: #0056b3;
+		}
+	</style>
+</head>
+
+<body onload="updateMaxDate()">
+	<div id="Patient_Registration">
+		<form id="patientForm">
+			<div id="Group_150">
+					<div id="Component_1__5" class="Component_1___5">
+						<svg class="Path_4" viewBox="-1.923 0.175 1919.405 88.103">
+							<path id="Path_4"
+								d="M 8.0908203125 0.3006134033203125 L 1871.794067382812 0.8562242984771729 C 1884.770874023438 0.8562242984771729 1917.4814453125 0.8562242984771729 1917.4814453125 0.8562242984771729 C 1917.4814453125 0.8562242984771729 1917.4814453125 31.94976997375488 1917.4814453125 43.30958557128906 C 1917.4814453125 67.68687438964844 1900.354736328125 88.27708435058594 1876.053466796875 88.27708435058594 L 44.00130462646484 88.27708435058594 C 19.70008277893066 88.27708435058594 -1.650874972343445 69.85780334472656 -1.650874972343445 45.48051452636719 C -1.650874972343445 32.04862976074219 -1.8994140625 13.18087768554688 -1.919921875 4.986221313476562 C -1.919921875 -1.474533081054688 -2.40457820892334 0.5199962854385376 8.0908203125 0.3006134033203125 Z">
+							</path>
+						</svg>
+						<img id="Image_1" src="images/Image_1.png"
+							srcset="images/Image_1.png 1x, images/Image_1@2x.png 2x">
+						<div id="Repeat_Grid_1">
+							<div id="Group" class="">
+								<div id="Home">
+									<span><a href="/"
+											style="text-decoration: none; color: rgba(255,255,255,1);">Home</a></span>
+								</div>
+							</div>
+							<div id="Group_y" class="">
+								<a href="/#About_Us_d">
+									<div id="About_Us">
+										<span>About Us</span>
+									</div>
+								</a>
+							</div>
+							<div id="Group_" class="">
+								<div id="Contact_Us">
+									<a href="/contactUs" style="text-decoration: none; color: rgba(255,255,255,1);">
+										<span>Contact Us</span>
+									</a>
+								</div>
+							</div>
+
+							<div id="Group_ba" class="">
+								<div id="Welcome_Clinic_Name">
+
+								</div>
+								<div id="Logout">
+									<span><a href="/Logout"
+											style="text-decoration: none; color: rgba(255,255,255,1);">Logout</a></span>
+								</div>
+							</div>
+						</div>
+						<svg class="Path_5" viewBox="6.828 0 1918.392 169.758">
+							<path id="Path_5"
+								d="M 80.5 0 L 1850.5 0 C 1894.958984375 0 1925.22021484375 34.52175521850586 1925.22021484375 81.6082763671875 C 1925.22021484375 107.6942138671875 1925.22021484375 169.75830078125 1925.22021484375 169.75830078125 C 1925.22021484375 169.75830078125 1870.328735351562 169.75830078125 1850.5 169.75830078125 L 80.5 169.451416015625 C 59.15971755981445 169.451416015625 6.828125 169.451416015625 6.828125 169.451416015625 C 6.828125 169.451416015625 6.828125 109.4123687744141 6.828125 84.9273681640625 C 6.828125 37.84084701538086 36.04107666015625 0 80.5 0 Z">
+							</path>
+						</svg>
+						<div id="Repeat_Grid_2">
+							<div id="Group_bb" class="">
+								<div id="Repeat_Grid_3">
+									<div id="Group_bc" class="">
+										<div id="How_It_Works_FAQ_Contact_Us">
+											<span>How It WorksFAQContact Us</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="Group_bd" class="">
+								<div id="Repeat_Grid_3_bc">
+									<div id="Group_be" class="">
+										<div id="Contact_Support_Help_Center_Us">
+											<span>Contact SupportHelp CenterUser Guides</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="Group_bf" class="">
+								<div id="Repeat_Grid_3_bg">
+									<div id="Group_bh" class="">
+										<div id="Terms_and_Conditions_Privacy_P">
+											<span>Terms and ConditionsPrivacy PolicyData Protection</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="Copyright_-_Group_9_">
+							<span>Copyright - Group 9 </span>
+						</div>
+						<svg class="Path_62" viewBox="2 2 51.956 51.956">
+							<path id="Path_62"
+								d="M 26.13358497619629 36.52479553222656 C 26.0218677520752 36.64824295043945 25.91776084899902 36.77837371826172 25.82184982299805 36.91446685791016 C 25.72353172302246 37.05927658081055 25.64490699768066 37.21652603149414 25.58804512023926 37.3820686340332 C 25.51314544677734 37.52932739257812 25.46061325073242 37.68692779541016 25.43218231201172 37.84967422485352 C 25.41943168640137 38.02262496948242 25.41943168640137 38.19628143310547 25.43218040466309 38.36923599243164 C 25.42339706420898 38.71000671386719 25.49457550048828 39.04808807373047 25.64000129699707 39.35639572143555 C 25.87620162963867 40.0090446472168 26.39016914367676 40.52301406860352 27.04281806945801 40.75922012329102 C 27.67159080505371 41.03711700439453 28.38837623596191 41.03711700439453 29.01714706420898 40.75920867919922 C 29.66979217529297 40.52301025390625 30.18375396728516 40.0090446472168 30.41996002197266 39.35640335083008 C 30.53531646728516 39.0405387878418 30.58825302124023 38.70527648925781 30.57582855224609 38.36923599243164 C 30.57981872558594 37.67873382568359 30.30873870849609 37.01505279541016 29.82246398925781 36.52479934692383 C 29.33468246459961 36.03300094604492 28.67069816589355 35.75637435913086 27.97802543640137 35.75637435913086 C 27.28535461425781 35.75637435913086 26.62136650085449 36.03300094604492 26.13358879089355 36.52479934692383 Z M 27.97802543640137 1.999999761581421 C 13.63075733184814 1.999999761581421 1.999999761581421 13.63075923919678 1.999999761581421 27.97802543640137 C 1.999999761581421 42.32529449462891 13.63075923919678 53.95605087280273 27.97802543640137 53.95605087280273 C 42.32529449462891 53.95605087280273 53.95605087280273 42.32529067993164 53.95605087280273 27.97802543640137 C 53.95605087280273 13.63075733184814 42.32529067993164 1.999999761581421 27.97802543640137 1.999999761581421 Z M 27.97802543640137 48.76044845581055 C 16.50020980834961 48.76044845581055 7.195605278015137 39.45583724975586 7.195605278015137 27.97802543640137 C 7.195605278015137 16.50020980834961 16.50021171569824 7.195605278015137 27.97802543640137 7.195605278015137 C 39.45583724975586 7.195605278015137 48.76044845581055 16.50021171569824 48.76044845581055 27.97802543640137 C 48.76044845581055 39.45583724975586 39.45583724975586 48.76044845581055 27.97802543640137 48.76044845581055 Z M 27.97802543640137 14.98901271820068 C 25.19192123413086 14.98722743988037 22.61678695678711 16.47288131713867 21.2237377166748 18.88571548461914 C 20.71181106567383 19.69100570678711 20.68258666992188 20.71213531494141 21.14761734008789 21.54538536071777 C 21.61264801025391 22.37863731384277 22.49707412719727 22.88986206054688 23.45121955871582 22.8769474029541 C 24.40536499023438 22.86403274536133 25.27562713623047 22.32905197143555 25.71793174743652 21.48351860046387 C 26.1838264465332 20.67655181884766 27.04623222351074 20.18091583251953 27.97802543640137 20.18461799621582 C 29.41275405883789 20.18461799621582 30.57582855224609 21.34769439697266 30.57582855224609 22.78242111206055 C 30.57582855224609 24.21714782714844 29.41275024414062 25.38022232055664 27.97802543640137 25.38022232055664 C 26.54329681396484 25.38022232055664 25.38022232055664 26.54330062866211 25.38022232055664 27.97802543640137 L 25.38022232055664 30.57582855224609 C 25.38022232055664 32.01055526733398 26.54330062866211 33.17362976074219 27.97802543640137 33.17362976074219 C 29.41275405883789 33.17362976074219 30.57582855224609 32.01055526733398 30.57582855224609 30.57582855224609 L 30.57582855224609 30.10822296142578 C 34.12174987792969 28.82158279418945 36.2371940612793 25.18010902404785 35.59841918945312 21.46245002746582 C 34.95964431762695 17.74479293823242 31.75004577636719 15.01827716827393 27.97802352905273 14.98901462554932 Z">
+							</path>
+						</svg>
+						<div id="Group_27">
+							<svg class="Path_63" viewBox="5 2 36.368 51.956">
+								<path id="Path_63"
+									d="M 38.7702522277832 17.58625602722168 L 36.17254257202148 17.58625602722168 L 36.17254257202148 14.98854732513428 C 36.17254257202148 7.815170764923096 30.35737037658691 2 23.18399620056152 2 C 16.01061630249023 2 10.19544696807861 7.81517219543457 10.19544696807861 14.98854732513428 L 10.19544696807861 17.58625602722168 L 7.597738265991211 17.58625602722168 C 6.163063049316406 17.58625602722168 5.000029563903809 18.74929428100586 5.000029563903809 20.18396759033203 L 5.000029563903809 40.35258483886719 C 4.989954948425293 43.30746841430664 6.660164833068848 46.01123046875 9.30703067779541 47.32483291625977 L 22.02281951904297 53.68143081665039 C 22.75455284118652 54.04759216308594 23.61603736877441 54.04759216308594 24.34777069091797 53.68143081665039 L 37.06355667114258 47.32483291625977 C 39.70941162109375 46.010498046875 41.37852096557617 43.30688095092773 41.36796188354492 40.35257720947266 L 41.36796188354492 20.18396759033203 C 41.36796188354492 18.74929046630859 40.20492553710938 17.58625602722168 38.7702522277832 17.58625602722168 Z M 15.39086723327637 14.98854732513428 C 15.39086723327637 10.68452262878418 18.87996673583984 7.195420742034912 23.18399620056152 7.195420742034912 C 27.48802375793457 7.195420742034912 30.97712326049805 10.68452262878418 30.97712326049805 14.98854827880859 L 30.97712326049805 17.58625602722168 L 15.39086723327637 17.58625602722168 L 15.39086723327637 14.98854732513428 Z M 36.17254257202148 40.35258483886719 C 36.17668914794922 41.33822631835938 35.61935043334961 42.24024963378906 34.73600769042969 42.67753601074219 L 23.18399620056152 48.45224380493164 L 11.63198089599609 42.6749382019043 C 10.74948596954346 42.23805618286133 10.19229602813721 41.33728790283203 10.1954460144043 40.35258483886719 L 10.19544696807861 22.78167533874512 L 36.17254257202148 22.78167533874512 L 36.17254257202148 40.35258483886719 Z">
+								</path>
+							</svg>
+							<svg class="Path_64" viewBox="11 12 5.195 10.391">
+								<path id="Path_64"
+									d="M 13.59771060943604 12 C 12.16303443908691 12 11 13.16303634643555 11 14.59770965576172 L 11 19.79312896728516 C 11 21.22780418395996 12.16303730010986 22.39083862304688 13.59771060943604 22.39083862304688 C 15.03238677978516 22.39083862304688 16.19541931152344 21.22780227661133 16.19541931152344 19.79312896728516 L 16.19541931152344 14.59770965576172 C 16.19541931152344 13.1630334854126 15.03238391876221 12 13.59771060943604 12 Z">
+								</path>
+							</svg>
+						</div>
+					</div>
+				
+				<div id="Register_a_New_Patient">
+					<span>Hospital Onboarding</span>
+				</div>
+				<svg class="Rectangle_107">
+					<rect id="Rectangle_107" rx="81" ry="81" x="0" y="0" width="1826" height="850">
+					</rect>
+				</svg>
+				<div id="Group_148">
+					<div id="Group_149">
+						<div id="Group_146">
+							<div id="Group_144">
+								<div id="Group_142">
+									<input type="text" id="PatientFirstName" class="Rectangle_111"
+										placeholder="Clinic Name" required onchange="onFieldChange()">
+									<input type="text" id="PatientLastName" class="Rectangle_114"
+										placeholder="Clinic Phone Number" required onchange="onFieldChange()">
+									<input type="text" id="ClinicLicenseNumber" class="Rectangle_113"
+										placeholder="Clinic License Number" onchange="onFieldChange()">
+									<input type="text" id="PatientId" class="Rectangle_110" placeholder="Street Name"
+										required onchange="onFieldChange()">
+									<input type="text" id="MobileNumber" class="Rectangle_112" placeholder="Zip Code"
+										required onchange="onFieldChange()">
+									<input type="email" id="EmailAddress" class="Rectangle_124" placeholder="City"
+										required onchange="onFieldChange()">
+									<input type="text" id="OHIP" class="Rectangle_125" placeholder="ON" required
+										onchange="onFieldChange()">
+									<div id="Patient_First_Name">
+										<span>Clinic Name:</span>
+									</div>
+									<div id="Patient_Last_Name">
+										<span>Clinic Phone Number:</span>
+									</div>
+
+									<div id="Date_of_Birth">
+										<span>Clinic License Number:</span>
+									</div>
+									<div id="Patient_ID">
+										<span>Street Name:</span>
+									</div>
+									<div id="Mobile">
+										<span>Zip Code:</span>
+									</div>
+									<div id="Email_Address">
+										<span>City:</span>
+									</div>
+									<div id="OHIP_Number">
+										<span>Province:</span>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div id="Patient_Demographics">
+							<span>Clinic Information</span>
+						</div>
+					</div>
+					<!-- <div id="subscription-cards">
+						<div class="subscription-card">
+							<h2>Basic Plan</h2>
+							<ul>
+								<li>Feature 1</li>
+								<li>Feature 2</li>
+								<li>Feature 3</li>
+							</ul>
+							<button class="subscribe-button">Subscribe with PayPal</button>
+						</div>
+						<div class="subscription-card">
+							<h2>Pro Plan</h2>
+							<ul>
+								<li>Feature 1</li>
+								<li>Feature 2</li>
+								<li>Feature 3</li>
+							</ul>
+							<div id="paypal-button-container-P-4SY20926J0675344SMYJQSYA">
+							</div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+
+
+
+
+			<button id="SubmitButton" class="Rectangle_123" onclick="submitPatient()" disabled>
+				Submit
+			</button>
+		</form>
+	</div>
+	<div id="NewReportModel">
+		<div id="background-blur">
+		</div>
+		<div id="Modal-Report-Edit">
+			<div id="Modal-Content">
+				<button class="cross-button" onclick="closeModal()">
+					<svg class="cross-report" viewBox="5 5 18.318 19.806">
+						<path id="cross" d="M 23.318359375 24.8056640625 L 5 5 M 23.318359375 5 L 5 24.8056640625">
+						</path>
+					</svg>
+				</button>
+				<p class="Rectangle_140">Patient with entered OHIP already exists, would you like to link to it?</p>
+				<div id="Upload-button">
+					<svg class="Rectangle_141">
+						<rect id="Rectangle_141" rx="47.5" ry="47.5" x="0" y="0" width="200" height="80">
+						</rect>
+					</svg>
+					<div id="Upload">
+						<span>Link</span>
+					</div>
+				</div>
+				<div id="New_Report_Title">
+					<span>Patient Information</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script
+		src="https://www.paypal.com/sdk/js?client-id=ARYVO-KBjOJSaV5h3KIdXjy9zAp3EwTMVvReVzWNyNbo_YLg_y6XQu0W4vjnyXH0DwUg2thotkFK2u90&vault=true&intent=subscription"
+		data-sdk-integration-source="button-factory"></script>
+	<script>
+		var modal = document.getElementById("NewReportModel");
+		const uploadButton = document.getElementById('Upload-button');
+
+		function linkPatient() {
+			const ohip = document.getElementById('OHIP').value;
+
+			fetch('/linkPatient', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ ohip })
+			})
+				.then(response => {
+					if (response.ok) {
+						console.log('Patient linked successfully');
+						window.location.href = "/hospitalDashboard/patients"
+					} else {
+						throw new Error(`Failed to link patient. Status: ${response.status}`);
+					}
+				})
+				.catch(error => {
+					console.error('Error linking patient:', error);
+					// Handle the error as needed
+				});
+		}
+
+		// Attach an event listener to the Upload-button element
+		uploadButton.addEventListener('click', function () {
+			linkPatient();
+		});
+
+		function closeModal() {
+			modal.style.display = "none";
+			location.reload();
+		}
+
+		function showModal() {
+			modal.style.display = "block";
+		}
+
+		function submitPatient() {
+			event.preventDefault();
+			// Extract values from the form
+			const firstName = document.getElementById('PatientFirstName').value;
+			const lastName = document.getElementById('PatientLastName').value;
+			const dob = document.getElementById('DOB').value;
+			const patientId = document.getElementById('PatientId').value;
+			const mobileNumber = document.getElementById('MobileNumber').value;
+			const emailAddress = document.getElementById('EmailAddress').value;
+			const ohip = document.getElementById('OHIP').value;
+			const streetName = document.getElementById('StreetName').value;
+			const city = document.getElementById('City').value;
+			const zipCode = document.getElementById('ZipCode').value;
+
+
+			// Validation: Check if any of the required fields is empty
+			if (
+				!firstName || !lastName || !dob ||
+				!patientId || !mobileNumber || !emailAddress || !ohip ||
+				!streetName || !city || !zipCode
+			) {
+				alert('Please fill in all required fields.');
+				return;
+			}
+
+			const ohipRegex = /^\d{4}-\d{3}-\d{3}-\w{2}$/;
+			if (!ohipRegex.test(ohip)) {
+				alert('OHIP number format is incorrect. Please use the format: XXXX-XXX-XXX-XX');
+				return;
+			}
+
+			// If all required fields are filled, proceed with sending the update request
+			const newData = {
+				firstName,
+				lastName,
+				dob,
+				patientId,
+				mobileNumber,
+				emailAddress,
+				ohip,
+				streetName,
+				city,
+				zipCode
+			};
+
+			console.log("New Patient Info", newData);
+
+			// Send the data to the server
+			fetch('/patientCreate', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ newData })
+			})
+				.then(response => {
+					if (response.ok) {
+						console.log('Creation successful');
+						alert(`New Patient: ${firstName} ${lastName} created.`);
+						window.location.href = "/hospitalDashboard/patients";
+
+					} else if (response.status === 400) {
+						console.log('OHIP number already exists');
+						showModal();
+					} else {
+						throw new Error(`Failed to create patient. Status: ${response.status}`);
+					}
+				})
+				.catch(error => {
+					console.error('Error creating patient:', error);
+				});
+		}
+
+		// Example validation function for a mobile number
+		function isValidMobileNumber(number) {
+			// Customize the validation logic based on your requirements
+			const regex = /^\d{10}$/; // Assumes a 10-digit mobile number
+			return regex.test(number);
+		}
+
+		function updateMaxDate() {
+			const currentDate = new Date().toISOString().split('T')[0];
+			document.getElementById('DOB').max = currentDate;
+		}
+
+		function checkFields() {
+			var patientFirstName = document.getElementById("PatientFirstName").value;
+			var patientLastName = document.getElementById("PatientLastName").value;
+			var dob = document.getElementById("DOB").value;
+			var patientId = document.getElementById("PatientId").value;
+			var mobileNumber = document.getElementById("MobileNumber").value;
+			var emailAddress = document.getElementById("EmailAddress").value;
+			var ohip = document.getElementById('OHIP').value;
+			var streetName = document.getElementById("StreetName").value;
+			var city = document.getElementById("City").value;
+			var zipCode = document.getElementById("ZipCode").value;
+
+			// Check if all required fields are filled
+			if (
+				patientFirstName !== "" &&
+				patientLastName !== "" &&
+				dob !== "" &&
+				patientId !== "" &&
+				mobileNumber !== "" &&
+				emailAddress !== "" &&
+				ohip !== "" &&
+				streetName !== "" &&
+				city !== "" &&
+				zipCode !== ""
+			) {
+				// Enable the submit button
+				document.getElementById("SubmitButton").disabled = false;
+			} else {
+				// Disable the submit button if any field is empty
+				document.getElementById("SubmitButton").disabled = true;
+			}
+		}
+
+		function onFieldChange() {
+			checkFields(); // Call the function to check the fields whenever any field changes
+		}
+
+		paypal.Buttons({
+			style: {
+				shape: 'pill',
+				color: 'black',
+				layout: 'horizontal',
+				label: 'subscribe'
+			},
+			createSubscription: function (data, actions) {
+				return actions.subscription.create({
+					/* Creates the subscription */
+					plan_id: 'P-4SY20926J0675344SMYJQSYA'
+				});
+			},
+			onApprove: function (data, actions) {
+				alert(data.subscriptionID); // You can add optional success message for the subscriber here
+			}
+		}).render('#paypal-button-container-P-4SY20926J0675344SMYJQSYA'); // Renders the PayPal button
+	</script>
+</body>
+
+</html>

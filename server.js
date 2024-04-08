@@ -29,6 +29,7 @@ const apiFunctions = require('./database/apiFunctions').router;
 const mongoose = require('mongoose');
 const ejs = require('ejs');
 const path = require('path');
+const base = "https://api-m.sandbox.paypal.com";
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true })); // Parse incoming requests with urlencoded payloads
