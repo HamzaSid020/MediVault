@@ -2,626 +2,144 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Hospital Login</title>
-	<style id="applicationStylesheet" type="text/css">
-		:root {
-			--web-view-ids: Hospital_Login;
-		}
-
-		* {
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Home</title>
+	<style type="text/css">
+		body {
 			margin: 0;
 			padding: 0;
-			box-sizing: border-box;
-			border: none;
+			overflow: hidden;
+			height: 100%;
+			max-height: 100%;
+			font-family: Helvetica;
+			line-height: 1.5em;
+			margin-left: 200px;
+			margin-right: 200px;
 		}
 
-		body {
-    width: 1200px; /* Adjust according to your design */
-    margin: 0 ; /* Centers the webpage horizontally */
-	overflow-x: hidden; /* Hide horizontal scrollbar */
-    overflow-y: auto; /* Show vertical scrollbar only when needed */
-}
+		main {
+			position: fixed;
+			top: 50px;
+			bottom: 50px;
+			left: 0;
+			right: 0;
+			margin: auto;
+			width: 1400px;
+			background: #fff;
+		}
 
-		#Hospital_Login {
+		#header {
 			position: absolute;
+			top: 0;
+			left: 0;
 			width: 100%;
-			height: 100vh;
-			background-color: rgba(255, 255, 255, 1);
+			height: 50px;
 			overflow: hidden;
-			overflow-y: auto;
-			--web-view-name: Hospital Login;
-			--web-view-id: Hospital_Login;
-			--web-scale-on-resize: true;
-			--web-enable-deep-linking: true;
+			background: linear-gradient(5deg, rgba(137, 73, 219, 1) 30%, rgba(154, 91, 255, 1) 50%);
 		}
 
-		#Group_81 {
+		#header .innertube {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 100%;
+		}
+
+		.logo {
 			position: absolute;
-			width: 1200px;
-			height: 1438.103px;
-			left: 0px;
-			top: 0px;
-			overflow: visible;
+			top: 0;
+			left: 0;
+			margin-top: 5px;
+			margin-left: 10px;
+			width: 60px;
 		}
 
-		#Path_73 {
-			fill: rgba(255, 255, 255, 1);
-			stroke: rgba(112, 112, 112, 1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
+		.navigation {
+			flex-grow: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-right: 10%;
 		}
 
-		.Path_73 {
-			overflow: visible;
+		.nav-link {
+			margin: 0px 60px;
+			margin-bottom: 30px;
+			color: #fff;
+			text-decoration: none;
+			font-size: 18px;
+			font-family: Helvetica;
+		}
+
+		#footer {
 			position: absolute;
-			width: 1200px;
-			height: 1438px;
-			left: 0px;
-			top: 0.103px;
-			transform: matrix(1, 0, 0, 1, 0, 0);
-		}
-
-		#Component_1__2 {
-			position: absolute;
-			width: 1200px;
-			height: 1436.629px;
-			left: 0.021px;
-			top: 0px;
-			overflow: visible;
-		}
-
-		#Path_4 {
-			fill: rgba(189, 192, 225, 1);
-			stroke: rgba(189, 192, 225, 1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-		}
-
-		.Path_4 {
-			overflow: visible;
-			position: absolute;
-			width: 1200px;
-			height: 88.103px;
-			left: 0px;
-			top: 0px;
-			transform: matrix(1, 0, 0, 1, 0, 0);
-		}
-
-		#Image_1 {
-			position: absolute;
-			width: 106px;
-			height: 68px;
-			left: 10.978px;
-			top: 10.103px;
-			overflow: visible;
-		}
-
-		#Repeat_Grid_1 {
-			position: absolute;
-			width: 781px;
-			height: 23px;
-			left: 500.978px;
-			top: 32.603px;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 50px;
 			overflow: hidden;
+			background: linear-gradient(5deg, rgba(137, 73, 219, 1) 30%, rgba(154, 91, 255, 1) 50%);
+			color: #fff;
+			/* Set text color to white */
 		}
 
-		#Group {
-			position: absolute;
-			width: 67px;
-			height: 33px;
-			left: 1px;
-			top: -9px;
-			overflow: visible;
+		.innertube {
+			margin: 15px;
 		}
 
-		#Home {
-			left: 0px;
-			top: 0px;
-			position: absolute;
-			overflow: visible;
-			width: 68px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 25px;
-			color: rgba(255, 255, 255, 1);
+		p {
+			color: #ffffff;
 		}
 
-		#Group_s {
-			position: absolute;
-			width: 103px;
-			height: 33px;
-			left: 234px;
-			top: -9px;
-			overflow: visible;
+		nav ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
 		}
 
-		#About_Us {
-			left: 0px;
-			top: 0px;
-			position: absolute;
-			overflow: visible;
-			width: 104px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 25px;
-			color: rgba(255, 255, 255, 1);
-		}
-
-		#Group_u {
-			position: absolute;
-			width: 120px;
-			height: 33px;
-			left: 467px;
-			top: -9px;
-			overflow: visible;
-		}
-
-		#Contact_Us {
-			left: 0px;
-			top: 0px;
-			position: absolute;
-			overflow: visible;
-			width: 121px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 25px;
-			color: rgba(255, 255, 255, 1);
-		}
-
-		#Sign_Up {
-			left: 1776.478px;
-			top: 25.103px;
-			position: absolute;
-			overflow: visible;
-			width: 102px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 25px;
-			color: rgba(255, 255, 255, 1);
-		}
-
-		#Group_77 {
-			position: absolute;
-			width: 1200px;
-			height: 1274.027px;
-			left: 0.03px;
-			top: 162.603px;
-			overflow: visible;
-		}
-
-		#Path_5 {
-			fill: rgba(189, 192, 225, 1);
-			stroke: rgba(189, 192, 225, 1);
-			stroke-width: 1px;
-			stroke-linejoin: miter;
-			stroke-linecap: butt;
-			stroke-miterlimit: 4;
-			shape-rendering: auto;
-		}
-
-		.Path_5 {
-			overflow: visible;
-			position: absolute;
-			width: 1200px;
-			height: 169.758px;
-			left: 0px;
-			top: 1104.268px;
-			transform: matrix(1, 0, 0, 1, 0, 0);
-		}
-
-		#Repeat_Grid_2 {
-			position: absolute;
-			width: 1200px;
-			height: 90px;
-			left: 389.172px;
-			top: 1136.768px;
-			overflow: hidden;
-		}
-
-		#Group_ {
-			position: absolute;
-			width: 165px;
-			height: 90px;
-			left: 0px;
-			top: 0px;
-			overflow: visible;
-		}
-
-		#Repeat_Grid_3 {
-			position: absolute;
-			width: 165px;
-			height: 90px;
-			left: 0px;
-			top: 0px;
-			overflow: hidden;
-		}
-
-		#Group_ba {
-			position: absolute;
-			width: 101px;
-			height: 66px;
-			left: 1px;
-			top: 1px;
-			overflow: visible;
-		}
-
-		#How_It_Works_FAQ_Contact_Us {
-			left: 0px;
-			top: 0px;
-			position: absolute;
-			overflow: visible;
-			width: 102px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 17px;
-			color: rgba(255, 255, 255, 1);
-		}
-
-		#Group_bb {
-			position: absolute;
-			width: 165px;
-			height: 90px;
-			left: 498px;
-			top: 0px;
-			overflow: visible;
-		}
-
-		#Repeat_Grid_3_ {
-			position: absolute;
-			width: 165px;
-			height: 90px;
-			left: 0px;
-			top: 0px;
-			overflow: hidden;
-		}
-
-		#Group_bc {
-			position: absolute;
-			width: 123px;
-			height: 66px;
-			left: 1px;
-			top: 1px;
-			overflow: visible;
-		}
-
-		#Contact_Support_Help_Center_Us {
-			left: 0px;
-			top: 0px;
-			position: absolute;
-			overflow: visible;
-			width: 124px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 17px;
-			color: rgba(255, 255, 255, 1);
-		}
-
-		#Group_bd {
-			position: absolute;
-			width: 165px;
-			height: 90px;
-			left: 996px;
-			top: 0px;
-			overflow: visible;
-		}
-
-		#Repeat_Grid_3_bb {
-			position: absolute;
-			width: 165px;
-			height: 90px;
-			left: 0px;
-			top: 0px;
-			overflow: hidden;
-		}
-
-		#Group_be {
-			position: absolute;
-			width: 162px;
-			height: 88px;
-			left: 1px;
-			top: 1px;
-			overflow: visible;
-		}
-
-		#Terms_and_Conditions_Privacy_P {
-			left: 0px;
-			top: 0px;
-			position: absolute;
-			overflow: visible;
-			width: 163px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 17px;
-			color: rgba(255, 255, 255, 1);
-		}
-
-		#Copyright_-_Group_9_ {
-			left: 885.172px;
-			top: 1227.284px;
-			position: absolute;
-			overflow: visible;
-			width: 148px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 16px;
-			color: rgba(255, 255, 255, 1);
-		}
-
-		#Path_62 {
-			fill: rgba(255, 255, 255, 1);
-		}
-
-		.Path_62 {
-			overflow: visible;
-			position: absolute;
-			width: 51.956px;
-			height: 51.956px;
-			left: 822.716px;
-			top: 1146.544px;
-			transform: matrix(1, 0, 0, 1, 0, 0);
-		}
-
-		#Group_27 {
-			position: absolute;
-			width: 36.368px;
-			height: 51.956px;
-			left: 1334.672px;
-			top: 1146.544px;
-			overflow: visible;
-		}
-
-		#Path_63 {
-			fill: rgba(255, 255, 255, 1);
-		}
-
-		.Path_63 {
-			overflow: visible;
-			position: absolute;
-			width: 36.368px;
-			height: 51.956px;
-			left: 0px;
-			top: 0px;
-			transform: matrix(1, 0, 0, 1, 0, 0);
-		}
-
-		#Path_64 {
-			fill: rgba(255, 255, 255, 1);
-		}
-
-		.Path_64 {
-			overflow: visible;
-			position: absolute;
-			width: 5.195px;
-			height: 10.391px;
-			left: 15.586px;
-			top: 25.977px;
-			transform: matrix(1, 0, 0, 1, 0, 0);
-		}
-
-		#Patient_ {
-			left: 748.948px;
-			top: 135.5px;
-			position: absolute;
-			overflow: visible;
-			width: 105px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 30px;
-			color: rgba(255, 255, 255, 1);
-		}
-
-		#ClinicHospital {
-			left: 1017.948px;
-			top: 135.5px;
-			position: absolute;
-			overflow: visible;
-			width: 200px;
-			white-space: nowrap;
-			text-align: left;
-			font-family: Segoe UI;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 30px;
-			color: rgba(255, 255, 255, 1);
-		}
-
-		a {
+		nav ul a {
+			color: darkgreen;
 			text-decoration: none;
 		}
-		
-	</style>
-	<script>
-		function submitData(event) {
-			event.preventDefault();
-			// Get values from input fields
-			var Username = document.getElementById('Hospital_Username_Input').value;
-			var Password = document.getElementById('Hospital_Password_Input').value;
-			// Create data object to be sent in the request body
-			var data = {
-				username: Username,
-				password: Password
-			};
-			console.log(data);
-			// Send data to "/hospitalLogin" using Fetch API
-			fetch('/hospital-login', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(data)
-			})
-				.then(response => response.json())
-				.then(result => {
-					// Check if the login was successful
-					if (result.message === 'Login successful') {
-						// Redirect to the hospitalDashboard page with the hospitalId
-						window.location.href = '/hospitalDashboard/patients';
-					} else {
-						// Handle login failure
-						console.error('Login failed:', result.message);
-					}
-				})
-				.catch(error => {
-					// Handle errors
-					console.error('Error:', error);
-				});
-		}
-		function checkSubmitButton() {
-			var Username = document.getElementById('Hospital_Username_Input');
-			var Password = document.getElementById('Hospital_Password_Input');
-			var termsCheckbox = document.getElementById('termsCheckbox');
-			var privacyCheckbox = document.getElementById('privacyCheckbox');
-			var submitButton = document.getElementById('Submit');
 
-			// Enable the submit button only if both checkboxes are checked
-			submitButton.disabled = !(termsCheckbox.checked && privacyCheckbox.checked && Username.value.trim() !== '' && Password.value.trim() !== '');
+		* html body {
+			padding: 50px 200px 50px 200px;
 		}
-	</script>
+
+		* html main {
+			height: 100%;
+			width: 100%;
+		}
+	</style>
 </head>
 
 <body>
-	<div id="Hospital_Login">
-		<div id="Group_81">
-			<svg class="Path_73" viewBox="0 0 1920 1438">
-				<path id="Path_73" d="M 0 0 L 1920 0 L 1920 1438 L 0 1438 L 0 0 Z">
-				</path>
-			</svg>
-			<div id="Component_1__2" class="Component_1___2">
-				<svg class="Path_4" viewBox="-1.923 0.175 1919.405 88.103">
-					<path id="Path_4"
-						d="M 8.0908203125 0.3006134033203125 L 1871.794067382812 0.8562242984771729 C 1884.770874023438 0.8562242984771729 1917.4814453125 0.8562242984771729 1917.4814453125 0.8562242984771729 C 1917.4814453125 0.8562242984771729 1917.4814453125 31.94976997375488 1917.4814453125 43.30958557128906 C 1917.4814453125 67.68687438964844 1900.354736328125 88.27708435058594 1876.053466796875 88.27708435058594 L 44.00130462646484 88.27708435058594 C 19.70008277893066 88.27708435058594 -1.650874972343445 69.85780334472656 -1.650874972343445 45.48051452636719 C -1.650874972343445 32.04862976074219 -1.8994140625 13.18087768554688 -1.919921875 4.986221313476562 C -1.919921875 -1.474533081054688 -2.40457820892334 0.5199962854385376 8.0908203125 0.3006134033203125 Z">
-					</path>
-				</svg>
-				<img id="Image_1" src="images/Image_1.png" srcset="images/Image_1.png 1x, images/Image_1@2x.png 2x">
 
-				<div id="Repeat_Grid_1">
-					<div id="Group" class="">
-						<div id="Home">
-							<span><a href="/" style="text-decoration: none; color: rgba(255,255,255,1);">Home</a></span>
-						</div>
-					</div>
-					<div id="Group_s" class="">
-						<a href="/#About_Us_d">
-							<div id="About_Us">
-								<span>About Us</span>
-							</div>
-						</a>
-					</div>
-					<div id="Group_u" class="">
-						<div id="Contact_Us">
-							<a href="/contactUs" style="text-decoration: none; color: rgba(255,255,255,1);">
-							<span>Contact Us</span>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div id="Sign_Up">
-					<span>Sign Up</span>
-				</div>
-				<div id="Group_77">
-					<svg class="Path_5" viewBox="6.828 0 1918.392 169.758">
-						<path id="Path_5"
-							d="M 80.5 0 L 1850.5 0 C 1894.958984375 0 1925.22021484375 34.52175521850586 1925.22021484375 81.6082763671875 C 1925.22021484375 107.6942138671875 1925.22021484375 169.75830078125 1925.22021484375 169.75830078125 C 1925.22021484375 169.75830078125 1870.328735351562 169.75830078125 1850.5 169.75830078125 L 80.5 169.451416015625 C 59.15971755981445 169.451416015625 6.828125 169.451416015625 6.828125 169.451416015625 C 6.828125 169.451416015625 6.828125 109.4123687744141 6.828125 84.9273681640625 C 6.828125 37.84084701538086 36.04107666015625 0 80.5 0 Z">
-						</path>
-					</svg>
-					<div id="Repeat_Grid_2">
-						<div id="Group_" class="">
-							<div id="Repeat_Grid_3">
-								<div id="Group_ba" class="">
-									<div id="How_It_Works_FAQ_Contact_Us">
-										<span>How It WorksFAQContact Us</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="Group_bb" class="">
-							<div id="Repeat_Grid_3_">
-								<div id="Group_bc" class="">
-									<div id="Contact_Support_Help_Center_Us">
-										<span>Contact SupportHelp CenterUser Guides</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div id="Group_bd" class="">
-							<div id="Repeat_Grid_3_bb">
-								<div id="Group_be" class="">
-									<div id="Terms_and_Conditions_Privacy_P">
-										<span>Terms and ConditionsPrivacy PolicyData Protection</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="Copyright_-_Group_9_">
-						<span>Copyright - Group 9 </span>
-					</div>
-					<svg class="Path_62" viewBox="2 2 51.956 51.956">
-						<path id="Path_62"
-							d="M 26.13358497619629 36.52479553222656 C 26.0218677520752 36.64824295043945 25.91776084899902 36.77837371826172 25.82184982299805 36.91446685791016 C 25.72353172302246 37.05927658081055 25.64490699768066 37.21652603149414 25.58804512023926 37.3820686340332 C 25.51314544677734 37.52932739257812 25.46061325073242 37.68692779541016 25.43218231201172 37.84967422485352 C 25.41943168640137 38.02262496948242 25.41943168640137 38.19628143310547 25.43218040466309 38.36923599243164 C 25.42339706420898 38.71000671386719 25.49457550048828 39.04808807373047 25.64000129699707 39.35639572143555 C 25.87620162963867 40.0090446472168 26.39016914367676 40.52301406860352 27.04281806945801 40.75922012329102 C 27.67159080505371 41.03711700439453 28.38837623596191 41.03711700439453 29.01714706420898 40.75920867919922 C 29.66979217529297 40.52301025390625 30.18375396728516 40.0090446472168 30.41996002197266 39.35640335083008 C 30.53531646728516 39.0405387878418 30.58825302124023 38.70527648925781 30.57582855224609 38.36923599243164 C 30.57981872558594 37.67873382568359 30.30873870849609 37.01505279541016 29.82246398925781 36.52479934692383 C 29.33468246459961 36.03300094604492 28.67069816589355 35.75637435913086 27.97802543640137 35.75637435913086 C 27.28535461425781 35.75637435913086 26.62136650085449 36.03300094604492 26.13358879089355 36.52479934692383 Z M 27.97802543640137 1.999999761581421 C 13.63075733184814 1.999999761581421 1.999999761581421 13.63075923919678 1.999999761581421 27.97802543640137 C 1.999999761581421 42.32529449462891 13.63075923919678 53.95605087280273 27.97802543640137 53.95605087280273 C 42.32529449462891 53.95605087280273 53.95605087280273 42.32529067993164 53.95605087280273 27.97802543640137 C 53.95605087280273 13.63075733184814 42.32529067993164 1.999999761581421 27.97802543640137 1.999999761581421 Z M 27.97802543640137 48.76044845581055 C 16.50020980834961 48.76044845581055 7.195605278015137 39.45583724975586 7.195605278015137 27.97802543640137 C 7.195605278015137 16.50020980834961 16.50021171569824 7.195605278015137 27.97802543640137 7.195605278015137 C 39.45583724975586 7.195605278015137 48.76044845581055 16.50021171569824 48.76044845581055 27.97802543640137 C 48.76044845581055 39.45583724975586 39.45583724975586 48.76044845581055 27.97802543640137 48.76044845581055 Z M 27.97802543640137 14.98901271820068 C 25.19192123413086 14.98722743988037 22.61678695678711 16.47288131713867 21.2237377166748 18.88571548461914 C 20.71181106567383 19.69100570678711 20.68258666992188 20.71213531494141 21.14761734008789 21.54538536071777 C 21.61264801025391 22.37863731384277 22.49707412719727 22.88986206054688 23.45121955871582 22.8769474029541 C 24.40536499023438 22.86403274536133 25.27562713623047 22.32905197143555 25.71793174743652 21.48351860046387 C 26.1838264465332 20.67655181884766 27.04623222351074 20.18091583251953 27.97802543640137 20.18461799621582 C 29.41275405883789 20.18461799621582 30.57582855224609 21.34769439697266 30.57582855224609 22.78242111206055 C 30.57582855224609 24.21714782714844 29.41275024414062 25.38022232055664 27.97802543640137 25.38022232055664 C 26.54329681396484 25.38022232055664 25.38022232055664 26.54330062866211 25.38022232055664 27.97802543640137 L 25.38022232055664 30.57582855224609 C 25.38022232055664 32.01055526733398 26.54330062866211 33.17362976074219 27.97802543640137 33.17362976074219 C 29.41275405883789 33.17362976074219 30.57582855224609 32.01055526733398 30.57582855224609 30.57582855224609 L 30.57582855224609 30.10822296142578 C 34.12174987792969 28.82158279418945 36.2371940612793 25.18010902404785 35.59841918945312 21.46245002746582 C 34.95964431762695 17.74479293823242 31.75004577636719 15.01827716827393 27.97802352905273 14.98901462554932 Z">
-						</path>
-					</svg>
-					<div id="Group_27">
-						<svg class="Path_63" viewBox="5 2 36.368 51.956">
-							<path id="Path_63"
-								d="M 38.7702522277832 17.58625602722168 L 36.17254257202148 17.58625602722168 L 36.17254257202148 14.98854732513428 C 36.17254257202148 7.815170764923096 30.35737037658691 2 23.18399620056152 2 C 16.01061630249023 2 10.19544696807861 7.81517219543457 10.19544696807861 14.98854732513428 L 10.19544696807861 17.58625602722168 L 7.597738265991211 17.58625602722168 C 6.163063049316406 17.58625602722168 5.000029563903809 18.74929428100586 5.000029563903809 20.18396759033203 L 5.000029563903809 40.35258483886719 C 4.989954948425293 43.30746841430664 6.660164833068848 46.01123046875 9.30703067779541 47.32483291625977 L 22.02281951904297 53.68143081665039 C 22.75455284118652 54.04759216308594 23.61603736877441 54.04759216308594 24.34777069091797 53.68143081665039 L 37.06355667114258 47.32483291625977 C 39.70941162109375 46.010498046875 41.37852096557617 43.30688095092773 41.36796188354492 40.35257720947266 L 41.36796188354492 20.18396759033203 C 41.36796188354492 18.74929046630859 40.20492553710938 17.58625602722168 38.7702522277832 17.58625602722168 Z M 15.39086723327637 14.98854732513428 C 15.39086723327637 10.68452262878418 18.87996673583984 7.195420742034912 23.18399620056152 7.195420742034912 C 27.48802375793457 7.195420742034912 30.97712326049805 10.68452262878418 30.97712326049805 14.98854827880859 L 30.97712326049805 17.58625602722168 L 15.39086723327637 17.58625602722168 L 15.39086723327637 14.98854732513428 Z M 36.17254257202148 40.35258483886719 C 36.17668914794922 41.33822631835938 35.61935043334961 42.24024963378906 34.73600769042969 42.67753601074219 L 23.18399620056152 48.45224380493164 L 11.63198089599609 42.6749382019043 C 10.74948596954346 42.23805618286133 10.19229602813721 41.33728790283203 10.1954460144043 40.35258483886719 L 10.19544696807861 22.78167533874512 L 36.17254257202148 22.78167533874512 L 36.17254257202148 40.35258483886719 Z">
-							</path>
-						</svg>
-						<svg class="Path_64" viewBox="11 12 5.195 10.391">
-							<path id="Path_64"
-								d="M 13.59771060943604 12 C 12.16303443908691 12 11 13.16303634643555 11 14.59770965576172 L 11 19.79312896728516 C 11 21.22780418395996 12.16303730010986 22.39083862304688 13.59771060943604 22.39083862304688 C 15.03238677978516 22.39083862304688 16.19541931152344 21.22780227661133 16.19541931152344 19.79312896728516 L 16.19541931152344 14.59770965576172 C 16.19541931152344 13.1630334854126 15.03238391876221 12 13.59771060943604 12 Z">
-							</path>
-						</svg>
-					</div>
-					<div id="Patient_">
-						<span><a href="/patientLogin"
-								style="text-decoration: none; color: rgba(255,255,255,1);">Patient</a></span>
-					</div>
-					<div id="ClinicHospital">
-						<span><a href="/hospitalLogin"
-								style="text-decoration: none; color: rgba(255,255,255,1);">Clinic/Hospital</a></span>
-					</div>
-
-				</div>
-			</div>
+	<header id="header">
+		<div class="innertube">
+			<img src="/public/images/Image_1.png" alt="Website Logo" class="logo">
+			<nav class="navigation">
+				<a href="/" class="nav-link">Home</a>
+				<a href="/about" class="nav-link">About Us</a>
+				<a href="/contact" class="nav-link">Contact Us</a>
+				<a href="/login" class="nav-link">Login</a>
+			</nav>
 		</div>
-	</div>
+	</header>
+
+	<main>
+
+	</main>
+
+	<footer id="footer">
+		<div class="innertube">
+			<p>Contact us: email@example.com | 123-456-7890</p>
+			<p>Follow us: <a href="https://facebook.com">Facebook</a> | <a href="https://twitter.com">Twitter</a></p>
+			<p>© 2024 Your Company Name. All rights reserved.</p>
+			<p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
+		</div>
+	</footer>
+
 </body>
 
 </html>
