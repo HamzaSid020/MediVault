@@ -2,144 +2,201 @@
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Home</title>
-	<style type="text/css">
-		body {
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-			height: 100%;
-			max-height: 100%;
-			font-family: Helvetica;
-			line-height: 1.5em;
-			margin-left: 200px;
-			margin-right: 200px;
-		}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Home</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            max-height: 100%;
+            font-family: "Poppins", sans-serif;
+            line-height: 1.5em;
+            margin-left: 200px;
+            margin-right: 200px;
+        }
 
-		main {
-			position: fixed;
-			top: 50px;
-			bottom: 50px;
-			left: 0;
-			right: 0;
-			margin: auto;
-			width: 1400px;
-			background: #fff;
-		}
+        main {
+            position: fixed;
+            top: 50px;
+            bottom: 50px;
+            left: 100px;
+            right: 100px;
+            margin: auto;
+            width: calc(100% - 400px);
+            background: #fff;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
 
-		#header {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 50px;
-			overflow: hidden;
-			background: linear-gradient(5deg, rgba(137, 73, 219, 1) 30%, rgba(154, 91, 255, 1) 50%);
-		}
+        main::-webkit-scrollbar {
+            display: none;
+        }
 
-		#header .innertube {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			height: 100%;
-		}
+        #header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            overflow: hidden;
+            background: linear-gradient(5deg, rgba(137, 73, 219, 1) 30%, rgba(154, 91, 255, 1) 50%);
+        }
 
-		.logo {
-			position: absolute;
-			top: 0;
-			left: 0;
-			margin-top: 5px;
-			margin-left: 10px;
-			width: 60px;
-		}
+        #header .innertube {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
 
-		.navigation {
-			flex-grow: 1;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin-right: 10%;
-		}
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-top: 5px;
+            margin-left: 10px;
+            width: 60px;
+        }
 
-		.nav-link {
-			margin: 0px 60px;
-			margin-bottom: 30px;
-			color: #fff;
-			text-decoration: none;
-			font-size: 18px;
-			font-family: Helvetica;
-		}
+        .navigation {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-		#footer {
-			position: absolute;
-			left: 0;
-			bottom: 0;
-			width: 100%;
-			height: 50px;
-			overflow: hidden;
-			background: linear-gradient(5deg, rgba(137, 73, 219, 1) 30%, rgba(154, 91, 255, 1) 50%);
-			color: #fff;
-			/* Set text color to white */
-		}
+        }
 
-		.innertube {
-			margin: 15px;
-		}
+        .nav-link {
+            margin: 0px 75px;
+            margin-bottom: 30px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: Helvetica;
+            transition: 0.3s;
+            text-decoration: none;
+        }
 
-		p {
-			color: #ffffff;
-		}
+        .nav-link:hover {
+            transform: translateY(-3px);
+            color: #fff;
+        }
 
-		nav ul {
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-		}
+        #signupMenu {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: Helvetica;
+            transition: 0.3s;
+            text-decoration: none;
+            margin-left: 0px;
+            margin-bottom: 30px;
+        }
 
-		nav ul a {
-			color: darkgreen;
-			text-decoration: none;
-		}
+        #signupMenu:hover {
+            transform: translateY(-3px);
+            color: #fff;
+        }
 
-		* html body {
-			padding: 50px 200px 50px 200px;
-		}
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(5deg, rgba(137, 73, 219, 1) 30%, rgba(154, 91, 255, 1) 50%);
+            min-height: 50px;
+            padding: 0px 0px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
 
-		* html main {
-			height: 100%;
-			width: 100%;
-		}
-	</style>
+        .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .social-icon__item {
+            list-style: none;
+        }
+
+        .social-icon__link {
+            font-size: 1.5rem;
+            color: #fff;
+            margin: 0 5px;
+            display: inline-block;
+            transition: 0.5s;
+        }
+
+        .social-icon__link:hover {
+            transform: translateY(-5px);
+            color: #fff
+        }
+
+        .footer p {
+            margin: 15px 0 10px 0;
+            font-size: 1rem;
+            font-weight: 300;
+            margin-right: 20px;
+        }
+
+        .innertube {
+            margin: 15px;
+        }
+
+        p {
+            color: #ffffff;
+        }
+    </style>
 </head>
 
 <body>
 
-	<header id="header">
-		<div class="innertube">
-			<img src="/public/images/Image_1.png" alt="Website Logo" class="logo">
-			<nav class="navigation">
-				<a href="/" class="nav-link">Home</a>
-				<a href="/about" class="nav-link">About Us</a>
-				<a href="/contact" class="nav-link">Contact Us</a>
-				<a href="/login" class="nav-link">Login</a>
-			</nav>
-		</div>
-	</header>
+    <header id="header">
+        <div class="innertube">
+            <img src="/public/images/Image_1.png" alt="Website Logo" class="logo">
+            <nav class="navigation">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/about" class="nav-link">About Us</a>
+                <a href="/contact" class="nav-link">Contact Us</a>
+                <a href="/login" class="nav-link">Login</a>
+            </nav>
+            <a id="signupMenu" href="/signup">Signup</a>
+        </div>
+    </header>
 
-	<main>
+    <main>
+    </main>
 
-	</main>
+    <footer class="footer">
+        <ul class="social-icon">
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a></li>
+        </ul>
 
-	<footer id="footer">
-		<div class="innertube">
-			<p>Contact us: email@example.com | 123-456-7890</p>
-			<p>Follow us: <a href="https://facebook.com">Facebook</a> | <a href="https://twitter.com">Twitter</a></p>
-			<p>© 2024 Your Company Name. All rights reserved.</p>
-			<p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
-		</div>
-	</footer>
+        <p>&copy;2024 MediVault | All Rights Reserved</p>
+    </footer>
 
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

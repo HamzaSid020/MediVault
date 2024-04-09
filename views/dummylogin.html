@@ -1,91 +1,170 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Home</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
+    id="bootstrap-css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <style type="text/css">
-    body, html {
+    body {
       margin: 0;
       padding: 0;
       overflow: hidden;
       height: 100%;
-      font-family: Sans-serif;
+      max-height: 100%;
+      font-family: "Poppins", sans-serif;
       line-height: 1.5em;
-    }
-
-    body {
-      padding-left: 200px;
-      padding-right: 200px;
+      margin-left: 200px;
+      margin-right: 200px;
     }
 
     main {
       position: fixed;
       top: 50px;
       bottom: 50px;
-      left: 0;
-      right: 0;
+      left: 100px;
+      right: 100px;
       margin: auto;
-      width: 100%;
+      width: calc(100% - 400px);
       background: #fff;
+      overflow-y: auto;
+      scrollbar-width: none;
     }
 
-    #header, #footer {
+    main::-webkit-scrollbar {
+      display: none;
+    }
+
+    #header {
       position: absolute;
+      top: 0;
       left: 0;
       width: 100%;
       height: 50px;
       overflow: hidden;
       background: linear-gradient(5deg, rgba(137, 73, 219, 1) 30%, rgba(154, 91, 255, 1) 50%);
-      color: #fff;
     }
 
-    #header {
-      top: 0;
-    }
-
-    #footer {
-      bottom: 0;
-    }
-
-    #header .innertube, #footer .innertube {
-      margin: 15px;
+    #header .innertube {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
     }
 
     .logo {
       position: absolute;
-      top: 5px;
-      left: 10px;
+      top: 0;
+      left: 0;
+      margin-top: 5px;
+      margin-left: 10px;
       width: 60px;
     }
 
     .navigation {
+      flex-grow: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-right: 10%;
+
     }
 
     .nav-link {
-      margin: 0px 60px;
+      margin: 0px 75px;
+      margin-bottom: 30px;
       color: #fff;
       text-decoration: none;
       font-size: 18px;
+      font-family: Helvetica;
+      transition: 0.3s;
+      text-decoration: none;
     }
 
-    .login-container {
-      width: 40%;
-      margin: 15% auto;
-      padding-bottom: 5%;
+    .nav-link:hover {
+      transform: translateY(-3px);
+      color: #fff;
+    }
+
+    #signupMenu {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-family: Helvetica;
+      transition: 0.3s;
+      text-decoration: none;
+      margin-left: 0px;
+      margin-bottom: 30px;
+    }
+
+    #signupMenu:hover {
+      transform: translateY(-3px);
+      color: #fff;
+    }
+
+    .footer {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(5deg, rgba(137, 73, 219, 1) 30%, rgba(154, 91, 255, 1) 50%);
+      min-height: 50px;
+      padding: 0px 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+
+    .social-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    .social-icon__item {
+      list-style: none;
+    }
+
+    .social-icon__link {
+      font-size: 1.5rem;
+      color: #fff;
+      margin: 0 5px;
+      display: inline-block;
+      transition: 0.5s;
+    }
+
+    .social-icon__link:hover {
+      transform: translateY(-5px);
+      color: #fff
+    }
+
+    .footer p {
+      margin: 15px 0 10px 0;
+      font-size: 1rem;
+      font-weight: 300;
+      margin-right: 20px;
+    }
+
+    .innertube {
+      margin: 15px;
+    }
+
+    p {
+      color: #ffffff;
     }
 
     @media (max-width: 576px) {
       .login-container {
         width: 90%;
       }
-      body, html {
+
+      body,
+      html {
         padding-left: 0;
         padding-right: 0;
       }
@@ -104,12 +183,14 @@
       background: rgba(137, 73, 219, 1);
       color: #fff;
     }
-	.nav-link.active {
-		margin-bottom: 8%; /* Adjust the value as needed for desired spacing */
-	  }
-	.tab-pane {
-		padding: 20px; /* Add padding to the content within the tabs */
-	  }
+
+    .nav-link.active {
+      margin-bottom: 8%;
+    }
+
+    .tab-pane {
+      padding: 20px;
+    }
 
     .card {
       border-radius: 10px;
@@ -133,104 +214,140 @@
     .btn-block {
       margin-top: 20px;
     }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .login-container {
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .card-header .nav-tabs {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    .card-header .nav-tabs .nav-item {
+      flex: 1;
+    }
   </style>
 </head>
+
 <body>
-	<header id="header">
-	  <div class="innertube">
-		<img src="/public/images/Image_1.png" alt="Website Logo" class="logo" />
-		<nav class="navigation">
-		  <a href="/" class="nav-link">Home</a>
-		  <a href="/about" class="nav-link">About Us</a>
-		  <a href="/contact" class="nav-link">Contact Us</a>
-		  <a href="/login" class="nav-link">Login</a>
-		</nav>
-	  </div>
-	</header>
-  
-	<main>
-	  <div class="container">
-		<div class="login-container">
-		  <div class="row">
-			<div class="col-md-12">
-			  <div class="card">
-				<div class="card-header">
-				  <ul class="nav nav-tabs card-header-tabs" id="login-tab" role="tablist">
-					<li class="nav-item">
-					  <a class="nav-link active" id="patient-tab" data-toggle="tab" href="#patient-login" role="tab" aria-controls="patient" aria-selected="true">Patient</a>
-					</li>
-					<li class="nav-item">
-					  <a class="nav-link" id="clinic-tab" data-toggle="tab" href="#clinic-login" role="tab" aria-controls="clinic" aria-selected="false">Clinic/Hospital</a>
-					</li>
-				  </ul>
-				</div>
-				<div class="card-body">
-				  <div class="tab-content" id="login-tab-content">
-					<!-- Patient Tab Pane -->
-<div class="tab-pane fade show active" id="patient-login" role="tabpanel" aria-labelledby="patient-tab">
-	<form>
-	  <div class="form-group">
-		<input type="text" class="form-control" placeholder="Patient ID" required />
-	  </div>
-	  <div class="form-group">
-		<input type="password" class="form-control" placeholder="Password" required />
-	  </div>
-	  <div class="custom-control custom-checkbox">
-		<input type="checkbox" class="custom-control-input" id="patient-terms">
-		<label class="custom-control-label" for="patient-terms">I accept the Terms and Conditions</label>
-	  </div>
-	  <div class="custom-control custom-checkbox">
-		<input type="checkbox" class="custom-control-input" id="patient-privacy">
-		<label class="custom-control-label" for="patient-privacy">I accept the Privacy Policy</label>
-	  </div>
-	  <button type="submit" class="btn btn-primary btn-block">Submit</button>
-	</form>
-  </div>
-  
-  <!-- Clinic/Hospital Tab Pane -->
-  <div class="tab-pane fade" id="clinic-login" role="tabpanel" aria-labelledby="clinic-tab">
-	<form>
-	  <div class="form-group">
-		<input type="text" class="form-control" placeholder="Clinic/Hospital ID" required />
-	  </div>
-	  <div class="form-group">
-		<input type="password" class="form-control" placeholder="Password" required />
-	  </div>
-	  <div class="custom-control custom-checkbox">
-		<input type="checkbox" class="custom-control-input" id="clinic-terms">
-		<label class="custom-control-label" for="clinic-terms">I accept the Terms and Conditions</label>
-	  </div>
-	  <div class="custom-control custom-checkbox">
-		<input type="checkbox" class="custom-control-input" id="clinic-privacy">
-		<label class="custom-control-label" for="clinic-privacy">I accept the Privacy Policy</label>
-	  </div>
-	  <button type="submit" class="btn btn-primary btn-block">Submit</button>
-	</form>
-  </div>
-  
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</main>
-  
-	<footer id="footer">
-	  <div class="innertube">
-		<p>Contact us: email@example.com | 123-456-7890</p>
-		<p>
-		  Follow us: <a href="https://facebook.com">Facebook</a> |
-		  <a href="https://twitter.com">Twitter</a>
-		</p>
-		<p>© 2024 Your Company Name. All rights reserved.</p>
-		<p>
-		  <a href="/privacy-policy">Privacy Policy</a> |
-		  <a href="/terms-of-service">Terms of Service</a>
-		</p>
-	  </div>
-	</footer>
-  </body>
-  </html>
-  
+  <header id="header">
+    <div class="innertube">
+      <img src="/public/images/Image_1.png" alt="Website Logo" class="logo">
+      <nav class="navigation">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about" class="nav-link">About Us</a>
+        <a href="/contact" class="nav-link">Contact Us</a>
+        <a href="/login" class="nav-link">Login</a>
+      </nav>
+      <a id="signupMenu" href="/signup">Signup</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="login-container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs row" id="login-tab" role="tablist">
+                  <li class="nav-item col">
+                    <a class="nav-link active" id="patient-tab" data-toggle="tab" href="#patient-login" role="tab"
+                      aria-controls="patient" aria-selected="true"
+                      style="margin-left: 30px; margin-top: 10px;">Patient</a>
+                  </li>
+                  <li class="nav-item col">
+                    <a class="nav-link" id="clinic-tab" data-toggle="tab" href="#clinic-login" role="tab"
+                      aria-controls="clinic" aria-selected="false"
+                      style="margin-left: 30px; margin-top: 10px;">Clinic/Hospital</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content" id="login-tab-content">
+                  <!-- Patient Tab Pane -->
+                  <div class="tab-pane fade show active" id="patient-login" role="tabpanel"
+                    aria-labelledby="patient-tab">
+                    <form>
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Patient ID" required />
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" required />
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="patient-terms">
+                        <label class="custom-control-label" for="patient-terms">I accept the Terms and
+                          Conditions</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="patient-privacy">
+                        <label class="custom-control-label" for="patient-privacy">I accept the Privacy Policy</label>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                  </div>
+
+                  <!-- Clinic/Hospital Tab Pane -->
+                  <div class="tab-pane fade" id="clinic-login" role="tabpanel" aria-labelledby="clinic-tab">
+                    <form>
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Clinic/Hospital ID" required />
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" required />
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="clinic-terms">
+                        <label class="custom-control-label" for="clinic-terms">I accept the Terms and Conditions</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="clinic-privacy">
+                        <label class="custom-control-label" for="clinic-privacy">I accept the Privacy Policy</label>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+
+    <p>&copy;2024 MediVault | All Rights Reserved</p>
+  </footer>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

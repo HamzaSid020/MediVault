@@ -12,24 +12,27 @@
 			overflow: hidden;
 			height: 100%;
 			max-height: 100%;
-			font-family: Helvetica;
+			font-family: "Poppins", sans-serif;
 			line-height: 1.5em;
-			margin-left: 100px;
-			margin-right: 100px;
-			color: rgb(78, 37, 132);
+			margin-left: 200px;
+			margin-right: 200px;
 		}
 
 		main {
 			position: fixed;
 			top: 50px;
 			bottom: 50px;
-			left: 0;
-			right: 0;
+			left: 100px;
+			right: 100px;
 			margin: auto;
-			width: 1400px;
+			width: calc(100% - 400px);
 			background: #fff;
-			overflow: auto;
+			overflow-y: auto;
+			scrollbar-width: none;
+		}
 
+		main::-webkit-scrollbar {
+			display: none;
 		}
 
 		#header {
@@ -63,28 +66,94 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			margin-right: 10%;
+
 		}
 
 		.nav-link {
-			margin: 0px 60px;
+			margin: 0px 75px;
 			margin-bottom: 30px;
 			color: #fff;
 			text-decoration: none;
 			font-size: 18px;
 			font-family: Helvetica;
+			transition: 0.3s;
+			text-decoration: none;
 		}
 
-		#footer {
+		.nav-link:hover {
+			transform: translateY(-3px);
+			color: #fff;
+		}
+
+		#signupMenu {
+			color: #fff;
+			text-decoration: none;
+			font-size: 18px;
+			font-family: Helvetica;
+			transition: 0.3s;
+			text-decoration: none;
+			margin-left: 0px;
+			margin-bottom: 30px;
+		}
+
+		#signupMenu:hover {
+			transform: translateY(-3px);
+			color: #fff;
+		}
+
+		* html body {
+			padding: 50px 100px 50px 100px;
+		}
+
+		* html main {
+			height: 100%;
+			width: 100%;
+		}
+
+		.footer {
 			position: absolute;
 			left: 0;
 			bottom: 0;
 			width: 100%;
-			height: 50px;
-			overflow: hidden;
 			background: linear-gradient(5deg, rgba(137, 73, 219, 1) 30%, rgba(154, 91, 255, 1) 50%);
+			min-height: 50px;
+			padding: 0px 0px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 			color: #fff;
-			/* Set text color to white */
+		}
+
+		.social-icon {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 10px 0;
+			flex-wrap: wrap;
+		}
+
+		.social-icon__item {
+			list-style: none;
+		}
+
+		.social-icon__link {
+			font-size: 1.5rem;
+			color: #fff;
+			margin: 0 5px;
+			display: inline-block;
+			transition: 0.5s;
+		}
+
+		.social-icon__link:hover {
+			transform: translateY(-5px);
+			color: #fff
+		}
+
+		.footer p {
+			margin: 15px 0 10px 0;
+			font-size: 1rem;
+			font-weight: 300;
+			margin-right: 20px;
 		}
 
 		.innertube {
@@ -122,8 +191,8 @@
 		}
 
 		.container {
-			margin-left: 50px;
-			margin-right: 50px;
+			margin-left: 0px;
+			margin-right: 0px;
 		}
 
 		.section p {
@@ -132,18 +201,12 @@
 			font-family: Helvetica;
 		}
 
-
 		.shape {
 			background-color: #ccc;
-			/* Shape background color */
 			width: 100px;
-			/* Shape width */
 			height: 100px;
-			/* Shape height */
 			float: left;
-			/* Align shape to the left */
 			margin-right: 20px;
-			/* Add some margin to separate the shape from the text */
 		}
 
 		#Group_69 {
@@ -567,42 +630,51 @@
 		}
 
 		.row,
-    .card-container {
-        margin-top: 2.5%;
-        margin-bottom: 2.5%;
-    }
+		.card-container {
+			margin-top: 2.5%;
+			margin-bottom: 2.5%;
+		}
 
-    .card {
-        background-color: rgb(78, 37, 132);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-		border-radius: 35px 35px 0 0;
-    }
+		.card {
+			background-color: rgb(78, 37, 132);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 35px 35px 0 0;
+			transition: 0.5s;
+		}
 
-    .card-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-		padding:10px;
-    }
+		.card:hover {
+			transform: translateY(-10px);
+		}
 
-    .card-img-top {
-        max-width: 100%; /* Ensure image doesn't exceed card width */
-		border-radius: 0%;
-    }
+		.card-body {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 10px;
+		}
 
-    .card-title {
-        color: white;
-        font-size: 180%;
-        margin: 0px 0; /* Adjust the spacing between image and title */
-    }
+		.card-img-top {
+			max-width: 100%;
+			/* Ensure image doesn't exceed card width */
+			border-radius: 0%;
+		}
 
-    @media (max-width: 768px) {
-        .card-title {
-            font-size: 24px; /* Increase font size on smaller screens */
-        }}
+		.card-title {
+			color: white;
+			font-size: 180%;
+			margin: 0px 0;
+			/* Adjust the spacing between image and title */
+		}
+
+		@media (max-width: 768px) {
+			.card-title {
+				font-size: 24px;
+				/* Increase font size on smaller screens */
+			}
+		}
 	</style>
 </head>
 
@@ -617,6 +689,7 @@
 				<a href="/contact" class="nav-link">Contact Us</a>
 				<a href="/login" class="nav-link">Login</a>
 			</nav>
+			<a id="signupMenu" href="/signup">Signup</a>
 		</div>
 	</header>
 
@@ -686,10 +759,8 @@
 						</div>
 					</div>
 				</div>
-				<!-- Third Section -->
 				<div class="row">
 					<div class="row">
-						<!-- Shape on the left -->
 						<div class="col-md-4">
 							<div id="Group_69">
 								<svg class="Path_56" viewBox="0 0 336 336">
@@ -856,14 +927,27 @@
 				</div>
 	</main>
 
-	<footer id="footer">
-		<div class="innertube">
-			<p>Contact us: email@example.com | 123-456-7890</p>
-			<p>Follow us: <a href="https://facebook.com">Facebook</a> | <a href="https://twitter.com">Twitter</a></p>
-			<p>© 2024 Your Company Name. All rights reserved.</p>
-			<p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
-		</div>
+	<footer class="footer">
+		<ul class="social-icon">
+			<li class="social-icon__item"><a class="social-icon__link" href="#">
+					<ion-icon name="logo-facebook"></ion-icon>
+				</a></li>
+			<li class="social-icon__item"><a class="social-icon__link" href="#">
+					<ion-icon name="logo-twitter"></ion-icon>
+				</a></li>
+			<li class="social-icon__item"><a class="social-icon__link" href="#">
+					<ion-icon name="logo-linkedin"></ion-icon>
+				</a></li>
+			<li class="social-icon__item"><a class="social-icon__link" href="#">
+					<ion-icon name="logo-instagram"></ion-icon>
+				</a></li>
+		</ul>
+
+		<p>&copy;2024 MediVault | All Rights Reserved</p>
 	</footer>
+
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
