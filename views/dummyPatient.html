@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Dummy</title>
+    <title>Patient</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         body {
@@ -154,6 +154,95 @@
         p {
             color: #ffffff;
         }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .first-div,
+        .second-div,
+        .third-div {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        .third-div {
+            position: relative;
+        }
+
+        .menu-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            /* adjust width as needed */
+            height: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .content {
+            margin-left: 220px;
+            /* 200px (menu-bar width) + 20px (padding) */
+            padding: 20px;
+            border-left: 1px solid #ccc;
+        }
+
+        .first-div {
+            display: flex;
+            align-items: center;
+        }
+
+        .Ellipse_17 {
+            width: 350px;
+            height: 350px;
+            flex: 0 0 auto;
+        }
+
+        .patient-info {
+            flex: 1;
+        }
+
+        .patient-info h2 {
+            font-size: 20px;
+            margin-bottom: 50px;
+            margin-top: 0;
+            padding-right:120px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .columns-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            /* Distribute space between columns */
+        }
+
+        .column {
+            flex: 1;
+            /* Each column takes equal width */
+            margin-right: 20px;
+
+
+        }
+
+        .column:last-child {
+            margin-right: 0;
+            /* Remove right margin from the last column */
+        }
+
+        .column p {
+            margin: 0;
+            line-height: 1.5;
+            color: black;
+            font-size: 16px;
+            padding-bottom: 10px;
+        }
     </style>
 </head>
 
@@ -173,6 +262,51 @@
     </header>
 
     <main>
+        <div class="container">
+            <div class="first-div">
+                <svg class="Ellipse_17" viewBox="0 0 50 50">
+                    <ellipse id="Ellipse_17" rx="15" ry="15" cx="25" cy="25" fill="url(#gradient)"></ellipse>
+                    <defs>
+                        <clipPath id="circleClip">
+                            <ellipse rx="14" ry="14" cx="25" cy="25"></ellipse>
+                        </clipPath>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="60%" y2="100%">
+                            <stop offset="50%" style="stop-color: rgb(66, 16, 146)"></stop>
+                            <stop offset="40%" style="stop-color: rgb(45, 8, 93)"></stop>
+                        </linearGradient>
+                    </defs>
+                    <image xlink:href="/images/patient/<%= patientInfo.Picture %>" preserveAspectRatio="xMidYMid slice"
+                        clip-path="url(#circleClip)" x="0" y="0" width="50" height="50"></image>
+                </svg>
+                <div class="patient-info">
+                    <h2>Welcome, Hamza Siddiqui</h2>
+                    <div class="columns-container">
+                        <div class="column">
+                            <p>Patient Name: Hamza Siddiqui</p>
+                            <p>MediVault ID: HSIDD7890</p>
+                            <p>DOB: 2000-06-24</p>
+                            <p>Address: 123 Havelwood Cresent, Waterloo, ON N2L 4L2</p>
+                        </div>
+                        <div class="column">
+                            <p>Age: 23 yrs</p>
+                            <p>Sex: M</p>
+                            <p>Last Updated: 4/3/2024, 4:26:11 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="second-div">
+                Second Div Content
+            </div>
+            <div class="third-div">
+                <div class="menu-bar">
+                    Menu Bar Content
+                </div>
+                <div class="content">
+                    Content on the right side of the menu bar
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">

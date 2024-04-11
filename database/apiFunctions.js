@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const session = require('express-session');
-const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const bcrypt = require('bcrypt');
 const fs = require('fs');
@@ -25,7 +24,6 @@ const {
 
 const sendEmail = require('./emailFunctions');
 router.use(express.json()); // This middleware will parse JSON data in the request body
-router.use(cookieParser());
 router.use(express.static('public'));
 router.use(
     session({
@@ -273,6 +271,24 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/database', async (req, res) => {
+    try {
+      const hospitals = await HospitalInfo.find();
+      const patients = await PatientInfo.find();
+      const reports = await Report.find();
+      const bills = await Bills.find();
+      const prescriptions = await Prescription.find();
+      const patientLogins = await PatientLogin.find();
+      const hospitalLogins = await HospitalLogin.find();
+      const hospitalCodes = await HospitalCodes.find();
+  
+      res.render('adminDashboard', { hospitals, patients, reports, bills, prescriptions, patientLogins, hospitalLogins, hospitalCodes });
+    } catch (error) {
+      console.error('Error rendering HTML:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
 router.post('/patient-login', async (req, res) => {
     const { username, password } = req.body;
     console.log('Received request:', username, password); // Check if request body is received correctly
@@ -370,7 +386,7 @@ router.get('/patientRegistration', async (req, res) => {
             return res.status(404).send('Hospital not found');
         }
 
-        res.render('patientRegistration', { hospital });
+        res.render('hospitalPatientRegistration', { hospital });
     } catch (error) {
         console.error('Error rendering HTML:', error);
         res.status(500).send('Internal Server Error');
@@ -1329,6 +1345,31 @@ router.post('/patientCreate', async (req, res) => {
         res.status(500).json({ success: false, error: 'Internal Server Error' });
     }
 });
+
+router.post('/uploadPatientImage', (req, res) => {
+    // Check if the request has files
+    if (!req.files || Object.keys(req.files).length === 0) {
+        return res.status(400).send('No files were uploaded.');
+    }
+  
+    const uploadedFile = req.files.patientImage; // 'patientImage' is the name attribute in the form input
+  
+    // Specify the destination path
+    const destinationPath = path.join(__dirname, process.env.IMAGE_DESTINATION);
+    console.log( "destinationPath", destinationPath );
+    // Use the mv() method to move the file to the specified path
+    uploadedFile.mv(path.join(destinationPath, uploadedFile.name), (err) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+  
+        // Return a response with the file details
+        res.send({
+            filename: uploadedFile.name,
+            path: path.join(destinationPath, uploadedFile.name)
+        });
+    });
+  });
 
 router.post('/linkPatient', async (req, res) => {
     try {
