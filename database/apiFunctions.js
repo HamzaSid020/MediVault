@@ -245,7 +245,7 @@ async function convertToOriginalData(formattedData, isCreating = false) {
             Sex: sex,
             Address: address,
             Email: formattedData.emailAddress,
-            Patient_Id: formattedData.patientId,
+            Patient_Id: formattedData.patientIdInput,
             Last_Updated_Time: formattedCurrentTime
         };
     }
@@ -304,7 +304,6 @@ router.post('/patient-login', async (req, res) => {
 
             if (passwordMatch) {
                 const patientInfo = await PatientInfo.findOne({ _id: user.Patient_Id });
-                console.log('Patient Info:', patientInfo); // Check if patient information is found
 
                 if (patientInfo) {
                     req.session.loggedIn = true;
@@ -350,7 +349,6 @@ router.post('/hospital-login', async (req, res) => {
 
             if (passwordMatch) {
                 const hospitalInfo = await HospitalInfo.findOne({ _id: user.Hospital_Id });
-                console.log('Hospital Info:', hospitalInfo); // Check if hospital information is found
 
                 if (hospitalInfo) {
                     req.session.hospitalLoggedId = hospitalInfo._id;
@@ -448,9 +446,6 @@ router.get('/patientReport', async (req, res) => {
             .exec();
 
         // Pass the patient ID to the render function
-        console.log(patientInfo);
-        console.log(reports);
-
         const unreadNotificationsCount = patientInfo.Notifications.filter(notification => !notification.read).length;
 
         res.render('patientReportInfo', { patientInfo: patientInfo, report_info: reports, unreadNotificationsCount });
@@ -483,9 +478,6 @@ router.get('/hospitalReportInfo/:medivaultId', async (req, res) => {
         }).populate('Hospital_Id').exec();
 
         // Pass the patient ID to the render function
-        console.log(patientInfo);
-        console.log(reports);
-
         res.render('hospitalReportInfo', { patientInfo: patientInfo, report_info: reports });
     } catch (error) {
         console.error('Error rendering HTML:', error);
@@ -507,10 +499,6 @@ router.get('/patientPrescriptionEdit', async (req, res) => {
         const reports = await Report.find({ Patient_Id: patientId })
             .populate('Hospital_Id')
             .exec();
-
-        // Pass the patient ID to the render function
-        console.log(patientInfo);
-        console.log(reports);
 
         res.render('patientReportEdit', { patientInfo: patientInfo, report_info: reports });
     } catch (error) {
@@ -534,10 +522,6 @@ router.get('/patientReportEdit', async (req, res) => {
             .populate('Hospital_Id')
             .exec();
 
-        // Pass the patient ID to the render function
-        console.log(patientInfo);
-        console.log(reports);
-
         res.render('patientReportEdit', { patientInfo: patientInfo, report_info: reports });
     } catch (error) {
         console.error('Error rendering HTML:', error);
@@ -560,9 +544,6 @@ router.get('/patientAppointment', async (req, res) => {
             .populate('Hospital_Id')
             .exec();
 
-        // Pass the patient ID to the render function
-        console.log(patientInfo);
-        console.log(appointment);
         const unreadNotificationsCount = patientInfo.Notifications.filter(notification => !notification.read).length;
 
         res.render('patientAppointmentInfo', { patientInfo: patientInfo, appointment_info: appointment, unreadNotificationsCount });
@@ -609,10 +590,6 @@ router.get('/hospitalAppointmentInfo/:medivaultId', async (req, res) => {
             .populate('Hospital_Id')
             .exec();
 
-        // Pass the patient ID to the render function
-        console.log(patientInfo);
-        console.log(appointment);
-
         res.render('hospitalAppointmentInfo', { patientInfo: patientInfo, appointment_info: appointment, appointmentEdit: appointmentEdit });
     } catch (error) {
         console.error('Error rendering HTML:', error);
@@ -635,9 +612,6 @@ router.get('/patientBill', async (req, res) => {
             .populate('Hospital_Id')
             .exec();
 
-        // Pass the patient ID to the render function
-        console.log("patientInfo:", patientInfo);
-        console.log("BillInfo:", bills);
         const unreadNotificationsCount = patientInfo.Notifications.filter(notification => !notification.read).length;
 
         res.render('patientBillInfo', { patientInfo: patientInfo, bill_info: bills, unreadNotificationsCount });
@@ -671,10 +645,6 @@ router.get('/hospitalBillInfo/:medivaultId', async (req, res) => {
             .populate('Hospital_Id')
             .exec();
 
-        // Pass the patient ID to the render function
-        console.log("patientInfo:", patientInfo);
-        console.log("BillInfo:", bills);
-
         res.render('hospitalBillInfo', { patientInfo: patientInfo, bill_info: bills });
     } catch (error) {
         console.error('Error rendering HTML:', error);
@@ -697,9 +667,6 @@ router.get('/patientPrescription', async (req, res) => {
             .populate('Hospital_Id')
             .exec();
 
-        // Pass the patient ID to the render function
-        console.log("patientInfo:", patientInfo);
-        console.log("PrescriptionInfo:", prescriptions);
         const unreadNotificationsCount = patientInfo.Notifications.filter(notification => !notification.read).length;
 
         res.render('patientPrescriptionInfo', { patientInfo: patientInfo, prescription_info: prescriptions, unreadNotificationsCount });
@@ -731,10 +698,6 @@ router.get('/hospitalPrescriptionInfo/:medivaultId', async (req, res) => {
         })
             .populate('Hospital_Id')
             .exec();
-
-        // Pass the patient ID to the render function
-        console.log("patientInfo:", patientInfo);
-        console.log("PrescriptionInfo:", prescriptions);
 
         res.render('hospitalPrescriptionInfo', { patientInfo: patientInfo, prescription_info: prescriptions });
     } catch (error) {
@@ -876,8 +839,6 @@ router.get('/hospitalDashboard/appointments', async (req, res) => {
         const appointmentInfo = await Appointment.find({ Hospital_Id: hospitalId })
             .populate('Patient_Id')
             .exec();
-
-        console.log(appointmentInfo);
 
         // Fetch all patients associated with the hospital
         const patients = await PatientInfo.find({ Hospital_Ids: hospitalId });
@@ -1256,10 +1217,11 @@ router.post('/patientUpdate', async (req, res) => {
         }
 
         const { patientId, updatedData } = req.body;
-        console.log('Updating patient:', patientId, updatedData);
-
+        console.log(patientId, updatedData );
+        
         // Convert formatted data back to original structure
-        const originalDataAgain = convertToOriginalData(updatedData);
+        const originalDataAgain = await convertToOriginalData(updatedData, false);
+        console.log("original:", patientId, originalDataAgain);
 
         // Update the patient information in the database
         await PatientInfo.findByIdAndUpdate(
@@ -1295,7 +1257,6 @@ router.post('/patientCreate', async (req, res) => {
         }
 
         const { newData } = req.body;
-        console.log("New Patient Info Server", newData);
 
         const existingOHIPs = await PatientInfo.find({}, { OHIP_Number: 1, _id: 0 });
         const existingOHIPNumbers = existingOHIPs.map(patient => patient.OHIP_Number);
@@ -1312,7 +1273,6 @@ router.post('/patientCreate', async (req, res) => {
         const newMedivaultId = formattedData.Medivault_Id;
         const randomPassword = generateRandomPassword();
         formattedData.Hospital_Ids = [req.session.hospitalLoggedId];
-        console.log("Formatted DOB", formattedData.DOB);
         formattedData.Age = calculateAge(formattedData.DOB);
 
         // Create a new patient entry in the database
@@ -1356,7 +1316,6 @@ router.post('/uploadPatientImage', (req, res) => {
   
     // Specify the destination path
     const destinationPath = path.join(__dirname, process.env.IMAGE_DESTINATION);
-    console.log( "destinationPath", destinationPath );
     // Use the mv() method to move the file to the specified path
     uploadedFile.mv(path.join(destinationPath, uploadedFile.name), (err) => {
         if (err) {
@@ -1440,7 +1399,6 @@ router.post('/upload', uploadImage.single('image'), async (req, res) => {
         // Handle the case when medivaultId is not present
         return res.status(401).send('<script>alert("Please log in first"); window.location.href="/patientLogin";</script>');
     }
-    console.log('Request received:', req.file);
 
     // Get the patient ID from the request body
     const { patientId } = req.body;
@@ -1479,7 +1437,6 @@ router.post('/upload', uploadImage.single('image'), async (req, res) => {
     await patient.save();
 
     console.log('File uploaded successfully:', req.file);
-    console.log('Updated Patient info:', patient);
     res.status(200).json({ message: 'File uploaded successfully' });
 });
 
@@ -1547,7 +1504,6 @@ router.post('/uploadBill', uploadBill.single('file'), async (req, res) => {
         // Save hospital's updated information
         await hospital.save();
 
-        console.log('Updated Patient info:', patient);
         res.status(200).json({ message: 'File uploaded successfully' });
     } catch (error) {
         console.error('Error uploading Bill:', error);
@@ -1621,7 +1577,6 @@ router.post('/uploadReport', uploadReport.single('file'), async (req, res) => {
         // Save hospital's updated information
         await hospital.save();
 
-        console.log('Updated Patient info:', patient);
         res.status(200).json({ message: 'File uploaded successfully' });
     } catch (error) {
         console.error('Error uploading report:', error);
@@ -1634,7 +1589,6 @@ router.post('/uploadPrescription', uploadPrescription.single('file'), async (req
         return res.status(401).send('<script>alert("Please log in first"); window.location.href="/hospitalLogin";</script>');
     }
 
-    console.log('Request received:', req.file);
     const hospitalId = req.session.hospitalLoggedId;
     const file = req.file;
     const medivaultId = req.body.MedivaultId;
@@ -1691,7 +1645,6 @@ router.post('/uploadPrescription', uploadPrescription.single('file'), async (req
         // Save hospital's updated information
         await hospital.save();
 
-        console.log('Updated Patient info:', patient);
         res.status(200).json({ message: 'File uploaded successfully' });
     } catch (error) {
         console.error('Error uploading Prescription:', error);
@@ -1723,7 +1676,6 @@ router.post('/deletePatientImage', async (req, res) => {
 
         // Save patient's updated information
         await patient.save();
-        console.log('Image deleted for patient:', patientId);
 
         res.sendStatus(200);
     } catch (error) {
@@ -1912,9 +1864,6 @@ router.post('/sendHospitalCodeEmail', async (req, res) => {
         // Extracting email and hospital code from retrieved data
         const email = patientInfo.Email;
         const hospitalCode = hospitalCodeInfo.Code;
-
-        console.log('Email:', email);
-        console.log('Hospital Code:', hospitalCode);
 
         // Sending the hospital code email using sendEmail function
         sendEmail(email, 'MediVault Hospital Code', `Your hospital code is: ${hospitalCode}`);
@@ -2131,9 +2080,6 @@ router.delete('/deleteReport', async (req, res) => {
 
             // Remove the report entry from the database
             await Report.findOneAndDelete({ _id: reportId });
-
-            // Log success message
-            console.log('Report and associated data deleted successfully');
 
             res.status(200).json({ message: 'Report and associated data deleted successfully' });
         });
@@ -2380,7 +2326,6 @@ router.post('/createAppointment', async (req, res) => {
         }
 
         const { doctorName, appointmentDate, appointmentType, notes, status, medivaultId } = req.body;
-        console.log("Received data:", doctorName, appointmentDate, appointmentType, notes, status, medivaultId);
 
         const patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
         if (!patient) {
@@ -2430,7 +2375,6 @@ router.post('/updateAppointment', async (req, res) => {
         }
 
         const { appointmentId, doctorName, appointmentDate, appointmentType, notes, status, medivaultId } = req.body;
-        console.log("Received data:", appointmentId, doctorName, appointmentDate, appointmentType, notes, status, medivaultId);
 
         const patient = await PatientInfo.findOne({ Medivault_Id: medivaultId });
         if (!patient) {
@@ -2454,8 +2398,6 @@ router.post('/updateAppointment', async (req, res) => {
 
         // Save the updated appointment
         await existingAppointment.save();
-
-        console.log("Updated appointment:", existingAppointment);
 
         const hospital = await HospitalInfo.findById(hospitalId);
         if (!hospital) {
