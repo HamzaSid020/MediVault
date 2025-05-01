@@ -1,7 +1,5 @@
 # MediVault - Secure Medical Record Storage
 
-![Project Logo](https://github.com/HamzaSid020/MediVault/blob/main/static/logo.png?raw=true)
-
 MediVault is a secure, blockchain-based platform for storing and managing medical records with patient-controlled access.
 
 ## Features
